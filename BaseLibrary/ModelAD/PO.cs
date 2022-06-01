@@ -78,6 +78,11 @@ namespace VAdvantage.Model
 
         private int parent_ID = 0;
 
+        /// <summary>
+        /// Extended Model Action Binded object
+        /// </summary>
+        public ModelActions ModelAction { get; set; }
+
         #endregion
 
         /// <summary>
@@ -110,22 +115,7 @@ namespace VAdvantage.Model
         /// <param name="ID">The unique ID of the object</param>
         /// <param name="trxName">transaction name</param>
 
-        //public PO(Context ctx, int ID, Trx trxName)
-        //{
-        //    if (log == null)
-        //        log = VLogger.GetVLogger(this.GetType().FullName);
-
-        //    Init((Ctx)ctx, ID, null, trxName);
-        //} //past
-
-        //[Obsolete("use PO(Ctx ctx, int ID, Trx trx) instead")]
-        //public PO(Ctx ctx, int ID, Trx trxName,bool dontUse = true)
-        //{
-        //    if (log == null)
-        //        log = VLogger.GetVLogger(this.GetType().FullName);
-
-        //    Init(ctx, ID, null, trxName);
-        //} //present
+        
 
 
 
@@ -231,51 +221,7 @@ namespace VAdvantage.Model
 
 
 
-        //void Init(Context ctx, int ID, DataRow rs, Trx trx)
-        //{
-        //    if (ctx == null)
-        //        throw new ArgumentException("No Context");
-        //    if (ID == 0 && rs == null && ctx.GetAD_Client_ID() < 0)
-        //        throw new ArgumentException("R/O Context - no new instances allowed");
-        //    p_ctx = ctx;
-        //    p_info = InitPO(ctx);
-        //    if (p_info == null || p_info.GetTableName() == null)
-        //        throw new ArgumentException("Invalid PO Info - " + p_info);
-        //    //
-        //    int size = p_info.GetColumnCount();
-        //    _mOldValues = new Object[size];
-        //    _mNewValues = new Object[size];
-        //    _mtrxName = trx;
-        //    if (rs != null)
-        //        Load(rs);		//	will not have virtual columns
-        //    else
-        //        Load(ID, trx);
-        //}   // past
-
-        //void Init(Ctx ctx, int ID, DataRow rs, string trx)
-        //{
-        //    if (ctx == null)
-        //    {
-        //        throw new ArgumentException("No Context");
-        //    }
-        //    if (ID == 0 && rs == null && ctx.GetAD_Client_ID() < 0)
-        //        throw new ArgumentException("R/O Context - no new instances allowed");
-        //    p_ctx = ctx;
-        //    p_info = InitPO(ctx);
-        //    if (p_info == null || p_info.GetTableName() == null)
-        //        throw new ArgumentException("Invalid PO Info - " + p_info);
-        //    //
-        //    int size = p_info.GetColumnCount();
-        //    _mOldValues = new Object[size];
-        //    _mNewValues = new Object[size];
-        //    _mtrxName = trx;
-        //    if (rs != null)
-        //    {
-        //        Load(rs);		//	will not have virtual columns
-        //    }
-        //    else
-        //        Load(ID, trx);
-        //}   //  present
+       
 
         void Init(Ctx ctx, int ID, DataRow rs, Trx trx) //future
         {
@@ -300,6 +246,9 @@ namespace VAdvantage.Model
             }
             else
                 Load(ID, trx);
+
+            //initialize Model action 
+            ModelValidationEngine.Get().BindModelAction(this);
         }   //  future
 
         void Init(Ctx ctx, int ID, IDataReader dr, Trx trx, bool extra)
@@ -323,37 +272,12 @@ namespace VAdvantage.Model
             }
             else
                 Load(ID, trx);
+
+            //initialize Model action 
+            ModelValidationEngine.Get().BindModelAction(this);
         }   //future
 
-        /// <summary>
-        /// Create & Load existing Persistent Object.
-        /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="rs"></param>
-        /// <param name="trxName"></param>
-        ////public PO(Context ctx, DataRow rs, string trxName)
-        ////{
-        ////    if (log == null)
-        ////        log = VLogger.GetVLogger(this.GetType().FullName);
-
-        ////    Init(ctx, 0, rs, trxName);
-        ////}	// past
-
-        /// <summary>
-        /// Create & Load existing Persistent Object.
-        /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="rs"></param>
-        /// <param name="trxName"></param>
-
-        //[Obsolete("use PO(Ctx ctx, DataRow dr, Trx trx)")]
-        //public PO(Ctx ctx, DataRow dr, string trxName)
-        //{
-        //    if (log == null)
-        //        log = VLogger.GetVLogger(this.GetType().FullName);
-
-        //    Init(ctx, 0, dr, trxName);
-        //}	// present
+        
 
         /// <summary>
         /// Create & Load existing Persistent Object.
@@ -379,32 +303,7 @@ namespace VAdvantage.Model
             Init(ctx, 0, dr, trx, false);
         }	// future
 
-        ////Datarow rs
-        //private PO(Context ctx, int ID, DataRow rs, string trxName)
-        //{
-        //    if (log == null)
-        //        log = VLogger.GetVLogger(this.GetType().FullName);
-
-        //    Init(ctx, 0, rs, trxName);
-        //    //if (ctx == null)
-        //    //    throw new ArgumentException("No Context");
-        //    //p_ctx = ctx;
-        //    //p_info = InitPO(ctx); //this is abstract Method
-        //    //if (p_info == null || p_info.GetTableName() == "")
-        //    //    throw new ArgumentException("Invalid PO Info - " + p_info);
-
-        //    //int size = p_info.GetColumnCount();
-        //    ////intilize object array 
-        //    //_mOldValues = new Object[size];
-        //    //_mNewValues = new Object[size];
-        //    //_mtrxName = trxName;
-        //    //if (rs != null) //id datarow
-        //    //    Load(rs);		//	will not have virtual columns
-        //    //else
-        //    //    Load(ID, trxName);
-        //}   // past
-
-
+       
         /// <summary>
         /// Get a copy/clone of PO and set ctx
         /// </summary>
@@ -432,7 +331,6 @@ namespace VAdvantage.Model
             return null;
         }
 
-
         private PO(Ctx ctx, int ID, DataRow rs, Trx trx)
         {
             if (log == null)
@@ -457,31 +355,7 @@ namespace VAdvantage.Model
             //    Load(ID, trxName);
         }   // present
 
-        //private PO(Ctx ctx, int ID, IDataReader dr, string trx)
-        //{
-        //    if (log == null)
-        //        log = VLogger.GetVLogger(this.GetType().FullName);
-
-        //    Init(ctx, 0, dr, trx, false);
-        //    //if (ctx == null)
-        //    //    throw new ArgumentException("No Context");
-        //    //p_ctx = ctx;
-        //    //p_info = InitPO(ctx); //this is abstract Method
-        //    //if (p_info == null || p_info.GetTableName() == "")
-        //    //    throw new ArgumentException("Invalid PO Info - " + p_info);
-
-        //    //int size = p_info.GetColumnCount();
-        //    ////intilize object array 
-        //    //_mOldValues = new Object[size];
-        //    //_mNewValues = new Object[size];
-        //    //_mtrxName = trxName;
-        //    //if (rs != null) //id datarow
-        //    //    Load(rs);		//	will not have virtual columns
-        //    //else
-        //    //    Load(ID, trxName);
-        //}   //future
-
-
+      
         /// <summary>
         ///Get ID of table
         /// </summary>
@@ -494,11 +368,7 @@ namespace VAdvantage.Model
             return AD_Table_ID;
         }
 
-        //protected int Get_ColumnCount()
-        //{
-        //    return p_info.GetColumnCount();
-        //}   //  getColumnCount
-
+        
         /// <summary>
         /// Compare based on DocumentNo, Value, Name, Description
         /// </summary>
@@ -3049,10 +2919,22 @@ namespace VAdvantage.Model
 
             try
             {
-                if (!BeforeSave(newRecord))
+                bool skipBase = false;
+                if (ModelAction != null)
                 {
-                    log.Warning("beforeSave failed - " + ToString());
-                    return false;
+                    if (!ModelAction.BeforeSave(newRecord, out skipBase))
+                    {
+                        s_log.Warning("Model action beforeSave failed - " + ToString());
+                        return false;
+                    }
+                }
+                if (!skipBase)
+                {
+                    if (!BeforeSave(newRecord))
+                    {
+                        log.Warning("beforeSave failed - " + ToString());
+                        return false;
+                    }
                 }
             }
             catch (Exception ex)
@@ -3437,10 +3319,22 @@ namespace VAdvantage.Model
 
             try
             {
-                if (!BeforeDelete())
+                bool skipBase = false;
+                if (ModelAction != null)
                 {
-                    log.Warning("beforeDelete failed");
-                    return false;
+                    if (!ModelAction.BeforeDelete(out skipBase))
+                    {
+                        log.Warning("Model action beforeDelete failed");
+                        return false;
+                    }
+                }
+                if (!skipBase)
+                {
+                    if (!BeforeDelete())
+                    {
+                        log.Warning("beforeDelete failed");
+                        return false;
+                    }
                 }
             }
             catch (Exception ex)
@@ -3580,10 +3474,16 @@ namespace VAdvantage.Model
 
             try
             {
-                success = AfterDelete(success);
+                bool skipBase = false;
+                if (ModelAction != null)
+                {
+                    success = ModelAction.AfterDelete(success, out skipBase);
+                }
+                if (!skipBase)
+                {
+                    success = AfterDelete(success);
+                }
                 POActionEngine.Get().AfterDelete(this, success);
-                //if (success)
-                //    DeleteTreeNode();
             }
             catch (Exception e)
             {
@@ -4675,16 +4575,29 @@ namespace VAdvantage.Model
                 return false;
             try
             {
-                if (!po.BeforeSave(newRecord))
+                bool skipBase = false;
+                if (po.ModelAction != null)
                 {
-                    s_log.Warning("beforeSave failed - " + po.ToString());
-                    // the subclasses of PO that return false in beforeDelete()
-                    // should have already called CLogger.SaveError()
-                    //if (!CLogger.hasError())
-                    //{
-                    //    log.SaveError("Error", "BeforeSave failed", false);
-                    //}
-                    return false;
+                    if (!po.ModelAction.BeforeSave(newRecord, out skipBase))
+                    {
+                        s_log.Warning("Model action beforeSave failed - " + po.ToString());
+                        return false;
+                    }
+                }
+                if (!skipBase)
+                {
+
+                    if (!po.BeforeSave(newRecord))
+                    {
+                        s_log.Warning("beforeSave failed - " + po.ToString());
+                        // the subclasses of PO that return false in beforeDelete()
+                        // should have already called VLogger.SaveError()
+                        //if (!VLogger.hasError())
+                        //{
+                        //    log.SaveError("Error", "BeforeSave failed", false);
+                        //}
+                        return false;
+                    }
                 }
             }
             catch (Exception e)
