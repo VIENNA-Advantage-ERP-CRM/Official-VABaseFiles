@@ -23,7 +23,6 @@ namespace VAdvantage.DataBase
         public static string ACCESSKEY = "caff4eb4fbd6273e37e8a325e19f0991";
         private static bool _isEditor = false;
 
-        public static string PhysicalPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
         /// <summary>
         /// Property used in Visual Editor From
         /// </summary>
@@ -86,12 +85,30 @@ namespace VAdvantage.DataBase
         #endregion
 
 
-        public static String AttachmentPath = System.IO.Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath, "Attachments");
-        public static String ImagePath = System.IO.Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath, "Images");
-        public static String TempDowloadPath = System.IO.Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath, "TempDownload");
-        public static String ApplicationPhysicalPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
+        public static String AttachmentPath = System.IO.Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath != null
+            ? System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath : (AppDomain.CurrentDomain.BaseDirectory.Contains("bin")
+            ? AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.IndexOf("bin"))
+            : AppDomain.CurrentDomain.BaseDirectory), "Attachments");
 
+        public static String PhysicalPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath != null
+            ? System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath : (AppDomain.CurrentDomain.BaseDirectory.Contains("bin")
+            ? AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.IndexOf("bin"))
+            : AppDomain.CurrentDomain.BaseDirectory);
 
+        public static String ImagePath = System.IO.Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath != null
+            ? System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath : (AppDomain.CurrentDomain.BaseDirectory.Contains("bin")
+            ? AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.IndexOf("bin"))
+            : AppDomain.CurrentDomain.BaseDirectory), "Images");
+
+        public static String TempDowloadPath = System.IO.Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath != null
+            ? System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath : (AppDomain.CurrentDomain.BaseDirectory.Contains("bin")
+            ? AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.IndexOf("bin"))
+            : AppDomain.CurrentDomain.BaseDirectory), "TempDownload");
+
+        public static String ApplicationPhysicalPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath != null
+            ? System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath : (AppDomain.CurrentDomain.BaseDirectory.Contains("bin")
+            ? AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.IndexOf("bin"))
+            : AppDomain.CurrentDomain.BaseDirectory);
 
 
         #region XML Properties
@@ -234,7 +251,7 @@ namespace VAdvantage.DataBase
         public static string GetTitle()
         {
             return "";
-           // return Utility.Env.GetContext().GetVAF_UserContact_Name() + "@" + Utility.Env.GetContext().GetVAF_Org_Name() + '.' + Utility.Env.GetContext().GetVAF_Role_Name() + "[ " + GetHost + " ]";
+            // return Utility.Env.GetContext().GetVAF_UserContact_Name() + "@" + Utility.Env.GetContext().GetVAF_Org_Name() + '.' + Utility.Env.GetContext().GetVAF_Role_Name() + "[ " + GetHost + " ]";
         }
 
         private static string _LAST_EXECUTED_QUERY = "";
@@ -301,9 +318,9 @@ namespace VAdvantage.DataBase
             //outt.Append(QUOTE);		//	'
             ////
             //return outt.ToString();
-        }	//	TO_STRING
+        }   //	TO_STRING
 
-       
+
 
         /// <summary>
         /// Retrun Date time string 
@@ -323,7 +340,7 @@ namespace VAdvantage.DataBase
         /// <param name="time"></param>
         /// <returns>new date</returns>
         /// <author>Veena</author>
-        
+
 
         public static String SetDateFormat(DateTime time, bool dayOnly)
         {
