@@ -6,7 +6,7 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
 
     $.fn.w2grid = function () {
         var grd = old2grid.apply(this, arguments);
-        if (grd.records.length > 0) {
+        if (grd && grd.records.length > 0) {
             //console.log("refresh call");
             grd.refresh();
         }
