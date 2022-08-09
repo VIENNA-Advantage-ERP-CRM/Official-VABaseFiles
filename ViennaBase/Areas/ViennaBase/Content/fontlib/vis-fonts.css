@@ -965,3 +965,23 @@
 .vis-folder-plus:before {
     content: "\e9db";
 }
+
+.vis-add-image:before {
+    content: "\e9dc";
+}
+
+.vis-add-text:before {
+    content: "\e9dd";
+}
+
+.vis-add-text-image:before {
+    content: "\e9de";
+}
+
+.vis-label-hide:before {
+    content: "\e9df";
+}
+
+.vis-label-show:before {
+    content: "\e9e0";
+}
