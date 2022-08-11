@@ -65,7 +65,7 @@ throw new ArgumentException ("Alignment Invalid value - " + Alignment + " - Refe
 @return Alignment of Panel. */
 public String GetAlignment() {return (String)Get_Value("Alignment");}/** Set Background Color.
 @param BackgroundColor Background Color of header panel */
-public void SetBackgroundColor (String BackgroundColor){if (BackgroundColor != null && BackgroundColor.Length > 10){log.Warning("Length > 10 - truncated");BackgroundColor = BackgroundColor.Substring(0,10);}Set_Value ("BackgroundColor", BackgroundColor);}/** Get Background Color.
+public void SetBackgroundColor (String BackgroundColor){if (BackgroundColor != null && BackgroundColor.Length > 500){log.Warning("Length > 500 - truncated");BackgroundColor = BackgroundColor.Substring(0,500);}Set_Value ("BackgroundColor", BackgroundColor);}/** Get Background Color.
 @return Background Color of header panel */
 public String GetBackgroundColor() {return (String)Get_Value("BackgroundColor");}/** Set Export.
 @param Export_ID Export */
