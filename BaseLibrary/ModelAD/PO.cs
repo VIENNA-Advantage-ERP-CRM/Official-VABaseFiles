@@ -115,7 +115,7 @@ namespace VAdvantage.Model
         /// <param name="ID">The unique ID of the object</param>
         /// <param name="trxName">transaction name</param>
 
-        
+
 
 
 
@@ -221,7 +221,7 @@ namespace VAdvantage.Model
 
 
 
-       
+
 
         void Init(Ctx ctx, int ID, DataRow rs, Trx trx) //future
         {
@@ -277,7 +277,7 @@ namespace VAdvantage.Model
             ModelValidationEngine.Get().BindModelAction(this);
         }   //future
 
-        
+
 
         /// <summary>
         /// Create & Load existing Persistent Object.
@@ -301,9 +301,9 @@ namespace VAdvantage.Model
                 log = VLogger.GetVLogger(this.GetType().FullName);
 
             Init(ctx, 0, dr, trx, false);
-        }	// future
+        }   // future
 
-       
+
         /// <summary>
         /// Get a copy/clone of PO and set ctx
         /// </summary>
@@ -355,7 +355,7 @@ namespace VAdvantage.Model
             //    Load(ID, trxName);
         }   // present
 
-      
+
         /// <summary>
         ///Get ID of table
         /// </summary>
@@ -368,7 +368,7 @@ namespace VAdvantage.Model
             return AD_Table_ID;
         }
 
-        
+
         /// <summary>
         /// Compare based on DocumentNo, Value, Name, Description
         /// </summary>
@@ -1821,12 +1821,17 @@ namespace VAdvantage.Model
             else
             {
                 Type clazz = p_info.GetColumnClass(index);
-                if (value.GetType().Equals(clazz) || clazz is System.Object)
+                int outValue = 0;
+                if (value.GetType().Equals(clazz))
                 {
                     _mNewValues[index] = value;
                 }
                 else if (clazz == typeof(Boolean) && ("Y".Equals(value) || "N".Equals(value)))
                     _mNewValues[index] = "Y".Equals(value);
+                else if (clazz == typeof(int) && int.TryParse(Convert.ToString(value),out outValue))
+                {
+                    _mNewValues[index] = CommonFunctions.GetInt(value);
+                }
                 else
                 {
                     log.Warning(ColumnName + " - Class invalid: " + value.ToString() + ", Should be " + clazz.ToString() + ": " + value);
@@ -2314,8 +2319,8 @@ namespace VAdvantage.Model
                     if (dt == -1)
                         dt = p_info.GetColumnIndex("C_DocType_ID");
                     if (dt != -1)       //	get based on Doc Type (might return null)
-                        
-                            docTypeId = get_ValueAsInt(dt);
+
+                        docTypeId = get_ValueAsInt(dt);
 
 
                     //value = MSequence.GetDocumentNo(get_ValueAsInt(dt), _trx, GetCtx());
@@ -2354,7 +2359,7 @@ namespace VAdvantage.Model
                     //else
                     //    // Handled to get Search Key based on Organization same as Document No.
                     //    value = MSequence.GetDocumentNo(p_info.GetTableName(), _trx, GetCtx(), this);
-                    
+
                     value = POActionEngine.Get().GetDocumentNo(this);
                     Set_ValueNoCheck(columnName, value);
                 }
@@ -2903,7 +2908,7 @@ namespace VAdvantage.Model
             //}
 
             //	Before Save
-           // MAssignSet.Execute(this, newRecord);    //	Automatic Assignment
+            // MAssignSet.Execute(this, newRecord);    //	Automatic Assignment
 
             // Commented this function as Not required 
             // Check For Advance Document Type Module
@@ -3096,7 +3101,7 @@ namespace VAdvantage.Model
             if (!trlColumnChanged)
                 return true;
             //
-           // MClient client = MClient.Get(GetCtx());
+            // MClient client = MClient.Get(GetCtx());
             //
             String tableName = p_info.GetTableName();
             String keyColumn = _mKeyColumns[0];
@@ -3846,7 +3851,7 @@ namespace VAdvantage.Model
         /// </summary>
         /// <param name="requery">requery</param>
         /// <returns>Attachment or null</returns>
-        public dynamic   GetAttachment(bool requery)
+        public dynamic GetAttachment(bool requery)
         {
             if (_attachment == null || requery)
                 _attachment = POActionEngine.Get().GetAttachment(GetCtx(), p_info.getAD_Table_ID(), Get_ID());
@@ -4676,7 +4681,7 @@ namespace VAdvantage.Model
                     // If import table, get the underlying data table to get the "Value"
                     String tableName = p_info.GetTableName();
                     //if (p_info.GetTableName().StartsWith("I_"))
-                     //   tableName = GetTable();
+                    //   tableName = GetTable();
 
                     value = POActionEngine.Get().GetDocumentNo(-1, this);
                     Set_ValueNoCheck(columnName, value);
