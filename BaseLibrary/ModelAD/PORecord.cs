@@ -28,7 +28,7 @@ namespace VAdvantage.Model
 
         ////	Parent Table ID
         //private static int[] _parents = new int[]{
-        ////X_VAB_Order.Table_ID,
+        ////X_C_Order.Table_ID,
         ////X_CM_Container.Table_ID
         //};
 
@@ -42,7 +42,7 @@ namespace VAdvantage.Model
         }
         ////	Parent Table Names
         //private static string[] _parentNames = new string[]{
-        ////X_VAB_Order.Table_Name,
+        ////X_C_Order.Table_Name,
         ////X_CM_Container.Table_Name
         //};
         // Child Table ID
@@ -57,13 +57,13 @@ namespace VAdvantage.Model
 
         // Child Table ID
 
-        //X_VAB_OrderLine.Table_ID,
+        //X_C_OrderLine.Table_ID,
         //X_VACM_Container_Element.Table_ID
         //};
 
         // Child Table Names
         // private static string[] _parentChildNames = new string[]{
-        //X_VAB_OrderLine.Table_Name,
+        //X_C_OrderLine.Table_Name,
         //X_VACM_Container_Element.Table_Name
         //};
 
@@ -159,7 +159,7 @@ namespace VAdvantage.Model
             {
                 j++;
                 // DELETE FROM AD_Attachment WHERE AD_Table_ID=1 AND Record_ID IN 
-                //	(SELECT VAB_InvoiceLine_ID FROM VAB_InvoiceLine WHERE VAB_Invoice_ID=1)
+                //	(SELECT C_InvoiceLine_ID FROM C_InvoiceLine WHERE C_Invoice_ID=1)
                 if (prnts.Key == AD_Table_ID)
                 {
                     var pcitm = _parentChilds.ElementAt(j);
@@ -237,7 +237,7 @@ namespace VAdvantage.Model
             {
                 j++;
                 // DELETE FROM AD_Attachment WHERE AD_Table_ID=1 AND Record_ID IN 
-                //	(SELECT VAB_InvoiceLine_ID FROM VAB_InvoiceLine WHERE VAB_Invoice_ID=1)
+                //	(SELECT C_InvoiceLine_ID FROM C_InvoiceLine WHERE C_Invoice_ID=1)
                 if (prnts.Key == AD_Table_ID)
                 {
                     var prntChild = _parentChilds.ElementAt(j);
@@ -286,7 +286,7 @@ namespace VAdvantage.Model
             //for (int i = 0; i < _restricts.Length; i++)
             foreach (var item in _restricts)
             {
-                //	SELECT COUNT(*) FROM table WHERE AD_TableView_ID=#1 AND Record_ID=#2
+                //	SELECT COUNT(*) FROM table WHERE AD_Table_ID=#1 AND Record_ID=#2
                 StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM ")
                     .Append(item.Value)
                     .Append(" WHERE AD_Table_ID=" + AD_Table_ID + " AND Record_ID=" + Record_ID);

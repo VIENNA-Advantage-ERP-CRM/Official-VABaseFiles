@@ -11,9 +11,9 @@ namespace VAdvantage.Print
         string GetName();
         bool IsReport();
         //
-        int GetVAF_Job_ID();
-        int GetVAF_TableView_ID();
+        int GetAD_Process_ID();
+        int GetAD_Table_ID();
         int GetRecord_ID();
-        int GetVAB_BusinessPartner_ID();
+        int GetC_BPartner_ID();
     }
 }

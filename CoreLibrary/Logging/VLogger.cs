@@ -84,16 +84,16 @@ namespace VAdvantage.Logging
         /// <summary>
         /// Save Error
         /// </summary>
-        /// <param name="VAF_Msg_Lable">AD Message</param>
+        /// <param name="AD_Msg_Lable">AD Message</param>
         /// <param name="message">message</param>
         /// <param name="issueError">true, if error is to be issued in log</param>
         /// <returns></returns>
-        public bool SaveError(String VAF_Msg_Lable, String message, bool issueError, bool isAdvDocNoError)
+        public bool SaveError(String AD_Msg_Lable, String message, bool issueError, bool isAdvDocNoError)
         {
-            _lastAdvDocError = new ValueNamePair(VAF_Msg_Lable, message);
+            _lastAdvDocError = new ValueNamePair(AD_Msg_Lable, message);
             //  print it
             if (issueError)
-                Warning(VAF_Msg_Lable + " - " + message);
+                Warning(AD_Msg_Lable + " - " + message);
             return true;
         }   //  saveError
 
@@ -111,39 +111,39 @@ namespace VAdvantage.Logging
         /// <summary>
         /// Save Error
         /// </summary>
-        /// <param name="VAF_Msg_Lable">AD Message</param>
+        /// <param name="AD_Msg_Lable">AD Message</param>
         /// <param name="message">message</param>
         /// <returns>true, if saved</returns>
-        public bool SaveError(String VAF_Msg_Lable, String message)
+        public bool SaveError(String AD_Msg_Lable, String message)
         {
-            return SaveError(VAF_Msg_Lable, message, true);
+            return SaveError(AD_Msg_Lable, message, true);
         }   //  saveError
 
         /// <summary>
         /// Save Error
         /// </summary>
-        /// <param name="VAF_Msg_Lable">AD Message</param>
+        /// <param name="AD_Msg_Lable">AD Message</param>
         /// <param name="ex">exception object</param>
         /// <returns></returns>
-        public bool SaveError(String VAF_Msg_Lable, Exception ex)
+        public bool SaveError(String AD_Msg_Lable, Exception ex)
         {
             _lastException = ex;
-            return SaveError(VAF_Msg_Lable, ex.Message, true);
+            return SaveError(AD_Msg_Lable, ex.Message, true);
         }   //  saveError
 
         /// <summary>
         /// Save Error
         /// </summary>
-        /// <param name="VAF_Msg_Lable">AD Message</param>
+        /// <param name="AD_Msg_Lable">AD Message</param>
         /// <param name="message">message</param>
         /// <param name="issueError">true, if error is to be issued in log</param>
         /// <returns></returns>
-        public bool SaveError(String VAF_Msg_Lable, String message, bool issueError)
+        public bool SaveError(String AD_Msg_Lable, String message, bool issueError)
         {
-            _lastError = new ValueNamePair(VAF_Msg_Lable, message);
+            _lastError = new ValueNamePair(AD_Msg_Lable, message);
             //  print it
             if (issueError)
-                Warning(VAF_Msg_Lable + " - " + message);
+                Warning(AD_Msg_Lable + " - " + message);
             return true;
         }   //  saveError
 
@@ -173,15 +173,15 @@ namespace VAdvantage.Logging
         /// <summary>
         /// Save Warning
         /// </summary>
-        /// <param name="VAF_Msg_Lable">AD Message</param>
+        /// <param name="AD_Msg_Lable">AD Message</param>
         /// <param name="message">message to be logged</param>
         /// <returns>true, if saved</returns>
-        public bool SaveWarning(String VAF_Msg_Lable, String message)
+        public bool SaveWarning(String AD_Msg_Lable, String message)
         {
-            _lastWarning = new ValueNamePair(VAF_Msg_Lable, message);
+            _lastWarning = new ValueNamePair(AD_Msg_Lable, message);
             //  print it
             if (true) //	issueError
-                Warning(VAF_Msg_Lable + " - " + message);
+                Warning(AD_Msg_Lable + " - " + message);
             return true;
         }   //  saveWarning
 
@@ -199,12 +199,12 @@ namespace VAdvantage.Logging
         /// <summary>
         /// Save Info
         /// </summary>
-        /// <param name="VAF_Msg_Lable">AD Message</param>
+        /// <param name="AD_Msg_Lable">AD Message</param>
         /// <param name="message">message to be logged</param>
         /// <returns>true, if saved</returns>
-        public bool SaveInfo(String VAF_Msg_Lable, String message)
+        public bool SaveInfo(String AD_Msg_Lable, String message)
         {
-            _lastInfo = new ValueNamePair(VAF_Msg_Lable, message);
+            _lastInfo = new ValueNamePair(AD_Msg_Lable, message);
             return true;
         }   //  saveInfo
 
