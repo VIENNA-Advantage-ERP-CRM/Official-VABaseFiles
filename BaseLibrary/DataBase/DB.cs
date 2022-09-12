@@ -38,7 +38,7 @@ namespace VAdvantage.DataBase
             return GetNextID(ctx.GetAD_Client_ID(), TableName, trx);
         }	//	getNextID
 
-        public static int GetNextID(int VAF_Client_ID, String TableName, Trx trxName)
+        public static int GetNextID(int AD_Client_ID, String TableName, Trx trxName)
         {
             //if ((trxName == null || trxName.Length() == 0) && isRemoteObjects())
             //{
@@ -47,7 +47,7 @@ namespace VAdvantage.DataBase
             //    {
             //        if (server != null)
             //        {	//	See ServerBean
-            //            int id = server.getNextID(VAF_Client_ID, TableName, null);
+            //            int id = server.getNextID(AD_Client_ID, TableName, null);
             //            log.finest("server => " + id);
             //            if (id < 0)
             //                throw new DBException("No NextID");
@@ -66,7 +66,7 @@ namespace VAdvantage.DataBase
             //TODO
             //if (isDB2())
             //    trxName = null;	//	tries 3 times
-            int id = POActionEngine.Get().GetNextID(VAF_Client_ID, TableName, trxName);	//	tries 3 times
+            int id = POActionEngine.Get().GetNextID(AD_Client_ID, TableName, trxName);	//	tries 3 times
             //	if (id <= 0)
             //		throw new DBException("No NextID (" + id + ")");
             return id;

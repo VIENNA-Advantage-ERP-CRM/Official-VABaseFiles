@@ -248,10 +248,13 @@ namespace VAdvantage.Logging
                         Initialize(_viennaHome, true, true);
                         if (!_doneHeader)
                         {
-                            _writer.WriteLine(GetFormatter().GetHead());
-                            //AllocConsole();
-                            //Console.WriteLine(GetFormatter().GetHead()); // outputs to console window
-                            _doneHeader = true;
+                            if (_writer != null)
+                            {
+                                _writer.WriteLine(GetFormatter().GetHead());
+                                //AllocConsole();
+                                //Console.WriteLine(GetFormatter().GetHead()); // outputs to console window
+                                _doneHeader = true;
+                            }
                         }
                     }
                 }
