@@ -229,7 +229,6 @@ namespace CoreLibrary.Classes
             try
             {
                 cacheDic.AddOrUpdate(key, value, (K, V) => value);
-                VLogger.Get().Log(VAdvantage.Logging.Level.SEVERE, "CCache new add");
             }
             catch (Exception ex)
             {
