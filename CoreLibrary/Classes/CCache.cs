@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using VAdvantage.Classes;
@@ -28,7 +29,7 @@ namespace CoreLibrary.Classes
         // Vetoable Change Support	Name
         private const String PROPERTYNAME = "cache";
 
-        private Dictionary<K, V> cacheDic = null;
+        private ConcurrentDictionary<K, V> cacheDic = null;
 
         /// <summary>
         /// VAdvantage Cache - expires after 2 hours
@@ -48,7 +49,7 @@ namespace CoreLibrary.Classes
         /// <param name="expireMinutes">expire after minutes (0=no expire)</param>
         public CCache(String name, int initialCapacity, int expireMinutes)
         {
-            cacheDic = new Dictionary<K, V>(initialCapacity);
+            cacheDic = new ConcurrentDictionary<K, V>(4,initialCapacity);
             _name = name;
             SetExpireMinutes(expireMinutes);
             CacheMgt.Get().Register(this);
@@ -208,7 +209,7 @@ namespace CoreLibrary.Classes
         public bool ContainsValue(V value)
         {
             Expire();
-            return cacheDic.ContainsValue(value);
+            return cacheDic.Values.Contains(value);
         }
 
         /// <summary>
@@ -221,13 +222,14 @@ namespace CoreLibrary.Classes
         {
             Expire();
             _justReset = false;
-            if (cacheDic.ContainsKey(key))
-            {
-                cacheDic.Remove(key);
-            }
+            //if (cacheDic.ContainsKey(key))
+            //{
+            //    cacheDic.r.  Remove(key);
+            //}
             try
             {
-                cacheDic.Add(key, value);
+                cacheDic.AddOrUpdate(key, value, (K, V) => value);
+                VLogger.Get().Log(VAdvantage.Logging.Level.SEVERE, "CCache new add");
             }
             catch (Exception ex)
             {
@@ -255,7 +257,8 @@ namespace CoreLibrary.Classes
         public bool Remove(K key)
         {
             Expire();
-            return cacheDic.Remove(key);
+            V value;
+            return cacheDic.TryRemove(key,out value);
         }
 
         /// <summary>
@@ -309,7 +312,8 @@ namespace CoreLibrary.Classes
             get
             {
                 Expire();
-                return cacheDic.Values;
+                Dictionary<K, V> dic = new Dictionary<K, V>(cacheDic);
+                return dic.Values;
             }
         }
 
@@ -321,7 +325,8 @@ namespace CoreLibrary.Classes
             get
             {
                 Expire();
-                return cacheDic.Keys;
+                Dictionary<K, V> dic = new Dictionary<K, V>(cacheDic); 
+                return dic.Keys;
             }
         }
 

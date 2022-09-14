@@ -80,10 +80,16 @@ namespace VAdvantage.Model
 
             if (session != null && session.IsProcessed())
             {
-                s_log.Log(Level.WARNING, "Session Processed=" + session);
+                s_log.Log(Level.WARNING, "Session already Processed=" + session);
 
                 cache.Remove(AD_Session_ID);
+               
+                if (string.IsNullOrEmpty(requestAddr))
+                {
+                    requestAddr = session.GetRemote_Addr();
+                }
                 session = null;
+                createNew = true;
             }
 
 
@@ -102,7 +108,7 @@ namespace VAdvantage.Model
 
             if (session == null)
             {
-                s_log.Fine("No Session");
+                s_log.Info("No Session->"+ AD_Session_ID);
             }
 
             return session;
