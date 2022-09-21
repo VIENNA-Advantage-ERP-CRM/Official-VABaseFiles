@@ -391,7 +391,7 @@ namespace VAdvantage.Model
             else
             {
                 isChangeLog = Utility.Util.GetValueOfBool(
-                    DB.ExecuteScalar("SELECT IsChangeLog FROM AD_Role WHERE AD_Role_ID = " + AD_Role_ID) == "Y");
+                    Util.GetValueOfString(DB.ExecuteScalar("SELECT IsChangeLog FROM AD_Role WHERE AD_Role_ID = " + AD_Role_ID)) == "Y");
                 roleChangeLog[AD_Role_ID] = isChangeLog;
             }
             return isChangeLog;
