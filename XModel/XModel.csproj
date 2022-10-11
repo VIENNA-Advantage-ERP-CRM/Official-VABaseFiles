@@ -181,6 +181,9 @@
     <Compile Include="ModelAD\X_AD_Sequence.cs" />
     <Compile Include="ModelAD\X_AD_Sequence_Audit.cs" />
     <Compile Include="ModelAD\X_AD_Sequence_No.cs" />
+    <Compile Include="ModelAD\X_AD_Survey.cs" />
+    <Compile Include="ModelAD\X_AD_SurveyResponse.cs" />
+    <Compile Include="ModelAD\X_AD_SurveyResponseLine.cs" />
     <Compile Include="ModelAD\X_AD_SysConfig.cs" />
     <Compile Include="ModelAD\X_AD_System.cs" />
     <Compile Include="ModelAD\X_AD_Tab.cs" />
