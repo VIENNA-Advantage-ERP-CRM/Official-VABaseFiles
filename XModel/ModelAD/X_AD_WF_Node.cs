@@ -1373,6 +1373,27 @@ namespace VAdvantage.Model
                 return 0;
             return Convert.ToInt32(ii); 
         }
+
+        /** Set Survey Response Required.
+        @param SurveyResponseRequired Survey Response Required*/
+        public void SetSurveyResponseRequired(Boolean SurveyResponseRequired)
+        {
+            Set_Value("SurveyResponseRequired", SurveyResponseRequired);
+        }
+        /** Get Survey Response Required.
+         @return Survey Response Required */
+        public Boolean IsSurveyResponseRequired()
+        {
+            Object oo = Get_Value("SurveyResponseRequired");
+            if (oo != null)
+            {
+                if (oo.GetType() == typeof(bool))
+                    return Convert.ToBoolean(oo);
+                return "Y".Equals(oo);
+            }
+            return false;
+        }
+
     }
 
 }
