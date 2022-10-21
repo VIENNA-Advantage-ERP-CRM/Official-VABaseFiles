@@ -111,21 +111,41 @@ SetName (null);SetResponsibleType (null);} */
         /** ResponsibleType AD_Reference_ID=304 */
         public static int RESPONSIBLETYPE_AD_Reference_ID = 304;/** SQL = C */
         public static String RESPONSIBLETYPE_SQL = "C";/** Human = H */
-        public static String RESPONSIBLETYPE_Human = "H";/** Organization = O */
+        public static String RESPONSIBLETYPE_Human = "H";/** Multi Roles = M */
+        public static String RESPONSIBLETYPE_MultiRoles = "M";/** Organization = O */
         public static String RESPONSIBLETYPE_Organization = "O";/** Role = R */
         public static String RESPONSIBLETYPE_Role = "R";/** System Resource = S */
         public static String RESPONSIBLETYPE_SystemResource = "S";/** Is test a valid value.
 @param test testvalue
 @returns true if valid **/
-        public bool IsResponsibleTypeValid(String test) { return test.Equals("C") || test.Equals("H") || test.Equals("O") || test.Equals("R") || test.Equals("S"); }/** Set Responsible Type.
+        public bool IsResponsibleTypeValid(String test) { return test.Equals("C") || test.Equals("H") || test.Equals("M") || test.Equals("O") || test.Equals("R") || test.Equals("S"); }/** Set Responsible Type.
 @param ResponsibleType Type of the Responsibility for a workflow */
         public void SetResponsibleType(String ResponsibleType)
         {
             if (ResponsibleType == null) throw new ArgumentException("ResponsibleType is mandatory"); if (!IsResponsibleTypeValid(ResponsibleType))
-                throw new ArgumentException("ResponsibleType Invalid value - " + ResponsibleType + " - Reference_ID=304 - C - H - O - R - S"); if (ResponsibleType.Length > 1) { log.Warning("Length > 1 - truncated"); ResponsibleType = ResponsibleType.Substring(0, 1); }
+                throw new ArgumentException("ResponsibleType Invalid value - " + ResponsibleType + " - Reference_ID=304 - C - H - M - O - R - S"); if (ResponsibleType.Length > 1) { log.Warning("Length > 1 - truncated"); ResponsibleType = ResponsibleType.Substring(0, 1); }
             Set_Value("ResponsibleType", ResponsibleType);
         }/** Get Responsible Type.
 @return Type of the Responsibility for a workflow */
         public String GetResponsibleType() { return (String)Get_Value("ResponsibleType"); }
+
+        /** Ref_Roles AD_Reference_ID=1000397 */
+        public static int REF_ROLES_AD_Reference_ID = 1000397;/** Set Roles.
+        @param Ref_Roles Roles */
+        public void SetRef_Roles(String Ref_Roles)
+        {
+            if (Ref_Roles != null && Ref_Roles.Length > 500)
+            {
+                log.Warning("Length > 500 - truncated");
+                Ref_Roles = Ref_Roles.Substring(0, 500);
+            }
+            Set_Value("Ref_Roles", Ref_Roles);
+        }
+        /** Get Roles.
+        @return Roles */
+        public String GetRef_Roles()
+        {
+            return (String)Get_Value("Ref_Roles");
+        }
     }
 }
