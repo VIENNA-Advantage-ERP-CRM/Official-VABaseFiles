@@ -83,6 +83,7 @@ namespace VAdvantage.Model
     /// <summary>
     /// Model validator variable(s), events flag
     /// </summary>
+    [Obsolete]
     public class ModalValidatorVariables
     {
         /** Model Change Type New		*/
@@ -96,6 +97,29 @@ namespace VAdvantage.Model
         public const int CHANGETYPE_DELETE = 3;
 
        
+
+        /** Called before document is prepared		*/
+        public const int DOCTIMING_BEFORE_PREPARE = 8;
+        /** Called after document is processed		*/
+        public const int DOCTIMING_AFTER_COMPLETE = 9;
+    }
+
+    /// <summary>
+    /// Model validator variable(s), events flag
+    /// </summary>
+    public class ModelValidatorVariables
+    {
+        /** Model Change Type New		*/
+        public const int CHANGETYPE_NEW = 1;
+
+
+        /** Model Change Type Change	*/
+        public const int CHANGETYPE_CHANGE = 2;
+
+        /** Model Change Type Delete	*/
+        public const int CHANGETYPE_DELETE = 3;
+
+
 
         /** Called before document is prepared		*/
         public const int DOCTIMING_BEFORE_PREPARE = 8;
