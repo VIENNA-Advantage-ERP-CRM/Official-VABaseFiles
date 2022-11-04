@@ -985,3 +985,7 @@
 .vis-label-show:before {
     content: "\e9e0";
 }
+
+.vis-remove-export-data:before {
+    content: "\e9e2";
+}
