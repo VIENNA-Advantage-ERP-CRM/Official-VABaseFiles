@@ -989,3 +989,7 @@
 .vis-remove-export-data:before {
     content: "\e9e2";
 }
+
+.vis-gac:before {
+    content: "\e9e3";
+}
