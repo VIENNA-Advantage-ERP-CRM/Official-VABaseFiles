@@ -96,6 +96,10 @@ namespace VAdvantage.Model
             SqlConnection conn = new SqlConnection("");
         }
 
+        public int GetPLength()
+        {
+            return _mIDs.Length;
+        }
         /// <summary>
         /// Method Body Define in inheritee class
         /// </summary>
@@ -2260,7 +2264,8 @@ namespace VAdvantage.Model
         {
             //trans = DB.GerServerTransaction();
 
-            if (_mIDs.Length == 1 && p_info.hasKeyColumn() && _mKeyColumns[0].EndsWith("_ID"))	//	AD_Language, EntityType
+            //VIS323 Added OR Check for ID reference column
+            if ((_mIDs.Length == 1 && p_info.hasKeyColumn() && _mKeyColumns[0].EndsWith("_ID")) || (p_info.GetColumnIndex(p_info.GetTableName() + "_ID") >= 0))	//	AD_Language, EntityType
             {
                 int no = SaveNew_GetID();
                 if (no <= 0)
@@ -2282,6 +2287,9 @@ namespace VAdvantage.Model
                     log.Severe("No NextID (" + no + ")");
                     return SaveFinish(true, false);
                 }
+                //VIS323 special check for ID reference with no Keycolumn marked
+                if (_mIDs.Length > 1)
+                    _mKeyColumns[0] = p_info.GetTableName() + "_ID";
                 _mIDs[0] = no;
                 Set_ValueNoCheck(_mKeyColumns[0], _mIDs[0]);
             }
@@ -2366,7 +2374,7 @@ namespace VAdvantage.Model
             }
 
             LobReset();
-            bool ok = SaveNewInsertSQL();
+            bool ok = SaveNewInsertSQL();         
             return SaveFinish(true, ok);
 
         }
