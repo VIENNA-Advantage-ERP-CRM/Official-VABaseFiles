@@ -96,7 +96,7 @@ namespace VAdvantage.Model
             SqlConnection conn = new SqlConnection("");
         }
 
-        public int GetPLength()
+        public int GetKeyLength()
         {
             return _mIDs.Length;
         }
