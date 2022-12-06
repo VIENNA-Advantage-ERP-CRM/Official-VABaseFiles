@@ -18,7 +18,7 @@ namespace VAdvantage.Utility
         /// <returns>Encrypted Value</returns>
         public static String Encrypt(string value)
         {
-            return  SecureEngineUtility.SecureEngine.Encrypt(value);
+            return SecureEngineUtility.SecureEngine.Encrypt(value);
         }	//	encrypt
         /// <summary>
         /// Encrypt the text
@@ -37,7 +37,9 @@ namespace VAdvantage.Utility
         /// <returns>Decrypted Text</returns>
         public static String Decrypt(String value)
         {
-            return SecureEngineUtility.SecureEngine.Decrypt(value);
+            if (SecureEngine.IsEncrypted(value))
+                return SecureEngineUtility.SecureEngine.Decrypt(value);
+            return value;
         }	//	decrypt
 
 
@@ -77,8 +79,8 @@ namespace VAdvantage.Utility
         public static bool IsEncrypted(String value)
         {
             return SecureEngineUtility.SecureEngine.IsEncrypted(value);
-        }	//	isEncrypted
-    
+        }   //	isEncrypted
+
 
         /// <summary>
         /// 
