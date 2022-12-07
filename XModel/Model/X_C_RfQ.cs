@@ -23,7 +23,7 @@ SetName (null);SetProcessed (false);// N
 SetQuoteType (null);// S
 SetSalesRep_ID (0);} */
         }
-        public X_C_RfQ(Ctx ctx, int C_RfQ_ID, Trx trxName)
+        public X_C_RfQ(Ctx ctx, int C_RfQ_ID, Trx trxName) 
             : base(ctx, C_RfQ_ID, trxName)
         {/** if (C_RfQ_ID == 0){SetC_Currency_ID (0);// @$C_Currency_ID @
 SetC_RfQ_ID (0);SetC_RfQ_Topic_ID (0);SetDateResponse (DateTime.Now);SetDocumentNo (null);SetIsInvitedVendorsOnly (false);SetIsQuoteAllQty (false);SetIsQuoteTotalAmt (false);SetIsRfQResponseAccepted (true);// Y
@@ -50,8 +50,8 @@ SetSalesRep_ID (0);} */
  Set Table ID By Table Name
  added by ->Harwinder */
         static X_C_RfQ() { Table_ID = Get_Table_ID(Table_Name); model = new KeyNamePair(Table_ID, Table_Name); }/** Serial Version No */
-        static long serialVersionUID = 27867938076683L;/** Last Updated Timestamp 4/2/2020 1:02:40 PM */
-        public static long updatedMS = 1585812759894L;/** AD_Table_ID=677 */
+        static long serialVersionUID = 27952539028912L;/** Last Updated Timestamp 12/7/2022 11:48:32 AM */
+        public static long updatedMS = 1670413712123L;/** AD_Table_ID=677 */
         public static int Table_ID; // =677;
         /** TableName=C_RfQ */
         public static String Table_Name = "C_RfQ";
@@ -100,7 +100,16 @@ SetSalesRep_ID (0);} */
 @param C_Currency_ID The Currency for this record */
         public void SetC_Currency_ID(int C_Currency_ID) { if (C_Currency_ID < 1) throw new ArgumentException("C_Currency_ID is mandatory."); Set_Value("C_Currency_ID", C_Currency_ID); }/** Get Currency.
 @return The Currency for this record */
-        public int GetC_Currency_ID() { Object ii = Get_Value("C_Currency_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }/** Set Order.
+        public int GetC_Currency_ID() { Object ii = Get_Value("C_Currency_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }/** Set Document Type.
+@param C_DocType_ID Document type or rules */
+        public void SetC_DocType_ID(int C_DocType_ID)
+        {
+            if (C_DocType_ID <= 0) Set_Value("C_DocType_ID", null);
+            else
+                Set_Value("C_DocType_ID", C_DocType_ID);
+        }/** Get Document Type.
+@return Document type or rules */
+        public int GetC_DocType_ID() { Object ii = Get_Value("C_DocType_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }/** Set Order.
 @param C_Order_ID Sales Order */
         public void SetC_Order_ID(int C_Order_ID)
         {
@@ -149,7 +158,61 @@ SetSalesRep_ID (0);} */
 @param Description Optional short description of the record */
         public void SetDescription(String Description) { if (Description != null && Description.Length > 255) { log.Warning("Length > 255 - truncated"); Description = Description.Substring(0, 255); } Set_Value("Description", Description); }/** Get Description.
 @return Optional short description of the record */
-        public String GetDescription() { return (String)Get_Value("Description"); }/** Set Document No..
+        public String GetDescription() { return (String)Get_Value("Description"); }
+        /** DocAction AD_Reference_ID=135 */
+        public static int DOCACTION_AD_Reference_ID = 135;/** <None> = -- */
+        public static String DOCACTION_None = "--";/** Approve = AP */
+        public static String DOCACTION_Approve = "AP";/** Close = CL */
+        public static String DOCACTION_Close = "CL";/** Complete = CO */
+        public static String DOCACTION_Complete = "CO";/** Invalidate = IN */
+        public static String DOCACTION_Invalidate = "IN";/** Post = PO */
+        public static String DOCACTION_Post = "PO";/** Prepare = PR */
+        public static String DOCACTION_Prepare = "PR";/** Reverse - Accrual = RA */
+        public static String DOCACTION_Reverse_Accrual = "RA";/** Reverse - Correct = RC */
+        public static String DOCACTION_Reverse_Correct = "RC";/** Re-activate = RE */
+        public static String DOCACTION_Re_Activate = "RE";/** Reject = RJ */
+        public static String DOCACTION_Reject = "RJ";/** Void = VO */
+        public static String DOCACTION_Void = "VO";/** Wait Complete = WC */
+        public static String DOCACTION_WaitComplete = "WC";/** Unlock = XL */
+        public static String DOCACTION_Unlock = "XL";/** Is test a valid value.
+@param test testvalue
+@returns true if valid **/
+        public bool IsDocActionValid(String test) { return test == null || test.Equals("--") || test.Equals("AP") || test.Equals("CL") || test.Equals("CO") || test.Equals("IN") || test.Equals("PO") || test.Equals("PR") || test.Equals("RA") || test.Equals("RC") || test.Equals("RE") || test.Equals("RJ") || test.Equals("VO") || test.Equals("WC") || test.Equals("XL"); }/** Set Document Action.
+@param DocAction The targeted status of the document */
+        public void SetDocAction(String DocAction)
+        {
+            if (!IsDocActionValid(DocAction))
+                throw new ArgumentException("DocAction Invalid value - " + DocAction + " - Reference_ID=135 - -- - AP - CL - CO - IN - PO - PR - RA - RC - RE - RJ - VO - WC - XL"); if (DocAction != null && DocAction.Length > 2) { log.Warning("Length > 2 - truncated"); DocAction = DocAction.Substring(0, 2); }
+            Set_Value("DocAction", DocAction);
+        }/** Get Document Action.
+@return The targeted status of the document */
+        public String GetDocAction() { return (String)Get_Value("DocAction"); }
+        /** DocStatus AD_Reference_ID=131 */
+        public static int DOCSTATUS_AD_Reference_ID = 131;/** Unknown = ?? */
+        public static String DOCSTATUS_Unknown = "??";/** Approved = AP */
+        public static String DOCSTATUS_Approved = "AP";/** Closed = CL */
+        public static String DOCSTATUS_Closed = "CL";/** Completed = CO */
+        public static String DOCSTATUS_Completed = "CO";/** Drafted = DR */
+        public static String DOCSTATUS_Drafted = "DR";/** Invalid = IN */
+        public static String DOCSTATUS_Invalid = "IN";/** In Progress = IP */
+        public static String DOCSTATUS_InProgress = "IP";/** Not Approved = NA */
+        public static String DOCSTATUS_NotApproved = "NA";/** Reversed = RE */
+        public static String DOCSTATUS_Reversed = "RE";/** Voided = VO */
+        public static String DOCSTATUS_Voided = "VO";/** Waiting Confirmation = WC */
+        public static String DOCSTATUS_WaitingConfirmation = "WC";/** Waiting Payment = WP */
+        public static String DOCSTATUS_WaitingPayment = "WP";/** Is test a valid value.
+@param test testvalue
+@returns true if valid **/
+        public bool IsDocStatusValid(String test) { return test == null || test.Equals("??") || test.Equals("AP") || test.Equals("CL") || test.Equals("CO") || test.Equals("DR") || test.Equals("IN") || test.Equals("IP") || test.Equals("NA") || test.Equals("RE") || test.Equals("VO") || test.Equals("WC") || test.Equals("WP"); }/** Set Document Status.
+@param DocStatus The current status of the document */
+        public void SetDocStatus(String DocStatus)
+        {
+            if (!IsDocStatusValid(DocStatus))
+                throw new ArgumentException("DocStatus Invalid value - " + DocStatus + " - Reference_ID=131 - ?? - AP - CL - CO - DR - IN - IP - NA - RE - VO - WC - WP"); if (DocStatus != null && DocStatus.Length > 2) { log.Warning("Length > 2 - truncated"); DocStatus = DocStatus.Substring(0, 2); }
+            Set_Value("DocStatus", DocStatus);
+        }/** Get Document Status.
+@return The current status of the document */
+        public String GetDocStatus() { return (String)Get_Value("DocStatus"); }/** Set Document No..
 @param DocumentNo Document sequence number of the document */
         public void SetDocumentNo(String DocumentNo) { if (DocumentNo == null) throw new ArgumentException("DocumentNo is mandatory."); if (DocumentNo.Length > 30) { log.Warning("Length > 30 - truncated"); DocumentNo = DocumentNo.Substring(0, 30); } Set_Value("DocumentNo", DocumentNo); }/** Get Document No..
 @return Document sequence number of the document */
@@ -252,6 +315,10 @@ SetSalesRep_ID (0);} */
 @param SalesRep_ID Company Agent like Sales Representative, Customer Service Representative, ... */
         public void SetSalesRep_ID(int SalesRep_ID) { if (SalesRep_ID < 1) throw new ArgumentException("SalesRep_ID is mandatory."); Set_Value("SalesRep_ID", SalesRep_ID); }/** Get Sales Rep.
 @return Company Agent like Sales Representative, Customer Service Representative, ... */
-        public int GetSalesRep_ID() { Object ii = Get_Value("SalesRep_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }
+        public int GetSalesRep_ID() { Object ii = Get_Value("SalesRep_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }/** Set Total Amount.
+@param TotalAmt Total Amount */
+        public void SetTotalAmt(Decimal? TotalAmt) { Set_Value("TotalAmt", (Decimal?)TotalAmt); }/** Get Total Amount.
+@return Total Amount */
+        public Decimal GetTotalAmt() { Object bd = Get_Value("TotalAmt"); if (bd == null) return Env.ZERO; return Convert.ToDecimal(bd); }
     }
 }
