@@ -816,6 +816,86 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
     return rec_html;
 };
 
+; w2obj.grid.prototype.initResize= function () {
+    var obj = this;
+    //if (obj.resizing === true) return;
+    $(this.box).find('.w2ui-resizer')
+        .off('click')
+        .on('click', function (event) {
+            if (event.stopPropagation) event.stopPropagation(); else event.cancelBubble = true;
+            if (event.preventDefault) event.preventDefault();
+        })
+        .off('mousedown')
+        .on('mousedown', function (event) {
+            if (!event) event = window.event;
+            if (!window.addEventListener) { window.document.attachEvent('onselectstart', function () { return false; }); }
+            obj.resizing = true;
+            obj.last.tmp = {
+                x: event.screenX,
+                y: event.screenY,
+                gx: event.screenX,
+                gy: event.screenY,
+                col: parseInt($(this).attr('name'))
+            };
+            if (event.stopPropagation) event.stopPropagation(); else event.cancelBubble = true;
+            if (event.preventDefault) event.preventDefault();
+            // fix sizes
+            for (var c in obj.columns) {
+                if (obj.columns[c].hidden) continue;
+                if (typeof obj.columns[c].sizeOriginal == 'undefined') obj.columns[c].sizeOriginal = obj.columns[c].size;
+                obj.columns[c].size = obj.columns[c].sizeCalculated;
+            }
+            var eventData = { phase: 'before', type: 'columnResize', target: obj.name, column: obj.last.tmp.col, field: obj.columns[obj.last.tmp.col].field };
+            eventData = obj.trigger($.extend(eventData, { resizeBy: 0, originalEvent: event }));
+            // set move event
+            var mouseMove = function (event) {
+                if (obj.resizing != true) return;
+                if (!event) event = window.event;
+                // event before
+                eventData = obj.trigger($.extend(eventData, { resizeBy: (event.screenX - obj.last.tmp.gx), originalEvent: event }));
+                if (eventData.isCancelled === true) { eventData.isCancelled = false; return; }
+                // default action
+                obj.last.tmp.x = (event.screenX - obj.last.tmp.x);
+                obj.last.tmp.y = (event.screenY - obj.last.tmp.y);
+                if (VIS.Application.isRTL) {
+                    obj.columns[obj.last.tmp.col].size = (parseInt(obj.columns[obj.last.tmp.col].size) - obj.last.tmp.x) + 'px';
+                } else {
+                    obj.columns[obj.last.tmp.col].size = (parseInt(obj.columns[obj.last.tmp.col].size) + obj.last.tmp.x) + 'px';
+                }
+                obj.resizeRecords();
+                // reset
+                obj.last.tmp.x = event.screenX;
+                obj.last.tmp.y = event.screenY;
+            }
+            var mouseUp = function (event) {
+                delete obj.resizing;
+                $(document).off('mousemove', 'body');
+                $(document).off('mouseup', 'body');
+                obj.resizeRecords();
+                // event before
+                obj.trigger($.extend(eventData, { phase: 'after', originalEvent: event }));
+            }
+            $(document).on('mousemove', 'body', mouseMove);
+            $(document).on('mouseup', 'body', mouseUp);
+        })
+        .each(function (index, el) {
+            var td = $(el).parent();
+            if (VIS.Application.isRTL) {
+                $(el).css({
+                    "height": '25px',
+                    "margin-right": (td.width() - 3) + 'px'
+                })
+            } else {
+                $(el).css({
+                    "height": '25px',
+                    "margin-left": (td.width() - 3) + 'px'
+                })
+            }
+        });
+}
+
+
+
 /* support jquery Object also */
 
 $.fn.w2overlay = function (html, options) {
