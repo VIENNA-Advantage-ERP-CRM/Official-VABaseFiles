@@ -997,3 +997,7 @@
 .vis-pac:before {
     content: "\e9e8";
 }
+
+.vis-emailqr:before {
+    content: "\e9e9";
+}
