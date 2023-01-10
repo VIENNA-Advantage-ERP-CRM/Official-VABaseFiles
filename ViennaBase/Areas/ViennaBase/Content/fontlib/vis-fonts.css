@@ -990,6 +990,14 @@
     content: "\e9e2";
 }
 
-.vis-gac:before {
-    content: "\e9e3";
+.vis-cac:before {
+    content: "\e9e7";
+}
+
+.vis-pac:before {
+    content: "\e9e8";
+}
+
+.vis-emailqr:before {
+    content: "\e9e9";
 }
