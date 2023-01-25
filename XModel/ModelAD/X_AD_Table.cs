@@ -523,10 +523,10 @@ namespace VAdvantage.Model
         public void SetTableName(String TableName)
         {
             if (TableName == null) throw new ArgumentException("TableName is mandatory.");
-            if (TableName.Length > 25)
+            if (TableName.Length > 50)
             {
-                log.Warning("Length > 25 - truncated");
-                TableName = TableName.Substring(0, 25);
+                log.Warning("Length > 50 - truncated");
+                TableName = TableName.Substring(0, 50);
             }
             Set_Value("TableName", TableName);
         }
