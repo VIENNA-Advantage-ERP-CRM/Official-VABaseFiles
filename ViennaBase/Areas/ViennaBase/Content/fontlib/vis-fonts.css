@@ -55,35 +55,43 @@
 }
 
 .vis-export-translation:before {
-  content: "\e9c6";
+    content: "\e9c6";
 }
+
 .vis-import-translation:before {
-  content: "\e9c7";
+    content: "\e9c7";
 }
+
 .vis-translation:before {
-  content: "\e9c8";
+    content: "\e9c8";
 }
 
 .vis-wallet:before {
-  content: "\e9c2";
+    content: "\e9c2";
 }
+
 .vis-coin-dollar:before {
-  content: "\e9c3";
+    content: "\e9c3";
 }
+
 .vis-mobile-card:before {
-  content: "\e9c4";
+    content: "\e9c4";
 }
+
 .vis-bank-transfer:before {
-  content: "\e9bf";
+    content: "\e9bf";
 }
+
 .vis-cash-bag:before {
-  content: "\e9c0";
+    content: "\e9c0";
 }
+
 .vis-cheque:before {
-  content: "\e9c1";
+    content: "\e9c1";
 }
+
 .vis-split:before {
-  content: "\e9c5";
+    content: "\e9c5";
 }
 
 .vis-scandoc:before {
@@ -910,6 +918,7 @@
 .vis-rate-5:before {
     content: "\e9d2";
 }
+
 .vis-back:before {
     content: "\e9d3";
 }
@@ -1000,4 +1009,12 @@
 
 .vis-emailqr:before {
     content: "\e9e9";
+}
+
+.vis-rsdx:before {
+    content: "\e9e4";
+}
+
+.vis-rsd:before {
+    content: "\e9e6";
 }
