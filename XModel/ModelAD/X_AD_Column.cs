@@ -299,10 +299,10 @@ SetVersion (0.0);
         public void SetColumnName(String ColumnName)
         {
             if (ColumnName == null) throw new ArgumentException("ColumnName is mandatory.");
-            if (ColumnName.Length > 40)
+            if (ColumnName.Length > 50)
             {
-                log.Warning("Length > 40 - truncated");
-                ColumnName = ColumnName.Substring(0, 40);
+                log.Warning("Length > 50 - truncated");
+                ColumnName = ColumnName.Substring(0, 50);
             }
             Set_Value("ColumnName", ColumnName);
         }
