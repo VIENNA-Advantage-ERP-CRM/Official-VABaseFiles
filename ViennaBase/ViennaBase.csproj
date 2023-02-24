@@ -170,6 +170,8 @@
     <Content Include="Areas\ViennaBase\Content\migration\themes\base\theme.css" />
     <Content Include="Areas\ViennaBase\Content\migration\themes\base\tooltip.css" />
     <Content Include="Areas\ViennaBase\Content\spectrum.css" />
+    <Content Include="Areas\ViennaBase\Content\tel_input\intlTelInput.css" />
+    <Content Include="Areas\ViennaBase\Content\tel_input\intlTelInput.min.css" />
     <Content Include="Areas\ViennaBase\Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Areas\ViennaBase\Content\themes\base\images\close.png" />
     <Content Include="Areas\ViennaBase\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -1215,6 +1217,15 @@
     <Content Include="Areas\ViennaBase\Scripts\migration\popper.min.js" />
     <Content Include="Areas\ViennaBase\Scripts\spectrum.js" />
     <Content Include="Areas\ViennaBase\Content\w2ui\w2ui-1.4.3.css" />
+    <Content Include="Areas\ViennaBase\Scripts\tel_Input\data.js" />
+    <Content Include="Areas\ViennaBase\Scripts\tel_Input\data.min.js" />
+    <Content Include="Areas\ViennaBase\Scripts\tel_Input\intlTelInput-jquery.js" />
+    <Content Include="Areas\ViennaBase\Scripts\tel_Input\intlTelInput-jquery.min.js" />
+    <Content Include="Areas\ViennaBase\Scripts\tel_Input\intlTelInput.js" />
+    <Content Include="Areas\ViennaBase\Scripts\tel_Input\intlTelInput.min.js" />
+    <Content Include="Areas\ViennaBase\Scripts\tel_Input\jquery.mask.js" />
+    <Content Include="Areas\ViennaBase\Scripts\tel_Input\jquery.mask.min.js" />
+    <Content Include="Areas\ViennaBase\Scripts\tel_Input\utils.js" />
     <Content Include="Areas\ViennaBase\Scripts\toastr\toastr.min.js" />
     <Content Include="Areas\ViennaBase\Scripts\custom\vaautocomplete.js" />
     <Content Include="Areas\ViennaBase\Scripts\w2ui\w2ui-1.4.3.js" />
