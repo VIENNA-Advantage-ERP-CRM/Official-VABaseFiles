@@ -125,7 +125,7 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
         if (edit.ctrl.getBtnCount() > 0 && (!VIS.DisplayType.IsLookup(dt) || VIS.DisplayType.Search == dt)) {
 
             // ctrl.css({ 'width': '80%' });
-            ctrl.attr('readonly', dt != VIS.DisplayType.Search).css('background-color', 'white');
+            ctrl.attr('readonly', dt != VIS.DisplayType.Search).css('background-color', 'rgba(var(--v-c-common), 1)');
             if (VIS.DisplayType.Location == dt)
                 btn = edit.ctrl.getBtn(1);
             else
