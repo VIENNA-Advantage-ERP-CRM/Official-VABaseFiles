@@ -54,6 +54,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.vis-moon-o:before {
+    content: "\e9eb";
+}
+
+.vis-moon:before {
+    content: "\e9ec";
+}
+
+.vis-sun:before {
+    content: "\e9ed";
+}
+
 .vis-export-translation:before {
   content: "\e9c6";
 }
