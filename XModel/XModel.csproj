@@ -789,6 +789,12 @@
     <Compile Include="Model\X_VAMFG_M_WorkOrder.cs" />
     <Compile Include="Model\X_VAMFG_M_WrkOdrTransaction.cs" />
     <Compile Include="Model\X_VASC_AppointmentsInfo.cs" />
+    <Compile Include="Model\X_VAS_ContractCategory.cs" />
+    <Compile Include="Model\X_VAS_ContractLine.cs" />
+    <Compile Include="Model\X_VAS_ContractMaster.cs" />
+    <Compile Include="Model\X_VAS_ContractOwner.cs" />
+    <Compile Include="Model\X_VAS_ContractTerms.cs" />
+    <Compile Include="Model\X_VAS_Response.cs" />
     <Compile Include="Model\X_WSP_GmailConfiguration.cs" />
     <Compile Include="Model\X_WSP_Note.cs" />
     <Compile Include="Model\X_WSP_SharedUser.cs" />

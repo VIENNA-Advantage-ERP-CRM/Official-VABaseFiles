@@ -77,7 +77,8 @@ namespace ViennaBase
 
             bundles.Add(new StyleBundle("~/Areas/ViennaBase/Content/externalcss").Include(
                 "~/Areas/ViennaBase/Content/w2ui/w2ui-1.4.3.min.css",
-                "~/Areas/ViennaBase/Content/spectrum.css"
+                "~/Areas/ViennaBase/Content/spectrum.css",
+                "~/Areas/ViennaBase/Content/tel_input/intlTelInput.min.css"
               ));
 
             bundles.Add(new StyleBundle("~/Areas/ViennaBase/Content/custom/customcss").Include(
@@ -101,7 +102,10 @@ namespace ViennaBase
                         "~/Areas/ViennaBase/Scripts/FileSaver.js", 
                         "~/Areas/ViennaBase/Scripts/jszip.js", 
                         "~/Areas/ViennaBase/Scripts/jszip-utils.js", 
-                        "~/Areas/ViennaBase/Scripts/downloader.js"
+                        "~/Areas/ViennaBase/Scripts/downloader.js",
+                         "~/Areas/ViennaBase/Scripts/tel_Input/data.min.js",
+                         "~/Areas/ViennaBase/Scripts/tel_Input/intlTelInput.min.js",
+                        "~/Areas/ViennaBase/Scripts/tel_Input/jquery.mask.min.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/Areas/ViennaBase/Scripts/toastrjs").Include(
@@ -117,7 +121,7 @@ namespace ViennaBase
                 "~/Areas/ViennaBase/Scripts/jquery.imgareaselect.js"
                 ));
 
-
+            
 
 
             //bundles.Add(new ScriptBundle("~/bundles/CRV").Include(

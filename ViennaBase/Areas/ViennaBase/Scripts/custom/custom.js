@@ -122,17 +122,7 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
 
         edit.ctrl.gridPos = { index: index, col: column, dialog: false, recid: recid };
 
-        if (edit.ctrl.getBtnCount() > 0 && (!VIS.DisplayType.IsLookup(dt) || VIS.DisplayType.Search == dt)) {
-
-            // ctrl.css({ 'width': '80%' });
-            ctrl.attr('readonly', dt != VIS.DisplayType.Search).css('background-color', 'white');
-            if (VIS.DisplayType.Location == dt)
-                btn = edit.ctrl.getBtn(1);
-            else
-                btn = edit.ctrl.getBtn(0);
-            edit.ctrl.gridPos.dialog = true;
-
-        }
+       
 
         //if (dt == VIS.DisplayType.ProgressBar) {
         //    el.append(edit.ctrl.getProgressOutput());
@@ -289,6 +279,19 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
 
             }, 1);
         }
+
+        if (edit.ctrl.getBtnCount() > 0 && (!VIS.DisplayType.IsLookup(dt) || VIS.DisplayType.Search == dt)) {
+
+            // ctrl.css({ 'width': '80%' });
+            ctrl.attr('readonly', dt != VIS.DisplayType.Search).css('background-color', 'white');
+            if (VIS.DisplayType.Location == dt)
+                btn = edit.ctrl.getBtn(1);
+            else
+                btn = edit.ctrl.getBtn(0);
+            edit.ctrl.gridPos.dialog = true;
+
+        }
+
         ctrl.focus();
 
         edit.ctrl.setValue(val == '' ? null : val);

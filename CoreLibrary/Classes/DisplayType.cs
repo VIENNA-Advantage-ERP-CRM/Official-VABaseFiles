@@ -107,6 +107,9 @@ namespace VAdvantage.Classes
         /** Display Type 49	ProgressBar*/
         public static int ProgressBar = 49;
 
+        /** Display Type 50	Telephone*/
+        public static int TelePhone = 50;
+
         /** Display Type 101 Label */
         //public static int Label = 101;
         #endregion
@@ -167,7 +170,8 @@ namespace VAdvantage.Classes
             if (displayType == String || displayType == Text
                 || displayType == TextLong || displayType == Memo
                 || displayType == FilePath || displayType == FileName
-                || displayType == URL || displayType == PrinterName)
+                || displayType == URL || displayType == PrinterName
+                || displayType == TelePhone)
                 return true;
             return false;
         }	//	isText

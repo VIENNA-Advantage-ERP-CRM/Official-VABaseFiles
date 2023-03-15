@@ -1001,3 +1001,7 @@
 .vis-emailqr:before {
     content: "\e9e9";
 }
+
+.vis-copy-folder:before {
+    content: "\e9ea";
+}
