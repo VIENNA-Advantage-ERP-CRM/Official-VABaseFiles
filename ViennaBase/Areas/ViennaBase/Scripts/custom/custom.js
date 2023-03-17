@@ -122,7 +122,7 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
 
         edit.ctrl.gridPos = { index: index, col: column, dialog: false, recid: recid };
 
-        if (edit.ctrl.getBtnCount() > 0 && (!VIS.DisplayType.IsLookup(dt) || VIS.DisplayType.Search == dt)) {
+        if (edit.ctrl.getBtnCount() > 0 && (!VIS.DisplayType.IsLookup(dt) || VIS.DisplayType.Search == dt || VIS.DisplayType.MultiKey == dt)) {
 
             // ctrl.css({ 'width': '80%' });
             ctrl.attr('readonly', dt != VIS.DisplayType.Search).css('background-color', 'white');
