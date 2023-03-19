@@ -626,6 +626,7 @@
     <Compile Include="Model\X_M_Inventory.cs" />
     <Compile Include="Model\X_M_InventoryLine.cs" />
     <Compile Include="Model\X_M_InventoryLineMA.cs" />
+    <Compile Include="Model\X_M_InventoryRevaluation.cs" />
     <Compile Include="Model\X_M_Locator.cs" />
     <Compile Include="Model\X_M_Lot.cs" />
     <Compile Include="Model\X_M_LotCtl.cs" />
@@ -672,6 +673,7 @@
     <Compile Include="Model\X_M_RequisitionLine.cs" />
     <Compile Include="Model\X_M_ReturnPolicy.cs" />
     <Compile Include="Model\X_M_ReturnPolicyLine.cs" />
+    <Compile Include="Model\X_M_RevaluationLine.cs" />
     <Compile Include="Model\X_M_RMACategory.cs" />
     <Compile Include="Model\X_M_Routing.cs" />
     <Compile Include="Model\X_M_SerNoCtl.cs" />
