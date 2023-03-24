@@ -117,6 +117,7 @@
     <Compile Include="DataBase\DatabaseType.cs" />
     <Compile Include="DataBase\DB.cs" />
     <Compile Include="DataBase\DBConn.cs" />
+    <Compile Include="DataBase\DBCustomMessage.cs" />
     <Compile Include="DataBase\DBUtils.cs" />
     <Compile Include="DataBase\DB_MsSQL.cs" />
     <Compile Include="DataBase\DB_MySQL.cs" />
