@@ -19,6 +19,8 @@ using System.Data.SqlClient;
 using VAdvantage.Logging;
 
 using System.IO;
+using System.Reflection;
+
 namespace VAdvantage.Utility
 {
     /// <summary>
@@ -612,7 +614,8 @@ namespace VAdvantage.Utility
             {
                 className += language.GetLanguageCode().ToUpper();
                 //Type clazz = Class.forName(className);
-                Type clazz = Type.GetType(className);
+                Assembly asmAmtword = Assembly.Load("VAModelAD");
+                Type clazz = asmAmtword.GetType(className);
                 //AmtInWords aiw = (AmtInWords)clazz.newInstance();
                 VAdvantage.Print.AmtInWords aiw = (VAdvantage.Print.AmtInWords)Activator.CreateInstance(clazz);
                 return aiw.GetAmtInWords(amount);
