@@ -124,7 +124,7 @@ namespace VAdvantage.Classes
             if (displayType == ID || displayType == Table || displayType == TableDir
                 || displayType == Search || displayType == Location || displayType == Locator
                 || displayType == Account || displayType == Assignment || displayType == PAttribute
-                || displayType == Image || displayType == Color || displayType == AmtDimension || displayType == ProductContainer|| displayType== GAttribute)
+                || displayType == Image ||  displayType == AmtDimension || displayType == ProductContainer|| displayType== GAttribute)
                 return true;
             return false;
         }	//	isID
@@ -171,7 +171,7 @@ namespace VAdvantage.Classes
                 || displayType == TextLong || displayType == Memo
                 || displayType == FilePath || displayType == FileName
                 || displayType == URL || displayType == PrinterName
-                || displayType == TelePhone)
+                || displayType == TelePhone || displayType == Color)
                 return true;
             return false;
         }	//	isText
@@ -293,10 +293,12 @@ namespace VAdvantage.Classes
                 return "CHAR(" + fieldLength + ")";
             if (displayType == DisplayType.Color)
             {
-                if (columnName.EndsWith("_ID"))
-                    return "NUMBER(10)";
-                else
-                    return "CHAR(" + fieldLength + ")";
+                //if (columnName.EndsWith("_ID"))
+                //    return "NUMBER(10)";
+                //else
+                if (fieldLength < 10)
+                    fieldLength = 10;
+                return "NVARCHAR2(" + fieldLength + ")";
             }
             if (displayType == DisplayType.Button)
             {
