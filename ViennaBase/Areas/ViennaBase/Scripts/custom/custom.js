@@ -116,7 +116,8 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
         var ctrl = edit.ctrl.getControl(el);
         var btn = null;
 
-        el.removeAttr('data-type'); // for int types , remove data type from parent div 
+
+        el.removeAttr('data-type'); // for int types , align text to right
 
         el.addClass('w2ui-editable')
            .append(ctrl);
