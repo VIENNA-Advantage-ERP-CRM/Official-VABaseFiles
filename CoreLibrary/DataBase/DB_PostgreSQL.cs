@@ -15,6 +15,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using VAdvantage.Classes;
 using VAdvantage.DBPort;
 using VAdvantage.Logging;
 
@@ -286,9 +287,30 @@ namespace VAdvantage.DataBase
 
         public string TO_CHAR(string columnName, int displayType, string AD_Language)
         {
-            StringBuilder retValue = new StringBuilder("CAST (");
-            retValue.Append(columnName);
-            retValue.Append(" AS Text)");
+            StringBuilder retValue = new StringBuilder();
+            if (DisplayType.IsDate(displayType))
+            { 
+                retValue.Append("TO_CHAR(");
+                retValue.Append(columnName);
+                retValue.Append(",");
+                if (displayType == FieldType.Date) {
+                    retValue.Append("'YYYY-MM-DD'");
+                }
+                else if (displayType == FieldType.DateTime) {
+                    retValue.Append("'YYYY-MM-DD HH24:MI:SS'");
+                }
+                else {
+                    retValue.Append("'HH24:MI:SS'");
+                }
+                retValue.Append(")");
+            }
+            else
+            {
+                retValue.Append("CAST (");
+                retValue.Append(columnName);
+                retValue.Append(" AS Text)");
+            }
+            
 
             //  Numbers
             /*
