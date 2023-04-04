@@ -1508,7 +1508,7 @@ namespace VAdvantage.Model
                     //    //	Trace.printStack();
                     return false;
                 }
-                _mNewValues[index] = Null.NULL;          //  correct
+                _mNewValues[index] = null;          //  correct
                 log.Finer(ColumnName + " = null");
             }
             else
@@ -1815,7 +1815,7 @@ namespace VAdvantage.Model
 
             if (value == null)
             {
-                _mNewValues[index] = Null.NULL;
+                _mNewValues[index] = null;
             }
             // Case handled for DB null
             else if (value is DBNull)
