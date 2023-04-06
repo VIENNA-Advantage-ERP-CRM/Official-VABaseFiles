@@ -795,6 +795,26 @@ namespace VAdvantage.Model
         /** Get Can Edit Attribute.
 @return Users with this role can edit attribute set instance */
         public Boolean IsCanEditAttribute() { Object oo = Get_Value("IsCanEditAttribute"); if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo); } return false; }
+
+        /** Set Auto Approve Own Document.
+@param IsAutoApproveOwnDoc Auto approve own document if the owner is himself/herself the approver */
+        public void SetIsAutoApproveOwnDoc(Boolean IsAutoApproveOwnDoc) 
+        { 
+            Set_Value("IsAutoApproveOwnDoc", IsAutoApproveOwnDoc); 
+        }
+        /** Get Auto Approve Own Document.
+        @return Auto approve own document if the owner is himself/herself the approver */
+        public Boolean IsAutoApproveOwnDoc() 
+        { 
+            Object oo = Get_Value("IsAutoApproveOwnDoc"); 
+            if (oo != null) 
+            { 
+                if (oo.GetType() == typeof(bool)) 
+                    return Convert.ToBoolean(oo); 
+                return "Y".Equals(oo); 
+            } 
+            return false; 
+        }
     }
 
 }
