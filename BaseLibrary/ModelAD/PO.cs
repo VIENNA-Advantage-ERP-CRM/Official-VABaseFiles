@@ -2646,10 +2646,17 @@ namespace VAdvantage.Model
 
             try
             {
-                success = AfterSave(newRecord, success);
+                bool skipBase = false;
+                if (ModelAction != null)
+                {
+                    success = ModelAction.AfterSave(newRecord, success, out skipBase);
+                }
+                if (!skipBase)
+                {
+                    success = AfterSave(newRecord, success);
+                }
                 POActionEngine.Get().AfterSave(newRecord, success, this);
-                //if (success && newRecord)
-                //    InsertTreeNode();
+               
             }
             catch (Exception ex)
             {
