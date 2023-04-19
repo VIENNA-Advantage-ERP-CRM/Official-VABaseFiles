@@ -403,6 +403,50 @@ namespace VAdvantage.Model
                 return 0;
             return Convert.ToInt32(ii);
         }
+
+        /** AD_Tree_BPartner_ID AD_Reference_ID=184 */
+        public static int AD_TREE_BPARTNER_ID_AD_Reference_ID = 184;
+        /** Set BPartner Tree.
+        @param AD_Tree_BPartner_ID Tree to determine business partner hierarchy */
+        public void SetAD_Tree_BPartner_ID(int AD_Tree_BPartner_ID)
+        {
+            if (AD_Tree_BPartner_ID <= 0) 
+                Set_Value("AD_Tree_BPartner_ID", null);
+            else
+                Set_Value("AD_Tree_BPartner_ID", AD_Tree_BPartner_ID);
+        }
+
+        /** Get BPartner Tree.
+        @return Tree to determine business partner hierarchy */
+        public int GetAD_Tree_BPartner_ID() 
+        { 
+            Object ii = Get_Value("AD_Tree_BPartner_ID"); 
+            if (ii == null) 
+                return 0; 
+            return Convert.ToInt32(ii); 
+        }
+
+        /** AD_Tree_Product_ID AD_Reference_ID=184 */
+        public static int AD_TREE_PRODUCT_ID_AD_Reference_ID = 184;
+        /** Set Product Tree.
+        @param AD_Tree_Product_ID Tree to determine product hierarchy */
+        public void SetAD_Tree_Product_ID(int AD_Tree_Product_ID)
+        {
+            if (AD_Tree_Product_ID <= 0) 
+                Set_Value("AD_Tree_Product_ID", null);
+            else
+                Set_Value("AD_Tree_Product_ID", AD_Tree_Product_ID);
+        }
+        
+        /** Get Product Tree.
+        @return Tree to determine product hierarchy */
+        public int GetAD_Tree_Product_ID() 
+        { 
+            Object ii = Get_Value("AD_Tree_Product_ID"); 
+            if (ii == null) 
+                return 0; 
+            return Convert.ToInt32(ii); 
+        }
     }
 
 }

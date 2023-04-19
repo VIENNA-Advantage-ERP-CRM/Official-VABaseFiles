@@ -937,8 +937,10 @@ namespace CoreLibrary.DataBase
                     return VAdvantage.SqlExec.ExecuteQuery.ExecuteNonQuery(sql, param);
                 }
             }
-            catch (System.Data.Common.DbException ex)
+            catch (System.Data.Common.DbException exDB)
             {
+                // check if the exception is already an OracleException
+                var ex = DBCustomMessage.ModifyMessage(exDB);
                 if (ignoreError)
                 {
                     log.Log(Level.WARNING, trxName, ex.Message);
