@@ -226,7 +226,7 @@
     content: "\e90d";
 }
 
-.vis-attachmentx:before, .vis-attx:before {
+.vis-attachmentx:before, .vis-attx:before, .vis-attachdocumentfromx:before, .vis-adfx:before {
     content: "\e90e";
 }
 
