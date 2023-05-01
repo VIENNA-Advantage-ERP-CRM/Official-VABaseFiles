@@ -54,6 +54,14 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.vis-down-key-pan:before {
+    content: "\e9ee";
+}
+
+.vis-up-key-pan:before {
+    content: "\e9ef";
+}
+
 .vis-moon-o:before {
     content: "\e9eb";
 }
@@ -238,7 +246,8 @@
     content: "\e90d";
 }
 
-.vis-attachmentx:before, .vis-attx:before {
+.vis-attachmentx:before,
+.vis-attx:before {
     content: "\e90e";
 }
 
