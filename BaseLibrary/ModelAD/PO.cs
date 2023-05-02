@@ -2646,10 +2646,17 @@ namespace VAdvantage.Model
 
             try
             {
-                success = AfterSave(newRecord, success);
+                bool skipBase = false;
+                if (ModelAction != null)
+                {
+                    success = ModelAction.AfterSave(newRecord, success, out skipBase);
+                }
+                if (!skipBase)
+                {
+                    success = AfterSave(newRecord, success);
+                }
                 POActionEngine.Get().AfterSave(newRecord, success, this);
-                //if (success && newRecord)
-                //    InsertTreeNode();
+               
             }
             catch (Exception ex)
             {
@@ -2844,6 +2851,8 @@ namespace VAdvantage.Model
                 return false;
             }
             if (_mNewValues[index] == null)
+                return false;
+            else if (_mNewValues[index] == DBNull.Value && _mOldValues[index] == null)
                 return false;
             return !_mNewValues[index].Equals(_mOldValues[index]);
         }
