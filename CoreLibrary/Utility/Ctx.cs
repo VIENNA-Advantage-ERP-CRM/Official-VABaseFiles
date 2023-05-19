@@ -475,6 +475,8 @@ namespace VAdvantage.Utility
                 throw new ArgumentException("Require Context");
             string value;
             m_map.TryGetValue(windowNo + "|" + tabNo + "|" + context,out value);
+            if (tabNo == EnvConstants.TAB_INFO)
+                return value != null ? value : "";
             if (value == null)
                 return GetContext(windowNo, context, false);
             return value;
