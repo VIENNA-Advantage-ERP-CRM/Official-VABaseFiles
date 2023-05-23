@@ -673,6 +673,7 @@
     <Compile Include="Model\X_M_RequisitionLine.cs" />
     <Compile Include="Model\X_M_ReturnPolicy.cs" />
     <Compile Include="Model\X_M_ReturnPolicyLine.cs" />
+    <Compile Include="Model\X_M_RevaluationAcctSchema.cs" />
     <Compile Include="Model\X_M_RevaluationLine.cs" />
     <Compile Include="Model\X_M_RMACategory.cs" />
     <Compile Include="Model\X_M_Routing.cs" />
