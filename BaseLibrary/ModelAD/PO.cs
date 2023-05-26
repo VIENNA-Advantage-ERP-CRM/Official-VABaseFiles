@@ -2289,7 +2289,9 @@ namespace VAdvantage.Model
                 }
                 int colIndex = p_info.GetColumnIndex(p_info.GetTableName() + "_ID");
                 //VIS323 special check for ID reference with no Keycolumn marked
-                if (_mIDs.Length > 1 || (_mIDs.Length == 1 && _mKeyColumns[0] != p_info.GetTableName() + "_ID" && colIndex > -1))
+
+                if (_mIDs.Length > 1 || (!p_info.hasKeyColumn() && (p_info.GetColumnIndex(p_info.GetTableName() + "_ID") >= 0)))
+
                     _mKeyColumns[0] = p_info.GetTableName() + "_ID";
                 _mIDs[0] = no;
                 Set_ValueNoCheck(_mKeyColumns[0], _mIDs[0]);
