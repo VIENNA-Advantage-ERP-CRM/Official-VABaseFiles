@@ -433,6 +433,7 @@ namespace VAdvantage.Utility
             //    key = context;
             string  value;
             m_map.TryGetValue(key,out value);
+
             //don't use value == null 'cuz there may be a null value for this key
             //if (value == null)
             if (!m_map.ContainsKey(key))
@@ -475,6 +476,8 @@ namespace VAdvantage.Utility
                 throw new ArgumentException("Require Context");
             string value;
             m_map.TryGetValue(windowNo + "|" + tabNo + "|" + context,out value);
+            if (tabNo == EnvConstants.TAB_INFO)
+                return value != null ? value : "";
             if (value == null)
                 return GetContext(windowNo, context, false);
             return value;
