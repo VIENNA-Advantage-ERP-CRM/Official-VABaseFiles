@@ -990,10 +990,10 @@ SetVersion (0.0);
         ///<param name="Export_ID">Export</param>
         public void SetExport_ID(String Export_ID)
         {
-            if (Export_ID != null && Export_ID.Length > 50)
+            if (Export_ID != null && Export_ID.Length > 100)
             {
-                log.Warning("Length > 50 - truncated");
-                Export_ID = Export_ID.Substring(0, 50);
+                log.Warning("Length > 100 - truncated");
+                Export_ID = Export_ID.Substring(0, 100);
             }
             Set_ValueNoCheck("Export_ID", Export_ID);
         }
