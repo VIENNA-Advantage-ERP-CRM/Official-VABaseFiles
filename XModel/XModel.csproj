@@ -799,6 +799,7 @@
     <Compile Include="Model\X_VAS_ContractOwner.cs" />
     <Compile Include="Model\X_VAS_ContractTerms.cs" />
     <Compile Include="Model\X_VAS_Response.cs" />
+    <Compile Include="Model\X_VAS_VariationThreshold.cs" />
     <Compile Include="Model\X_WSP_GmailConfiguration.cs" />
     <Compile Include="Model\X_WSP_Note.cs" />
     <Compile Include="Model\X_WSP_SharedUser.cs" />
