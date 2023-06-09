@@ -1018,3 +1018,7 @@
 .vis-rsd:before {
     content: "\e9e6";
 }
+
+.vis-batchupdate:before {
+    content: "\e9f0";
+}

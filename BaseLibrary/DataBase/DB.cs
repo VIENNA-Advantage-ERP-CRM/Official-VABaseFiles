@@ -73,13 +73,36 @@ namespace VAdvantage.DataBase
         }   //	getNextID
 
         /// <summary>
-        /// Execute SQL Query
+        /// Get Next number by Increment No
         /// </summary>
-        /// <param name="sql">sql query to be executed</param>
-        /// <param name="param">parameters to be passed to the query</param>
-        /// <param name="trxName">optional transaction name</param>
-        /// <returns>return number of rows affected. -1 if error occured</returns>
-        public static int ExecuteQuery(string sql, SqlParameter[] param, Trx trx)
+        /// <param name="ctx"></param>
+        /// <param name="TableName"></param>
+        /// <param name="trx"></param>
+        /// <param name="IncrementNo"></param>
+        /// <returns></returns>
+        public static int GetNextID(Ctx ctx, String TableName, Trx trx, int IncrementNo)
+        {
+            if (ctx == null)
+                throw new ArgumentException("Context missing");
+            if ((TableName == null) || (TableName.Length == 0))
+                throw new ArgumentException("TableName missing");
+            return GetNextID(ctx.GetAD_Client_ID(), TableName, trx, IncrementNo);
+        }
+
+        public static int GetNextID(int AD_Client_ID, String TableName, Trx trxName, int IncrementNo)
+        {
+            int id = POActionEngine.Get().GetNextID(AD_Client_ID, TableName, trxName, IncrementNo);
+            return id;
+        }
+
+            /// <summary>
+            /// Execute SQL Query
+            /// </summary>
+            /// <param name="sql">sql query to be executed</param>
+            /// <param name="param">parameters to be passed to the query</param>
+            /// <param name="trxName">optional transaction name</param>
+            /// <returns>return number of rows affected. -1 if error occured</returns>
+            public static int ExecuteQuery(string sql, SqlParameter[] param, Trx trx)
         {
             return ExecuteQuery(sql, param, trx, false);
             //try
