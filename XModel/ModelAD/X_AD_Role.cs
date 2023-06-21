@@ -815,6 +815,13 @@ namespace VAdvantage.Model
             } 
             return false; 
         }
+
+
+        /** Set Show Shared Records.
+@param ShowSharedRecords Show Shared Records */
+        public void SetShowSharedRecords(Boolean ShowSharedRecords) { Set_Value("ShowSharedRecords", ShowSharedRecords); }/** Get Show Shared Records.
+@return Show Shared Records */
+        public Boolean IsShowSharedRecords() { Object oo = Get_Value("ShowSharedRecords"); if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo); } return false; }
     }
 
 }

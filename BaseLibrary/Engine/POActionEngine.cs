@@ -26,6 +26,7 @@ namespace BaseLibrary.Engine
         bool IsAutoUpdateTrl(Ctx ctx, string tableName);
         string GetDocumentNo(int id, PO pO);
         int GetNextID(int AD_Client_ID, string TableName, Trx trx);
+        int GetNextID(int AD_Client_ID, string TableName, Trx trx, int IncrementNo);
         string GetDocumentNo(PO po);
         Lookup GetLookup(Ctx ctx, POInfoColumn colInfo);
         dynamic GetAttachment(Ctx ctx, int aD_Table_ID, int id);
@@ -165,6 +166,21 @@ namespace BaseLibrary.Engine
         {
             if (_action != null)
                 return _action.GetNextID(AD_Client_ID, TableName, trx);
+            return 0;
+        }
+
+        /// <summary>
+        /// Get Next Record id
+        /// </summary>
+        /// <param name="AD_Client_ID"></param>
+        /// <param name="TableName"></param>
+        /// <param name="trx"></param>
+        /// <param name="IncrementNo"></param>
+        /// <returns></returns>
+        public int GetNextID(int AD_Client_ID, string TableName, Trx trx, int IncrementNo)
+        {
+            if (_action != null)
+                return _action.GetNextID(AD_Client_ID, TableName, trx, IncrementNo);
             return 0;
         }
 
