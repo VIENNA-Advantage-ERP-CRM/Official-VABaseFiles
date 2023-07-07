@@ -1832,7 +1832,7 @@ namespace VAdvantage.Model
                 }
                 else if (clazz == typeof(Boolean) && ("Y".Equals(value) || "N".Equals(value)))
                     _mNewValues[index] = "Y".Equals(value);
-                else if (clazz == typeof(int) && int.TryParse(Convert.ToString(value),out outValue))
+                else if (clazz == typeof(int) && int.TryParse(Convert.ToString(value), out outValue))
                 {
                     _mNewValues[index] = CommonFunctions.GetInt(value);
                 }
@@ -2287,8 +2287,11 @@ namespace VAdvantage.Model
                     log.Severe("No NextID (" + no + ")");
                     return SaveFinish(true, false);
                 }
+                int colIndex = p_info.GetColumnIndex(p_info.GetTableName() + "_ID");
                 //VIS323 special check for ID reference with no Keycolumn marked
-                if (_mIDs.Length > 1)
+
+                if (_mIDs.Length > 1 || (!p_info.hasKeyColumn() && (p_info.GetColumnIndex(p_info.GetTableName() + "_ID") >= 0)))
+
                     _mKeyColumns[0] = p_info.GetTableName() + "_ID";
                 _mIDs[0] = no;
                 Set_ValueNoCheck(_mKeyColumns[0], _mIDs[0]);
@@ -2374,7 +2377,7 @@ namespace VAdvantage.Model
             }
 
             LobReset();
-            bool ok = SaveNewInsertSQL();         
+            bool ok = SaveNewInsertSQL();
             return SaveFinish(true, ok);
 
         }

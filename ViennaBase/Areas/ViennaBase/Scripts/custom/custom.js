@@ -147,6 +147,15 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
                  edit.ctrl.oldValue = 'oldValue';
                  //}, 10);
              });
+
+            if (edit.ctrl.getBtnCount() > 0 && (!VIS.DisplayType.IsLookup(dt) || VIS.DisplayType.Search == dt || VIS.DisplayType.MultiKey == dt)) {
+
+                if (VIS.DisplayType.Location == dt)
+                    btn = edit.ctrl.getBtn(1);
+                else
+                    btn = edit.ctrl.getBtn(0);
+            }
+
             if (btn != null) {
                 ctrl.on('click', function (event) {
                     btn.click();
@@ -285,14 +294,8 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
 
         if (edit.ctrl.getBtnCount() > 0 && (!VIS.DisplayType.IsLookup(dt) || VIS.DisplayType.Search == dt || VIS.DisplayType.MultiKey == dt)) {
 
-            // ctrl.css({ 'width': '80%' });
             ctrl.attr('readonly', dt != VIS.DisplayType.Search).css('background-color', 'white');
-            if (VIS.DisplayType.Location == dt)
-                btn = edit.ctrl.getBtn(1);
-            else
-                btn = edit.ctrl.getBtn(0);
             edit.ctrl.gridPos.dialog = true;
-
         }
 
         ctrl.focus();

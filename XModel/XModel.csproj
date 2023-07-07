@@ -181,6 +181,7 @@
     <Compile Include="ModelAD\X_AD_Sequence.cs" />
     <Compile Include="ModelAD\X_AD_Sequence_Audit.cs" />
     <Compile Include="ModelAD\X_AD_Sequence_No.cs" />
+    <Compile Include="ModelAD\X_AD_ShareRecordOrg.cs" />
     <Compile Include="ModelAD\X_AD_Survey.cs" />
     <Compile Include="ModelAD\X_AD_SurveyAssignment.cs" />
     <Compile Include="ModelAD\X_AD_SurveyResponse.cs" />
@@ -673,6 +674,7 @@
     <Compile Include="Model\X_M_RequisitionLine.cs" />
     <Compile Include="Model\X_M_ReturnPolicy.cs" />
     <Compile Include="Model\X_M_ReturnPolicyLine.cs" />
+    <Compile Include="Model\X_M_RevaluationAcctSchema.cs" />
     <Compile Include="Model\X_M_RevaluationLine.cs" />
     <Compile Include="Model\X_M_RMACategory.cs" />
     <Compile Include="Model\X_M_Routing.cs" />
@@ -797,6 +799,7 @@
     <Compile Include="Model\X_VAS_ContractOwner.cs" />
     <Compile Include="Model\X_VAS_ContractTerms.cs" />
     <Compile Include="Model\X_VAS_Response.cs" />
+    <Compile Include="Model\X_VAS_VariationThreshold.cs" />
     <Compile Include="Model\X_WSP_GmailConfiguration.cs" />
     <Compile Include="Model\X_WSP_Note.cs" />
     <Compile Include="Model\X_WSP_SharedUser.cs" />
