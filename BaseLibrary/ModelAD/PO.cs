@@ -2271,30 +2271,34 @@ namespace VAdvantage.Model
                 if (no <= 0)
                 {
                     no = POActionEngine.Get().GetNextID(GetAD_Client_ID(), p_info.GetTableName(), Get_Trx());
-
-
-                    //if (DatabaseType.IsOracle)
-                    //    no = MSequence.GetNextIDOracle(GetAD_Client_ID(), p_info.GetTableName(), Get_Trx());
-                    //else if (DatabaseType.IsPostgre)
-                    //    no = MSequence.GetNextIDPostgre(GetAD_Client_ID(), p_info.GetTableName(), Get_Trx());//, Get_Trx());
-                    //else if (DatabaseType.IsMySql)
-                    //    no = MSequence.GetNextIDMySql(GetAD_Client_ID(), p_info.GetTableName());//, Get_Trx());
-                    //else if (DatabaseType.IsMSSql)
-                    //    no = MSequence.GetNextIDMSSql(GetAD_Client_ID(), p_info.GetTableName());//, Get_Trx());                }
                 }
                 if (no <= 0)
                 {
                     log.Severe("No NextID (" + no + ")");
                     return SaveFinish(true, false);
                 }
-                int colIndex = p_info.GetColumnIndex(p_info.GetTableName() + "_ID");
-                //VIS323 special check for ID reference with no Keycolumn marked
 
-                if (_mIDs.Length > 1 || (!p_info.hasKeyColumn() && (p_info.GetColumnIndex(p_info.GetTableName() + "_ID") >= 0)))
-
-                    _mKeyColumns[0] = p_info.GetTableName() + "_ID";
-                _mIDs[0] = no;
-                Set_ValueNoCheck(_mKeyColumns[0], _mIDs[0]);
+                if (_mIDs.Length == 1 && p_info.hasKeyColumn() && _mKeyColumns[0].EndsWith("_ID")) //existing 
+                {
+                    _mIDs[0] = no;
+                    Set_ValueNoCheck(_mKeyColumns[0], _mIDs[0]);
+                }
+                else //automarking new Column AND special case for table where table contain one key column but not ends with _ID
+                {
+                    string colName = p_info.GetTableName() + "_ID";
+                    int colIndex = p_info.GetColumnIndex(colName);
+                    //VIS323 special check for ID reference with no Keycolumn marked
+                    int keyIndex = Array.IndexOf(_mKeyColumns, colName);
+                    if (keyIndex > -1)
+                    {
+                        _mIDs[keyIndex] = no;
+                        Set_ValueNoCheck(_mKeyColumns[keyIndex], _mIDs[keyIndex]);
+                    }
+                    else
+                    {
+                        Set_ValueNoCheck(colName, no);
+                    }
+                }
             }
 
             if (_trx == null)
