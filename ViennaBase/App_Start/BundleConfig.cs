@@ -17,6 +17,11 @@ namespace ViennaBase
                       "~/Areas/ViennaBase/Scripts/bootstrap.min.js"
                     ));
 
+            bundles.Add(new ScriptBundle("~/bundles/react").Include(
+                "~/Areas/ViennaBase/Scripts/react.js",
+                "~/Areas/ViennaBase/Scripts/react-dom.js"
+                ));
+
             bundles.Add(new StyleBundle("~/bundles/boot").Include(
                 "~/Areas/ViennaBase/Content/bootstrap-theme.min.css",
                    "~/Areas/ViennaBase/Content/bootstrap.min.css"
@@ -120,6 +125,8 @@ namespace ViennaBase
             bundles.Add(new ScriptBundle("~/Areas/ViennaBase/bundles/imgareaselecterjs").Include(
                 "~/Areas/ViennaBase/Scripts/jquery.imgareaselect.js"
                 ));
+
+             
 
             
 
