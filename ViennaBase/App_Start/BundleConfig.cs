@@ -17,10 +17,7 @@ namespace ViennaBase
                       "~/Areas/ViennaBase/Scripts/bootstrap.min.js"
                     ));
 
-            bundles.Add(new ScriptBundle("~/bundles/react").Include(
-                "~/Areas/ViennaBase/Scripts/react.js",
-                "~/Areas/ViennaBase/Scripts/react-dom.js"
-                ));
+           
 
             bundles.Add(new StyleBundle("~/bundles/boot").Include(
                 "~/Areas/ViennaBase/Content/bootstrap-theme.min.css",
@@ -126,9 +123,18 @@ namespace ViennaBase
                 "~/Areas/ViennaBase/Scripts/jquery.imgareaselect.js"
                 ));
 
-             
 
-            
+            bundles.Add(new ScriptBundle("~/bundles/react").Include(
+               "~/Areas/ViennaBase/Scripts/react.js",
+               "~/Areas/ViennaBase/Scripts/react-dom.js",
+               "~/Areas/ViennaBase/Scripts/axios.min.js"
+               ));
+
+            bundles.Add(new ScriptBundle("~/bundles/signalR").Include(
+                "~/Areas/ViennaBase/Scripts/jquery.signalR-2.4.3.min.js"
+                
+                ));
+
 
 
             //bundles.Add(new ScriptBundle("~/bundles/CRV").Include(
