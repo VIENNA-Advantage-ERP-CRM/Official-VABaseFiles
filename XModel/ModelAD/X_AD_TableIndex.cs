@@ -246,11 +246,11 @@ return false;
 @param Name Alphanumeric identifier of the entity */
 public void SetName (String Name)
 {
-if (Name == null) throw new ArgumentException ("Name is mandatory.");
-if (Name.Length > 60)
+if (Name == null) throw new ArgumentException("Name is mandatory.");
+if (Name.Length > 100)
 {
-log.Warning("Length > 60 - truncated");
-Name = Name.Substring(0,60);
+log.Warning("Length > 100 - truncated");
+Name = Name.Substring(0, 100);
 }
 Set_Value ("Name", Name);
 }
