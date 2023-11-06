@@ -38,8 +38,8 @@ namespace VAdvantage.Model
  Set Table ID By Table Name
  added by ->Harwinder */
         static X_VAS_ContractMaster() { Table_ID = Get_Table_ID(Table_Name); model = new KeyNamePair(Table_ID, Table_Name); }/** Serial Version No */
-        static long serialVersionUID = 27957395906687L;/** Last Updated Timestamp 2/1/2023 4:56:29 PM */
-        public static long updatedMS = 1675270589898L;/** AD_Table_ID=1000569 */
+        static long serialVersionUID = 27977755990851L;/** Last Updated Timestamp 9/25/2023 8:31:14 AM */
+        public static long updatedMS = 1695630674062L;/** AD_Table_ID=1000569 */
         public static int Table_ID; // =1000569;
         /** TableName=VAS_ContractMaster */
         public static String Table_Name = "VAS_ContractMaster";
@@ -63,9 +63,9 @@ namespace VAdvantage.Model
 @param Bill_Location_ID Account /Prospect Location for invoicing */
         public void SetBill_Location_ID(int Bill_Location_ID)
         {
-            if (Bill_Location_ID <= 0) Set_ValueNoCheck("Bill_Location_ID", null);
+            if (Bill_Location_ID <= 0) Set_Value("Bill_Location_ID", null);
             else
-                Set_ValueNoCheck("Bill_Location_ID", Bill_Location_ID);
+                Set_Value("Bill_Location_ID", Bill_Location_ID);
         }/** Get Bill To Location.
 @return Account /Prospect Location for invoicing */
         public int GetBill_Location_ID() { Object ii = Get_Value("Bill_Location_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }
@@ -79,7 +79,8 @@ namespace VAdvantage.Model
                 Set_Value("Bill_User_ID", Bill_User_ID);
         }/** Get Invoice Contact.
 @return Account/Prospect Contact for invoicing */
-        public int GetBill_User_ID() { Object ii = Get_Value("Bill_User_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }/** Set Business Partner.
+        public int GetBill_User_ID() { Object ii = Get_Value("Bill_User_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }
+        /** Set Business Partner.
 @param C_BPartner_ID Identifies a Customer/Prospect */
         public void SetC_BPartner_ID(int C_BPartner_ID)
         {
@@ -164,23 +165,15 @@ namespace VAdvantage.Model
 @param Export_ID Export */
         public void SetExport_ID(String Export_ID) { if (Export_ID != null && Export_ID.Length > 50) { log.Warning("Length > 50 - truncated"); Export_ID = Export_ID.Substring(0, 50); } Set_Value("Export_ID", Export_ID); }/** Get Export.
 @return Export */
-        public String GetExport_ID() { return (String)Get_Value("Export_ID"); }
-        /** IsExpiredContracts AD_Reference_ID=319 */
-        public static int ISEXPIREDCONTRACTS_AD_Reference_ID = 319;/** No = N */
-        public static String ISEXPIREDCONTRACTS_No = "N";/** Yes = Y */
-        public static String ISEXPIREDCONTRACTS_Yes = "Y";/** Is test a valid value.
-@param test testvalue
-@returns true if valid **/
-        public bool IsIsExpiredContractsValid(String test) { return test == null || test.Equals("N") || test.Equals("Y"); }/** Set Expired Contracts.
-@param IsExpiredContracts Expired Contracts */
-        public void SetIsExpiredContracts(String IsExpiredContracts)
-        {
-            if (!IsIsExpiredContractsValid(IsExpiredContracts))
-                throw new ArgumentException("IsExpiredContracts Invalid value - " + IsExpiredContracts + " - Reference_ID=319 - N - Y"); if (IsExpiredContracts != null && IsExpiredContracts.Length > 5) { log.Warning("Length > 5 - truncated"); IsExpiredContracts = IsExpiredContracts.Substring(0, 5); }
-            Set_Value("IsExpiredContracts", IsExpiredContracts);
-        }/** Get Expired Contracts.
-@return Expired Contracts */
-        public String GetIsExpiredContracts() { return (String)Get_Value("IsExpiredContracts"); }/** Set Price List.
+        public String GetExport_ID() { return (String)Get_Value("Export_ID"); }/** Set Expired Contracts.
+@param IsExpiredContracts It Identifies Expired Contracts. */
+        public void SetIsExpiredContracts(Boolean IsExpiredContracts) { Set_Value("IsExpiredContracts", IsExpiredContracts); }/** Get Expired Contracts.
+@return It Identifies Expired Contracts. */
+        public Boolean IsExpiredContracts() { Object oo = Get_Value("IsExpiredContracts"); if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo); } return false; }/** Set Sales Transaction.
+@param IsSOTrx This is a Sales Transaction */
+        public void SetIsSOTrx(Boolean IsSOTrx) { Set_Value("IsSOTrx", IsSOTrx); }/** Get Sales Transaction.
+@return This is a Sales Transaction */
+        public Boolean IsSOTrx() { Object oo = Get_Value("IsSOTrx"); if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo); } return false; }/** Set Price List.
 @param M_PriceList_ID Unique identifier of a Price List */
         public void SetM_PriceList_ID(int M_PriceList_ID)
         {
@@ -190,8 +183,8 @@ namespace VAdvantage.Model
         }/** Get Price List.
 @return Unique identifier of a Price List */
         public int GetM_PriceList_ID() { Object ii = Get_Value("M_PriceList_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }
-        /** Ref_Contract_ID AD_Reference_ID=1000265 */
-        public static int REF_CONTRACT_ID_AD_Reference_ID = 1000265;/** Set Contract Ref..
+        /** Ref_Contract_ID AD_Reference_ID=1000268 */
+        public static int REF_CONTRACT_ID_AD_Reference_ID = 1000268;/** Set Contract Ref..
 @param Ref_Contract_ID Reference of base contract */
         public void SetRef_Contract_ID(int Ref_Contract_ID)
         {
@@ -233,21 +226,19 @@ namespace VAdvantage.Model
                 Set_Value("VAS_ContractCategory_ID", VAS_ContractCategory_ID);
         }/** Get VAS_ContractCategory_ID.
 @return VAS_ContractCategory_ID */
-        public int GetVAS_ContractCategory_ID() { Object ii = Get_Value("VAS_ContractCategory_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }/** Set Contract Duration.
+        public int GetVAS_ContractCategory_ID() { Object ii = Get_Value("VAS_ContractCategory_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }/** Set Contract Years.
 @param VAS_ContractDuration Duration of contract. */
-        public void SetVAS_ContractDuration(String VAS_ContractDuration) { if (VAS_ContractDuration != null && VAS_ContractDuration.Length > 10) { log.Warning("Length > 10 - truncated"); VAS_ContractDuration = VAS_ContractDuration.Substring(0, 10); } Set_Value("VAS_ContractDuration", VAS_ContractDuration); }/** Get Contract Duration.
+        public void SetVAS_ContractDuration(Decimal? VAS_ContractDuration) { Set_Value("VAS_ContractDuration", (Decimal?)VAS_ContractDuration); }/** Get Contract Years.
 @return Duration of contract. */
-        public String GetVAS_ContractDuration() { return (String)Get_Value("VAS_ContractDuration"); }
-        /** Set Contract Months.
-@param VAS_ContractMonths Months of contract. */
-        public void SetVAS_ContractMonths(String VAS_ContractMonths) { if (VAS_ContractMonths != null && VAS_ContractMonths.Length > 10) { log.Warning("Length > 10 - truncated"); VAS_ContractMonths = VAS_ContractMonths.Substring(0, 10); } Set_Value("VAS_ContractMonths", VAS_ContractMonths); }/** Get Contract Months.
-@return Months of contract. */
-        public String GetVAS_ContractMonths() { return (String)Get_Value("VAS_ContractMonths"); }
-        /** Set VAS_ContractMaster_ID.
-@param VAS_ContractMaster_ID VAS_ContractMaster_ID */
-        public void SetVAS_ContractMaster_ID(int VAS_ContractMaster_ID) { if (VAS_ContractMaster_ID < 1) throw new ArgumentException("VAS_ContractMaster_ID is mandatory."); Set_ValueNoCheck("VAS_ContractMaster_ID", VAS_ContractMaster_ID); }/** Get VAS_ContractMaster_ID.
-@return VAS_ContractMaster_ID */
-        public int GetVAS_ContractMaster_ID() { Object ii = Get_Value("VAS_ContractMaster_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }/** Set Contract Summary.
+        public Decimal GetVAS_ContractDuration() { Object bd = Get_Value("VAS_ContractDuration"); if (bd == null) return Env.ZERO; return Convert.ToDecimal(bd); }/** Set Contract Master.
+@param VAS_ContractMaster_ID Contract Master  allows user to define the contract. */
+        public void SetVAS_ContractMaster_ID(int VAS_ContractMaster_ID) { if (VAS_ContractMaster_ID < 1) throw new ArgumentException("VAS_ContractMaster_ID is mandatory."); Set_ValueNoCheck("VAS_ContractMaster_ID", VAS_ContractMaster_ID); }/** Get Contract Master.
+@return Contract Master  allows user to define the contract. */
+        public int GetVAS_ContractMaster_ID() { Object ii = Get_Value("VAS_ContractMaster_ID"); if (ii == null) return 0; return Convert.ToInt32(ii); }/** Set Contract Months.
+@param VAS_ContractMonths Duration of the Contracts . */
+        public void SetVAS_ContractMonths(Decimal? VAS_ContractMonths) { Set_Value("VAS_ContractMonths", (Decimal?)VAS_ContractMonths); }/** Get Contract Months.
+@return Duration of the Contracts . */
+        public Decimal GetVAS_ContractMonths() { Object bd = Get_Value("VAS_ContractMonths"); if (bd == null) return Env.ZERO; return Convert.ToDecimal(bd); }/** Set Contract Summary.
 @param VAS_ContractSummary Short Summary of Contract. */
         public void SetVAS_ContractSummary(String VAS_ContractSummary) { if (VAS_ContractSummary != null && VAS_ContractSummary.Length > 1000) { log.Warning("Length > 1000 - truncated"); VAS_ContractSummary = VAS_ContractSummary.Substring(0, 1000); } Set_Value("VAS_ContractSummary", VAS_ContractSummary); }/** Get Contract Summary.
 @return Short Summary of Contract. */
@@ -255,7 +246,11 @@ namespace VAdvantage.Model
 @param VAS_ContractUtilizedAmount Amount Utilized from Contract Total. */
         public void SetVAS_ContractUtilizedAmount(Decimal? VAS_ContractUtilizedAmount) { Set_Value("VAS_ContractUtilizedAmount", (Decimal?)VAS_ContractUtilizedAmount); }/** Get Contract Utilized Amount.
 @return Amount Utilized from Contract Total. */
-        public Decimal GetVAS_ContractUtilizedAmount() { Object bd = Get_Value("VAS_ContractUtilizedAmount"); if (bd == null) return Env.ZERO; return Convert.ToDecimal(bd); }/** Set Jurisdiction.
+        public Decimal GetVAS_ContractUtilizedAmount() { Object bd = Get_Value("VAS_ContractUtilizedAmount"); if (bd == null) return Env.ZERO; return Convert.ToDecimal(bd); }/** Set Approved.
+@param VAS_IsApproved This checkbox indicates that this record is approved or not */
+        public void SetVAS_IsApproved(Boolean VAS_IsApproved) { Set_Value("VAS_IsApproved", VAS_IsApproved); }/** Get Approved.
+@return This checkbox indicates that this record is approved or not */
+        public Boolean IsVAS_IsApproved() { Object oo = Get_Value("VAS_IsApproved"); if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo); } return false; }/** Set Jurisdiction.
 @param VAS_Jurisdiction Jurisdiction for contract. */
         public void SetVAS_Jurisdiction(String VAS_Jurisdiction) { if (VAS_Jurisdiction != null && VAS_Jurisdiction.Length > 30) { log.Warning("Length > 30 - truncated"); VAS_Jurisdiction = VAS_Jurisdiction.Substring(0, 30); } Set_Value("VAS_Jurisdiction", VAS_Jurisdiction); }/** Get Jurisdiction.
 @return Jurisdiction for contract. */
@@ -275,7 +270,26 @@ namespace VAdvantage.Model
 @param VAS_RenewalTerm Term for the renewal. */
         public void SetVAS_RenewalTerm(String VAS_RenewalTerm) { if (VAS_RenewalTerm != null && VAS_RenewalTerm.Length > 500) { log.Warning("Length > 500 - truncated"); VAS_RenewalTerm = VAS_RenewalTerm.Substring(0, 500); } Set_Value("VAS_RenewalTerm", VAS_RenewalTerm); }/** Get Renewal Term.
 @return Term for the renewal. */
-        public String GetVAS_RenewalTerm() { return (String)Get_Value("VAS_RenewalTerm"); }/** Set VAS_Terminate.
+        public String GetVAS_RenewalTerm() { return (String)Get_Value("VAS_RenewalTerm"); }
+        /** VAS_Status AD_Reference_ID=1000279 */
+        public static int VAS_STATUS_AD_Reference_ID = 1000279;/** Approved = ARD */
+        public static String VAS_STATUS_Approved = "ARD";/** Drafted = DFT */
+        public static String VAS_STATUS_Drafted = "DFT";/** Expired = EXP */
+        public static String VAS_STATUS_Expired = "EXP";/** Sent For Approval = SFA */
+        public static String VAS_STATUS_SentForApproval = "SFA";/** Terminated = TRM */
+        public static String VAS_STATUS_Terminated = "TRM";/** Is test a valid value.
+@param test testvalue
+@returns true if valid **/
+        public bool IsVAS_StatusValid(String test) { return test == null || test.Equals("ARD") || test.Equals("DFT") || test.Equals("EXP") || test.Equals("SFA") || test.Equals("TRM"); }/** Set Status.
+@param VAS_Status Status */
+        public void SetVAS_Status(String VAS_Status)
+        {
+            if (!IsVAS_StatusValid(VAS_Status))
+                throw new ArgumentException("VAS_Status Invalid value - " + VAS_Status + " - Reference_ID=1000279 - ARD - DFT - EXP - SFA - TRM"); if (VAS_Status != null && VAS_Status.Length > 3) { log.Warning("Length > 3 - truncated"); VAS_Status = VAS_Status.Substring(0, 3); }
+            Set_Value("VAS_Status", VAS_Status);
+        }/** Get Status.
+@return Status */
+        public String GetVAS_Status() { return (String)Get_Value("VAS_Status"); }/** Set VAS_Terminate.
 @param VAS_Terminate Date of termination of contract.  */
         public void SetVAS_Terminate(Boolean VAS_Terminate) { Set_Value("VAS_Terminate", VAS_Terminate); }/** Get VAS_Terminate.
 @return Date of termination of contract.  */

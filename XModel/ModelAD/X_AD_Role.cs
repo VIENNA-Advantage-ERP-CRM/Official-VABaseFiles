@@ -822,7 +822,14 @@ namespace VAdvantage.Model
         public void SetShowSharedRecords(Boolean ShowSharedRecords) { Set_Value("ShowSharedRecords", ShowSharedRecords); }/** Get Show Shared Records.
 @return Show Shared Records */
         public Boolean IsShowSharedRecords() { Object oo = Get_Value("ShowSharedRecords"); if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo); } return false; }
+
+        public void SetIsAutoDataMarking(Boolean IsAutoDataMarking) { Set_Value("IsAutoDataMarking", IsAutoDataMarking); }/** Get Auto Data marking.
+@return Auto Data marking */
+        public Boolean IsAutoDataMarking() { Object oo = Get_Value("IsAutoDataMarking"); if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo); } return false; }
+
     }
+
+
 
 }
 

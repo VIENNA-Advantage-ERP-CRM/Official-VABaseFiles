@@ -3,8 +3,8 @@ namespace VAdvantage.Model{
 using System;using System.Text;using VAdvantage.DataBase;using VAdvantage.Common;using VAdvantage.Classes;using VAdvantage.Process;using VAdvantage.Model;using VAdvantage.Utility;using System.Data;/** Generated Model for Fact_Accumulation
  *  @author Raghu (Updated) 
  *  @version Vienna Framework 1.1.1 - $Id$ */
-public class X_Fact_Accumulation : PO{public X_Fact_Accumulation (Context ctx, int Fact_Accumulation_ID, Trx trxName) : base (ctx, Fact_Accumulation_ID, trxName){/** if (Fact_Accumulation_ID == 0){SetFACT_ACCUMULATION_ID (0);} */
-}public X_Fact_Accumulation (Ctx ctx, int Fact_Accumulation_ID, Trx trxName) : base (ctx, Fact_Accumulation_ID, trxName){/** if (Fact_Accumulation_ID == 0){SetFACT_ACCUMULATION_ID (0);} */
+public class X_Fact_Accumulation : PO{public X_Fact_Accumulation (Context ctx, int Fact_Accumulation_ID, Trx trxName) : base (ctx, Fact_Accumulation_ID, trxName){/** if (Fact_Accumulation_ID == 0){SetFact_Accumulation_ID (0);} */
+}public X_Fact_Accumulation (Ctx ctx, int Fact_Accumulation_ID, Trx trxName) : base (ctx, Fact_Accumulation_ID, trxName){/** if (Fact_Accumulation_ID == 0){SetFact_Accumulation_ID (0);} */
 }/** Load Constructor 
 @param ctx context
 @param rs result set 
@@ -79,11 +79,11 @@ public String GetDescription() {return (String)Get_Value("Description");}/** Set
 @param Export_ID Export */
 public void SetExport_ID (String Export_ID){if (Export_ID != null && Export_ID.Length > 50){log.Warning("Length > 50 - truncated");Export_ID = Export_ID.Substring(0,50);}Set_ValueNoCheck ("Export_ID", Export_ID);}/** Get Export.
 @return Export */
-public String GetExport_ID() {return (String)Get_Value("Export_ID");}/** Set FACT_ACCUMULATION_ID.
-@param FACT_ACCUMULATION_ID FACT_ACCUMULATION_ID */
-public void SetFACT_ACCUMULATION_ID (int FACT_ACCUMULATION_ID){if (FACT_ACCUMULATION_ID < 1) throw new ArgumentException ("FACT_ACCUMULATION_ID is mandatory.");Set_ValueNoCheck ("FACT_ACCUMULATION_ID", FACT_ACCUMULATION_ID);}/** Get FACT_ACCUMULATION_ID.
-@return FACT_ACCUMULATION_ID */
-public int GetFACT_ACCUMULATION_ID() {Object ii = Get_Value("FACT_ACCUMULATION_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set ISACTIVITY.
+public String GetExport_ID() {return (String)Get_Value("Export_ID");}/** Set Fact_Accumulation_ID.
+@param Fact_Accumulation_ID Fact_Accumulation_ID */
+public void SetFact_Accumulation_ID (int Fact_Accumulation_ID){if (Fact_Accumulation_ID < 1) throw new ArgumentException ("Fact_Accumulation_ID is mandatory.");Set_ValueNoCheck ("Fact_Accumulation_ID", Fact_Accumulation_ID);}/** Get Fact_Accumulation_ID.
+@return Fact_Accumulation_ID */
+public int GetFact_Accumulation_ID() {Object ii = Get_Value("Fact_Accumulation_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set ISACTIVITY.
 @param ISACTIVITY ISACTIVITY */
 public void SetISACTIVITY (Boolean ISACTIVITY){Set_Value ("ISACTIVITY", ISACTIVITY);}/** Get ISACTIVITY.
 @return ISACTIVITY */
