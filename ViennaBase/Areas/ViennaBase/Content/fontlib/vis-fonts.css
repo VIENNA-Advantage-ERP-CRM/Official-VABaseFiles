@@ -1023,6 +1023,10 @@
     content: "\e9f0";
 }
 
+.vis-bue:before {
+    content: "\e9f0";
+}
+
 /*new icons*/
 .vis-debit-ico:before {
     content: "\e9fb";
