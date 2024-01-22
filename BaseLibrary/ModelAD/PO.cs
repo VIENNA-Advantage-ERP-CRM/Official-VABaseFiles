@@ -2861,6 +2861,8 @@ namespace VAdvantage.Model
                 return false;
             else if (_mNewValues[index] == DBNull.Value && _mOldValues[index] == null)
                 return false;
+            else if (_mNewValues[index] == Null.NULL && _mOldValues[index] == null)
+                return false;
             return !_mNewValues[index].Equals(_mOldValues[index]);
         }
 
