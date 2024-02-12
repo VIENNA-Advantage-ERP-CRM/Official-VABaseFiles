@@ -86,22 +86,24 @@ namespace VAdvantage.Model
     [Obsolete]
     public class ModalValidatorVariables
     {
-        /** Model Change Type New		*/
+        // Model Change Type New		
         public const int CHANGETYPE_NEW = 1;
 
        
-        /** Model Change Type Change	*/
+        // Model Change Type Change	
         public const int CHANGETYPE_CHANGE = 2;
 
-        /** Model Change Type Delete	*/
+        // Model Change Type Delete	
         public const int CHANGETYPE_DELETE = 3;
 
-       
 
-        /** Called before document is prepared		*/
+        // Called before document is prepared		
         public const int DOCTIMING_BEFORE_PREPARE = 8;
-        /** Called after document is processed		*/
+        // Called after document is processed		
         public const int DOCTIMING_AFTER_COMPLETE = 9;
+
+
+
     }
 
     /// <summary>
@@ -109,22 +111,47 @@ namespace VAdvantage.Model
     /// </summary>
     public class ModelValidatorVariables
     {
-        /** Model Change Type New		*/
+        // Model Change Type New		
         public const int CHANGETYPE_NEW = 1;
 
 
-        /** Model Change Type Change	*/
+        // Model Change Type Change	
         public const int CHANGETYPE_CHANGE = 2;
 
-        /** Model Change Type Delete	*/
+        // Model Change Type Delete	
         public const int CHANGETYPE_DELETE = 3;
 
+        // Called before document is prepared 
+        public const int DOCTIMING_BEFORE_PREPARE = 1;
+        // Called before document is void 
+        public const int DOCTIMING_BEFORE_VOID = 2;
+        // Called before document is close 
+        public const int DOCTIMING_BEFORE_CLOSE = 3;
+        // Called before document is reactivate 
+        public const int DOCTIMING_BEFORE_REACTIVATE = 4;
+        // Called before document is reversecorrect 
+        public const int DOCTIMING_BEFORE_REVERSECORRECT = 5;
+        // Called before document is reverseaccrual 
+        public const int DOCTIMING_BEFORE_REVERSEACCRUAL = 6;
+        // Called before document is completed 
+        public const int DOCTIMING_BEFORE_COMPLETE = 7;
+        // Called after document is prepared 
+        public const int DOCTIMING_AFTER_PREPARE = 8;
+        // Called after document is completed 
+        public const int DOCTIMING_AFTER_COMPLETE = 9; // Compatibility with Compiere 260c
+        // Called after document is void 
+        public const int DOCTIMING_AFTER_VOID = 10;
+        // Called after document is closed 
+        public const int DOCTIMING_AFTER_CLOSE = 11;
+        // Called after document is reactivated 
+        public const int DOCTIMING_AFTER_REACTIVATE = 12;
+        // Called after document is reversecorrect 
+        public const int DOCTIMING_AFTER_REVERSECORRECT = 13;
+        // Called after document is reverseaccrual 
+        public const int DOCTIMING_AFTER_REVERSEACCRUAL = 14;
+       
 
-
-        /** Called before document is prepared		*/
-        public const int DOCTIMING_BEFORE_PREPARE = 8;
-        /** Called after document is processed		*/
-        public const int DOCTIMING_AFTER_COMPLETE = 9;
+        
     }
 
     /// <summary>
@@ -138,7 +165,7 @@ namespace VAdvantage.Model
         public abstract Ctx GetCtx();
         public abstract Trx GetTrx();
 
-        /* Model Action with skip Options */
+        // Model Action with skip Options 
         public virtual bool BeforeSave(bool newRecord, out bool skipBase)
         {
             skipBase = false;
@@ -160,9 +187,9 @@ namespace VAdvantage.Model
             return success;
         }
 
-        /* Above actions are called by PO */
+        // Above actions are called by PO 
 
-        /* Doc Actions */
+        // Doc Actions 
 
         /// <summary>
         /// Prepare It
@@ -195,6 +222,37 @@ namespace VAdvantage.Model
             return "";
         }
 
+        public virtual string CloseIt(out bool skipBase)
+        {
+            skipBase = true;
+            return "";
+        }
+        public virtual string InvalidateIt(out bool skipBase)
+        {
+            skipBase = true;
+            return "";
+        }
+        public virtual string ReActivateIt(out bool skipBase)
+        {
+            skipBase = true;
+            return "";
+        }
+        public virtual string RejectIt(out bool skipBase)
+        {
+            skipBase = true;
+            return "";
+        }
+        public virtual string ReverseAccrualIt(out bool skipBase)
+        {
+            skipBase = true;
+            return "";
+        }
+        public virtual string ReverseCorrectIt(out bool skipBase)
+        {
+            skipBase = true;
+            return "";
+        }
+
     }
 
     /// <summary>
@@ -203,17 +261,17 @@ namespace VAdvantage.Model
     /// </summary>
     public class ModelValidationEngine
     {
-        /** Engine Singleton				*/
+        // Engine Singleton				
         private static ModelValidationEngine _engine = null;
-        /* Model validator lists */
+        // Model validator lists 
         private List<ModelValidator> _validators = new List<ModelValidator>();
-        /* global validator*/
+        // global validator
         private List<ModelValidator> _globalValidators = new List<ModelValidator>();
-        /**	Model Change Listeners			*/
+        //	Model Change Listeners			
         private Dictionary<String, List<ModelValidator>> _modelChangeListeners = new Dictionary<String, List<ModelValidator>>();
-        /**	Document Validation Listeners			*/
+        //	Document Validation Listeners			
         private Dictionary<String, List<ModelValidator>> _docValidateListeners = new Dictionary<String, List<ModelValidator>>();
-        /**	Model actions Listeners			*/
+        //	Model actions Listeners			
         private Dictionary<String, List<ModelValidator>> _modelActionListeners = new Dictionary<String, List<ModelValidator>>();
         //log class object
         private static VLogger s_log = VLogger.GetVLogger(typeof(ModelValidationEngine).FullName);
@@ -311,7 +369,7 @@ namespace VAdvantage.Model
             catch (Exception e)
             {
                 //logging to db will try to init ModelValidationEngine again!
-                s_log.Severe("error in invoking ModelValidator class =>" + className);
+                s_log.Severe("error in invoking ModelValidator class =>" + className + " with exception=>"+e.Message);
             }
         }
 
