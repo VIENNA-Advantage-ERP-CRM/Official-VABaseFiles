@@ -1022,3 +1022,44 @@
 .vis-batchupdate:before {
     content: "\e9f0";
 }
+
+.vis-bue:before {
+    content: "\e9f0";
+}
+
+/*new icons*/
+.vis-debit-ico:before {
+    content: "\e9fb";
+}
+
+.vis-credit-ico:before {
+    content: "\e9fa";
+}
+
+.vis-double-dot:before {
+    content: "\e9f7";
+}
+
+.vis-single-dot:before {
+    content: "\e9f8";
+}
+
+.vis-requisition:before {
+    content: "\e9f9";
+}
+
+.vis-order-log:before {
+    content: "\e9f6";
+}
+
+.vis-next-arrow:before {
+    content: "\e9f5";
+}
+
+.vis-excel-download:before {
+    content: "\e9f3";
+}
+
+.vis-excel-upload:before {
+    content: "\e9f4";
+}
