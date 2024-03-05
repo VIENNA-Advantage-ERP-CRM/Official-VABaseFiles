@@ -211,45 +211,76 @@ namespace VAdvantage.Model
             skipBase = false;
             return "";
         }
+        
+        /// <summary>
+        /// Approve It
+        /// </summary>
+        /// <param name="skipBase"></param>
+        /// <returns></returns>
         public virtual string ApproveIt(out bool skipBase)
         {
             skipBase = false;
             return "";
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="skipBase"></param>
+        /// <returns></returns>
         public virtual string VoidIt(out bool skipBase)
         {
-            skipBase = true;
+            skipBase = false;
             return "";
         }
 
         public virtual string CloseIt(out bool skipBase)
         {
-            skipBase = true;
+            skipBase = false;
             return "";
         }
+        /// <summary>
+        /// InvalidateIt
+        /// </summary>
+        /// <param name="skipBase"></param>
+        /// <returns></returns>
         public virtual string InvalidateIt(out bool skipBase)
         {
-            skipBase = true;
+            skipBase = false;
             return "";
         }
+        /// <summary>
+        /// ReActivateIt
+        /// </summary>
+        /// <param name="skipBase"></param>
+        /// <returns></returns>
         public virtual string ReActivateIt(out bool skipBase)
         {
-            skipBase = true;
+            skipBase = false;
             return "";
         }
         public virtual string RejectIt(out bool skipBase)
         {
-            skipBase = true;
+            skipBase = false;
             return "";
         }
+        /// <summary>
+        /// ReverseAccrualIt
+        /// </summary>
+        /// <param name="skipBase"></param>
+        /// <returns></returns>
         public virtual string ReverseAccrualIt(out bool skipBase)
         {
-            skipBase = true;
+            skipBase = false;
             return "";
         }
+        /// <summary>
+        /// ReverseCorrectIt
+        /// </summary>
+        /// <param name="skipBase"></param>
+        /// <returns></returns>
         public virtual string ReverseCorrectIt(out bool skipBase)
         {
-            skipBase = true;
+            skipBase = false;
             return "";
         }
 
