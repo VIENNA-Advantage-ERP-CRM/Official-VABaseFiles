@@ -1063,3 +1063,46 @@
 .vis-excel-upload:before {
     content: "\e9f4";
 }
+
+.vis-zoom-out:before {
+    content: "\e9fd";
+}
+
+.vis-doc-access:before {
+    content: "\e9fe";
+}
+
+.vis-email-bell:before {
+    content: "\e9ff";
+}
+
+.vis-minus:before {
+    content: "\ea00";
+}
+
+.vis-user-msg:before {
+    content: "\ea01";
+}
+
+.vis-variable:before {
+    content: "\ea02";
+}
+
+.vis-card-f:before {
+    content: "\ea03";
+}
+
+.vis-card-o:before {
+    content: "\ea04";
+}
+.vis-card-ox:before {
+    content: "\e950";
+}
+
+.vis-back-arrow:before {
+    content: "\e9fc";
+}
+
+.vis-window-compress:before {
+    content: "\e9f2";
+}
