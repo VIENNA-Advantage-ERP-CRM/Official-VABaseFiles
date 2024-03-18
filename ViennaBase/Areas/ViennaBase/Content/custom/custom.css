@@ -468,7 +468,8 @@ input:not([type=button]), select, textarea{
 .vis-ctrl-switch {
     height: 0;
     width: 0;
-    visibility: hidden;
+    /*visibility: hidden;*/
+    opacity:0;
 }
 
 .vis-ctrl-switchSlider {
