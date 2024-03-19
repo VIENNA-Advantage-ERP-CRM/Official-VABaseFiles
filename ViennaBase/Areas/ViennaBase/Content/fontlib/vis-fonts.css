@@ -1106,3 +1106,6 @@
 .vis-window-compress:before {
     content: "\e9f2";
 }
+.vis-window:before {
+    content: "\ea05";
+}
