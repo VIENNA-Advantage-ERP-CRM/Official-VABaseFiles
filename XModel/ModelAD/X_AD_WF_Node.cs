@@ -1394,6 +1394,26 @@ namespace VAdvantage.Model
             return false;
         }
 
+        /** Set Skip Validation.
+        @param VA102_IsSkipValidation Flag to notify whether validations on Node should be skipped or not */
+        public void SetVA102_IsSkipValidation(Boolean VA102_IsSkipValidation)
+        {
+            Set_Value("VA102_IsSkipValidation", VA102_IsSkipValidation);
+        }
+        /** Get Skip Validation.
+        @return Flag to notify whether validations on Node should be skipped or not */
+        public Boolean IsVA102_IsSkipValidation()
+        {
+            Object oo = Get_Value("VA102_IsSkipValidation");
+            if (oo != null)
+            {
+                if (oo.GetType() == typeof(bool))
+                    return Convert.ToBoolean(oo);
+                return "Y".Equals(oo);
+            }
+            return false;
+        }
+
     }
 
 }
