@@ -78,6 +78,9 @@ namespace VAdvantage.Model
 
         private int parent_ID = 0;
 
+        //hold AD_Tab_ID of selected tab of current window
+        private int winTabID = 0;
+
         /// <summary>
         /// Extended Model Action Binded object
         /// </summary>
@@ -5405,6 +5408,25 @@ namespace VAdvantage.Model
                 s_docWFMgr.Process(this, p_info.getAD_Table_ID());
             }
 
+        }
+
+        /// <summary>
+        /// Set AD_Tab_ID of Selected Tab of Current Window
+        /// </summary>
+        /// <param name="AD_Tab_ID"></param>
+        public void SetWindowTabID(int AD_Tab_ID)
+        {
+            winTabID = AD_Tab_ID;
+        }
+        /// <summary>
+        /// Get AD_Tab_ID of Selected Tab of Current Window
+        /// </summary>
+        /// <returns>
+        /// AD_Tab_ID of Selected Tab of Current Window
+        /// </returns>
+        public int GetWindowTabID()
+        {
+            return winTabID;
         }
     }
 
