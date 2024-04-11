@@ -239,13 +239,16 @@ namespace VAdvantage.Model
 
         /** AzureBlobStorage = AB */
         public static String FILELOCATION_AzureBlobStorage = "AB";
+        
+        /** OCI Object Storage = OS */
+        public static String FILELOCATION_OCIObjectStorage = "OS";
 
         /** Is test a valid value.
         @param test testvalue
         @returns true if valid **/
         public bool IsFileLocationValid(String test)
         {
-            return test.Equals("DB") || test.Equals("FT") || test.Equals("SR") || test.Equals("WS") || test.Equals("ID") || test.Equals("AB");
+            return test.Equals("DB") || test.Equals("FT") || test.Equals("SR") || test.Equals("WS") || test.Equals("OS") || test.Equals("ID") || test.Equals("AB");
         }
         /** Set File Location.
         @param FileLocation File Location */
