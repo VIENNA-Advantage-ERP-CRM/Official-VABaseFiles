@@ -843,7 +843,7 @@ namespace VAdvantage.Model
 //        }/** Get Record Type.
 //@return To determine system will capture records of table having master table type or all while recording for auto data marking process */
 //        public String GetRecordType() { return (String)Get_Value("RecordType"); }
-//        }
+       }
 }
 
 
