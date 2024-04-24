@@ -1063,3 +1063,165 @@
 .vis-excel-upload:before {
     content: "\e9f4";
 }
+
+.vis-zoom-out:before {
+    content: "\e9fd";
+}
+
+.vis-doc-access:before {
+    content: "\e9fe";
+}
+
+.vis-email-bell:before {
+    content: "\e9ff";
+}
+
+.vis-minus:before {
+    content: "\ea00";
+}
+
+.vis-user-msg:before {
+    content: "\ea01";
+}
+
+.vis-variable:before {
+    content: "\ea02";
+}
+
+.vis-card-f:before {
+    content: "\ea03";
+}
+
+.vis-card-o:before {
+    content: "\ea04";
+}
+.vis-card-ox:before {
+    content: "\e950";
+}
+
+.vis-back-arrow:before {
+    content: "\e9fc";
+}
+
+.vis-window-compress:before {
+    content: "\e9f2";
+}
+.vis-window:before {
+    content: "\ea05";
+}
+
+.vis-address:before {
+    content: "\ea09";
+}
+
+.vis-asset:before {
+    content: "\ea0a";
+}
+
+.vis-bank-ac:before {
+    content: "\ea0b";
+}
+
+.vis-bank-acc:before {
+    content: "\ea0c";
+}
+
+.vis-camera:before {
+    content: "\ea0d";
+}
+
+.vis-claim:before {
+    content: "\ea0e";
+}
+
+.vis-country:before {
+    content: "\ea0f";
+}
+
+.vis-currency:before {
+    content: "\ea10";
+}
+
+.vis-doc-no:before {
+    content: "\ea11";
+}
+
+.vis-docs:before {
+    content: "\ea12";
+}
+
+.vis-dependents:before {
+    content: "\ea13";
+}
+
+.vis-end-time:before {
+    content: "\ea14";
+}
+
+.vis-epf:before {
+    content: "\ea15";
+}
+
+.vis-gift-travel:before {
+    content: "\ea16";
+}
+
+.vis-image-o:before {
+    content: "\ea17";
+}
+
+.vis-km:before {
+    content: "\ea18";
+}
+
+.vis-marital-status:before {
+    content: "\ea19";
+}
+
+.vis-name:before {
+    content: "\ea1a";
+}
+
+.vis-new-age-icon:before {
+    content: "\ea1b";
+}
+
+.vis-no-icon:before {
+    content: "\ea1c";
+}
+
+.vis-pic:before {
+    content: "\ea1d";
+}
+
+.vis-profile-pic:before {
+    content: "\ea1e";
+}
+
+.vis-relation-type:before {
+    content: "\ea1f";
+}
+
+.vis-socso-no:before {
+    content: "\ea20";
+}
+
+.vis-start-date:before {
+    content: "\ea21";
+}
+
+.vis-start-time:before {
+    content: "\ea22";
+}
+
+.vis-tax:before {
+    content: "\ea23";
+}
+
+.vis-tilte:before {
+    content: "\ea24";
+}
+
+.vis-yes:before {
+    content: "\ea25";
+}
