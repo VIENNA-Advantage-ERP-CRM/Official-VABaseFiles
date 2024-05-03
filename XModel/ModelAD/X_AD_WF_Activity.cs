@@ -463,10 +463,10 @@ namespace VAdvantage.Model
         @param Summary */
         public void SetSummary(String Summary)
         {
-            if (Summary != null && Summary.Length > 200)
+            if (Summary != null && Summary.Length > 1000)
             {
-                log.Warning("Length > 200 - truncated");
-                Summary = Summary.Substring(0, 200);
+                log.Warning("Length > 1000 - truncated");
+                Summary = Summary.Substring(0, 1000);
             }
             Set_Value("Summary", Summary);
         }
