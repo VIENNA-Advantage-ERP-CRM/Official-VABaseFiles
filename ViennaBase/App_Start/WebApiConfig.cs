@@ -18,7 +18,7 @@ namespace ViennaBase
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            //old
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi_1",
                 routeTemplate: "api/{controller}/{id}",
