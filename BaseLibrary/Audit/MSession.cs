@@ -186,7 +186,7 @@ namespace VAdvantage.Model
 
         public static MSession GetByWebSessionID(string websessionId)
         {
-            var id = DB.GetSQLValue(null,"SELECT AD_Session_ID FROM AD_Session WHERE WebSession = '" + websessionId + "' AND IsProcessed='Y' ");
+            var id = DB.GetSQLValue(null,"SELECT AD_Session_ID FROM AD_Session WHERE WebSession = '" + websessionId + "' AND Processed='Y' ");
             if (id > 0)
             {
                 MSession s = new MSession(new Ctx(), id, null);
