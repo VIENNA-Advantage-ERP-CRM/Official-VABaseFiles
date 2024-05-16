@@ -134,6 +134,7 @@ Globalize.addCultureInfo( "id-ID", "default", {
         "SkipThisTime": "Lewati kali ini",
         "ResendOTP": "Kirim ulang OTP",
         "CapsLockOn": "Capslock aktif",
+        "AccessNotGranted": "Akses tidak dapat diberikan. Silakan periksa kredensial atau akses sistem Anda.",
 	}
 });
 

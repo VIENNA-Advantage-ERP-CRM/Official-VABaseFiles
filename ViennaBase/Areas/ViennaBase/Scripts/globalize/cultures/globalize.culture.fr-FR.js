@@ -137,6 +137,7 @@
             "SkipThisTime": "Passer cette fois",
             "ResendOTP": "Renvoyer OTP",
             "CapsLockOn": "Touche Maj activée",
+            "AccessNotGranted": "L'accès ne peut pas être accordé. Veuillez vérifier vos informations d'identification ou votre accès au système.",
         }
 });
 

@@ -136,6 +136,7 @@ Globalize.addCultureInfo( "fi-FI", "default", {
 		"SkipThisTime": "Ohita tällä kertaa",
 		"ResendOTP": "Lähetä OTP uudelleen",
 		"CapsLockOn": "CAPS LOCK on päällä",
+		"AccessNotGranted": "Käyttöoikeutta ei voida myöntää. Tarkista kirjautumistietosi tai järjestelmän käyttöoikeus.",
 	}
 });
 

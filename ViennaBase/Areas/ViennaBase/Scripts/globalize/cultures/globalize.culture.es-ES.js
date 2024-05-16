@@ -138,6 +138,7 @@
             "SkipThisTime": "Omitir esta vez",
             "ResendOTP": "Reenviar OTP",
             "CapsLockOn": "Bloqueo de mayúsculas está activado",
+            "AccessNotGranted": "No se puede conceder el acceso. Por favor verifique sus credenciales o acceso al sistema.",
         }
 
     });

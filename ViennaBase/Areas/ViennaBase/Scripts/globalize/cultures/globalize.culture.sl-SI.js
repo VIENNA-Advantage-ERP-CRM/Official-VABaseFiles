@@ -138,6 +138,7 @@ Globalize.addCultureInfo( "sl-SI", "default", {
 		"SkipThisTime": "Tokrat preskočite",
 		"ResendOTP": "Znova pošljite OTP",
 		"CapsLockOn": "Caps Lock je vklopljen",
+		"AccessNotGranted": "Dostopa ni mogoče odobriti. Preverite svoje poverilnice ali dostop do sistema.",
 	}
 });
 
