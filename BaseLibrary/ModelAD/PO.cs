@@ -4334,6 +4334,7 @@ namespace VAdvantage.Model
                     dCopy._mNewValues[i] = (GlobalVariable.TO_DATE(DateTime.Now, dCopy.p_info.GetColumnDisplayType(i) == DisplayType.Date));
                 }
                 //dCopy._mNewValues[i] = GlobalVariable.TO_DATE(DateTime.Now,false) ;//new DateTime(CommonFunctions.CurrentTimeMillis());
+                // vis0008 fix done to set primary key column to null instead of setting it to 0
                 else if (colName.Equals(dCopy.p_info.GetTableName() + "_ID"))    //  KeyColumn
                     dCopy._mNewValues[i] = null;
                 else if (colName.Equals("Export_ID"))
