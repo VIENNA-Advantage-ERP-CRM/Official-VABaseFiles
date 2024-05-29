@@ -599,17 +599,19 @@ namespace VAdvantage.Model
         public static String SAVEATTACHMENTON_Database = "DB";
         /** FTP Location = FT */
         public static String SAVEATTACHMENTON_FTPLocation = "FT";
+        /** OCI Object Storage = OS */
+        public static String SAVEATTACHMENTON_OCIObjectStorage = "OS";
         /** Server File System = SR */
         public static String SAVEATTACHMENTON_ServerFileSystem = "SR";
         /** Web Service = WS */
-        public static String SAVEATTACHMENTON_WebService = "WS";
+        public static String SAVEATTACHMENTON_WebService = "WS";        
 
         /** Is test a valid value.
         @param test testvalue
         @returns true if valid **/
         public bool IsSaveAttachmentOnValid(String test)
         {
-            return test.Equals("DB") || test.Equals("FT") || test.Equals("SR") || test.Equals("WS");
+            return test.Equals("DB") || test.Equals("FT") || test.Equals("OS") || test.Equals("SR") || test.Equals("WS");
         }
         /** Set Save Attachment On.
         @param SaveAttachmentOn Save Attachment On */
@@ -617,7 +619,7 @@ namespace VAdvantage.Model
         {
             if (SaveAttachmentOn == null) throw new ArgumentException("SaveAttachmentOn is mandatory");
             if (!IsSaveAttachmentOnValid(SaveAttachmentOn))
-                throw new ArgumentException("SaveAttachmentOn Invalid value - " + SaveAttachmentOn + " - Reference_ID=1000154 - DB - FT - SR");
+                throw new ArgumentException("SaveAttachmentOn Invalid value - " + SaveAttachmentOn + " - Reference_ID=1000154 - DB - FT - OS - SR");
             if (SaveAttachmentOn.Length > 2)
             {
                 log.Warning("Length > 2 - truncated");

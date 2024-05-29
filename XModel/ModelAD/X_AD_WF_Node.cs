@@ -396,7 +396,7 @@ namespace VAdvantage.Model
         @returns true if valid **/
         public bool IsActionValid(String test)
         {
-            return test.Equals("A") || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("F") || test.Equals("G") || test.Equals("H") || test.Equals("I") || test.Equals("L") || test.Equals("M") || test.Equals("P") || test.Equals("R") || test.Equals("S") || test.Equals("T") || test.Equals("V") || test.Equals("W") || test.Equals("X") || test.Equals("Z");
+            return test.Equals("A") || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("F") || test.Equals("G") || test.Equals("H") || test.Equals("I") || test.Equals("L") || test.Equals("M") || test.Equals("P") || test.Equals("R") || test.Equals("S") || test.Equals("T") || test.Equals("U") || test.Equals("V") || test.Equals("W") || test.Equals("X") || test.Equals("Z");
         }
         /** Set Action.
         @param Action Indicates the Action to be performed */
@@ -404,7 +404,7 @@ namespace VAdvantage.Model
         {
             if (Action == null) throw new ArgumentException("Action is mandatory");
             if (!IsActionValid(Action))
-                throw new ArgumentException("Action Invalid value - " + Action + " - Reference_ID=302 - A - B - C - D - F - G - H - I - L - M - P - R - S - T - V - W - X - Z");
+                throw new ArgumentException("Action Invalid value - " + Action + " - Reference_ID=302 - A - B - C - D - F - G - H - I - L - M - P - R - S - T - U - V - W - X - Z");
             if (Action.Length > 1)
             {
                 log.Warning("Length > 1 - truncated");
@@ -1385,6 +1385,26 @@ namespace VAdvantage.Model
         public Boolean IsSurveyResponseRequired()
         {
             Object oo = Get_Value("SurveyResponseRequired");
+            if (oo != null)
+            {
+                if (oo.GetType() == typeof(bool))
+                    return Convert.ToBoolean(oo);
+                return "Y".Equals(oo);
+            }
+            return false;
+        }
+
+        /** Set Skip Validation.
+        @param VA102_IsSkipValidation Flag to notify whether validations on Node should be skipped or not */
+        public void SetVA102_IsSkipValidation(Boolean VA102_IsSkipValidation)
+        {
+            Set_Value("VA102_IsSkipValidation", VA102_IsSkipValidation);
+        }
+        /** Get Skip Validation.
+        @return Flag to notify whether validations on Node should be skipped or not */
+        public Boolean IsVA102_IsSkipValidation()
+        {
+            Object oo = Get_Value("VA102_IsSkipValidation");
             if (oo != null)
             {
                 if (oo.GetType() == typeof(bool))

@@ -78,6 +78,9 @@ namespace VAdvantage.Model
 
         private int parent_ID = 0;
 
+        //hold AD_Tab_ID of selected tab of current window
+        private int winTabID = 0;
+
         /// <summary>
         /// Extended Model Action Binded object
         /// </summary>
@@ -4328,11 +4331,12 @@ namespace VAdvantage.Model
                     dCopy._mNewValues[i] = p_ctx.GetAD_User_ID();
                 else if (colName.Equals("Created") || colName.Equals("Updated"))
                 {
-                    dCopy._mNewValues[i] = (GlobalVariable.TO_DATE(DateTime.Now, dCopy.p_info.GetColumnDisplayType(i) == DisplayType.Date));
-                }
+                    dCopy._mNewValues[i] = (GlobalVariable.TO_DATE(DateTime.Now, dCopy.p_info.GetColumnDisplayType(i) == DisplayType.Date));                }
                 //dCopy._mNewValues[i] = GlobalVariable.TO_DATE(DateTime.Now,false) ;//new DateTime(CommonFunctions.CurrentTimeMillis());
+
+                // vis0008 fix done to set primary key column to null instead of setting it to 0
                 else if (colName.Equals(dCopy.p_info.GetTableName() + "_ID"))    //  KeyColumn
-                    dCopy._mNewValues[i] = I_ZERO;
+                    dCopy._mNewValues[i] = null;
                 else if (colName.Equals("Export_ID"))
                     continue;
                 else
@@ -5411,6 +5415,25 @@ namespace VAdvantage.Model
                 s_docWFMgr.Process(this, p_info.getAD_Table_ID());
             }
 
+        }
+
+        /// <summary>
+        /// Set AD_Tab_ID of Selected Tab of Current Window
+        /// </summary>
+        /// <param name="AD_Tab_ID"></param>
+        public void SetWindowTabID(int AD_Tab_ID)
+        {
+            winTabID = AD_Tab_ID;
+        }
+        /// <summary>
+        /// Get AD_Tab_ID of Selected Tab of Current Window
+        /// </summary>
+        /// <returns>
+        /// AD_Tab_ID of Selected Tab of Current Window
+        /// </returns>
+        public int GetWindowTabID()
+        {
+            return winTabID;
         }
     }
 

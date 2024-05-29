@@ -826,11 +826,24 @@ namespace VAdvantage.Model
         public void SetIsAutoDataMarking(Boolean IsAutoDataMarking) { Set_Value("IsAutoDataMarking", IsAutoDataMarking); }/** Get Auto Data marking.
 @return Auto Data marking */
         public Boolean IsAutoDataMarking() { Object oo = Get_Value("IsAutoDataMarking"); if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo); } return false; }
-
-    }
-
-
-
+       
+///** RecordType AD_Reference_ID=1000315 */
+//        public static int RECORDTYPE_AD_Reference_ID = 1000315;/** Master Data And Transaction Data = A */
+//        public static String RECORDTYPE_MasterDataAndTransactionData = "A";/** Master Data = M */
+//        public static String RECORDTYPE_MasterData = "M";/** Is test a valid value.
+//@param test testvalue
+//@returns true if valid **/
+//        public bool IsRecordTypeValid(String test) { return test == null || test.Equals("A") || test.Equals("M"); }/** Set Record Type.
+//@param RecordType To determine system will capture records of table having master table type or all while recording for auto data marking process */
+//        public void SetRecordType(String RecordType)
+//        {
+//            if (!IsRecordTypeValid(RecordType))
+//                throw new ArgumentException("RecordType Invalid value - " + RecordType + " - Reference_ID=1000315 - A - M"); if (RecordType != null && RecordType.Length > 1) { log.Warning("Length > 1 - truncated"); RecordType = RecordType.Substring(0, 1); }
+//            Set_Value("RecordType", RecordType);
+//        }/** Get Record Type.
+//@return To determine system will capture records of table having master table type or all while recording for auto data marking process */
+//        public String GetRecordType() { return (String)Get_Value("RecordType"); }
+        }
 }
 
 
