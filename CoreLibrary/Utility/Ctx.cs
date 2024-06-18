@@ -1241,6 +1241,15 @@ namespace VAdvantage.Utility
         }
 
         /// <summary>
+        /// Set session id
+        /// </summary>
+        /// <param name="ad_session_id"></param>
+        public void SetAD_Session_ID(int ad_session_id)
+        {
+            SetContext("#AD_Session_ID",ad_session_id.ToString());
+        }
+
+        /// <summary>
         /// Get Warehouse Id from List
         /// </summary>
         /// <returns></returns>

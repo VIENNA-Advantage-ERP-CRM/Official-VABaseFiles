@@ -136,6 +136,7 @@ Globalize.addCultureInfo( "da-DK", "default", {
 		"SkipThisTime": "Spring denne gang over",
 		"ResendOTP": "Send OTP igen",
 		"CapsLockOn": "Caps Lock er på",
+		"AccessNotGranted":"Der kan ikke gives adgang. Tjek venligst dine legitimationsoplysninger eller systemadgang.",
 	}
 });
 

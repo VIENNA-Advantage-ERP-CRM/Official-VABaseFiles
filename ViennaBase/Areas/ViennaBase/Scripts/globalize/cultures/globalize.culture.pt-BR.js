@@ -137,6 +137,7 @@ Globalize.addCultureInfo( "pt-BR", "default", {
 		"SkipThisTime": "Pular desta vez",
 		"ResendOTP": "Reenviar OTP",
 		"CapsLockOn": "Caps Lock está ativado",
+		"AccessNotGranted": "O acesso não pode ser concedido. Verifique suas credenciais ou acesso ao sistema.",
 	}
 });
 

@@ -136,6 +136,7 @@ Globalize.addCultureInfo( "zh-HK", "default", {
 		"SkipThisTime": "Skip this time",
 		"ResendOTP": "Resend OTP",
 		"CapsLockOn": "Caps lock is on",
+		"AccessNotGranted": "Access cannot be granted. Please check your credentials or system access.",
 	}
 });
 

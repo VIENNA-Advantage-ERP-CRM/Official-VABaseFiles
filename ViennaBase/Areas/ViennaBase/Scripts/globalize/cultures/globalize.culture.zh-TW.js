@@ -158,6 +158,7 @@ Globalize.addCultureInfo( "zh-TW", "default", {
 		"SkipThisTime": "这次跳过",
 		"ResendOTP": "重新发送动态密码",
 		"CapsLockOn": "大寫鎖定已開啟",
+		"AccessNotGranted": "無法授予存取權限。請檢查您的憑證或系統存取權限。",
 	}
 });
 

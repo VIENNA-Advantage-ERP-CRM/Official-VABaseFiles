@@ -146,6 +146,7 @@ Globalize.addCultureInfo( "sv-SE", "default", {
         "SkipThisTime": "Hoppa över den här gången",
         "ResendOTP": "Skicka om OTP",
         "CapsLockOn": "Caps Lock är på",
+        "AccessNotGranted": "Tillträde kan inte beviljas. Kontrollera dina autentiseringsuppgifter eller systemåtkomst.",
 	}
 });
 

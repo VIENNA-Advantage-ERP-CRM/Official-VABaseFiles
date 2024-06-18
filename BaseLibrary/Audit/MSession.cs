@@ -86,7 +86,7 @@ namespace VAdvantage.Model
                
                 if (string.IsNullOrEmpty(requestAddr))
                 {
-                    requestAddr = session.GetRemote_Addr();
+                    requestAddr = session.GetRequest_Addr();
                 }
                 session = null;
                 createNew = true;
@@ -112,9 +112,90 @@ namespace VAdvantage.Model
             }
 
             return session;
-
-
         }
+
+        /// <summary>
+        /// Create Msession Object 
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="createNew">true</param>
+        /// <param name="requestAddr"></param>
+        /// <param name="webSessionId">web session id</param>
+        /// <returns></returns>
+        public static MSession Get(Ctx ctx, String webSessionId, Boolean createNew, String requestAddr )
+        {
+            int AD_Session_ID = ctx.GetContextAsInt("#AD_Session_ID");
+            MSession session = null;
+            if (AD_Session_ID > 0)
+                session = cache[AD_Session_ID];
+
+            if (session == null && AD_Session_ID > 0)
+            {
+                // check from DB
+                session = new MSession(ctx, AD_Session_ID, null);
+                if (session.Get_ID() != AD_Session_ID)
+                    session = null;
+                else
+                    cache.Add(AD_Session_ID, session);
+            }
+
+            if (session != null && session.IsProcessed())
+            {
+                s_log.Log(Level.WARNING, "Session already Processed=" + session);
+
+                cache.Remove(AD_Session_ID);
+
+                if (string.IsNullOrEmpty(requestAddr))
+                {
+                    requestAddr = session.GetRequest_Addr();
+                }
+                if (string.IsNullOrEmpty(webSessionId))
+                {
+                    webSessionId = session.GetWebSession();
+                }
+                session = null;
+                createNew = true;
+            }
+
+
+            if (session == null && createNew)
+            {
+                session = new MSession(ctx, null);	//	local session
+                if (!string.IsNullOrEmpty(requestAddr))
+                {
+                    session.SetRequest_Addr(requestAddr);
+                }
+                if (!string.IsNullOrEmpty(webSessionId))
+                {
+                    session.SetWebSession(webSessionId);
+                }
+                session.Save();
+                AD_Session_ID = session.GetAD_Session_ID();
+                ctx.SetContext("#AD_Session_ID", AD_Session_ID.ToString());
+                cache.Add(AD_Session_ID, session);
+            }
+
+            if (session == null)
+            {
+                s_log.Info("No Session->" + AD_Session_ID);
+            }
+
+            return session;
+        }
+
+
+        public static MSession GetByWebSessionID(string websessionId)
+        { 
+            var id = DB.GetSQLValue(null,"SELECT AD_Session_ID FROM AD_Session WHERE WebSession = '" + websessionId + "' AND Processed='Y' ");
+            if (id > 0)
+            {
+                MSession s = new MSession(new Ctx(), id, null);
+                if (s.Get_ID() > 0)
+                    return s;
+            }
+            return null;
+        }
+
 
 
         /// <summary>
@@ -141,7 +222,6 @@ namespace VAdvantage.Model
             }
             return session;
         }
-
 
         public static MSession Get(Ctx ctx, String SessionType, bool createNew, String Remote_Addr, String Remote_Host, String WebSession)
         {
@@ -178,8 +258,6 @@ namespace VAdvantage.Model
             }
             return session;
         }   //	get
-
-
 
         /// <summary>
         /// 	 * 	Standard Constructor
