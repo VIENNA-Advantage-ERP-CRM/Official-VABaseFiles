@@ -270,7 +270,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3971</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/VAdvantageHtml48_Base</IISUrl>
+          <IISUrl>http://localhost/VAdvantageHtml48</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
           <IISAppRootUrl>http://localhost/VAdvantageHtml48</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
