@@ -105,7 +105,8 @@ namespace ViennaBase
                         "~/Areas/ViennaBase/Scripts/downloader.js",
                          "~/Areas/ViennaBase/Scripts/tel_Input/data.min.js",
                          "~/Areas/ViennaBase/Scripts/tel_Input/intlTelInput.min.js",
-                        "~/Areas/ViennaBase/Scripts/tel_Input/jquery.mask.min.js"
+                        "~/Areas/ViennaBase/Scripts/tel_Input/jquery.mask.min.js",
+                        "~/Areas/ViennaBase/Scripts/owl.carousel.min.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/Areas/ViennaBase/Scripts/toastrjs").Include(
@@ -120,8 +121,6 @@ namespace ViennaBase
             bundles.Add(new ScriptBundle("~/Areas/ViennaBase/bundles/imgareaselecterjs").Include(
                 "~/Areas/ViennaBase/Scripts/jquery.imgareaselect.js"
                 ));
-
-            
 
 
             //bundles.Add(new ScriptBundle("~/bundles/CRV").Include(

@@ -249,6 +249,7 @@
     <Content Include="Areas\ViennaBase\Content\migration\bootstrap-reboot.min.css.map" />
     <Content Include="Areas\ViennaBase\Content\migration\bootstrap.css.map" />
     <Content Include="Areas\ViennaBase\Content\migration\bootstrap.min.css.map" />
+    <Content Include="Areas\ViennaBase\Scripts\chart.min.js" />
     <Content Include="Areas\ViennaBase\Scripts\crystalreportviewers13\crsmarttag.jsp" />
     <Content Include="Areas\ViennaBase\Scripts\crystalreportviewers13\preview.jsp" />
     <Content Include="Areas\ViennaBase\Content\fonts\fontawesome-webfont.eot" />
@@ -1217,6 +1218,8 @@
     <Content Include="Areas\ViennaBase\Scripts\migration\popper-utils.min.js" />
     <Content Include="Areas\ViennaBase\Scripts\migration\popper.js" />
     <Content Include="Areas\ViennaBase\Scripts\migration\popper.min.js" />
+    <Content Include="Areas\ViennaBase\Scripts\owl.carousel.js" />
+    <Content Include="Areas\ViennaBase\Scripts\owl.carousel.min.js" />
     <Content Include="Areas\ViennaBase\Scripts\spectrum.js" />
     <Content Include="Areas\ViennaBase\Content\w2ui\w2ui-1.4.3.css" />
     <Content Include="Areas\ViennaBase\Scripts\tel_Input\data.js" />
