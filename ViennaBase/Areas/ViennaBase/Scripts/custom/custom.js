@@ -592,6 +592,261 @@ if (jQuery.prototype.jquery == "3.4.1" && w2utils.version == "1.4.3") {
     }
 };
 
+; w2obj.grid.prototype.resizeRecords = function () {
+    var obj = this;
+    // remove empty records
+    $(this.box).find('.w2ui-empty-record').remove();
+    // -- Calculate Column size in PX
+    var box = $(this.box);
+    var grid = $(this.box).find('> div');
+    var header = $('#grid_' + this.name + '_header');
+    var toolbar = $('#grid_' + this.name + '_toolbar');
+    var summary = $('#grid_' + this.name + '_summary');
+    var footer = $('#grid_' + this.name + '_footer');
+    var body = $('#grid_' + this.name + '_body');
+    var columns = $('#grid_' + this.name + '_columns');
+    var records = $('#grid_' + this.name + '_records');
+
+    // body might be expanded by data
+    if (!this.fixedBody) {
+        // allow it to render records, then resize
+        var calculatedHeight = w2utils.getSize(columns, 'height')
+            + w2utils.getSize($('#grid_' + obj.name + '_records table'), 'height');
+        obj.height = calculatedHeight
+            + w2utils.getSize(grid, '+height')
+            + (obj.show.header ? w2utils.getSize(header, 'height') : 0)
+            + (obj.show.toolbar ? w2utils.getSize(toolbar, 'height') : 0)
+            + (summary.css('display') != 'none' ? w2utils.getSize(summary, 'height') : 0)
+            + (obj.show.footer ? w2utils.getSize(footer, 'height') : 0);
+        grid.css('height', obj.height);
+        body.css('height', calculatedHeight);
+        box.css('height', w2utils.getSize(grid, 'height') + w2utils.getSize(box, '+height'));
+    } else {
+        // fixed body height
+        var calculatedHeight = grid.height()
+            - (this.show.header ? w2utils.getSize(header, 'height') : 0)
+            - (this.show.toolbar ? w2utils.getSize(toolbar, 'height') : 0)
+            - (summary.css('display') != 'none' ? w2utils.getSize(summary, 'height') : 0)
+            - (this.show.footer ? w2utils.getSize(footer, 'height') : 0);
+        body.css('height', calculatedHeight);
+    }
+
+    var buffered = this.records.length;
+    if (this.searchData.length != 0 && !this.url) buffered = this.last.searchIds.length;
+    // check overflow
+    var bodyOverflowX = false;
+    var bodyOverflowY = false;
+    if (body.width() < $(records).find('>table').width()) bodyOverflowX = true;
+    if (body.height() - columns.height() < $(records).find('>table').height() + (bodyOverflowX ? w2utils.scrollBarSize() : 0)) bodyOverflowY = true;
+    if (!this.fixedBody) { bodyOverflowY = false; }
+    if (bodyOverflowX || bodyOverflowY) {
+        columns.find('> table > tbody > tr:nth-child(1) td.w2ui-head-last').css('width', w2utils.scrollBarSize()).show();
+        records.css({
+            top: ((this.columnGroups.length > 0 && this.show.columns ? 1 : 0) + w2utils.getSize(columns, 'height')) + 'px',
+            "-webkit-overflow-scrolling": "touch",
+            "overflow-x": (bodyOverflowX ? 'auto' : 'hidden'),
+            "overflow-y": (bodyOverflowY ? 'auto' : 'hidden')
+        });
+    } else {
+        columns.find('> table > tbody > tr:nth-child(1) td.w2ui-head-last').hide();
+        records.css({
+            top: ((this.columnGroups.length > 0 && this.show.columns ? 1 : 0) + w2utils.getSize(columns, 'height')) + 'px',
+            overflow: 'hidden'
+        });
+        if (records.length > 0) { this.last.scrollTop = 0; this.last.scrollLeft = 0; } // if no scrollbars, always show top
+    }
+    if (this.show.emptyRecords && !bodyOverflowY) {
+        var max = Math.floor(records.height() / this.recordHeight) + 1;
+        if (this.fixedBody) {
+            for (var di = buffered; di <= max; di++) {
+                var html = '';
+                html += '<tr class="' + (di % 2 ? 'w2ui-even' : 'w2ui-odd') + ' w2ui-empty-record" style="height: ' + this.recordHeight + 'px">';
+                if (this.show.lineNumbers) html += '<td class="w2ui-col-number"></td>';
+                if (this.show.selectColumn) html += '<td class="w2ui-grid-data w2ui-col-select"></td>';
+                if (this.show.expandColumn) html += '<td class="w2ui-grid-data w2ui-col-expand"></td>';
+                var j = 0;
+                while (true && this.columns.length > 0) {
+                    var col = this.columns[j];
+                    if (col.hidden) { j++; if (typeof this.columns[j] == 'undefined') break; else continue; }
+                    html += '<td class="w2ui-grid-data" ' + (typeof col.attr != 'undefined' ? col.attr : '') + ' col="' + j + '"></td>';
+                    j++;
+                    if (typeof this.columns[j] == 'undefined') break;
+                }
+                html += '<td class="w2ui-grid-data-last"></td>';
+                html += '</tr>';
+                $('#grid_' + this.name + '_records > table').append(html);
+            }
+        }
+        else {
+            for (var dia = max; dia < 4; dia++) {
+                var html = '';
+                html += '<tr class="' + (di % 2 ? 'w2ui-even' : 'w2ui-odd') + ' w2ui-empty-record" style="height: ' + this.recordHeight + 'px">';
+                if (this.show.lineNumbers) html += '<td class="w2ui-col-number"></td>';
+                if (this.show.selectColumn) html += '<td class="w2ui-grid-data w2ui-col-select"></td>';
+                if (this.show.expandColumn) html += '<td class="w2ui-grid-data w2ui-col-expand"></td>';
+                var j = 0;
+                while (true && this.columns.length > 0) {
+                    var col = this.columns[j];
+                    if (col.hidden) { j++; if (typeof this.columns[j] == 'undefined') break; else continue; }
+                    html += '<td class="w2ui-grid-data" ' + (typeof col.attr != 'undefined' ? col.attr : '') + ' col="' + j + '"></td>';
+                    j++;
+                    if (typeof this.columns[j] == 'undefined') break;
+                }
+                html += '<td class="w2ui-grid-data-last"></td>';
+                html += '</tr>';
+                $('#grid_' + this.name + '_records > table').append(html);
+            }
+            // allow it to render records, then resize
+            var calculatedHeight = w2utils.getSize(columns, 'height')
+                + w2utils.getSize($('#grid_' + obj.name + '_records table'), 'height');
+            obj.height = calculatedHeight
+                + w2utils.getSize(grid, '+height')
+                + (obj.show.header ? w2utils.getSize(header, 'height') : 0)
+                + (obj.show.toolbar ? w2utils.getSize(toolbar, 'height') : 0)
+                + (summary.css('display') != 'none' ? w2utils.getSize(summary, 'height') : 0)
+                + (obj.show.footer ? w2utils.getSize(footer, 'height') : 0);
+            grid.css('height', obj.height);
+            body.css('height', calculatedHeight);
+            box.css('height', w2utils.getSize(grid, 'height') + w2utils.getSize(box, '+height'));
+        }
+    }
+    if (body.length > 0) {
+        var width_max = parseInt(body.width())
+            - (bodyOverflowY ? w2utils.scrollBarSize() : 0)
+            - (this.show.lineNumbers ? 34 : 0)
+            - (this.show.selectColumn ? 26 : 0)
+            - (this.show.expandColumn ? 26 : 0);
+        var width_box = width_max;
+        var percent = 0;
+        // gridMinWidth processiong
+        var restart = false;
+        for (var i = 0; i < this.columns.length; i++) {
+            var col = this.columns[i];
+            if (col.gridMinWidth > 0) {
+                if (col.gridMinWidth > width_box && col.hidden !== true) {
+                    col.hidden = true;
+                    restart = true;
+                }
+                if (col.gridMinWidth < width_box && col.hidden === true) {
+                    col.hidden = false;
+                    restart = true;
+                }
+            }
+        }
+        if (restart === true) {
+            this.refresh();
+            return;
+        }
+        // assign PX column s
+        for (var i = 0; i < this.columns.length; i++) {
+            var col = this.columns[i];
+            if (col.hidden) continue;
+            if (String(col.size).substr(String(col.size).length - 2).toLowerCase() == 'px') {
+                width_max -= parseFloat(col.size);
+                this.columns[i].sizeCalculated = col.size;
+                this.columns[i].sizeType = 'px';
+            } else {
+                percent += parseFloat(col.size);
+                this.columns[i].sizeType = '%';
+                delete col.sizeCorrected;
+            }
+        }
+        // if sum != 100% -- reassign proportionally
+        if (percent != 100 && percent > 0) {
+            for (var i = 0; i < this.columns.length; i++) {
+                var col = this.columns[i];
+                if (col.hidden) continue;
+                if (col.sizeType == '%') {
+                    col.sizeCorrected = Math.round(parseFloat(col.size) * 100 * 100 / percent) / 100 + '%';
+                }
+            }
+        }
+        // calculate % columns
+        for (var i = 0; i < this.columns.length; i++) {
+            var col = this.columns[i];
+            if (col.hidden) continue;
+            if (col.sizeType == '%') {
+                if (typeof this.columns[i].sizeCorrected != 'undefined') {
+                    // make it 1px smaller, so margin of error can be calculated correctly
+                    this.columns[i].sizeCalculated = Math.floor(width_max * parseFloat(col.sizeCorrected) / 100) - 1 + 'px';
+                } else {
+                    // make it 1px smaller, so margin of error can be calculated correctly
+                    this.columns[i].sizeCalculated = Math.floor(width_max * parseFloat(col.size) / 100) - 1 + 'px';
+                }
+            }
+        }
+    }
+    // fix margin of error that is due percentage calculations
+    var width_cols = 0;
+    for (var i = 0; i < this.columns.length; i++) {
+        var col = this.columns[i];
+        if (col.hidden) continue;
+        if (typeof col.min == 'undefined') col.min = 20;
+        if (parseInt(col.sizeCalculated) < parseInt(col.min)) col.sizeCalculated = col.min + 'px';
+        if (parseInt(col.sizeCalculated) > parseInt(col.max)) col.sizeCalculated = col.max + 'px';
+        width_cols += parseInt(col.sizeCalculated);
+    }
+    var width_diff = parseInt(width_box) - parseInt(width_cols);
+    if (width_diff > 0 && percent > 0) {
+        var i = 0;
+        while (true) {
+            var col = this.columns[i];
+            if (typeof col == 'undefined') { i = 0; continue; }
+            if (col.hidden || col.sizeType == 'px') { i++; continue; }
+            col.sizeCalculated = (parseInt(col.sizeCalculated) + 1) + 'px';
+            width_diff--;
+            if (width_diff == 0) break;
+            i++;
+        }
+    } else if (width_diff > 0) {
+        columns.find('> table > tbody > tr:nth-child(1) td.w2ui-head-last').css('width', w2utils.scrollBarSize()).show();
+    }
+    // resize columns
+    columns.find('> table > tbody > tr:nth-child(1) td').each(function (index, el) {
+        var ind = $(el).attr('col');
+        if (typeof ind != 'undefined' && obj.columns[ind]) $(el).css('width', obj.columns[ind].sizeCalculated);
+        // last column
+        if ($(el).hasClass('w2ui-head-last')) {
+            $(el).css('width', w2utils.scrollBarSize() + (width_diff > 0 && percent == 0 ? width_diff : 0) + 'px');
+        }
+    });
+    // if there are column groups - hide first row (needed for sizing)
+    if (columns.find('> table > tbody > tr').length == 3) {
+        columns.find('> table > tbody > tr:nth-child(1) td').html('').css({
+            'height': '0px',
+            'border': '0px',
+            'padding': '0px',
+            'margin': '0px'
+        });
+    }
+    // resize records
+    records.find('> table > tbody > tr:nth-child(1) td').each(function (index, el) {
+        var ind = $(el).attr('col');
+        if (typeof ind != 'undefined' && obj.columns[ind]) $(el).css('width', obj.columns[ind].sizeCalculated);
+        // last column
+        if ($(el).hasClass('w2ui-grid-data-last')) {
+            $(el).css('width', (width_diff > 0 && percent == 0 ? width_diff : 0) + 'px');
+        }
+    });
+    // resize summary
+    summary.find('> table > tbody > tr:nth-child(1) td').each(function (index, el) {
+        var ind = $(el).attr('col');
+        if (typeof ind != 'undefined' && obj.columns[ind]) $(el).css('width', obj.columns[ind].sizeCalculated);
+        // last column
+        if ($(el).hasClass('w2ui-grid-data-last')) {
+            $(el).css('width', w2utils.scrollBarSize() + (width_diff > 0 && percent == 0 ? width_diff : 0) + 'px');
+        }
+    });
+    this.initResize();
+    this.refreshRanges();
+    // apply last scroll if any
+    if ((this.last.scrollTop || this.last.scrollLeft) && records.length > 0) {
+        columns.prop('scrollLeft', this.last.scrollLeft);
+        records.prop('scrollTop', this.last.scrollTop);
+        records.prop('scrollLeft', this.last.scrollLeft);
+    }
+};
+
 ; w2obj.grid.prototype.clearRowChanges = function (recid) {
     var changes = this.getChanges();
     for (var c in changes) {
