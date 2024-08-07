@@ -122,7 +122,7 @@ namespace VAdvantage.Model
         /// <param name="requestAddr"></param>
         /// <param name="webSessionId">web session id</param>
         /// <returns></returns>
-        public static MSession Get(Ctx ctx, String webSessionId, Boolean createNew, String requestAddr )
+        public static MSession Get(Ctx ctx, String webSessionId, bool createNew, String requestAddr )
         {
             int AD_Session_ID = ctx.GetContextAsInt("#AD_Session_ID");
             MSession session = null;
