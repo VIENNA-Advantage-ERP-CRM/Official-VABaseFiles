@@ -524,6 +524,7 @@ Globalize.addCultureInfo( "ar-IQ", "default", {
         "SkipThisTime": "تخطي هذه المرة",
         "ResendOTP": "إعادة إرسال OTP",
         "CapsLockOn": "الحروف الكبيرة مفعلة",
+        "AccessNotGranted": "لا يمكن منح الوصول. يرجى التحقق من بيانات الاعتماد الخاصة بك أو الوصول إلى النظام.",
     }
 });
 

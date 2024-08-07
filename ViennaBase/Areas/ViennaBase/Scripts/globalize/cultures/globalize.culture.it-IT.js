@@ -142,6 +142,7 @@
             "SkipThisTime": "Salta questa volta",
             "ResendOTP": "Reinvia OTP",
             "CapsLockOn": "Blocco maiuscolo attivo",
+            "AccessNotGranted": "Impossibile concedere l'accesso. Controlla le tue credenziali o l'accesso al sistema.",
         }
     });
 

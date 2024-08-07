@@ -136,6 +136,7 @@ Globalize.addCultureInfo( "nb-NO", "default", {
 		"SkipThisTime": "Hopp over denne gangen",
 		"ResendOTP": "Send OTP på nytt",
 		"CapsLockOn": "Caps Lock er på",
+		"AccessNotGranted": "Tilgang kan ikke gis. Vennligst sjekk påloggingsinformasjonen din eller systemtilgang.",
 	}
 });
 

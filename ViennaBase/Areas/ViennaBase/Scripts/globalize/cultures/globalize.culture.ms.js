@@ -149,8 +149,9 @@ Globalize.addCultureInfo( "ms", "default", {
         "SkipThisTime": "Langkau kali ini",
         "ResendOTP": "Hantar semula OTP",
         "CapsLockOn": "Kunci topi dihidupkan",
+        "AccessNotGranted": "Akses tidak boleh diberikan. Sila semak kelayakan atau akses sistem anda.",
     }
-};
+
 });
 
 }( this ));

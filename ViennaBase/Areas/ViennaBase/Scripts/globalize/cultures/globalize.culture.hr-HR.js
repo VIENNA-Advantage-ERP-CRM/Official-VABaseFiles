@@ -140,6 +140,7 @@ Globalize.addCultureInfo( "hr-HR", "default", {
 		"SkipThisTime": "Ovaj put preskočite",
 		"ResendOTP": "Ponovno pošaljite OTP",
 		"CapsLockOn": "Uključena je velika slova",
+		"AccessNotGranted": "Pristup se ne može odobriti. Provjerite svoje vjerodajnice ili pristup sustavu.,
 	}
 });
 

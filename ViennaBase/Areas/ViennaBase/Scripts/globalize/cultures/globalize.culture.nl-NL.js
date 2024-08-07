@@ -135,6 +135,7 @@ Globalize.addCultureInfo( "nl-NL", "default", {
 		"SkipThisTime": "Deze keer overslaan",
 		"ResendOTP": "OTP opnieuw verzenden",
 		"CapsLockOn": "Caps Lock staat aan",
+		"AccessNotGranted": "Er kan geen toegang worden verleend. Controleer uw inloggegevens of systeemtoegang.",
 	}
 
 });

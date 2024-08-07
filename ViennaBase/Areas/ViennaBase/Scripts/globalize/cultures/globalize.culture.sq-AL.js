@@ -148,6 +148,7 @@ Globalize.addCultureInfo( "sq-AL", "default", {
         "SkipThisTime": "Kaloni këtë herë",
         "ResendOTP": "Ridërgo OTP -në",
         "CapsLockOn": "Caps lock është aktiv",
+        "AccessNotGranted": "Qasja nuk mund të jepet. Ju lutemi kontrolloni kredencialet tuaja ose aksesin e sistemit.",
     }
 });
 

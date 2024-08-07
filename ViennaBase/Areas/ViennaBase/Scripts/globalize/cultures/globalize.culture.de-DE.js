@@ -152,6 +152,7 @@
             "SkipThisTime": "Diesmal überspringen",
             "ResendOTP": "OTP erneut senden",
             "CapsLockOn": "Die Feststelltaste ist aktiviert",
+            "AccessNotGranted": "Der Zugriff kann nicht gewährt werden. Bitte überprüfen Sie Ihre Zugangsdaten bzw. Ihren Systemzugang.",
         }
 
 
