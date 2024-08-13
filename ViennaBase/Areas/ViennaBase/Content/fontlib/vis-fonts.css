@@ -1225,3 +1225,82 @@
 .vis-yes:before {
     content: "\ea25";
 }
+
+/*08-Aug-2024 by satnam Singh */
+
+.vis-settings:before {
+    content: "\ea34";
+}
+
+.vis-calendar-solid:before {
+    content: "\ea35";
+}
+
+.vis-chart-bar:before {
+    content: "\ea36";
+}
+
+.vis-contacts1:before {
+    content: "\ea37";
+}
+
+.vis-market:before {
+    content: "\ea38";
+}
+
+.vis-drag-circle:before {
+    content: "\ea33";
+}
+
+.vis-filter-arrow .path1:before {
+    content: "\ea31";
+}
+
+.vis-filter-arrow .path2:before {
+    content: "\ea32";
+    margin-left: -1.173828125em;
+}
+
+.vis-scanner1:before {
+    content: "\ea2d";
+}
+
+.vis-arrow-solid:before {
+    content: "\ea2b";
+}
+
+.vis-generic:before {
+    content: "\ea2c";
+}
+
+.vis-industry:before {
+    content: "\ea2e";
+}
+
+.vis-module:before {
+    content: "\ea2f";
+}
+
+.vis-template:before {
+    content: "\ea30";
+}
+
+.vis-timer:before {
+    content: "\ea2a";
+}
+
+.vis-split-view:before {
+    content: "\ea28";
+}
+
+.vis-tab-view:before {
+    content: "\ea29";
+}
+
+.vis-signature:before {
+    content: "\ea26";
+}
+
+.vis-calendar:before {
+    content: "\ea27";
+}

@@ -609,3 +609,20 @@ label.vis-ec-col-lblchkbox:focus-within .vis-ctrl-switchSlider {
     background: gray;
     opacity: 0.7;
 }
+
+/* MultiSelect*/
+.form-check-label {
+    position: unset !important;
+    background: initial !important;
+}
+
+.form-check-input {
+    position: absolute !important;
+}
+.multiselect-native-select button:focus {
+    outline: none;
+    border-color: rgba(var(--v-c-primary),1);
+    box-shadow: none;
+}
+
+

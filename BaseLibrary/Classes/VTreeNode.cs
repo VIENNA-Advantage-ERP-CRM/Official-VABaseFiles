@@ -307,7 +307,7 @@ namespace VAdvantage.Classes
 
         public string Image { get; set; }
 
-
+        public string FontStyle { get; set; }
         public bool IsSetting { get; set; }
 
 
