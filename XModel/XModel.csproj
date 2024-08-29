@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Common\Class1.cs" />
     <Compile Include="ModelAD\X_AD_AccessLog.cs" />
+    <Compile Include="ModelAD\X_AD_ActionGroup.cs" />
     <Compile Include="ModelAD\X_AD_Alert.cs" />
     <Compile Include="ModelAD\X_AD_AlertProcessor.cs" />
     <Compile Include="ModelAD\X_AD_AlertProcessorLog.cs" />
