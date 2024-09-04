@@ -1304,3 +1304,41 @@
 .vis-calendar:before {
     content: "\ea27";
 }
+
+/***** 04 Sep 2024 ****/
+
+.vis-save-new:before {
+    content: "\ea41";
+}
+
+.vis-arrow-b-right:before {
+    content: "\ea3f";
+}
+
+.vis-arrow-b-left:before {
+    content: "\ea40";
+}
+
+.vis-list-view:before {
+    content: "\ea3c";
+}
+
+.vis-grid-view:before {
+    content: "\ea3d";
+}
+
+.vis-dashboard-edit:before {
+    content: "\ea3e";
+}
+
+.vis-file-invoice:before {
+    content: "\ea3b";
+}
+
+.vis-generate-payment:before {
+    content: "\ea3a";
+}
+
+.vis-generate-invoice:before {
+    content: "\ea39";
+}
