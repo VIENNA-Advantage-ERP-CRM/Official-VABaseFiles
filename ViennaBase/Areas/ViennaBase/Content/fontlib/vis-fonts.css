@@ -1342,3 +1342,23 @@
 .vis-generate-invoice:before {
     content: "\ea39";
 }
+
+.vis-laptop-code:before {
+    content: "\ea43";
+}
+
+.vis-folder-open:before {
+    content: "\ea44";
+}
+
+.vis-file-arrow-down:before {
+    content: "\ea45";
+}
+
+.vis-screwdriver-wrench:before {
+    content: "\ea46";
+}
+
+.vis-trending-down:before {
+    content: "\ea42";
+}
