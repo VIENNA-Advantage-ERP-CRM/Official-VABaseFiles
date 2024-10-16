@@ -1362,3 +1362,192 @@
 .vis-trending-down:before {
     content: "\ea42";
 }
+
+.vis-amount:before {
+    content: "\ea47";
+}
+
+.vis-assignment:before {
+    content: "\ea48";
+}
+
+.vis-binary:before {
+    content: "\ea49";
+}
+
+.vis-checkbox:before {
+    content: "\ea4a";
+}
+
+.vis-color:before {
+    content: "\ea4b";
+}
+
+.vis-costandprices:before {
+    content: "\ea4c";
+}
+
+.vis-date:before {
+    content: "\ea4d";
+}
+
+.vis-dateandtime:before {
+    content: "\ea4e";
+}
+
+.vis-dropdown:before {
+    content: "\ea4f";
+}
+
+.vis-file-path-icon:before {
+    content: "\ea50";
+}
+
+.vis-file-name:before {
+    content: "\ea51";
+}
+
+.vis-general-attribute:before {
+    content: "\ea52";
+}
+
+.vis-image1:before {
+    content: "\ea53";
+}
+
+.vis-integer-number:before {
+    content: "\ea54";
+}
+
+.vis-label:before {
+    content: "\ea55";
+}
+
+.vis-list:before {
+    content: "\ea56";
+}
+
+.vis-location1:before {
+    content: "\ea57";
+}
+
+.vis-locator1:before {
+    content: "\ea58";
+}
+
+.vis-printer:before {
+    content: "\ea59";
+}
+
+.vis-progressive-bar:before {
+    content: "\ea5a";
+}
+
+.vis-quality:before {
+    content: "\ea5b";
+}
+
+.vis-search1:before {
+    content: "\ea5c";
+}
+
+.vis-string:before {
+    content: "\ea5d";
+}
+
+.vis-switch:before {
+    content: "\ea5e";
+}
+
+.vis-table:before {
+    content: "\ea5f";
+}
+
+.vis-table-direct:before {
+    content: "\ea60";
+}
+
+.vis-telephone:before {
+    content: "\ea61";
+}
+
+.vis-text:before {
+    content: "\ea62";
+}
+
+.vis-text-field:before {
+    content: "\ea63";
+}
+
+.vis-text-long:before {
+    content: "\ea64";
+}
+
+.vis-time:before {
+    content: "\ea65";
+}
+
+.vis-url1:before {
+    content: "\ea66";
+}
+
+.vis-laptop-code:before {
+    content: "\ea43";
+    color: #fff;
+}
+
+.vis-folder-open:before {
+    content: "\ea44";
+    color: #fff;
+}
+
+.vis-file-arrow-down:before {
+    content: "\ea45";
+    color: #fff;
+}
+
+.vis-screwdriver-wrench:before {
+    content: "\ea46";
+    color: #fff;
+}
+
+.vis-button-arrow:before {
+    content: "\ea67";
+}
+
+.vis-column-list:before {
+    content: "\ea68";
+}
+
+.vis-image-arrow:before {
+    content: "\ea69";
+}
+
+.vis-memo:before {
+    content: "\ea6a";
+}
+
+.vis-product-container:before {
+    content: "\ea6b";
+}
+
+.vis-quantity:before {
+    content: "\ea6c";
+}
+
+.vis-toolbox:before {
+    content: "\ea6d";
+}
+
+.vis-savenew:before {
+    content: "\ea6e";
+}
+
+.vis-savenew1:before {
+    content: "\ea6f";
+}
+
+.vis-Amount-dimension:before {
+    content: "\ea70";
+}
+
