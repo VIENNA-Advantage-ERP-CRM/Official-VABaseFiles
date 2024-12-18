@@ -17,6 +17,11 @@ namespace ViennaBase
 {
     public static class AuthConfig
     {
+        public static void RegisterAuth()
+        {
+
+        }
+
         public static void RegisterAuth(IAppBuilder app)
         {
             DataSet dataSet = DB.ExecuteDataset("SELECT clientID,authorityurl,tenantoptional,redirecturi,Provider,AD_Ref_List.value,ad_ref_list.name FROM sso_configuration \r\n                        INNER JOIN AD_Ref_List  ON AD_Ref_List.Value=sso_configuration.Provider\r\n                        WHERE sso_configuration.IsActive='Y' AND AD_Reference_ID IN (\r\n                        SELECT ad_reference_ID FROM ad_reference WHERE NAme='VIS_ServiceProvider'\r\n                        )");
