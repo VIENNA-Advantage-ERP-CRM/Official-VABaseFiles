@@ -16,24 +16,6 @@ namespace BaseLibrary.CloudService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CloudService.ServiceSoap")]
     public interface ServiceSoap {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNews", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetNews(string accessKey);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetNews", ReplyAction="*")]
-        System.IAsyncResult BeginGetNews(string accessKey, System.AsyncCallback callback, object asyncState);
-        
-        string EndGetNews(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomerOpenTickets", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetCustomerOpenTickets(int Ad_user_ID, string accessKey);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetCustomerOpenTickets", ReplyAction="*")]
-        System.IAsyncResult BeginGetCustomerOpenTickets(int Ad_user_ID, string accessKey, System.AsyncCallback callback, object asyncState);
-        
-        string EndGetCustomerOpenTickets(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetPartnerLeads", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string GetPartnerLeads(int Ad_User_ID, int CountryID, int statusID, string orderBy, string accessKey);
@@ -716,246 +698,228 @@ namespace BaseLibrary.CloudService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PackageEntryIntoItemMasterTest", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void PackageEntryIntoItemMasterTest(string pdata);
+        void PackageEntryIntoItemMasterTest(string pdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/PackageEntryIntoItemMasterTest", ReplyAction="*")]
-        System.IAsyncResult BeginPackageEntryIntoItemMasterTest(string pdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginPackageEntryIntoItemMasterTest(string pdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         void EndPackageEntryIntoItemMasterTest(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PackageEntryIntoItemMaster", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool PackageEntryIntoItemMaster(string pdata);
+        bool PackageEntryIntoItemMaster(string pdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/PackageEntryIntoItemMaster", ReplyAction="*")]
-        System.IAsyncResult BeginPackageEntryIntoItemMaster(string pdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginPackageEntryIntoItemMaster(string pdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         bool EndPackageEntryIntoItemMaster(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AuthenticateHardware", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool AuthenticateHardware(BaseLibrary.CloudService.ConfigurationData cd);
+        bool AuthenticateHardware(BaseLibrary.CloudService.ConfigurationData cd, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/AuthenticateHardware", ReplyAction="*")]
-        System.IAsyncResult BeginAuthenticateHardware(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginAuthenticateHardware(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState);
         
         bool EndAuthenticateHardware(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IsHardwareActivated", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool IsHardwareActivated(string o, string s);
+        bool IsHardwareActivated(string o, string s, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IsHardwareActivated", ReplyAction="*")]
-        System.IAsyncResult BeginIsHardwareActivated(string o, string s, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginIsHardwareActivated(string o, string s, string accessKey, System.AsyncCallback callback, object asyncState);
         
         bool EndIsHardwareActivated(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SOTCSetting", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string SOTCSetting(string sotcdata);
+        string SOTCSetting(string sotcdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/SOTCSetting", ReplyAction="*")]
-        System.IAsyncResult BeginSOTCSetting(string sotcdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginSOTCSetting(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndSOTCSetting(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SK", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string SK(BaseLibrary.CloudService.ConfigurationData cd);
+        string SK(BaseLibrary.CloudService.ConfigurationData cd, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/SK", ReplyAction="*")]
-        System.IAsyncResult BeginSK(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginSK(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndSK(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CreadientialsWork", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string CreadientialsWork(string sotcdata);
+        string CreadientialsWork(string sotcdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/CreadientialsWork", ReplyAction="*")]
-        System.IAsyncResult BeginCreadientialsWork(string sotcdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginCreadientialsWork(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndCreadientialsWork(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SavePrinterList", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string SavePrinterList(string sotcdata);
+        string SavePrinterList(string sotcdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/SavePrinterList", ReplyAction="*")]
-        System.IAsyncResult BeginSavePrinterList(string sotcdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginSavePrinterList(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndSavePrinterList(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetPrinterList", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetPrinterList(string sotcdata);
+        string GetPrinterList(string sotcdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetPrinterList", ReplyAction="*")]
-        System.IAsyncResult BeginGetPrinterList(string sotcdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetPrinterList(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndGetPrinterList(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CheckUpdate", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string CheckUpdate(string sotcdata);
+        string CheckUpdate(string sotcdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/CheckUpdate", ReplyAction="*")]
-        System.IAsyncResult BeginCheckUpdate(string sotcdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginCheckUpdate(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndCheckUpdate(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserUpdateTimeSettings", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void GetUserUpdateTimeSettings(BaseLibrary.CloudService.ConfigurationData cd);
+        void GetUserUpdateTimeSettings(BaseLibrary.CloudService.ConfigurationData cd, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetUserUpdateTimeSettings", ReplyAction="*")]
-        System.IAsyncResult BeginGetUserUpdateTimeSettings(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetUserUpdateTimeSettings(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState);
         
         void EndGetUserUpdateTimeSettings(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserLSSettings", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void GetUserLSSettings(BaseLibrary.CloudService.ConfigurationData cd);
+        void GetUserLSSettings(BaseLibrary.CloudService.ConfigurationData cd, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetUserLSSettings", ReplyAction="*")]
-        System.IAsyncResult BeginGetUserLSSettings(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetUserLSSettings(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState);
         
         void EndGetUserLSSettings(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MarkReady", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string MarkReady(string sotcdata);
+        string MarkReady(string sotcdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/MarkReady", ReplyAction="*")]
-        System.IAsyncResult BeginMarkReady(string sotcdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginMarkReady(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndMarkReady(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertUpdateConfig", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        bool InsertUpdateConfig(BaseLibrary.CloudService.ConfigurationData cd);
+        bool InsertUpdateConfig(BaseLibrary.CloudService.ConfigurationData cd, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/InsertUpdateConfig", ReplyAction="*")]
-        System.IAsyncResult BeginInsertUpdateConfig(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginInsertUpdateConfig(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState);
         
         bool EndInsertUpdateConfig(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EmailToUser", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void EmailToUser(BaseLibrary.CloudService.ConfigurationData cd);
+        void EmailToUser(BaseLibrary.CloudService.ConfigurationData cd, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/EmailToUser", ReplyAction="*")]
-        System.IAsyncResult BeginEmailToUser(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginEmailToUser(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState);
         
         void EndEmailToUser(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetUserUpdateTimeSettingsDemo", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void GetUserUpdateTimeSettingsDemo(string sotcdata);
+        void GetUserUpdateTimeSettingsDemo(string sotcdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetUserUpdateTimeSettingsDemo", ReplyAction="*")]
-        System.IAsyncResult BeginGetUserUpdateTimeSettingsDemo(string sotcdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetUserUpdateTimeSettingsDemo(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         void EndGetUserUpdateTimeSettingsDemo(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetHardwares", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetHardwares(string hardwaredata);
+        string GetHardwares(string hardwaredata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetHardwares", ReplyAction="*")]
-        System.IAsyncResult BeginGetHardwares(string hardwaredata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetHardwares(string hardwaredata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndGetHardwares(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActivateUpdateHardware", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string ActivateUpdateHardware(string hardwaredata);
+        string ActivateUpdateHardware(string hardwaredata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ActivateUpdateHardware", ReplyAction="*")]
-        System.IAsyncResult BeginActivateUpdateHardware(string hardwaredata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginActivateUpdateHardware(string hardwaredata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndActivateUpdateHardware(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetConsoles", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetConsoles(string printerdata);
+        string GetConsoles(string printerdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetConsoles", ReplyAction="*")]
-        System.IAsyncResult BeginGetConsoles(string printerdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetConsoles(string printerdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndGetConsoles(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetModelBrandDriver", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetModelBrandDriver(string printerdata);
+        string GetModelBrandDriver(string printerdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetModelBrandDriver", ReplyAction="*")]
-        System.IAsyncResult BeginGetModelBrandDriver(string printerdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetModelBrandDriver(string printerdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndGetModelBrandDriver(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetSetPrinters", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetSetPrinters(string printerdata);
+        string GetSetPrinters(string printerdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetSetPrinters", ReplyAction="*")]
-        System.IAsyncResult BeginGetSetPrinters(string printerdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetSetPrinters(string printerdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndGetSetPrinters(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetPrinters", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetPrinters(string printerdata);
+        string GetPrinters(string printerdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetPrinters", ReplyAction="*")]
-        System.IAsyncResult BeginGetPrinters(string printerdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetPrinters(string printerdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndGetPrinters(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetSetLocalServers", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetSetLocalServers(string localserverdata);
+        string GetSetLocalServers(string localserverdata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetSetLocalServers", ReplyAction="*")]
-        System.IAsyncResult BeginGetSetLocalServers(string localserverdata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetSetLocalServers(string localserverdata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndGetSetLocalServers(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetSetUpdateTimeSettings", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetSetUpdateTimeSettings(string consoledata);
+        string GetSetUpdateTimeSettings(string consoledata, string accessKey);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetSetUpdateTimeSettings", ReplyAction="*")]
-        System.IAsyncResult BeginGetSetUpdateTimeSettings(string consoledata, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetSetUpdateTimeSettings(string consoledata, string accessKey, System.AsyncCallback callback, object asyncState);
         
         string EndGetSetUpdateTimeSettings(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetSiteInfo", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomerSubscription", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        BaseLibrary.CloudService.Site[] GetSiteInfo(string accessKey);
+        BaseLibrary.CloudService.ProductSubscription[] GetCustomerSubscription(string customerSearchKey, string accessKey);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetSiteInfo", ReplyAction="*")]
-        System.IAsyncResult BeginGetSiteInfo(string accessKey, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetCustomerSubscription", ReplyAction="*")]
+        System.IAsyncResult BeginGetCustomerSubscription(string customerSearchKey, string accessKey, System.AsyncCallback callback, object asyncState);
         
-        BaseLibrary.CloudService.Site[] EndGetSiteInfo(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetSiteZoneInfo", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        BaseLibrary.CloudService.SiteZone[] GetSiteZoneInfo(string accessKey, int SiteID);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetSiteZoneInfo", ReplyAction="*")]
-        System.IAsyncResult BeginGetSiteZoneInfo(string accessKey, int SiteID, System.AsyncCallback callback, object asyncState);
-        
-        BaseLibrary.CloudService.SiteZone[] EndGetSiteZoneInfo(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetSiteProductInfo", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        BaseLibrary.CloudService.SiteProduct[] GetSiteProductInfo(string accessKey, int SiteID);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetSiteProductInfo", ReplyAction="*")]
-        System.IAsyncResult BeginGetSiteProductInfo(string accessKey, int SiteID, System.AsyncCallback callback, object asyncState);
-        
-        BaseLibrary.CloudService.SiteProduct[] EndGetSiteProductInfo(System.IAsyncResult result);
+        BaseLibrary.CloudService.ProductSubscription[] EndGetCustomerSubscription(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Hello", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -1011,15 +975,6 @@ namespace BaseLibrary.CloudService {
         System.IAsyncResult BeginRegisterInfoFromModule(BaseLibrary.CloudService.RegisterInfoFromModuleRequest request, System.AsyncCallback callback, object asyncState);
         
         BaseLibrary.CloudService.RegisterInfoFromModuleResponse EndRegisterInfoFromModule(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetVideosFromDMS", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string GetVideosFromDMS(string AD_Client_ID, string AD_User_ID, string C_BPartner_ID, int C_Lead_ID, string accessKey);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetVideosFromDMS", ReplyAction="*")]
-        System.IAsyncResult BeginGetVideosFromDMS(string AD_Client_ID, string AD_User_ID, string C_BPartner_ID, int C_Lead_ID, string accessKey, System.AsyncCallback callback, object asyncState);
-        
-        string EndGetVideosFromDMS(System.IAsyncResult result);
         
         // CODEGEN: Parameter 'countryid' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegisterTempInfo", ReplyAction="*")]
@@ -2212,6 +2167,24 @@ namespace BaseLibrary.CloudService {
         System.IAsyncResult BeginGetBIUserCredential(string Url, int AD_Client_ID, string accessKey, System.AsyncCallback callback, object asyncState);
         
         BaseLibrary.CloudService.CustomerBISetting EndGetBIUserCredential(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNews", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string GetNews(string accessKey);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetNews", ReplyAction="*")]
+        System.IAsyncResult BeginGetNews(string accessKey, System.AsyncCallback callback, object asyncState);
+        
+        string EndGetNews(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCustomerOpenTickets", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string GetCustomerOpenTickets(int Ad_user_ID, string accessKey);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetCustomerOpenTickets", ReplyAction="*")]
+        System.IAsyncResult BeginGetCustomerOpenTickets(int Ad_user_ID, string accessKey, System.AsyncCallback callback, object asyncState);
+        
+        string EndGetCustomerOpenTickets(System.IAsyncResult result);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4579,181 +4552,75 @@ namespace BaseLibrary.CloudService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class SiteProduct : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ProductSubscription : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string productNameField;
+        private string productField;
         
-        private decimal priceField;
+        private string licenseTypeField;
         
-        private string currencyField;
+        private System.Nullable<System.DateTime> actDateField;
         
-        private int productIDField;
+        private System.Nullable<System.DateTime> expDateField;
+        
+        private string serNoField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string ProductName {
+        public string Product {
             get {
-                return this.productNameField;
+                return this.productField;
             }
             set {
-                this.productNameField = value;
-                this.RaisePropertyChanged("ProductName");
+                this.productField = value;
+                this.RaisePropertyChanged("Product");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public decimal Price {
+        public string LicenseType {
             get {
-                return this.priceField;
+                return this.licenseTypeField;
             }
             set {
-                this.priceField = value;
-                this.RaisePropertyChanged("Price");
+                this.licenseTypeField = value;
+                this.RaisePropertyChanged("LicenseType");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public string Currency {
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public System.Nullable<System.DateTime> ActDate {
             get {
-                return this.currencyField;
+                return this.actDateField;
             }
             set {
-                this.currencyField = value;
-                this.RaisePropertyChanged("Currency");
+                this.actDateField = value;
+                this.RaisePropertyChanged("ActDate");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int ProductID {
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public System.Nullable<System.DateTime> ExpDate {
             get {
-                return this.productIDField;
+                return this.expDateField;
             }
             set {
-                this.productIDField = value;
-                this.RaisePropertyChanged("ProductID");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class SiteZone : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string zoneNameField;
-        
-        private string zoneCodeField;
-        
-        private int zoneServerIDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string ZoneName {
-            get {
-                return this.zoneNameField;
-            }
-            set {
-                this.zoneNameField = value;
-                this.RaisePropertyChanged("ZoneName");
+                this.expDateField = value;
+                this.RaisePropertyChanged("ExpDate");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string ZoneCode {
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string SerNo {
             get {
-                return this.zoneCodeField;
+                return this.serNoField;
             }
             set {
-                this.zoneCodeField = value;
-                this.RaisePropertyChanged("ZoneCode");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int ZoneServerID {
-            get {
-                return this.zoneServerIDField;
-            }
-            set {
-                this.zoneServerIDField = value;
-                this.RaisePropertyChanged("ZoneServerID");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Site : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string nameField;
-        
-        private string codeField;
-        
-        private int siteIDField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-                this.RaisePropertyChanged("Name");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public string Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-                this.RaisePropertyChanged("Code");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int SiteID {
-            get {
-                return this.siteIDField;
-            }
-            set {
-                this.siteIDField = value;
-                this.RaisePropertyChanged("SiteID");
+                this.serNoField = value;
+                this.RaisePropertyChanged("SerNo");
             }
         }
         
@@ -7645,44 +7512,6 @@ namespace BaseLibrary.CloudService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetNewsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetNewsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public string Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetCustomerOpenTicketsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetCustomerOpenTicketsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public string Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GetPartnerLeadsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -9331,57 +9160,19 @@ namespace BaseLibrary.CloudService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetSiteInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetCustomerSubscriptionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetSiteInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetCustomerSubscriptionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public BaseLibrary.CloudService.Site[] Result {
+        public BaseLibrary.CloudService.ProductSubscription[] Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((BaseLibrary.CloudService.Site[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetSiteZoneInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetSiteZoneInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public BaseLibrary.CloudService.SiteZone[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((BaseLibrary.CloudService.SiteZone[])(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetSiteProductInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetSiteProductInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public BaseLibrary.CloudService.SiteProduct[] Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((BaseLibrary.CloudService.SiteProduct[])(this.results[0]));
+                return ((BaseLibrary.CloudService.ProductSubscription[])(this.results[0]));
             }
         }
     }
@@ -9488,25 +9279,6 @@ namespace BaseLibrary.CloudService {
         private object[] results;
         
         public RegisterInfoFromModuleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public string Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetVideosFromDMSCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetVideosFromDMSCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -11782,19 +11554,45 @@ namespace BaseLibrary.CloudService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetNewsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetNewsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetCustomerOpenTicketsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetCustomerOpenTicketsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ServiceSoapClient : System.ServiceModel.ClientBase<BaseLibrary.CloudService.ServiceSoap>, BaseLibrary.CloudService.ServiceSoap {
-        
-        private BeginOperationDelegate onBeginGetNewsDelegate;
-        
-        private EndOperationDelegate onEndGetNewsDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetNewsCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetCustomerOpenTicketsDelegate;
-        
-        private EndOperationDelegate onEndGetCustomerOpenTicketsDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetCustomerOpenTicketsCompletedDelegate;
         
         private BeginOperationDelegate onBeginGetPartnerLeadsDelegate;
         
@@ -12342,23 +12140,11 @@ namespace BaseLibrary.CloudService {
         
         private System.Threading.SendOrPostCallback onGetSetUpdateTimeSettingsCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetSiteInfoDelegate;
+        private BeginOperationDelegate onBeginGetCustomerSubscriptionDelegate;
         
-        private EndOperationDelegate onEndGetSiteInfoDelegate;
+        private EndOperationDelegate onEndGetCustomerSubscriptionDelegate;
         
-        private System.Threading.SendOrPostCallback onGetSiteInfoCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetSiteZoneInfoDelegate;
-        
-        private EndOperationDelegate onEndGetSiteZoneInfoDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetSiteZoneInfoCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetSiteProductInfoDelegate;
-        
-        private EndOperationDelegate onEndGetSiteProductInfoDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetSiteProductInfoCompletedDelegate;
+        private System.Threading.SendOrPostCallback onGetCustomerSubscriptionCompletedDelegate;
         
         private BeginOperationDelegate onBeginHelloDelegate;
         
@@ -12395,12 +12181,6 @@ namespace BaseLibrary.CloudService {
         private EndOperationDelegate onEndRegisterInfoFromModuleDelegate;
         
         private System.Threading.SendOrPostCallback onRegisterInfoFromModuleCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetVideosFromDMSDelegate;
-        
-        private EndOperationDelegate onEndGetVideosFromDMSDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetVideosFromDMSCompletedDelegate;
         
         private BeginOperationDelegate onBeginRegisterTempInfoDelegate;
         
@@ -13116,6 +12896,18 @@ namespace BaseLibrary.CloudService {
         
         private System.Threading.SendOrPostCallback onGetBIUserCredentialCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetNewsDelegate;
+        
+        private EndOperationDelegate onEndGetNewsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetNewsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetCustomerOpenTicketsDelegate;
+        
+        private EndOperationDelegate onEndGetCustomerOpenTicketsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetCustomerOpenTicketsCompletedDelegate;
+        
         public ServiceSoapClient() {
         }
         
@@ -13134,10 +12926,6 @@ namespace BaseLibrary.CloudService {
         public ServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
-        
-        public event System.EventHandler<GetNewsCompletedEventArgs> GetNewsCompleted;
-        
-        public event System.EventHandler<GetCustomerOpenTicketsCompletedEventArgs> GetCustomerOpenTicketsCompleted;
         
         public event System.EventHandler<GetPartnerLeadsCompletedEventArgs> GetPartnerLeadsCompleted;
         
@@ -13321,11 +13109,7 @@ namespace BaseLibrary.CloudService {
         
         public event System.EventHandler<GetSetUpdateTimeSettingsCompletedEventArgs> GetSetUpdateTimeSettingsCompleted;
         
-        public event System.EventHandler<GetSiteInfoCompletedEventArgs> GetSiteInfoCompleted;
-        
-        public event System.EventHandler<GetSiteZoneInfoCompletedEventArgs> GetSiteZoneInfoCompleted;
-        
-        public event System.EventHandler<GetSiteProductInfoCompletedEventArgs> GetSiteProductInfoCompleted;
+        public event System.EventHandler<GetCustomerSubscriptionCompletedEventArgs> GetCustomerSubscriptionCompleted;
         
         public event System.EventHandler<HelloCompletedEventArgs> HelloCompleted;
         
@@ -13338,8 +13122,6 @@ namespace BaseLibrary.CloudService {
         public event System.EventHandler<IsDomainExistCompletedEventArgs> IsDomainExistCompleted;
         
         public event System.EventHandler<RegisterInfoFromModuleCompletedEventArgs> RegisterInfoFromModuleCompleted;
-        
-        public event System.EventHandler<GetVideosFromDMSCompletedEventArgs> GetVideosFromDMSCompleted;
         
         public event System.EventHandler<RegisterTempInfoCompletedEventArgs> RegisterTempInfoCompleted;
         
@@ -13579,107 +13361,9 @@ namespace BaseLibrary.CloudService {
         
         public event System.EventHandler<GetBIUserCredentialCompletedEventArgs> GetBIUserCredentialCompleted;
         
-        public string GetNews(string accessKey) {
-            return base.Channel.GetNews(accessKey);
-        }
+        public event System.EventHandler<GetNewsCompletedEventArgs> GetNewsCompleted;
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetNews(string accessKey, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetNews(accessKey, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public string EndGetNews(System.IAsyncResult result) {
-            return base.Channel.EndGetNews(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetNews(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string accessKey = ((string)(inValues[0]));
-            return this.BeginGetNews(accessKey, callback, asyncState);
-        }
-        
-        private object[] OnEndGetNews(System.IAsyncResult result) {
-            string retVal = this.EndGetNews(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetNewsCompleted(object state) {
-            if ((this.GetNewsCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetNewsCompleted(this, new GetNewsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetNewsAsync(string accessKey) {
-            this.GetNewsAsync(accessKey, null);
-        }
-        
-        public void GetNewsAsync(string accessKey, object userState) {
-            if ((this.onBeginGetNewsDelegate == null)) {
-                this.onBeginGetNewsDelegate = new BeginOperationDelegate(this.OnBeginGetNews);
-            }
-            if ((this.onEndGetNewsDelegate == null)) {
-                this.onEndGetNewsDelegate = new EndOperationDelegate(this.OnEndGetNews);
-            }
-            if ((this.onGetNewsCompletedDelegate == null)) {
-                this.onGetNewsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetNewsCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetNewsDelegate, new object[] {
-                        accessKey}, this.onEndGetNewsDelegate, this.onGetNewsCompletedDelegate, userState);
-        }
-        
-        public string GetCustomerOpenTickets(int Ad_user_ID, string accessKey) {
-            return base.Channel.GetCustomerOpenTickets(Ad_user_ID, accessKey);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetCustomerOpenTickets(int Ad_user_ID, string accessKey, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetCustomerOpenTickets(Ad_user_ID, accessKey, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public string EndGetCustomerOpenTickets(System.IAsyncResult result) {
-            return base.Channel.EndGetCustomerOpenTickets(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetCustomerOpenTickets(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            int Ad_user_ID = ((int)(inValues[0]));
-            string accessKey = ((string)(inValues[1]));
-            return this.BeginGetCustomerOpenTickets(Ad_user_ID, accessKey, callback, asyncState);
-        }
-        
-        private object[] OnEndGetCustomerOpenTickets(System.IAsyncResult result) {
-            string retVal = this.EndGetCustomerOpenTickets(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetCustomerOpenTicketsCompleted(object state) {
-            if ((this.GetCustomerOpenTicketsCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetCustomerOpenTicketsCompleted(this, new GetCustomerOpenTicketsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetCustomerOpenTicketsAsync(int Ad_user_ID, string accessKey) {
-            this.GetCustomerOpenTicketsAsync(Ad_user_ID, accessKey, null);
-        }
-        
-        public void GetCustomerOpenTicketsAsync(int Ad_user_ID, string accessKey, object userState) {
-            if ((this.onBeginGetCustomerOpenTicketsDelegate == null)) {
-                this.onBeginGetCustomerOpenTicketsDelegate = new BeginOperationDelegate(this.OnBeginGetCustomerOpenTickets);
-            }
-            if ((this.onEndGetCustomerOpenTicketsDelegate == null)) {
-                this.onEndGetCustomerOpenTicketsDelegate = new EndOperationDelegate(this.OnEndGetCustomerOpenTickets);
-            }
-            if ((this.onGetCustomerOpenTicketsCompletedDelegate == null)) {
-                this.onGetCustomerOpenTicketsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetCustomerOpenTicketsCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetCustomerOpenTicketsDelegate, new object[] {
-                        Ad_user_ID,
-                        accessKey}, this.onEndGetCustomerOpenTicketsDelegate, this.onGetCustomerOpenTicketsCompletedDelegate, userState);
-        }
+        public event System.EventHandler<GetCustomerOpenTicketsCompletedEventArgs> GetCustomerOpenTicketsCompleted;
         
         public string GetPartnerLeads(int Ad_User_ID, int CountryID, int statusID, string orderBy, string accessKey) {
             return base.Channel.GetPartnerLeads(Ad_User_ID, CountryID, statusID, orderBy, accessKey);
@@ -17659,13 +17343,13 @@ namespace BaseLibrary.CloudService {
                         accessKey}, this.onEndGetSubscriptionDaysDelegate, this.onGetSubscriptionDaysCompletedDelegate, userState);
         }
         
-        public void PackageEntryIntoItemMasterTest(string pdata) {
-            base.Channel.PackageEntryIntoItemMasterTest(pdata);
+        public void PackageEntryIntoItemMasterTest(string pdata, string accessKey) {
+            base.Channel.PackageEntryIntoItemMasterTest(pdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginPackageEntryIntoItemMasterTest(string pdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginPackageEntryIntoItemMasterTest(pdata, callback, asyncState);
+        public System.IAsyncResult BeginPackageEntryIntoItemMasterTest(string pdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginPackageEntryIntoItemMasterTest(pdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -17675,7 +17359,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginPackageEntryIntoItemMasterTest(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string pdata = ((string)(inValues[0]));
-            return this.BeginPackageEntryIntoItemMasterTest(pdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginPackageEntryIntoItemMasterTest(pdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndPackageEntryIntoItemMasterTest(System.IAsyncResult result) {
@@ -17690,11 +17375,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void PackageEntryIntoItemMasterTestAsync(string pdata) {
-            this.PackageEntryIntoItemMasterTestAsync(pdata, null);
+        public void PackageEntryIntoItemMasterTestAsync(string pdata, string accessKey) {
+            this.PackageEntryIntoItemMasterTestAsync(pdata, accessKey, null);
         }
         
-        public void PackageEntryIntoItemMasterTestAsync(string pdata, object userState) {
+        public void PackageEntryIntoItemMasterTestAsync(string pdata, string accessKey, object userState) {
             if ((this.onBeginPackageEntryIntoItemMasterTestDelegate == null)) {
                 this.onBeginPackageEntryIntoItemMasterTestDelegate = new BeginOperationDelegate(this.OnBeginPackageEntryIntoItemMasterTest);
             }
@@ -17705,16 +17390,17 @@ namespace BaseLibrary.CloudService {
                 this.onPackageEntryIntoItemMasterTestCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnPackageEntryIntoItemMasterTestCompleted);
             }
             base.InvokeAsync(this.onBeginPackageEntryIntoItemMasterTestDelegate, new object[] {
-                        pdata}, this.onEndPackageEntryIntoItemMasterTestDelegate, this.onPackageEntryIntoItemMasterTestCompletedDelegate, userState);
+                        pdata,
+                        accessKey}, this.onEndPackageEntryIntoItemMasterTestDelegate, this.onPackageEntryIntoItemMasterTestCompletedDelegate, userState);
         }
         
-        public bool PackageEntryIntoItemMaster(string pdata) {
-            return base.Channel.PackageEntryIntoItemMaster(pdata);
+        public bool PackageEntryIntoItemMaster(string pdata, string accessKey) {
+            return base.Channel.PackageEntryIntoItemMaster(pdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginPackageEntryIntoItemMaster(string pdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginPackageEntryIntoItemMaster(pdata, callback, asyncState);
+        public System.IAsyncResult BeginPackageEntryIntoItemMaster(string pdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginPackageEntryIntoItemMaster(pdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -17724,7 +17410,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginPackageEntryIntoItemMaster(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string pdata = ((string)(inValues[0]));
-            return this.BeginPackageEntryIntoItemMaster(pdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginPackageEntryIntoItemMaster(pdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndPackageEntryIntoItemMaster(System.IAsyncResult result) {
@@ -17740,11 +17427,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void PackageEntryIntoItemMasterAsync(string pdata) {
-            this.PackageEntryIntoItemMasterAsync(pdata, null);
+        public void PackageEntryIntoItemMasterAsync(string pdata, string accessKey) {
+            this.PackageEntryIntoItemMasterAsync(pdata, accessKey, null);
         }
         
-        public void PackageEntryIntoItemMasterAsync(string pdata, object userState) {
+        public void PackageEntryIntoItemMasterAsync(string pdata, string accessKey, object userState) {
             if ((this.onBeginPackageEntryIntoItemMasterDelegate == null)) {
                 this.onBeginPackageEntryIntoItemMasterDelegate = new BeginOperationDelegate(this.OnBeginPackageEntryIntoItemMaster);
             }
@@ -17755,16 +17442,17 @@ namespace BaseLibrary.CloudService {
                 this.onPackageEntryIntoItemMasterCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnPackageEntryIntoItemMasterCompleted);
             }
             base.InvokeAsync(this.onBeginPackageEntryIntoItemMasterDelegate, new object[] {
-                        pdata}, this.onEndPackageEntryIntoItemMasterDelegate, this.onPackageEntryIntoItemMasterCompletedDelegate, userState);
+                        pdata,
+                        accessKey}, this.onEndPackageEntryIntoItemMasterDelegate, this.onPackageEntryIntoItemMasterCompletedDelegate, userState);
         }
         
-        public bool AuthenticateHardware(BaseLibrary.CloudService.ConfigurationData cd) {
-            return base.Channel.AuthenticateHardware(cd);
+        public bool AuthenticateHardware(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            return base.Channel.AuthenticateHardware(cd, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginAuthenticateHardware(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginAuthenticateHardware(cd, callback, asyncState);
+        public System.IAsyncResult BeginAuthenticateHardware(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginAuthenticateHardware(cd, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -17774,7 +17462,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginAuthenticateHardware(object[] inValues, System.AsyncCallback callback, object asyncState) {
             BaseLibrary.CloudService.ConfigurationData cd = ((BaseLibrary.CloudService.ConfigurationData)(inValues[0]));
-            return this.BeginAuthenticateHardware(cd, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginAuthenticateHardware(cd, accessKey, callback, asyncState);
         }
         
         private object[] OnEndAuthenticateHardware(System.IAsyncResult result) {
@@ -17790,11 +17479,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void AuthenticateHardwareAsync(BaseLibrary.CloudService.ConfigurationData cd) {
-            this.AuthenticateHardwareAsync(cd, null);
+        public void AuthenticateHardwareAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            this.AuthenticateHardwareAsync(cd, accessKey, null);
         }
         
-        public void AuthenticateHardwareAsync(BaseLibrary.CloudService.ConfigurationData cd, object userState) {
+        public void AuthenticateHardwareAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, object userState) {
             if ((this.onBeginAuthenticateHardwareDelegate == null)) {
                 this.onBeginAuthenticateHardwareDelegate = new BeginOperationDelegate(this.OnBeginAuthenticateHardware);
             }
@@ -17805,16 +17494,17 @@ namespace BaseLibrary.CloudService {
                 this.onAuthenticateHardwareCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAuthenticateHardwareCompleted);
             }
             base.InvokeAsync(this.onBeginAuthenticateHardwareDelegate, new object[] {
-                        cd}, this.onEndAuthenticateHardwareDelegate, this.onAuthenticateHardwareCompletedDelegate, userState);
+                        cd,
+                        accessKey}, this.onEndAuthenticateHardwareDelegate, this.onAuthenticateHardwareCompletedDelegate, userState);
         }
         
-        public bool IsHardwareActivated(string o, string s) {
-            return base.Channel.IsHardwareActivated(o, s);
+        public bool IsHardwareActivated(string o, string s, string accessKey) {
+            return base.Channel.IsHardwareActivated(o, s, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginIsHardwareActivated(string o, string s, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginIsHardwareActivated(o, s, callback, asyncState);
+        public System.IAsyncResult BeginIsHardwareActivated(string o, string s, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginIsHardwareActivated(o, s, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -17825,7 +17515,8 @@ namespace BaseLibrary.CloudService {
         private System.IAsyncResult OnBeginIsHardwareActivated(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string o = ((string)(inValues[0]));
             string s = ((string)(inValues[1]));
-            return this.BeginIsHardwareActivated(o, s, callback, asyncState);
+            string accessKey = ((string)(inValues[2]));
+            return this.BeginIsHardwareActivated(o, s, accessKey, callback, asyncState);
         }
         
         private object[] OnEndIsHardwareActivated(System.IAsyncResult result) {
@@ -17841,11 +17532,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void IsHardwareActivatedAsync(string o, string s) {
-            this.IsHardwareActivatedAsync(o, s, null);
+        public void IsHardwareActivatedAsync(string o, string s, string accessKey) {
+            this.IsHardwareActivatedAsync(o, s, accessKey, null);
         }
         
-        public void IsHardwareActivatedAsync(string o, string s, object userState) {
+        public void IsHardwareActivatedAsync(string o, string s, string accessKey, object userState) {
             if ((this.onBeginIsHardwareActivatedDelegate == null)) {
                 this.onBeginIsHardwareActivatedDelegate = new BeginOperationDelegate(this.OnBeginIsHardwareActivated);
             }
@@ -17857,16 +17548,17 @@ namespace BaseLibrary.CloudService {
             }
             base.InvokeAsync(this.onBeginIsHardwareActivatedDelegate, new object[] {
                         o,
-                        s}, this.onEndIsHardwareActivatedDelegate, this.onIsHardwareActivatedCompletedDelegate, userState);
+                        s,
+                        accessKey}, this.onEndIsHardwareActivatedDelegate, this.onIsHardwareActivatedCompletedDelegate, userState);
         }
         
-        public string SOTCSetting(string sotcdata) {
-            return base.Channel.SOTCSetting(sotcdata);
+        public string SOTCSetting(string sotcdata, string accessKey) {
+            return base.Channel.SOTCSetting(sotcdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginSOTCSetting(string sotcdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginSOTCSetting(sotcdata, callback, asyncState);
+        public System.IAsyncResult BeginSOTCSetting(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSOTCSetting(sotcdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -17876,7 +17568,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginSOTCSetting(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string sotcdata = ((string)(inValues[0]));
-            return this.BeginSOTCSetting(sotcdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginSOTCSetting(sotcdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndSOTCSetting(System.IAsyncResult result) {
@@ -17892,11 +17585,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void SOTCSettingAsync(string sotcdata) {
-            this.SOTCSettingAsync(sotcdata, null);
+        public void SOTCSettingAsync(string sotcdata, string accessKey) {
+            this.SOTCSettingAsync(sotcdata, accessKey, null);
         }
         
-        public void SOTCSettingAsync(string sotcdata, object userState) {
+        public void SOTCSettingAsync(string sotcdata, string accessKey, object userState) {
             if ((this.onBeginSOTCSettingDelegate == null)) {
                 this.onBeginSOTCSettingDelegate = new BeginOperationDelegate(this.OnBeginSOTCSetting);
             }
@@ -17907,16 +17600,17 @@ namespace BaseLibrary.CloudService {
                 this.onSOTCSettingCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSOTCSettingCompleted);
             }
             base.InvokeAsync(this.onBeginSOTCSettingDelegate, new object[] {
-                        sotcdata}, this.onEndSOTCSettingDelegate, this.onSOTCSettingCompletedDelegate, userState);
+                        sotcdata,
+                        accessKey}, this.onEndSOTCSettingDelegate, this.onSOTCSettingCompletedDelegate, userState);
         }
         
-        public string SK(BaseLibrary.CloudService.ConfigurationData cd) {
-            return base.Channel.SK(cd);
+        public string SK(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            return base.Channel.SK(cd, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginSK(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginSK(cd, callback, asyncState);
+        public System.IAsyncResult BeginSK(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSK(cd, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -17926,7 +17620,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginSK(object[] inValues, System.AsyncCallback callback, object asyncState) {
             BaseLibrary.CloudService.ConfigurationData cd = ((BaseLibrary.CloudService.ConfigurationData)(inValues[0]));
-            return this.BeginSK(cd, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginSK(cd, accessKey, callback, asyncState);
         }
         
         private object[] OnEndSK(System.IAsyncResult result) {
@@ -17942,11 +17637,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void SKAsync(BaseLibrary.CloudService.ConfigurationData cd) {
-            this.SKAsync(cd, null);
+        public void SKAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            this.SKAsync(cd, accessKey, null);
         }
         
-        public void SKAsync(BaseLibrary.CloudService.ConfigurationData cd, object userState) {
+        public void SKAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, object userState) {
             if ((this.onBeginSKDelegate == null)) {
                 this.onBeginSKDelegate = new BeginOperationDelegate(this.OnBeginSK);
             }
@@ -17957,16 +17652,17 @@ namespace BaseLibrary.CloudService {
                 this.onSKCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSKCompleted);
             }
             base.InvokeAsync(this.onBeginSKDelegate, new object[] {
-                        cd}, this.onEndSKDelegate, this.onSKCompletedDelegate, userState);
+                        cd,
+                        accessKey}, this.onEndSKDelegate, this.onSKCompletedDelegate, userState);
         }
         
-        public string CreadientialsWork(string sotcdata) {
-            return base.Channel.CreadientialsWork(sotcdata);
+        public string CreadientialsWork(string sotcdata, string accessKey) {
+            return base.Channel.CreadientialsWork(sotcdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginCreadientialsWork(string sotcdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginCreadientialsWork(sotcdata, callback, asyncState);
+        public System.IAsyncResult BeginCreadientialsWork(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCreadientialsWork(sotcdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -17976,7 +17672,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginCreadientialsWork(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string sotcdata = ((string)(inValues[0]));
-            return this.BeginCreadientialsWork(sotcdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginCreadientialsWork(sotcdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndCreadientialsWork(System.IAsyncResult result) {
@@ -17992,11 +17689,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void CreadientialsWorkAsync(string sotcdata) {
-            this.CreadientialsWorkAsync(sotcdata, null);
+        public void CreadientialsWorkAsync(string sotcdata, string accessKey) {
+            this.CreadientialsWorkAsync(sotcdata, accessKey, null);
         }
         
-        public void CreadientialsWorkAsync(string sotcdata, object userState) {
+        public void CreadientialsWorkAsync(string sotcdata, string accessKey, object userState) {
             if ((this.onBeginCreadientialsWorkDelegate == null)) {
                 this.onBeginCreadientialsWorkDelegate = new BeginOperationDelegate(this.OnBeginCreadientialsWork);
             }
@@ -18007,16 +17704,17 @@ namespace BaseLibrary.CloudService {
                 this.onCreadientialsWorkCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCreadientialsWorkCompleted);
             }
             base.InvokeAsync(this.onBeginCreadientialsWorkDelegate, new object[] {
-                        sotcdata}, this.onEndCreadientialsWorkDelegate, this.onCreadientialsWorkCompletedDelegate, userState);
+                        sotcdata,
+                        accessKey}, this.onEndCreadientialsWorkDelegate, this.onCreadientialsWorkCompletedDelegate, userState);
         }
         
-        public string SavePrinterList(string sotcdata) {
-            return base.Channel.SavePrinterList(sotcdata);
+        public string SavePrinterList(string sotcdata, string accessKey) {
+            return base.Channel.SavePrinterList(sotcdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginSavePrinterList(string sotcdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginSavePrinterList(sotcdata, callback, asyncState);
+        public System.IAsyncResult BeginSavePrinterList(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginSavePrinterList(sotcdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18026,7 +17724,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginSavePrinterList(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string sotcdata = ((string)(inValues[0]));
-            return this.BeginSavePrinterList(sotcdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginSavePrinterList(sotcdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndSavePrinterList(System.IAsyncResult result) {
@@ -18042,11 +17741,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void SavePrinterListAsync(string sotcdata) {
-            this.SavePrinterListAsync(sotcdata, null);
+        public void SavePrinterListAsync(string sotcdata, string accessKey) {
+            this.SavePrinterListAsync(sotcdata, accessKey, null);
         }
         
-        public void SavePrinterListAsync(string sotcdata, object userState) {
+        public void SavePrinterListAsync(string sotcdata, string accessKey, object userState) {
             if ((this.onBeginSavePrinterListDelegate == null)) {
                 this.onBeginSavePrinterListDelegate = new BeginOperationDelegate(this.OnBeginSavePrinterList);
             }
@@ -18057,16 +17756,17 @@ namespace BaseLibrary.CloudService {
                 this.onSavePrinterListCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSavePrinterListCompleted);
             }
             base.InvokeAsync(this.onBeginSavePrinterListDelegate, new object[] {
-                        sotcdata}, this.onEndSavePrinterListDelegate, this.onSavePrinterListCompletedDelegate, userState);
+                        sotcdata,
+                        accessKey}, this.onEndSavePrinterListDelegate, this.onSavePrinterListCompletedDelegate, userState);
         }
         
-        public string GetPrinterList(string sotcdata) {
-            return base.Channel.GetPrinterList(sotcdata);
+        public string GetPrinterList(string sotcdata, string accessKey) {
+            return base.Channel.GetPrinterList(sotcdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetPrinterList(string sotcdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetPrinterList(sotcdata, callback, asyncState);
+        public System.IAsyncResult BeginGetPrinterList(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetPrinterList(sotcdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18076,7 +17776,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetPrinterList(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string sotcdata = ((string)(inValues[0]));
-            return this.BeginGetPrinterList(sotcdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetPrinterList(sotcdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetPrinterList(System.IAsyncResult result) {
@@ -18092,11 +17793,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetPrinterListAsync(string sotcdata) {
-            this.GetPrinterListAsync(sotcdata, null);
+        public void GetPrinterListAsync(string sotcdata, string accessKey) {
+            this.GetPrinterListAsync(sotcdata, accessKey, null);
         }
         
-        public void GetPrinterListAsync(string sotcdata, object userState) {
+        public void GetPrinterListAsync(string sotcdata, string accessKey, object userState) {
             if ((this.onBeginGetPrinterListDelegate == null)) {
                 this.onBeginGetPrinterListDelegate = new BeginOperationDelegate(this.OnBeginGetPrinterList);
             }
@@ -18107,16 +17808,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetPrinterListCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetPrinterListCompleted);
             }
             base.InvokeAsync(this.onBeginGetPrinterListDelegate, new object[] {
-                        sotcdata}, this.onEndGetPrinterListDelegate, this.onGetPrinterListCompletedDelegate, userState);
+                        sotcdata,
+                        accessKey}, this.onEndGetPrinterListDelegate, this.onGetPrinterListCompletedDelegate, userState);
         }
         
-        public string CheckUpdate(string sotcdata) {
-            return base.Channel.CheckUpdate(sotcdata);
+        public string CheckUpdate(string sotcdata, string accessKey) {
+            return base.Channel.CheckUpdate(sotcdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginCheckUpdate(string sotcdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginCheckUpdate(sotcdata, callback, asyncState);
+        public System.IAsyncResult BeginCheckUpdate(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCheckUpdate(sotcdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18126,7 +17828,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginCheckUpdate(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string sotcdata = ((string)(inValues[0]));
-            return this.BeginCheckUpdate(sotcdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginCheckUpdate(sotcdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndCheckUpdate(System.IAsyncResult result) {
@@ -18142,11 +17845,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void CheckUpdateAsync(string sotcdata) {
-            this.CheckUpdateAsync(sotcdata, null);
+        public void CheckUpdateAsync(string sotcdata, string accessKey) {
+            this.CheckUpdateAsync(sotcdata, accessKey, null);
         }
         
-        public void CheckUpdateAsync(string sotcdata, object userState) {
+        public void CheckUpdateAsync(string sotcdata, string accessKey, object userState) {
             if ((this.onBeginCheckUpdateDelegate == null)) {
                 this.onBeginCheckUpdateDelegate = new BeginOperationDelegate(this.OnBeginCheckUpdate);
             }
@@ -18157,16 +17860,17 @@ namespace BaseLibrary.CloudService {
                 this.onCheckUpdateCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCheckUpdateCompleted);
             }
             base.InvokeAsync(this.onBeginCheckUpdateDelegate, new object[] {
-                        sotcdata}, this.onEndCheckUpdateDelegate, this.onCheckUpdateCompletedDelegate, userState);
+                        sotcdata,
+                        accessKey}, this.onEndCheckUpdateDelegate, this.onCheckUpdateCompletedDelegate, userState);
         }
         
-        public void GetUserUpdateTimeSettings(BaseLibrary.CloudService.ConfigurationData cd) {
-            base.Channel.GetUserUpdateTimeSettings(cd);
+        public void GetUserUpdateTimeSettings(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            base.Channel.GetUserUpdateTimeSettings(cd, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetUserUpdateTimeSettings(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetUserUpdateTimeSettings(cd, callback, asyncState);
+        public System.IAsyncResult BeginGetUserUpdateTimeSettings(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserUpdateTimeSettings(cd, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18176,7 +17880,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetUserUpdateTimeSettings(object[] inValues, System.AsyncCallback callback, object asyncState) {
             BaseLibrary.CloudService.ConfigurationData cd = ((BaseLibrary.CloudService.ConfigurationData)(inValues[0]));
-            return this.BeginGetUserUpdateTimeSettings(cd, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetUserUpdateTimeSettings(cd, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetUserUpdateTimeSettings(System.IAsyncResult result) {
@@ -18191,11 +17896,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetUserUpdateTimeSettingsAsync(BaseLibrary.CloudService.ConfigurationData cd) {
-            this.GetUserUpdateTimeSettingsAsync(cd, null);
+        public void GetUserUpdateTimeSettingsAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            this.GetUserUpdateTimeSettingsAsync(cd, accessKey, null);
         }
         
-        public void GetUserUpdateTimeSettingsAsync(BaseLibrary.CloudService.ConfigurationData cd, object userState) {
+        public void GetUserUpdateTimeSettingsAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, object userState) {
             if ((this.onBeginGetUserUpdateTimeSettingsDelegate == null)) {
                 this.onBeginGetUserUpdateTimeSettingsDelegate = new BeginOperationDelegate(this.OnBeginGetUserUpdateTimeSettings);
             }
@@ -18206,16 +17911,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetUserUpdateTimeSettingsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserUpdateTimeSettingsCompleted);
             }
             base.InvokeAsync(this.onBeginGetUserUpdateTimeSettingsDelegate, new object[] {
-                        cd}, this.onEndGetUserUpdateTimeSettingsDelegate, this.onGetUserUpdateTimeSettingsCompletedDelegate, userState);
+                        cd,
+                        accessKey}, this.onEndGetUserUpdateTimeSettingsDelegate, this.onGetUserUpdateTimeSettingsCompletedDelegate, userState);
         }
         
-        public void GetUserLSSettings(BaseLibrary.CloudService.ConfigurationData cd) {
-            base.Channel.GetUserLSSettings(cd);
+        public void GetUserLSSettings(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            base.Channel.GetUserLSSettings(cd, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetUserLSSettings(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetUserLSSettings(cd, callback, asyncState);
+        public System.IAsyncResult BeginGetUserLSSettings(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserLSSettings(cd, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18225,7 +17931,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetUserLSSettings(object[] inValues, System.AsyncCallback callback, object asyncState) {
             BaseLibrary.CloudService.ConfigurationData cd = ((BaseLibrary.CloudService.ConfigurationData)(inValues[0]));
-            return this.BeginGetUserLSSettings(cd, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetUserLSSettings(cd, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetUserLSSettings(System.IAsyncResult result) {
@@ -18240,11 +17947,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetUserLSSettingsAsync(BaseLibrary.CloudService.ConfigurationData cd) {
-            this.GetUserLSSettingsAsync(cd, null);
+        public void GetUserLSSettingsAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            this.GetUserLSSettingsAsync(cd, accessKey, null);
         }
         
-        public void GetUserLSSettingsAsync(BaseLibrary.CloudService.ConfigurationData cd, object userState) {
+        public void GetUserLSSettingsAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, object userState) {
             if ((this.onBeginGetUserLSSettingsDelegate == null)) {
                 this.onBeginGetUserLSSettingsDelegate = new BeginOperationDelegate(this.OnBeginGetUserLSSettings);
             }
@@ -18255,16 +17962,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetUserLSSettingsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserLSSettingsCompleted);
             }
             base.InvokeAsync(this.onBeginGetUserLSSettingsDelegate, new object[] {
-                        cd}, this.onEndGetUserLSSettingsDelegate, this.onGetUserLSSettingsCompletedDelegate, userState);
+                        cd,
+                        accessKey}, this.onEndGetUserLSSettingsDelegate, this.onGetUserLSSettingsCompletedDelegate, userState);
         }
         
-        public string MarkReady(string sotcdata) {
-            return base.Channel.MarkReady(sotcdata);
+        public string MarkReady(string sotcdata, string accessKey) {
+            return base.Channel.MarkReady(sotcdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginMarkReady(string sotcdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginMarkReady(sotcdata, callback, asyncState);
+        public System.IAsyncResult BeginMarkReady(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginMarkReady(sotcdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18274,7 +17982,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginMarkReady(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string sotcdata = ((string)(inValues[0]));
-            return this.BeginMarkReady(sotcdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginMarkReady(sotcdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndMarkReady(System.IAsyncResult result) {
@@ -18290,11 +17999,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void MarkReadyAsync(string sotcdata) {
-            this.MarkReadyAsync(sotcdata, null);
+        public void MarkReadyAsync(string sotcdata, string accessKey) {
+            this.MarkReadyAsync(sotcdata, accessKey, null);
         }
         
-        public void MarkReadyAsync(string sotcdata, object userState) {
+        public void MarkReadyAsync(string sotcdata, string accessKey, object userState) {
             if ((this.onBeginMarkReadyDelegate == null)) {
                 this.onBeginMarkReadyDelegate = new BeginOperationDelegate(this.OnBeginMarkReady);
             }
@@ -18305,16 +18014,17 @@ namespace BaseLibrary.CloudService {
                 this.onMarkReadyCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnMarkReadyCompleted);
             }
             base.InvokeAsync(this.onBeginMarkReadyDelegate, new object[] {
-                        sotcdata}, this.onEndMarkReadyDelegate, this.onMarkReadyCompletedDelegate, userState);
+                        sotcdata,
+                        accessKey}, this.onEndMarkReadyDelegate, this.onMarkReadyCompletedDelegate, userState);
         }
         
-        public bool InsertUpdateConfig(BaseLibrary.CloudService.ConfigurationData cd) {
-            return base.Channel.InsertUpdateConfig(cd);
+        public bool InsertUpdateConfig(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            return base.Channel.InsertUpdateConfig(cd, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginInsertUpdateConfig(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginInsertUpdateConfig(cd, callback, asyncState);
+        public System.IAsyncResult BeginInsertUpdateConfig(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInsertUpdateConfig(cd, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18324,7 +18034,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginInsertUpdateConfig(object[] inValues, System.AsyncCallback callback, object asyncState) {
             BaseLibrary.CloudService.ConfigurationData cd = ((BaseLibrary.CloudService.ConfigurationData)(inValues[0]));
-            return this.BeginInsertUpdateConfig(cd, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginInsertUpdateConfig(cd, accessKey, callback, asyncState);
         }
         
         private object[] OnEndInsertUpdateConfig(System.IAsyncResult result) {
@@ -18340,11 +18051,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void InsertUpdateConfigAsync(BaseLibrary.CloudService.ConfigurationData cd) {
-            this.InsertUpdateConfigAsync(cd, null);
+        public void InsertUpdateConfigAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            this.InsertUpdateConfigAsync(cd, accessKey, null);
         }
         
-        public void InsertUpdateConfigAsync(BaseLibrary.CloudService.ConfigurationData cd, object userState) {
+        public void InsertUpdateConfigAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, object userState) {
             if ((this.onBeginInsertUpdateConfigDelegate == null)) {
                 this.onBeginInsertUpdateConfigDelegate = new BeginOperationDelegate(this.OnBeginInsertUpdateConfig);
             }
@@ -18355,16 +18066,17 @@ namespace BaseLibrary.CloudService {
                 this.onInsertUpdateConfigCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInsertUpdateConfigCompleted);
             }
             base.InvokeAsync(this.onBeginInsertUpdateConfigDelegate, new object[] {
-                        cd}, this.onEndInsertUpdateConfigDelegate, this.onInsertUpdateConfigCompletedDelegate, userState);
+                        cd,
+                        accessKey}, this.onEndInsertUpdateConfigDelegate, this.onInsertUpdateConfigCompletedDelegate, userState);
         }
         
-        public void EmailToUser(BaseLibrary.CloudService.ConfigurationData cd) {
-            base.Channel.EmailToUser(cd);
+        public void EmailToUser(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            base.Channel.EmailToUser(cd, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginEmailToUser(BaseLibrary.CloudService.ConfigurationData cd, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginEmailToUser(cd, callback, asyncState);
+        public System.IAsyncResult BeginEmailToUser(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginEmailToUser(cd, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18374,7 +18086,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginEmailToUser(object[] inValues, System.AsyncCallback callback, object asyncState) {
             BaseLibrary.CloudService.ConfigurationData cd = ((BaseLibrary.CloudService.ConfigurationData)(inValues[0]));
-            return this.BeginEmailToUser(cd, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginEmailToUser(cd, accessKey, callback, asyncState);
         }
         
         private object[] OnEndEmailToUser(System.IAsyncResult result) {
@@ -18389,11 +18102,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void EmailToUserAsync(BaseLibrary.CloudService.ConfigurationData cd) {
-            this.EmailToUserAsync(cd, null);
+        public void EmailToUserAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey) {
+            this.EmailToUserAsync(cd, accessKey, null);
         }
         
-        public void EmailToUserAsync(BaseLibrary.CloudService.ConfigurationData cd, object userState) {
+        public void EmailToUserAsync(BaseLibrary.CloudService.ConfigurationData cd, string accessKey, object userState) {
             if ((this.onBeginEmailToUserDelegate == null)) {
                 this.onBeginEmailToUserDelegate = new BeginOperationDelegate(this.OnBeginEmailToUser);
             }
@@ -18404,16 +18117,17 @@ namespace BaseLibrary.CloudService {
                 this.onEmailToUserCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnEmailToUserCompleted);
             }
             base.InvokeAsync(this.onBeginEmailToUserDelegate, new object[] {
-                        cd}, this.onEndEmailToUserDelegate, this.onEmailToUserCompletedDelegate, userState);
+                        cd,
+                        accessKey}, this.onEndEmailToUserDelegate, this.onEmailToUserCompletedDelegate, userState);
         }
         
-        public void GetUserUpdateTimeSettingsDemo(string sotcdata) {
-            base.Channel.GetUserUpdateTimeSettingsDemo(sotcdata);
+        public void GetUserUpdateTimeSettingsDemo(string sotcdata, string accessKey) {
+            base.Channel.GetUserUpdateTimeSettingsDemo(sotcdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetUserUpdateTimeSettingsDemo(string sotcdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetUserUpdateTimeSettingsDemo(sotcdata, callback, asyncState);
+        public System.IAsyncResult BeginGetUserUpdateTimeSettingsDemo(string sotcdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUserUpdateTimeSettingsDemo(sotcdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18423,7 +18137,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetUserUpdateTimeSettingsDemo(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string sotcdata = ((string)(inValues[0]));
-            return this.BeginGetUserUpdateTimeSettingsDemo(sotcdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetUserUpdateTimeSettingsDemo(sotcdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetUserUpdateTimeSettingsDemo(System.IAsyncResult result) {
@@ -18438,11 +18153,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetUserUpdateTimeSettingsDemoAsync(string sotcdata) {
-            this.GetUserUpdateTimeSettingsDemoAsync(sotcdata, null);
+        public void GetUserUpdateTimeSettingsDemoAsync(string sotcdata, string accessKey) {
+            this.GetUserUpdateTimeSettingsDemoAsync(sotcdata, accessKey, null);
         }
         
-        public void GetUserUpdateTimeSettingsDemoAsync(string sotcdata, object userState) {
+        public void GetUserUpdateTimeSettingsDemoAsync(string sotcdata, string accessKey, object userState) {
             if ((this.onBeginGetUserUpdateTimeSettingsDemoDelegate == null)) {
                 this.onBeginGetUserUpdateTimeSettingsDemoDelegate = new BeginOperationDelegate(this.OnBeginGetUserUpdateTimeSettingsDemo);
             }
@@ -18453,16 +18168,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetUserUpdateTimeSettingsDemoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUserUpdateTimeSettingsDemoCompleted);
             }
             base.InvokeAsync(this.onBeginGetUserUpdateTimeSettingsDemoDelegate, new object[] {
-                        sotcdata}, this.onEndGetUserUpdateTimeSettingsDemoDelegate, this.onGetUserUpdateTimeSettingsDemoCompletedDelegate, userState);
+                        sotcdata,
+                        accessKey}, this.onEndGetUserUpdateTimeSettingsDemoDelegate, this.onGetUserUpdateTimeSettingsDemoCompletedDelegate, userState);
         }
         
-        public string GetHardwares(string hardwaredata) {
-            return base.Channel.GetHardwares(hardwaredata);
+        public string GetHardwares(string hardwaredata, string accessKey) {
+            return base.Channel.GetHardwares(hardwaredata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetHardwares(string hardwaredata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetHardwares(hardwaredata, callback, asyncState);
+        public System.IAsyncResult BeginGetHardwares(string hardwaredata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetHardwares(hardwaredata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18472,7 +18188,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetHardwares(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string hardwaredata = ((string)(inValues[0]));
-            return this.BeginGetHardwares(hardwaredata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetHardwares(hardwaredata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetHardwares(System.IAsyncResult result) {
@@ -18488,11 +18205,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetHardwaresAsync(string hardwaredata) {
-            this.GetHardwaresAsync(hardwaredata, null);
+        public void GetHardwaresAsync(string hardwaredata, string accessKey) {
+            this.GetHardwaresAsync(hardwaredata, accessKey, null);
         }
         
-        public void GetHardwaresAsync(string hardwaredata, object userState) {
+        public void GetHardwaresAsync(string hardwaredata, string accessKey, object userState) {
             if ((this.onBeginGetHardwaresDelegate == null)) {
                 this.onBeginGetHardwaresDelegate = new BeginOperationDelegate(this.OnBeginGetHardwares);
             }
@@ -18503,16 +18220,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetHardwaresCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetHardwaresCompleted);
             }
             base.InvokeAsync(this.onBeginGetHardwaresDelegate, new object[] {
-                        hardwaredata}, this.onEndGetHardwaresDelegate, this.onGetHardwaresCompletedDelegate, userState);
+                        hardwaredata,
+                        accessKey}, this.onEndGetHardwaresDelegate, this.onGetHardwaresCompletedDelegate, userState);
         }
         
-        public string ActivateUpdateHardware(string hardwaredata) {
-            return base.Channel.ActivateUpdateHardware(hardwaredata);
+        public string ActivateUpdateHardware(string hardwaredata, string accessKey) {
+            return base.Channel.ActivateUpdateHardware(hardwaredata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginActivateUpdateHardware(string hardwaredata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginActivateUpdateHardware(hardwaredata, callback, asyncState);
+        public System.IAsyncResult BeginActivateUpdateHardware(string hardwaredata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginActivateUpdateHardware(hardwaredata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18522,7 +18240,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginActivateUpdateHardware(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string hardwaredata = ((string)(inValues[0]));
-            return this.BeginActivateUpdateHardware(hardwaredata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginActivateUpdateHardware(hardwaredata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndActivateUpdateHardware(System.IAsyncResult result) {
@@ -18538,11 +18257,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void ActivateUpdateHardwareAsync(string hardwaredata) {
-            this.ActivateUpdateHardwareAsync(hardwaredata, null);
+        public void ActivateUpdateHardwareAsync(string hardwaredata, string accessKey) {
+            this.ActivateUpdateHardwareAsync(hardwaredata, accessKey, null);
         }
         
-        public void ActivateUpdateHardwareAsync(string hardwaredata, object userState) {
+        public void ActivateUpdateHardwareAsync(string hardwaredata, string accessKey, object userState) {
             if ((this.onBeginActivateUpdateHardwareDelegate == null)) {
                 this.onBeginActivateUpdateHardwareDelegate = new BeginOperationDelegate(this.OnBeginActivateUpdateHardware);
             }
@@ -18553,16 +18272,17 @@ namespace BaseLibrary.CloudService {
                 this.onActivateUpdateHardwareCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnActivateUpdateHardwareCompleted);
             }
             base.InvokeAsync(this.onBeginActivateUpdateHardwareDelegate, new object[] {
-                        hardwaredata}, this.onEndActivateUpdateHardwareDelegate, this.onActivateUpdateHardwareCompletedDelegate, userState);
+                        hardwaredata,
+                        accessKey}, this.onEndActivateUpdateHardwareDelegate, this.onActivateUpdateHardwareCompletedDelegate, userState);
         }
         
-        public string GetConsoles(string printerdata) {
-            return base.Channel.GetConsoles(printerdata);
+        public string GetConsoles(string printerdata, string accessKey) {
+            return base.Channel.GetConsoles(printerdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetConsoles(string printerdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetConsoles(printerdata, callback, asyncState);
+        public System.IAsyncResult BeginGetConsoles(string printerdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetConsoles(printerdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18572,7 +18292,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetConsoles(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string printerdata = ((string)(inValues[0]));
-            return this.BeginGetConsoles(printerdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetConsoles(printerdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetConsoles(System.IAsyncResult result) {
@@ -18588,11 +18309,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetConsolesAsync(string printerdata) {
-            this.GetConsolesAsync(printerdata, null);
+        public void GetConsolesAsync(string printerdata, string accessKey) {
+            this.GetConsolesAsync(printerdata, accessKey, null);
         }
         
-        public void GetConsolesAsync(string printerdata, object userState) {
+        public void GetConsolesAsync(string printerdata, string accessKey, object userState) {
             if ((this.onBeginGetConsolesDelegate == null)) {
                 this.onBeginGetConsolesDelegate = new BeginOperationDelegate(this.OnBeginGetConsoles);
             }
@@ -18603,16 +18324,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetConsolesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetConsolesCompleted);
             }
             base.InvokeAsync(this.onBeginGetConsolesDelegate, new object[] {
-                        printerdata}, this.onEndGetConsolesDelegate, this.onGetConsolesCompletedDelegate, userState);
+                        printerdata,
+                        accessKey}, this.onEndGetConsolesDelegate, this.onGetConsolesCompletedDelegate, userState);
         }
         
-        public string GetModelBrandDriver(string printerdata) {
-            return base.Channel.GetModelBrandDriver(printerdata);
+        public string GetModelBrandDriver(string printerdata, string accessKey) {
+            return base.Channel.GetModelBrandDriver(printerdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetModelBrandDriver(string printerdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetModelBrandDriver(printerdata, callback, asyncState);
+        public System.IAsyncResult BeginGetModelBrandDriver(string printerdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetModelBrandDriver(printerdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18622,7 +18344,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetModelBrandDriver(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string printerdata = ((string)(inValues[0]));
-            return this.BeginGetModelBrandDriver(printerdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetModelBrandDriver(printerdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetModelBrandDriver(System.IAsyncResult result) {
@@ -18638,11 +18361,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetModelBrandDriverAsync(string printerdata) {
-            this.GetModelBrandDriverAsync(printerdata, null);
+        public void GetModelBrandDriverAsync(string printerdata, string accessKey) {
+            this.GetModelBrandDriverAsync(printerdata, accessKey, null);
         }
         
-        public void GetModelBrandDriverAsync(string printerdata, object userState) {
+        public void GetModelBrandDriverAsync(string printerdata, string accessKey, object userState) {
             if ((this.onBeginGetModelBrandDriverDelegate == null)) {
                 this.onBeginGetModelBrandDriverDelegate = new BeginOperationDelegate(this.OnBeginGetModelBrandDriver);
             }
@@ -18653,16 +18376,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetModelBrandDriverCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetModelBrandDriverCompleted);
             }
             base.InvokeAsync(this.onBeginGetModelBrandDriverDelegate, new object[] {
-                        printerdata}, this.onEndGetModelBrandDriverDelegate, this.onGetModelBrandDriverCompletedDelegate, userState);
+                        printerdata,
+                        accessKey}, this.onEndGetModelBrandDriverDelegate, this.onGetModelBrandDriverCompletedDelegate, userState);
         }
         
-        public string GetSetPrinters(string printerdata) {
-            return base.Channel.GetSetPrinters(printerdata);
+        public string GetSetPrinters(string printerdata, string accessKey) {
+            return base.Channel.GetSetPrinters(printerdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetSetPrinters(string printerdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetSetPrinters(printerdata, callback, asyncState);
+        public System.IAsyncResult BeginGetSetPrinters(string printerdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetSetPrinters(printerdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18672,7 +18396,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetSetPrinters(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string printerdata = ((string)(inValues[0]));
-            return this.BeginGetSetPrinters(printerdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetSetPrinters(printerdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetSetPrinters(System.IAsyncResult result) {
@@ -18688,11 +18413,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetSetPrintersAsync(string printerdata) {
-            this.GetSetPrintersAsync(printerdata, null);
+        public void GetSetPrintersAsync(string printerdata, string accessKey) {
+            this.GetSetPrintersAsync(printerdata, accessKey, null);
         }
         
-        public void GetSetPrintersAsync(string printerdata, object userState) {
+        public void GetSetPrintersAsync(string printerdata, string accessKey, object userState) {
             if ((this.onBeginGetSetPrintersDelegate == null)) {
                 this.onBeginGetSetPrintersDelegate = new BeginOperationDelegate(this.OnBeginGetSetPrinters);
             }
@@ -18703,16 +18428,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetSetPrintersCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSetPrintersCompleted);
             }
             base.InvokeAsync(this.onBeginGetSetPrintersDelegate, new object[] {
-                        printerdata}, this.onEndGetSetPrintersDelegate, this.onGetSetPrintersCompletedDelegate, userState);
+                        printerdata,
+                        accessKey}, this.onEndGetSetPrintersDelegate, this.onGetSetPrintersCompletedDelegate, userState);
         }
         
-        public string GetPrinters(string printerdata) {
-            return base.Channel.GetPrinters(printerdata);
+        public string GetPrinters(string printerdata, string accessKey) {
+            return base.Channel.GetPrinters(printerdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetPrinters(string printerdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetPrinters(printerdata, callback, asyncState);
+        public System.IAsyncResult BeginGetPrinters(string printerdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetPrinters(printerdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18722,7 +18448,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetPrinters(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string printerdata = ((string)(inValues[0]));
-            return this.BeginGetPrinters(printerdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetPrinters(printerdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetPrinters(System.IAsyncResult result) {
@@ -18738,11 +18465,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetPrintersAsync(string printerdata) {
-            this.GetPrintersAsync(printerdata, null);
+        public void GetPrintersAsync(string printerdata, string accessKey) {
+            this.GetPrintersAsync(printerdata, accessKey, null);
         }
         
-        public void GetPrintersAsync(string printerdata, object userState) {
+        public void GetPrintersAsync(string printerdata, string accessKey, object userState) {
             if ((this.onBeginGetPrintersDelegate == null)) {
                 this.onBeginGetPrintersDelegate = new BeginOperationDelegate(this.OnBeginGetPrinters);
             }
@@ -18753,16 +18480,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetPrintersCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetPrintersCompleted);
             }
             base.InvokeAsync(this.onBeginGetPrintersDelegate, new object[] {
-                        printerdata}, this.onEndGetPrintersDelegate, this.onGetPrintersCompletedDelegate, userState);
+                        printerdata,
+                        accessKey}, this.onEndGetPrintersDelegate, this.onGetPrintersCompletedDelegate, userState);
         }
         
-        public string GetSetLocalServers(string localserverdata) {
-            return base.Channel.GetSetLocalServers(localserverdata);
+        public string GetSetLocalServers(string localserverdata, string accessKey) {
+            return base.Channel.GetSetLocalServers(localserverdata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetSetLocalServers(string localserverdata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetSetLocalServers(localserverdata, callback, asyncState);
+        public System.IAsyncResult BeginGetSetLocalServers(string localserverdata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetSetLocalServers(localserverdata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18772,7 +18500,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetSetLocalServers(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string localserverdata = ((string)(inValues[0]));
-            return this.BeginGetSetLocalServers(localserverdata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetSetLocalServers(localserverdata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetSetLocalServers(System.IAsyncResult result) {
@@ -18788,11 +18517,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetSetLocalServersAsync(string localserverdata) {
-            this.GetSetLocalServersAsync(localserverdata, null);
+        public void GetSetLocalServersAsync(string localserverdata, string accessKey) {
+            this.GetSetLocalServersAsync(localserverdata, accessKey, null);
         }
         
-        public void GetSetLocalServersAsync(string localserverdata, object userState) {
+        public void GetSetLocalServersAsync(string localserverdata, string accessKey, object userState) {
             if ((this.onBeginGetSetLocalServersDelegate == null)) {
                 this.onBeginGetSetLocalServersDelegate = new BeginOperationDelegate(this.OnBeginGetSetLocalServers);
             }
@@ -18803,16 +18532,17 @@ namespace BaseLibrary.CloudService {
                 this.onGetSetLocalServersCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSetLocalServersCompleted);
             }
             base.InvokeAsync(this.onBeginGetSetLocalServersDelegate, new object[] {
-                        localserverdata}, this.onEndGetSetLocalServersDelegate, this.onGetSetLocalServersCompletedDelegate, userState);
+                        localserverdata,
+                        accessKey}, this.onEndGetSetLocalServersDelegate, this.onGetSetLocalServersCompletedDelegate, userState);
         }
         
-        public string GetSetUpdateTimeSettings(string consoledata) {
-            return base.Channel.GetSetUpdateTimeSettings(consoledata);
+        public string GetSetUpdateTimeSettings(string consoledata, string accessKey) {
+            return base.Channel.GetSetUpdateTimeSettings(consoledata, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetSetUpdateTimeSettings(string consoledata, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetSetUpdateTimeSettings(consoledata, callback, asyncState);
+        public System.IAsyncResult BeginGetSetUpdateTimeSettings(string consoledata, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetSetUpdateTimeSettings(consoledata, accessKey, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -18822,7 +18552,8 @@ namespace BaseLibrary.CloudService {
         
         private System.IAsyncResult OnBeginGetSetUpdateTimeSettings(object[] inValues, System.AsyncCallback callback, object asyncState) {
             string consoledata = ((string)(inValues[0]));
-            return this.BeginGetSetUpdateTimeSettings(consoledata, callback, asyncState);
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetSetUpdateTimeSettings(consoledata, accessKey, callback, asyncState);
         }
         
         private object[] OnEndGetSetUpdateTimeSettings(System.IAsyncResult result) {
@@ -18838,11 +18569,11 @@ namespace BaseLibrary.CloudService {
             }
         }
         
-        public void GetSetUpdateTimeSettingsAsync(string consoledata) {
-            this.GetSetUpdateTimeSettingsAsync(consoledata, null);
+        public void GetSetUpdateTimeSettingsAsync(string consoledata, string accessKey) {
+            this.GetSetUpdateTimeSettingsAsync(consoledata, accessKey, null);
         }
         
-        public void GetSetUpdateTimeSettingsAsync(string consoledata, object userState) {
+        public void GetSetUpdateTimeSettingsAsync(string consoledata, string accessKey, object userState) {
             if ((this.onBeginGetSetUpdateTimeSettingsDelegate == null)) {
                 this.onBeginGetSetUpdateTimeSettingsDelegate = new BeginOperationDelegate(this.OnBeginGetSetUpdateTimeSettings);
             }
@@ -18853,161 +18584,60 @@ namespace BaseLibrary.CloudService {
                 this.onGetSetUpdateTimeSettingsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSetUpdateTimeSettingsCompleted);
             }
             base.InvokeAsync(this.onBeginGetSetUpdateTimeSettingsDelegate, new object[] {
-                        consoledata}, this.onEndGetSetUpdateTimeSettingsDelegate, this.onGetSetUpdateTimeSettingsCompletedDelegate, userState);
+                        consoledata,
+                        accessKey}, this.onEndGetSetUpdateTimeSettingsDelegate, this.onGetSetUpdateTimeSettingsCompletedDelegate, userState);
         }
         
-        public BaseLibrary.CloudService.Site[] GetSiteInfo(string accessKey) {
-            return base.Channel.GetSiteInfo(accessKey);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetSiteInfo(string accessKey, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetSiteInfo(accessKey, callback, asyncState);
+        public BaseLibrary.CloudService.ProductSubscription[] GetCustomerSubscription(string customerSearchKey, string accessKey) {
+            return base.Channel.GetCustomerSubscription(customerSearchKey, accessKey);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public BaseLibrary.CloudService.Site[] EndGetSiteInfo(System.IAsyncResult result) {
-            return base.Channel.EndGetSiteInfo(result);
+        public System.IAsyncResult BeginGetCustomerSubscription(string customerSearchKey, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetCustomerSubscription(customerSearchKey, accessKey, callback, asyncState);
         }
         
-        private System.IAsyncResult OnBeginGetSiteInfo(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string accessKey = ((string)(inValues[0]));
-            return this.BeginGetSiteInfo(accessKey, callback, asyncState);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public BaseLibrary.CloudService.ProductSubscription[] EndGetCustomerSubscription(System.IAsyncResult result) {
+            return base.Channel.EndGetCustomerSubscription(result);
         }
         
-        private object[] OnEndGetSiteInfo(System.IAsyncResult result) {
-            BaseLibrary.CloudService.Site[] retVal = this.EndGetSiteInfo(result);
+        private System.IAsyncResult OnBeginGetCustomerSubscription(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string customerSearchKey = ((string)(inValues[0]));
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetCustomerSubscription(customerSearchKey, accessKey, callback, asyncState);
+        }
+        
+        private object[] OnEndGetCustomerSubscription(System.IAsyncResult result) {
+            BaseLibrary.CloudService.ProductSubscription[] retVal = this.EndGetCustomerSubscription(result);
             return new object[] {
                     retVal};
         }
         
-        private void OnGetSiteInfoCompleted(object state) {
-            if ((this.GetSiteInfoCompleted != null)) {
+        private void OnGetCustomerSubscriptionCompleted(object state) {
+            if ((this.GetCustomerSubscriptionCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetSiteInfoCompleted(this, new GetSiteInfoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.GetCustomerSubscriptionCompleted(this, new GetCustomerSubscriptionCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void GetSiteInfoAsync(string accessKey) {
-            this.GetSiteInfoAsync(accessKey, null);
+        public void GetCustomerSubscriptionAsync(string customerSearchKey, string accessKey) {
+            this.GetCustomerSubscriptionAsync(customerSearchKey, accessKey, null);
         }
         
-        public void GetSiteInfoAsync(string accessKey, object userState) {
-            if ((this.onBeginGetSiteInfoDelegate == null)) {
-                this.onBeginGetSiteInfoDelegate = new BeginOperationDelegate(this.OnBeginGetSiteInfo);
+        public void GetCustomerSubscriptionAsync(string customerSearchKey, string accessKey, object userState) {
+            if ((this.onBeginGetCustomerSubscriptionDelegate == null)) {
+                this.onBeginGetCustomerSubscriptionDelegate = new BeginOperationDelegate(this.OnBeginGetCustomerSubscription);
             }
-            if ((this.onEndGetSiteInfoDelegate == null)) {
-                this.onEndGetSiteInfoDelegate = new EndOperationDelegate(this.OnEndGetSiteInfo);
+            if ((this.onEndGetCustomerSubscriptionDelegate == null)) {
+                this.onEndGetCustomerSubscriptionDelegate = new EndOperationDelegate(this.OnEndGetCustomerSubscription);
             }
-            if ((this.onGetSiteInfoCompletedDelegate == null)) {
-                this.onGetSiteInfoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSiteInfoCompleted);
+            if ((this.onGetCustomerSubscriptionCompletedDelegate == null)) {
+                this.onGetCustomerSubscriptionCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetCustomerSubscriptionCompleted);
             }
-            base.InvokeAsync(this.onBeginGetSiteInfoDelegate, new object[] {
-                        accessKey}, this.onEndGetSiteInfoDelegate, this.onGetSiteInfoCompletedDelegate, userState);
-        }
-        
-        public BaseLibrary.CloudService.SiteZone[] GetSiteZoneInfo(string accessKey, int SiteID) {
-            return base.Channel.GetSiteZoneInfo(accessKey, SiteID);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetSiteZoneInfo(string accessKey, int SiteID, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetSiteZoneInfo(accessKey, SiteID, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public BaseLibrary.CloudService.SiteZone[] EndGetSiteZoneInfo(System.IAsyncResult result) {
-            return base.Channel.EndGetSiteZoneInfo(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetSiteZoneInfo(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string accessKey = ((string)(inValues[0]));
-            int SiteID = ((int)(inValues[1]));
-            return this.BeginGetSiteZoneInfo(accessKey, SiteID, callback, asyncState);
-        }
-        
-        private object[] OnEndGetSiteZoneInfo(System.IAsyncResult result) {
-            BaseLibrary.CloudService.SiteZone[] retVal = this.EndGetSiteZoneInfo(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetSiteZoneInfoCompleted(object state) {
-            if ((this.GetSiteZoneInfoCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetSiteZoneInfoCompleted(this, new GetSiteZoneInfoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetSiteZoneInfoAsync(string accessKey, int SiteID) {
-            this.GetSiteZoneInfoAsync(accessKey, SiteID, null);
-        }
-        
-        public void GetSiteZoneInfoAsync(string accessKey, int SiteID, object userState) {
-            if ((this.onBeginGetSiteZoneInfoDelegate == null)) {
-                this.onBeginGetSiteZoneInfoDelegate = new BeginOperationDelegate(this.OnBeginGetSiteZoneInfo);
-            }
-            if ((this.onEndGetSiteZoneInfoDelegate == null)) {
-                this.onEndGetSiteZoneInfoDelegate = new EndOperationDelegate(this.OnEndGetSiteZoneInfo);
-            }
-            if ((this.onGetSiteZoneInfoCompletedDelegate == null)) {
-                this.onGetSiteZoneInfoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSiteZoneInfoCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetSiteZoneInfoDelegate, new object[] {
-                        accessKey,
-                        SiteID}, this.onEndGetSiteZoneInfoDelegate, this.onGetSiteZoneInfoCompletedDelegate, userState);
-        }
-        
-        public BaseLibrary.CloudService.SiteProduct[] GetSiteProductInfo(string accessKey, int SiteID) {
-            return base.Channel.GetSiteProductInfo(accessKey, SiteID);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetSiteProductInfo(string accessKey, int SiteID, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetSiteProductInfo(accessKey, SiteID, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public BaseLibrary.CloudService.SiteProduct[] EndGetSiteProductInfo(System.IAsyncResult result) {
-            return base.Channel.EndGetSiteProductInfo(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetSiteProductInfo(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string accessKey = ((string)(inValues[0]));
-            int SiteID = ((int)(inValues[1]));
-            return this.BeginGetSiteProductInfo(accessKey, SiteID, callback, asyncState);
-        }
-        
-        private object[] OnEndGetSiteProductInfo(System.IAsyncResult result) {
-            BaseLibrary.CloudService.SiteProduct[] retVal = this.EndGetSiteProductInfo(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetSiteProductInfoCompleted(object state) {
-            if ((this.GetSiteProductInfoCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetSiteProductInfoCompleted(this, new GetSiteProductInfoCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetSiteProductInfoAsync(string accessKey, int SiteID) {
-            this.GetSiteProductInfoAsync(accessKey, SiteID, null);
-        }
-        
-        public void GetSiteProductInfoAsync(string accessKey, int SiteID, object userState) {
-            if ((this.onBeginGetSiteProductInfoDelegate == null)) {
-                this.onBeginGetSiteProductInfoDelegate = new BeginOperationDelegate(this.OnBeginGetSiteProductInfo);
-            }
-            if ((this.onEndGetSiteProductInfoDelegate == null)) {
-                this.onEndGetSiteProductInfoDelegate = new EndOperationDelegate(this.OnEndGetSiteProductInfo);
-            }
-            if ((this.onGetSiteProductInfoCompletedDelegate == null)) {
-                this.onGetSiteProductInfoCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetSiteProductInfoCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetSiteProductInfoDelegate, new object[] {
-                        accessKey,
-                        SiteID}, this.onEndGetSiteProductInfoDelegate, this.onGetSiteProductInfoCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginGetCustomerSubscriptionDelegate, new object[] {
+                        customerSearchKey,
+                        accessKey}, this.onEndGetCustomerSubscriptionDelegate, this.onGetCustomerSubscriptionCompletedDelegate, userState);
         }
         
         public string Hello(string abc) {
@@ -19666,64 +19296,6 @@ namespace BaseLibrary.CloudService {
                         ipAddress,
                         Campaign_ID,
                         accessKey}, this.onEndRegisterInfoFromModuleDelegate, this.onRegisterInfoFromModuleCompletedDelegate, userState);
-        }
-        
-        public string GetVideosFromDMS(string AD_Client_ID, string AD_User_ID, string C_BPartner_ID, int C_Lead_ID, string accessKey) {
-            return base.Channel.GetVideosFromDMS(AD_Client_ID, AD_User_ID, C_BPartner_ID, C_Lead_ID, accessKey);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetVideosFromDMS(string AD_Client_ID, string AD_User_ID, string C_BPartner_ID, int C_Lead_ID, string accessKey, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetVideosFromDMS(AD_Client_ID, AD_User_ID, C_BPartner_ID, C_Lead_ID, accessKey, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public string EndGetVideosFromDMS(System.IAsyncResult result) {
-            return base.Channel.EndGetVideosFromDMS(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetVideosFromDMS(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string AD_Client_ID = ((string)(inValues[0]));
-            string AD_User_ID = ((string)(inValues[1]));
-            string C_BPartner_ID = ((string)(inValues[2]));
-            int C_Lead_ID = ((int)(inValues[3]));
-            string accessKey = ((string)(inValues[4]));
-            return this.BeginGetVideosFromDMS(AD_Client_ID, AD_User_ID, C_BPartner_ID, C_Lead_ID, accessKey, callback, asyncState);
-        }
-        
-        private object[] OnEndGetVideosFromDMS(System.IAsyncResult result) {
-            string retVal = this.EndGetVideosFromDMS(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetVideosFromDMSCompleted(object state) {
-            if ((this.GetVideosFromDMSCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetVideosFromDMSCompleted(this, new GetVideosFromDMSCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetVideosFromDMSAsync(string AD_Client_ID, string AD_User_ID, string C_BPartner_ID, int C_Lead_ID, string accessKey) {
-            this.GetVideosFromDMSAsync(AD_Client_ID, AD_User_ID, C_BPartner_ID, C_Lead_ID, accessKey, null);
-        }
-        
-        public void GetVideosFromDMSAsync(string AD_Client_ID, string AD_User_ID, string C_BPartner_ID, int C_Lead_ID, string accessKey, object userState) {
-            if ((this.onBeginGetVideosFromDMSDelegate == null)) {
-                this.onBeginGetVideosFromDMSDelegate = new BeginOperationDelegate(this.OnBeginGetVideosFromDMS);
-            }
-            if ((this.onEndGetVideosFromDMSDelegate == null)) {
-                this.onEndGetVideosFromDMSDelegate = new EndOperationDelegate(this.OnEndGetVideosFromDMS);
-            }
-            if ((this.onGetVideosFromDMSCompletedDelegate == null)) {
-                this.onGetVideosFromDMSCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetVideosFromDMSCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetVideosFromDMSDelegate, new object[] {
-                        AD_Client_ID,
-                        AD_User_ID,
-                        C_BPartner_ID,
-                        C_Lead_ID,
-                        accessKey}, this.onEndGetVideosFromDMSDelegate, this.onGetVideosFromDMSCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -27122,6 +26694,108 @@ namespace BaseLibrary.CloudService {
                         Url,
                         AD_Client_ID,
                         accessKey}, this.onEndGetBIUserCredentialDelegate, this.onGetBIUserCredentialCompletedDelegate, userState);
+        }
+        
+        public string GetNews(string accessKey) {
+            return base.Channel.GetNews(accessKey);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetNews(string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetNews(accessKey, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndGetNews(System.IAsyncResult result) {
+            return base.Channel.EndGetNews(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetNews(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string accessKey = ((string)(inValues[0]));
+            return this.BeginGetNews(accessKey, callback, asyncState);
+        }
+        
+        private object[] OnEndGetNews(System.IAsyncResult result) {
+            string retVal = this.EndGetNews(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetNewsCompleted(object state) {
+            if ((this.GetNewsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetNewsCompleted(this, new GetNewsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetNewsAsync(string accessKey) {
+            this.GetNewsAsync(accessKey, null);
+        }
+        
+        public void GetNewsAsync(string accessKey, object userState) {
+            if ((this.onBeginGetNewsDelegate == null)) {
+                this.onBeginGetNewsDelegate = new BeginOperationDelegate(this.OnBeginGetNews);
+            }
+            if ((this.onEndGetNewsDelegate == null)) {
+                this.onEndGetNewsDelegate = new EndOperationDelegate(this.OnEndGetNews);
+            }
+            if ((this.onGetNewsCompletedDelegate == null)) {
+                this.onGetNewsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetNewsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetNewsDelegate, new object[] {
+                        accessKey}, this.onEndGetNewsDelegate, this.onGetNewsCompletedDelegate, userState);
+        }
+        
+        public string GetCustomerOpenTickets(int Ad_user_ID, string accessKey) {
+            return base.Channel.GetCustomerOpenTickets(Ad_user_ID, accessKey);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetCustomerOpenTickets(int Ad_user_ID, string accessKey, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetCustomerOpenTickets(Ad_user_ID, accessKey, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndGetCustomerOpenTickets(System.IAsyncResult result) {
+            return base.Channel.EndGetCustomerOpenTickets(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetCustomerOpenTickets(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int Ad_user_ID = ((int)(inValues[0]));
+            string accessKey = ((string)(inValues[1]));
+            return this.BeginGetCustomerOpenTickets(Ad_user_ID, accessKey, callback, asyncState);
+        }
+        
+        private object[] OnEndGetCustomerOpenTickets(System.IAsyncResult result) {
+            string retVal = this.EndGetCustomerOpenTickets(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetCustomerOpenTicketsCompleted(object state) {
+            if ((this.GetCustomerOpenTicketsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetCustomerOpenTicketsCompleted(this, new GetCustomerOpenTicketsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetCustomerOpenTicketsAsync(int Ad_user_ID, string accessKey) {
+            this.GetCustomerOpenTicketsAsync(Ad_user_ID, accessKey, null);
+        }
+        
+        public void GetCustomerOpenTicketsAsync(int Ad_user_ID, string accessKey, object userState) {
+            if ((this.onBeginGetCustomerOpenTicketsDelegate == null)) {
+                this.onBeginGetCustomerOpenTicketsDelegate = new BeginOperationDelegate(this.OnBeginGetCustomerOpenTickets);
+            }
+            if ((this.onEndGetCustomerOpenTicketsDelegate == null)) {
+                this.onEndGetCustomerOpenTicketsDelegate = new EndOperationDelegate(this.OnEndGetCustomerOpenTickets);
+            }
+            if ((this.onGetCustomerOpenTicketsCompletedDelegate == null)) {
+                this.onGetCustomerOpenTicketsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetCustomerOpenTicketsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetCustomerOpenTicketsDelegate, new object[] {
+                        Ad_user_ID,
+                        accessKey}, this.onEndGetCustomerOpenTicketsDelegate, this.onGetCustomerOpenTicketsCompletedDelegate, userState);
         }
     }
 }

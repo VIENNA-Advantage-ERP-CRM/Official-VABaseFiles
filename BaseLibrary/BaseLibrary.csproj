@@ -197,6 +197,9 @@
     <None Include="Connected Services\CloudService\BaseLibrary.CloudService.MigrationRecordAndServerInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\CloudService\BaseLibrary.CloudService.ProductSubscription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\CloudService\BaseLibrary.CloudService.RequestedModuleInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -206,16 +209,7 @@
     <None Include="Connected Services\CloudService\BaseLibrary.CloudService.ServerInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\CloudService\BaseLibrary.CloudService.Site.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\CloudService\BaseLibrary.CloudService.SiteProduct.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\CloudService\BaseLibrary.CloudService.SiteZone.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\CloudService\service1.wsdl" />
+    <None Include="Connected Services\CloudService\Service.wsdl" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
   </ItemGroup>
   <ItemGroup>
@@ -234,7 +228,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\CloudService\service1.disco" />
+    <None Include="Connected Services\CloudService\Service.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

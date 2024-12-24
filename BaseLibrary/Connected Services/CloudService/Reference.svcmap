@@ -20,11 +20,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://cloudservice.softwareonthecloud.com/service.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://sbservicetemp.viennaadvantage.com/Service.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="0f9149e0-e256-4df7-9702-57b57483ce3b" SourceId="1" SourceUrl="http://cloudservice.softwareonthecloud.com/service.asmx?wsdl" />
-    <MetadataFile FileName="service1.disco" MetadataType="Disco" ID="c00bb967-cbb2-4828-99fb-66efc60ef155" SourceId="1" SourceUrl="http://cloudservice.softwareonthecloud.com/service.asmx?disco" />
+    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="e4803f21-bdf2-42c4-8af2-55b3dd30edef" SourceId="1" SourceUrl="http://sbservicetemp.viennaadvantage.com/Service.asmx?disco" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="590b0fe7-a263-4973-af77-bf53240c24c6" SourceId="1" SourceUrl="http://sbservicetemp.viennaadvantage.com/Service.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

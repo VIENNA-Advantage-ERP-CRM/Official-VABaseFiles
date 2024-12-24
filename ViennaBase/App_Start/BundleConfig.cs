@@ -79,7 +79,8 @@ namespace ViennaBase
                 "~/Areas/ViennaBase/Content/w2ui/w2ui-1.4.3.min.css",
                 "~/Areas/ViennaBase/Content/spectrum.css",
                 "~/Areas/ViennaBase/Content/tel_input/intlTelInput.min.css",
-                "~/Areas/ViennaBase/Content/multiselect/bootstrap-multiselect.min.css"
+                "~/Areas/ViennaBase/Content/multiselect/bootstrap-multiselect.min.css",
+                 "~/Areas/ViennaBase/Content/owl.carousel.min.css"
               ));
 
             bundles.Add(new StyleBundle("~/Areas/ViennaBase/Content/custom/customcss").Include(
