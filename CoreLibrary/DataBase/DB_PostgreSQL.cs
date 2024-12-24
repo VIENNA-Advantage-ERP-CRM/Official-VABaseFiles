@@ -498,8 +498,29 @@ namespace VAdvantage.DataBase
             try
             {
                 cmd.Connection = conn;
+
+                sql = "select * from " + sql+"(";
+                /* postgres 8.0.6 dont support procedure */
+                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = System.Data.CommandType.Text;
+                if (arrParam != null)
+                {
+                    for (int p=0; p<arrParam.Length;p++) {
+                        if(arrParam[p].Direction == ParameterDirection.Output)
+                        {
+                            continue;
+                        }
+                        if(p > 0)
+                        {
+                            sql += ", @" + arrParam[p].ParameterName;
+                            continue;
+                        }
+                     sql+= "@"+ arrParam[p].ParameterName;
+                    }
+                }
+                sql += ")";
+
                 cmd.CommandText = sql;
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 if (transaction != null)
                 {
