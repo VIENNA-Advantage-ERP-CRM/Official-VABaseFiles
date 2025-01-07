@@ -1552,3 +1552,11 @@
     content: "\ea70";
 }
 
+.vis-asr:before {
+    content: "\e987";
+}
+
+.vis-asrx:before {
+    content: "\e953";
+}
+
