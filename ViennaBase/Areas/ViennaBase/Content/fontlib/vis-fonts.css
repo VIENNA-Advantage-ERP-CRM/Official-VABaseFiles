@@ -1552,11 +1552,22 @@
     content: "\ea70";
 }
 
-.vis-asr:before {
+/*.vis-asr:before {
     content: "\e987";
 }
 
 .vis-asrx:before {
     content: "\e953";
+}*/
+
+.vis-asrx:before {
+    content: "\ea84";
+}
+
+.vis-asr:before {
+    content: "\ea85";
+}
+.vis-parent-tab:before {
+    content: "\ea86";
 }
 
