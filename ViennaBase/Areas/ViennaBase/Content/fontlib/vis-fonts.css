@@ -1571,3 +1571,18 @@
     content: "\ea86";
 }
 
+.vis-dashboard:before {
+    content: "\ea89";
+}
+
+.vis-parent-tab-border .path1:before {
+    content: "\ea87";
+    color: rgb(255, 255, 255);
+}
+
+.vis-parent-tab-border .path2:before {
+    content: "\ea88";
+    margin-left: -1.0419921875em;
+    color: rgb(112, 112, 112);
+}
+
