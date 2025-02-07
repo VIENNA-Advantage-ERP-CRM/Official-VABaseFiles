@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="YO76A9SKGKSxT2LJ59TJzscRtKPIhiDqEZQdjZWK+yo=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="C7SuYpOsPiauMDTIHRFV7jdTIUx+p30D0nK/CcfhxcU=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="ServiceSoap">
       <properties>
@@ -263,10 +263,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ServiceSoap" contract="CloudService.ServiceSoap" bindingType="basicHttpBinding" address="http://cloudservice.softwareonthecloud.com/service.asmx" bindingConfiguration="ServiceSoap">
+    <endpoint name="ServiceSoap" contract="CloudService.ServiceSoap" bindingType="basicHttpBinding" address="http://sbservicetemp.viennaadvantage.com/Service.asmx" bindingConfiguration="ServiceSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://cloudservice.softwareonthecloud.com/service.asmx</serializedValue>
+          <serializedValue>http://sbservicetemp.viennaadvantage.com/Service.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -348,10 +348,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="ServiceSoap12" contract="CloudService.ServiceSoap" bindingType="customBinding" address="http://cloudservice.softwareonthecloud.com/service.asmx" bindingConfiguration="ServiceSoap12">
+    <endpoint name="ServiceSoap12" contract="CloudService.ServiceSoap" bindingType="customBinding" address="http://sbservicetemp.viennaadvantage.com/Service.asmx" bindingConfiguration="ServiceSoap12">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://cloudservice.softwareonthecloud.com/service.asmx</serializedValue>
+          <serializedValue>http://sbservicetemp.viennaadvantage.com/Service.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

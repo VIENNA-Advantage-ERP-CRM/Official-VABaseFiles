@@ -52,6 +52,21 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.3.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.3.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.5.3.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.5.3.0\lib\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.3.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -60,10 +75,16 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.3.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.8\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -171,6 +192,8 @@
     <Content Include="Areas\ViennaBase\Content\migration\themes\base\tabs.css" />
     <Content Include="Areas\ViennaBase\Content\migration\themes\base\theme.css" />
     <Content Include="Areas\ViennaBase\Content\migration\themes\base\tooltip.css" />
+    <Content Include="Areas\ViennaBase\Content\multiselect\bootstrap-multiselect.css" />
+    <Content Include="Areas\ViennaBase\Content\multiselect\bootstrap-multiselect.min.css" />
     <Content Include="Areas\ViennaBase\Content\spectrum.css" />
     <Content Include="Areas\ViennaBase\Content\tel_input\intlTelInput.css" />
     <Content Include="Areas\ViennaBase\Content\tel_input\intlTelInput.min.css" />
@@ -249,6 +272,7 @@
     <Content Include="Areas\ViennaBase\Content\migration\bootstrap-reboot.min.css.map" />
     <Content Include="Areas\ViennaBase\Content\migration\bootstrap.css.map" />
     <Content Include="Areas\ViennaBase\Content\migration\bootstrap.min.css.map" />
+    <Content Include="Areas\ViennaBase\Scripts\chart.min.js" />
     <Content Include="Areas\ViennaBase\Scripts\crystalreportviewers13\crsmarttag.jsp" />
     <Content Include="Areas\ViennaBase\Scripts\crystalreportviewers13\preview.jsp" />
     <Content Include="Areas\ViennaBase\Content\fonts\fontawesome-webfont.eot" />
@@ -1217,6 +1241,10 @@
     <Content Include="Areas\ViennaBase\Scripts\migration\popper-utils.min.js" />
     <Content Include="Areas\ViennaBase\Scripts\migration\popper.js" />
     <Content Include="Areas\ViennaBase\Scripts\migration\popper.min.js" />
+    <Content Include="Areas\ViennaBase\Scripts\multiselect\bootstrap-multiselect.js" />
+    <Content Include="Areas\ViennaBase\Scripts\multiselect\bootstrap-multiselect.min.js" />
+    <Content Include="Areas\ViennaBase\Scripts\owl.carousel.js" />
+    <Content Include="Areas\ViennaBase\Scripts\owl.carousel.min.js" />
     <Content Include="Areas\ViennaBase\Scripts\spectrum.js" />
     <Content Include="Areas\ViennaBase\Content\w2ui\w2ui-1.4.3.css" />
     <Content Include="Areas\ViennaBase\Scripts\tel_Input\data.js" />
@@ -1276,9 +1304,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ViennaBase\Views\Shared\" />
+    <Folder Include="Content\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreLibrary\CoreLibrary.csproj">
+      <Project>{ED61579E-017F-478F-98A2-6432A9C59F41}</Project>
+      <Name>CoreLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

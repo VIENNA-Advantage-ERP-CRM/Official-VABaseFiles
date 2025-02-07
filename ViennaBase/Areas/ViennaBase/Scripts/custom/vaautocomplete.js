@@ -37,6 +37,7 @@
             $('body').append(a);
             /*for each item in the array...*/
             for (i = 0; i < arr.length; i++) {
+                b = null;
                 /*check if the item starts with the same letters as the text field value:*/
                 var idx = arr[i].value.toUpperCase().indexOf(val.toUpperCase());
                 if (idx != -1) {
@@ -76,7 +77,7 @@
                 }
             }
 
-            if (settings.html != "" && !b) {
+            if (settings.html != "" && a.children.length<1) {
                 $(a).append($('<div></div>')).append(settings.html);
                 $(a).find(".vis-autocomplete-active").removeClass("vis-autocomplete-active");
             }

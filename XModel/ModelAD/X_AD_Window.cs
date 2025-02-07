@@ -298,10 +298,10 @@ SetWindowType (null);	// M
         public void SetName(String Name)
         {
             if (Name == null) throw new ArgumentException("Name is mandatory.");
-            if (Name.Length > 60)
+            if (Name.Length > 100)
             {
-                log.Warning("Length > 60 - truncated");
-                Name = Name.Substring(0, 60);
+                log.Warning("Length > 100 - truncated");
+                Name = Name.Substring(0, 100);
             }
             Set_Value("Name", Name);
         }
@@ -404,7 +404,7 @@ SetWindowType (null);	// M
 
         /** Set Display Name.
 @param DisplayName Window Name */
-        public void SetDisplayName(String DisplayName) { if (DisplayName == null) throw new ArgumentException("DisplayName is mandatory."); if (DisplayName.Length > 50) { log.Warning("Length > 50 - truncated"); DisplayName = DisplayName.Substring(0, 50); } Set_Value("DisplayName", DisplayName); }/** Get Display Name.
+        public void SetDisplayName(String DisplayName) { if (DisplayName == null) throw new ArgumentException("DisplayName is mandatory."); if (DisplayName.Length > 100) { log.Warning("Length > 100 - truncated"); DisplayName = DisplayName.Substring(0, 100); } Set_Value("DisplayName", DisplayName); }/** Get Display Name.
 @return Window Name */
         public String GetDisplayName() { return (String)Get_Value("DisplayName"); }
 

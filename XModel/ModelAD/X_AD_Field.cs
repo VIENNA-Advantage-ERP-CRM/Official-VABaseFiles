@@ -30,8 +30,8 @@ public X_AD_Field (Ctx ctx, IDataReader dr, Trx trxName) : base(ctx, dr, trxName
  Set Table ID By Table Name
  added by ->Harwinder */
 static X_AD_Field(){ Table_ID = Get_Table_ID(Table_Name); model = new KeyNamePair(Table_ID,Table_Name);}/** Serial Version No */
-static long serialVersionUID = 27858187662169L;/** Last Updated Timestamp 12/11/2019 4:35:45 PM */
-public static long updatedMS = 1576062345380L;/** AD_Table_ID=107 */
+static long serialVersionUID = 28007047961198L;/** Last Updated Timestamp 8/29/2024 2:40:44 PM */
+public static long updatedMS = 1724922644409L;/** AD_Table_ID=107 */
 public static int Table_ID; // =107;
 /** TableName=AD_Field */
 public static String Table_Name="AD_Field";
@@ -49,15 +49,39 @@ protected override POInfo InitPO (Context ctx){POInfo poi = POInfo.GetPOInfo (ct
 protected override POInfo InitPO (Ctx ctx){POInfo poi = POInfo.GetPOInfo (ctx, Table_ID);return poi;}/** Info
 @return info
 */
-public override String ToString(){StringBuilder sb = new StringBuilder ("X_AD_Field[").Append(Get_ID()).Append("]");return sb.ToString();}/** Set Column.
+public override String ToString(){StringBuilder sb = new StringBuilder ("X_AD_Field[").Append(Get_ID()).Append("]");return sb.ToString();}
+/** AD_Action AD_Reference_ID=1000280 */
+public static int AD_ACTION_AD_Reference_ID=1000280;/** Open Form = FOM */
+public static String AD_ACTION_OpenForm = "FOM";/** Move to tab = MTT */
+public static String AD_ACTION_MoveToTab = "MTT";/** Undo & Move To Tab = MTU */
+public static String AD_ACTION_UndoMoveToTab = "MTU";/** Open tab as dialog = OTD */
+public static String AD_ACTION_OpenTabAsDialog = "OTD";/** Open Window = WIW */
+public static String AD_ACTION_OpenWindow = "WIW";/** Is test a valid value.
+@param test testvalue
+@returns true if valid **/
+public bool IsAD_ActionValid (String test){return test == null || test.Equals("FOM") || test.Equals("MTT") || test.Equals("MTU") || test.Equals("OTD") || test.Equals("WIW");}/** Set Action.
+@param AD_Action This field use for where to show the tab. */
+public void SetAD_Action (String AD_Action){if (!IsAD_ActionValid(AD_Action))
+throw new ArgumentException ("AD_Action Invalid value - " + AD_Action + " - Reference_ID=1000280 - FOM - MTT - MTU - OTD - WIW");if (AD_Action != null && AD_Action.Length > 3){log.Warning("Length > 3 - truncated");AD_Action = AD_Action.Substring(0,3);}Set_Value ("AD_Action", AD_Action);}/** Get Action.
+@return This field use for where to show the tab. */
+public String GetAD_Action() {return (String)Get_Value("AD_Action");}/** Set Action Group.
+@param AD_ActionGroup_ID Key Column */
+public void SetAD_ActionGroup_ID (int AD_ActionGroup_ID){if (AD_ActionGroup_ID <= 0) Set_Value ("AD_ActionGroup_ID", null);else
+Set_Value ("AD_ActionGroup_ID", AD_ActionGroup_ID);}/** Get Action Group.
+@return Key Column */
+public int GetAD_ActionGroup_ID() {Object ii = Get_Value("AD_ActionGroup_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Action Name.
+@param AD_ActionName Action name to be open on action button click. */
+public void SetAD_ActionName (String AD_ActionName){if (AD_ActionName != null && AD_ActionName.Length > 255){log.Warning("Length > 255 - truncated");AD_ActionName = AD_ActionName.Substring(0,255);}Set_Value ("AD_ActionName", AD_ActionName);}/** Get Action Name.
+@return Action name to be open on action button click. */
+public String GetAD_ActionName() {return (String)Get_Value("AD_ActionName");}/** Set Column.
 @param AD_Column_ID Column in the table */
 public void SetAD_Column_ID (int AD_Column_ID){if (AD_Column_ID <= 0) Set_Value ("AD_Column_ID", null);else
 Set_Value ("AD_Column_ID", AD_Column_ID);}/** Get Column.
 @return Column in the table */
-public int GetAD_Column_ID() {Object ii = Get_Value("AD_Column_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Field Group.
+public int GetAD_Column_ID() {Object ii = Get_Value("AD_Column_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Field Section.
 @param AD_FieldGroup_ID Logical grouping of fields */
 public void SetAD_FieldGroup_ID (int AD_FieldGroup_ID){if (AD_FieldGroup_ID <= 0) Set_Value ("AD_FieldGroup_ID", null);else
-Set_Value ("AD_FieldGroup_ID", AD_FieldGroup_ID);}/** Get Field Group.
+Set_Value ("AD_FieldGroup_ID", AD_FieldGroup_ID);}/** Get Field Section.
 @return Logical grouping of fields */
 public int GetAD_FieldGroup_ID() {Object ii = Get_Value("AD_FieldGroup_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Field.
 @param AD_Field_ID Field on a tab in a window */
@@ -68,10 +92,10 @@ public int GetAD_Field_ID() {Object ii = Get_Value("AD_Field_ID");if (ii == null
 public void SetAD_Image_ID (int AD_Image_ID){if (AD_Image_ID <= 0) Set_Value ("AD_Image_ID", null);else
 Set_Value ("AD_Image_ID", AD_Image_ID);}/** Get Image.
 @return Image or Icon */
-public int GetAD_Image_ID() {Object ii = Get_Value("AD_Image_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Info Window.
+public int GetAD_Image_ID() {Object ii = Get_Value("AD_Image_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Search Screen.
 @param AD_InfoWindow_ID Info and search/select Window */
 public void SetAD_InfoWindow_ID (int AD_InfoWindow_ID){if (AD_InfoWindow_ID <= 0) Set_Value ("AD_InfoWindow_ID", null);else
-Set_Value ("AD_InfoWindow_ID", AD_InfoWindow_ID);}/** Get Info Window.
+Set_Value ("AD_InfoWindow_ID", AD_InfoWindow_ID);}/** Get Search Screen.
 @return Info and search/select Window */
 public int GetAD_InfoWindow_ID() {Object ii = Get_Value("AD_InfoWindow_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}
 /** AD_Reference_ID AD_Reference_ID=1 */
@@ -84,7 +108,20 @@ public int GetAD_Reference_ID() {Object ii = Get_Value("AD_Reference_ID");if (ii
 @param AD_Tab_ID Tab within a Window */
 public void SetAD_Tab_ID (int AD_Tab_ID){if (AD_Tab_ID < 1) throw new ArgumentException ("AD_Tab_ID is mandatory.");Set_ValueNoCheck ("AD_Tab_ID", AD_Tab_ID);}/** Get Tab.
 @return Tab within a Window */
-public int GetAD_Tab_ID() {Object ii = Get_Value("AD_Tab_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Column Width (Pixels).
+public int GetAD_Tab_ID() {Object ii = Get_Value("AD_Tab_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Data Validation.
+@param AD_Val_Rule_ID Dynamic Validation Rule */
+public void SetAD_Val_Rule_ID (int AD_Val_Rule_ID){if (AD_Val_Rule_ID <= 0) Set_Value ("AD_Val_Rule_ID", null);else
+Set_Value ("AD_Val_Rule_ID", AD_Val_Rule_ID);}/** Get Data Validation.
+@return Dynamic Validation Rule */
+public int GetAD_Val_Rule_ID() {Object ii = Get_Value("AD_Val_Rule_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Action Params.
+@param ActionParams Action Params */
+public void SetActionParams (String ActionParams){if (ActionParams != null && ActionParams.Length > 1000){log.Warning("Length > 1000 - truncated");ActionParams = ActionParams.Substring(0,1000);}Set_Value ("ActionParams", ActionParams);}/** Get Action Params.
+@return Action Params */
+public String GetActionParams() {return (String)Get_Value("ActionParams");}/** Set Cell Space.
+@param CellSpace Spacing From Previous Item */
+public void SetCellSpace (int CellSpace){Set_Value ("CellSpace", CellSpace);}/** Get Cell Space.
+@return Spacing From Previous Item */
+public int GetCellSpace() {Object ii = Get_Value("CellSpace");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Column Width (Pixels).
 @param ColumnWidth Define Column width for grid. */
 public void SetColumnWidth (int ColumnWidth){Set_Value ("ColumnWidth", ColumnWidth);}/** Get Column Width (Pixels).
 @return Define Column width for grid. */
@@ -97,9 +134,9 @@ public String GetDefaultValue() {return (String)Get_Value("DefaultValue");}/** S
 public void SetDescription (String Description){if (Description != null && Description.Length > 255){log.Warning("Length > 255 - truncated");Description = Description.Substring(0,255);}Set_Value ("Description", Description);}/** Get Description.
 @return Optional short description of the record */
 public String GetDescription() {return (String)Get_Value("Description");}/** Set Display Length.
-@param DisplayLength Length of the display in characters */
+@param DisplayLength Length of the display */
 public void SetDisplayLength (int DisplayLength){Set_Value ("DisplayLength", DisplayLength);}/** Get Display Length.
-@return Length of the display in characters */
+@return Length of the display */
 public int GetDisplayLength() {Object ii = Get_Value("DisplayLength");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Display Logic.
 @param DisplayLogic If the Field is displayed, the result determines if the field is actually displayed */
 public void SetDisplayLogic (String DisplayLogic){if (DisplayLogic != null && DisplayLogic.Length > 2000){log.Warning("Length > 2000 - truncated");DisplayLogic = DisplayLogic.Substring(0,2000);}Set_Value ("DisplayLogic", DisplayLogic);}/** Get Display Logic.
@@ -114,10 +151,22 @@ public String GetEntityType() {return (String)Get_Value("EntityType");}/** Set E
 @param Export_ID Export */
 public void SetExport_ID (String Export_ID){if (Export_ID != null && Export_ID.Length > 100){log.Warning("Length > 100 - truncated");Export_ID = Export_ID.Substring(0,100);}Set_ValueNoCheck ("Export_ID", Export_ID);}/** Get Export.
 @return Export */
-public String GetExport_ID() {return (String)Get_Value("Export_ID");}/** Set HTML Style.
-@param HTMLStyle HTML style for field on single layout */
+public String GetExport_ID() {return (String)Get_Value("Export_ID");}/** Set Display Breadth.
+@param FieldBreadth No. of rows of Field */
+public void SetFieldBreadth (int FieldBreadth){Set_Value ("FieldBreadth", FieldBreadth);}/** Get Display Breadth.
+@return No. of rows of Field */
+public int GetFieldBreadth() {Object ii = Get_Value("FieldBreadth");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Field Group Default.
+@param FieldGroupDefault Show item in field group by default */
+public void SetFieldGroupDefault (Boolean FieldGroupDefault){Set_Value ("FieldGroupDefault", FieldGroupDefault);}/** Get Field Group Default.
+@return Show item in field group by default */
+public Boolean IsFieldGroupDefault() {Object oo = Get_Value("FieldGroupDefault");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}/** Set Length.
+@param FieldLength Length of the column in the database */
+public void SetFieldLength (int FieldLength){Set_Value ("FieldLength", FieldLength);}/** Get Length.
+@return Length of the column in the database */
+public int GetFieldLength() {Object ii = Get_Value("FieldLength");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set HTML Style.
+@param HTMLStyle HTML style for field */
 public void SetHTMLStyle (String HTMLStyle){if (HTMLStyle != null && HTMLStyle.Length > 2000){log.Warning("Length > 2000 - truncated");HTMLStyle = HTMLStyle.Substring(0,2000);}Set_Value ("HTMLStyle", HTMLStyle);}/** Get HTML Style.
-@return HTML style for field on single layout */
+@return HTML style for field */
 public String GetHTMLStyle() {return (String)Get_Value("HTMLStyle");}
 /** HeaderHeadingOnly AD_Reference_ID=319 */
 public static int HEADERHEADINGONLY_AD_Reference_ID=319;/** No = N */
@@ -126,10 +175,10 @@ public static String HEADERHEADINGONLY_Yes = "Y";/** Is test a valid value.
 @param test testvalue
 @returns true if valid **/
 public bool IsHeaderHeadingOnlyValid (String test){return test == null || test.Equals("N") || test.Equals("Y");}/** Set Show Header Heading Only.
-@param HeaderHeadingOnly Show Header Heading Only. If yes, then only heading will be displayed with that field in header panel. */
+@param HeaderHeadingOnly Display or hide Heading */
 public void SetHeaderHeadingOnly (String HeaderHeadingOnly){if (!IsHeaderHeadingOnlyValid(HeaderHeadingOnly))
 throw new ArgumentException ("HeaderHeadingOnly Invalid value - " + HeaderHeadingOnly + " - Reference_ID=319 - N - Y");if (HeaderHeadingOnly != null && HeaderHeadingOnly.Length > 1){log.Warning("Length > 1 - truncated");HeaderHeadingOnly = HeaderHeadingOnly.Substring(0,1);}Set_Value ("HeaderHeadingOnly", HeaderHeadingOnly);}/** Get Show Header Heading Only.
-@return Show Header Heading Only. If yes, then only heading will be displayed with that field in header panel. */
+@return Display or hide Heading */
 public String GetHeaderHeadingOnly() {return (String)Get_Value("HeaderHeadingOnly");}
 /** HeaderIconOnly AD_Reference_ID=319 */
 public static int HEADERICONONLY_AD_Reference_ID=319;/** No = N */
@@ -138,24 +187,24 @@ public static String HEADERICONONLY_Yes = "Y";/** Is test a valid value.
 @param test testvalue
 @returns true if valid **/
 public bool IsHeaderIconOnlyValid (String test){return test == null || test.Equals("N") || test.Equals("Y");}/** Set Show Header Icon Only.
-@param HeaderIconOnly Show Header Icon Only. If checked, then only icon will be displayed with field value in header panel. */
+@param HeaderIconOnly Display or hide icon */
 public void SetHeaderIconOnly (String HeaderIconOnly){if (!IsHeaderIconOnlyValid(HeaderIconOnly))
 throw new ArgumentException ("HeaderIconOnly Invalid value - " + HeaderIconOnly + " - Reference_ID=319 - N - Y");if (HeaderIconOnly != null && HeaderIconOnly.Length > 1){log.Warning("Length > 1 - truncated");HeaderIconOnly = HeaderIconOnly.Substring(0,1);}Set_Value ("HeaderIconOnly", HeaderIconOnly);}/** Get Show Header Icon Only.
-@return Show Header Icon Only. If checked, then only icon will be displayed with field value in header panel. */
+@return Display or hide icon */
 public String GetHeaderIconOnly() {return (String)Get_Value("HeaderIconOnly");}
 /** HeaderOverrideReference AD_Reference_ID=1 */
 public static int HEADEROVERRIDEREFERENCE_AD_Reference_ID=1;/** Set Header Override Reference.
-@param HeaderOverrideReference Override reference of field to be displayed in header panel. */
+@param HeaderOverrideReference Display Reference type for field */
 public void SetHeaderOverrideReference (int HeaderOverrideReference){Set_Value ("HeaderOverrideReference", HeaderOverrideReference);}/** Get Header Override Reference.
-@return Override reference of field to be displayed in header panel. */
+@return Display Reference type for field */
 public int GetHeaderOverrideReference() {Object ii = Get_Value("HeaderOverrideReference");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Header Seq no..
 @param HeaderSeqno Header Seq no. defines the order of fields in header panel. */
 public void SetHeaderSeqno (Decimal? HeaderSeqno){Set_Value ("HeaderSeqno", (Decimal?)HeaderSeqno);}/** Get Header Seq no..
 @return Header Seq no. defines the order of fields in header panel. */
 public Decimal GetHeaderSeqno() {Object bd =Get_Value("HeaderSeqno");if (bd == null) return Env.ZERO;return  Convert.ToDecimal(bd);}/** Set Header Style.
-@param HeaderStyle HTML style to be applied on field value. */
+@param HeaderStyle Change default Header Style */
 public void SetHeaderStyle (String HeaderStyle){if (HeaderStyle != null && HeaderStyle.Length > 2000){log.Warning("Length > 2000 - truncated");HeaderStyle = HeaderStyle.Substring(0,2000);}Set_Value ("HeaderStyle", HeaderStyle);}/** Get Header Style.
-@return HTML style to be applied on field value. */
+@return Change default Header Style */
 public String GetHeaderStyle() {return (String)Get_Value("HeaderStyle");}/** Set Comment.
 @param Help Comment, Help or Hint */
 public void SetHelp (String Help){if (Help != null && Help.Length > 2000){log.Warning("Length > 2000 - truncated");Help = Help.Substring(0,2000);}Set_Value ("Help", Help);}/** Get Comment.
@@ -193,14 +242,18 @@ public Boolean IsEncrypted() {Object oo = Get_Value("IsEncrypted");if (oo != nul
 public void SetIsFieldOnly (Boolean IsFieldOnly){Set_Value ("IsFieldOnly", IsFieldOnly);}/** Get Field Only.
 @return Label is not displayed */
 public Boolean IsFieldOnly() {Object oo = Get_Value("IsFieldOnly");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}/** Set Header Panel Item.
-@param IsHeaderPanelItem If this checkbox is checked, only then item will be displayed in header panel. */
+@param IsHeaderPanelItem Header Panel Item or Not */
 public void SetIsHeaderPanelItem (Boolean IsHeaderPanelItem){Set_Value ("IsHeaderPanelItem", IsHeaderPanelItem);}/** Get Header Panel Item.
-@return If this checkbox is checked, only then item will be displayed in header panel. */
+@return Header Panel Item or Not */
 public Boolean IsHeaderPanelItem() {Object oo = Get_Value("IsHeaderPanelItem");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}/** Set Heading only.
 @param IsHeading Field without Column - Only label is displayed */
 public void SetIsHeading (Boolean IsHeading){Set_Value ("IsHeading", IsHeading);}/** Get Heading only.
 @return Field without Column - Only label is displayed */
-public Boolean IsHeading() {Object oo = Get_Value("IsHeading");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}
+public Boolean IsHeading() {Object oo = Get_Value("IsHeading");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}/** Set Line Break.
+@param IsLineBreak Start new Row */
+public void SetIsLineBreak (Boolean IsLineBreak){Set_Value ("IsLineBreak", IsLineBreak);}/** Get Line Break.
+@return Start new Row */
+public Boolean IsLineBreak() {Object oo = Get_Value("IsLineBreak");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}
 /** IsMandatoryUI AD_Reference_ID=319 */
 public static int ISMANDATORYUI_AD_Reference_ID=319;/** No = N */
 public static String ISMANDATORYUI_No = "N";/** Yes = Y */
@@ -220,7 +273,11 @@ public Boolean IsReadOnly() {Object oo = Get_Value("IsReadOnly");if (oo != null)
 @param IsSameLine Displayed on same line as previous field */
 public void SetIsSameLine (Boolean IsSameLine){Set_Value ("IsSameLine", IsSameLine);}/** Get Same Line.
 @return Displayed on same line as previous field */
-public Boolean IsSameLine() {Object oo = Get_Value("IsSameLine");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}
+public Boolean IsSameLine() {Object oo = Get_Value("IsSameLine");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}/** Set Selection Column.
+@param IsSelectionColumn Is this column used for finding rows in windows */
+public void SetIsSelectionColumn (Boolean IsSelectionColumn){Set_Value ("IsSelectionColumn", IsSelectionColumn);}/** Get Selection Column.
+@return Is this column used for finding rows in windows */
+public Boolean IsSelectionColumn() {Object oo = Get_Value("IsSelectionColumn");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}
 /** MRIsDisplayed AD_Reference_ID=319 */
 public static int MRISDISPLAYED_AD_Reference_ID=319;/** No = N */
 public static String MRISDISPLAYED_No = "N";/** Yes = Y */
@@ -278,24 +335,40 @@ public bool IsObscureTypeValid (String test){return test == null || test.Equals(
 public void SetObscureType (String ObscureType){if (!IsObscureTypeValid(ObscureType))
 throw new ArgumentException ("ObscureType Invalid value - " + ObscureType + " - Reference_ID=291 - 904 - 944 - A04 - A44");if (ObscureType != null && ObscureType.Length > 3){log.Warning("Length > 3 - truncated");ObscureType = ObscureType.Substring(0,3);}Set_Value ("ObscureType", ObscureType);}/** Get Obscure.
 @return Type of obscuring the data (limiting the display) */
-public String GetObscureType() {return (String)Get_Value("ObscureType");}/** Set Sequence.
+public String GetObscureType() {return (String)Get_Value("ObscureType");}/** Set Selection Sequence.
+@param SelectionSeqNo Sequence in Selection */
+public void SetSelectionSeqNo (int SelectionSeqNo){Set_Value ("SelectionSeqNo", SelectionSeqNo);}/** Get Selection Sequence.
+@return Sequence in Selection */
+public int GetSelectionSeqNo() {Object ii = Get_Value("SelectionSeqNo");if (ii == null) return 0;return Convert.ToInt32(ii);}/** Set Sequence.
 @param SeqNo Method of ordering elements; lowest number comes first */
 public void SetSeqNo (Decimal? SeqNo){Set_Value ("SeqNo", (Decimal?)SeqNo);}/** Get Sequence.
 @return Method of ordering elements; lowest number comes first */
-public Decimal GetSeqNo() {Object bd =Get_Value("SeqNo");if (bd == null) return Env.ZERO;return  Convert.ToDecimal(bd);}/** Set Show Icon.
-@param ShowIcon Show Icon, if checkbox is checked. */
+public Decimal GetSeqNo() {Object bd =Get_Value("SeqNo");if (bd == null) return Env.ZERO;return  Convert.ToDecimal(bd);}/** Set Show Filter Option.
+@param ShowFilterOption If checked, display top 5 values */
+public void SetShowFilterOption (Boolean ShowFilterOption){Set_Value ("ShowFilterOption", ShowFilterOption);}/** Get Show Filter Option.
+@return If checked, display top 5 values */
+public Boolean IsShowFilterOption() {Object oo = Get_Value("ShowFilterOption");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}/** Set Show Icon.
+@param ShowIcon Display or hide icon */
 public void SetShowIcon (Boolean ShowIcon){Set_Value ("ShowIcon", ShowIcon);}/** Get Show Icon.
-@return Show Icon, if checkbox is checked. */
+@return Display or hide icon */
 public Boolean IsShowIcon() {Object oo = Get_Value("ShowIcon");if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo);}return false;}/** Set Record Sort No.
 @param SortNo Determines in what order the records are displayed */
 public void SetSortNo (Decimal? SortNo){Set_Value ("SortNo", (Decimal?)SortNo);}/** Get Record Sort No.
 @return Determines in what order the records are displayed */
-public Decimal GetSortNo() {Object bd =Get_Value("SortNo");if (bd == null) return Env.ZERO;return  Convert.ToDecimal(bd);}
+public Decimal GetSortNo() {Object bd =Get_Value("SortNo");if (bd == null) return Env.ZERO;return  Convert.ToDecimal(bd);}/** Set Style Logic.
+@param StyleLogic Apply style on field based on logic. */
+public void SetStyleLogic (String StyleLogic){if (StyleLogic != null && StyleLogic.Length > 2000){log.Warning("Length > 2000 - truncated");StyleLogic = StyleLogic.Substring(0,2000);}Set_Value ("StyleLogic", StyleLogic);}/** Get Style Logic.
+@return Apply style on field based on logic. */
+public String GetStyleLogic() {return (String)Get_Value("StyleLogic");}/** Set Tab Index.
+@param TabIndex System will move focus to other tab as per defined tab Index number(start with Zero).  */
+public void SetTabIndex (int TabIndex){Set_Value ("TabIndex", TabIndex);}/** Get Tab Index.
+@return System will move focus to other tab as per defined tab Index number(start with Zero).  */
+public int GetTabIndex() {Object ii = Get_Value("TabIndex");if (ii == null) return 0;return Convert.ToInt32(ii);}
 /** ZoomWindow_ID AD_Reference_ID=284 */
 public static int ZOOMWINDOW_ID_AD_Reference_ID=284;/** Set Zoom Window.
-@param ZoomWindow_ID Zoom Window */
+@param ZoomWindow_ID Set window for the zoom record. */
 public void SetZoomWindow_ID (int ZoomWindow_ID){if (ZoomWindow_ID <= 0) Set_Value ("ZoomWindow_ID", null);else
 Set_Value ("ZoomWindow_ID", ZoomWindow_ID);}/** Get Zoom Window.
-@return Zoom Window */
+@return Set window for the zoom record. */
 public int GetZoomWindow_ID() {Object ii = Get_Value("ZoomWindow_ID");if (ii == null) return 0;return Convert.ToInt32(ii);}}
 }

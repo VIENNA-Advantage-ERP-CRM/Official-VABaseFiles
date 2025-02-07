@@ -3,35 +3,6 @@
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
-      <s:element name="GetNews">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetNewsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetNewsResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCustomerOpenTickets">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Ad_user_ID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCustomerOpenTicketsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerOpenTicketsResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="GetPartnerLeads">
         <s:complexType>
           <s:sequence>
@@ -1246,6 +1217,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="pdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1256,6 +1228,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="pdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1270,6 +1243,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="cd" type="tns:ConfigurationData" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1405,6 +1379,7 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="o" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="s" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1419,6 +1394,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="sotcdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1433,6 +1409,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="cd" type="tns:ConfigurationData" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1447,6 +1424,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="sotcdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1461,6 +1439,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="sotcdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1475,6 +1454,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="sotcdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1489,6 +1469,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="sotcdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1503,6 +1484,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="cd" type="tns:ConfigurationData" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1513,6 +1495,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="cd" type="tns:ConfigurationData" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1523,6 +1506,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="sotcdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1537,6 +1521,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="cd" type="tns:ConfigurationData" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1551,6 +1536,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="cd" type="tns:ConfigurationData" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1561,6 +1547,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="sotcdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1571,6 +1558,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="hardwaredata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1585,6 +1573,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="hardwaredata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1599,6 +1588,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="printerdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1613,6 +1603,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="printerdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1627,6 +1618,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="printerdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1641,6 +1633,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="printerdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1655,6 +1648,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="localserverdata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1669,6 +1663,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="consoledata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1679,85 +1674,33 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetSiteInfo">
+      <s:element name="GetCustomerSubscription">
         <s:complexType>
           <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="customerSearchKey" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetSiteInfoResponse">
+      <s:element name="GetCustomerSubscriptionResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSiteInfoResult" type="tns:ArrayOfSite" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerSubscriptionResult" type="tns:ArrayOfProductSubscription" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfSite">
+      <s:complexType name="ArrayOfProductSubscription">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Site" nillable="true" type="tns:Site" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductSubscription" nillable="true" type="tns:ProductSubscription" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Site">
+      <s:complexType name="ProductSubscription">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetSiteZoneInfo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSiteZoneInfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSiteZoneInfoResult" type="tns:ArrayOfSiteZone" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfSiteZone">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="SiteZone" nillable="true" type="tns:SiteZone" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="SiteZone">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="ZoneName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ZoneCode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ZoneServerID" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetSiteProductInfo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSiteProductInfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSiteProductInfoResult" type="tns:ArrayOfSiteProduct" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfSiteProduct">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="SiteProduct" nillable="true" type="tns:SiteProduct" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="SiteProduct">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:decimal" />
-          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Product" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LicenseType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerNo" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="Hello">
@@ -1907,24 +1850,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="RegisterInfoFromModuleResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetVideosFromDMS">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="AD_Client_ID" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="AD_User_ID" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="C_BPartner_ID" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="C_Lead_ID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetVideosFromDMSResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVideosFromDMSResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -4128,6 +4053,35 @@
           <s:element minOccurs="1" maxOccurs="1" name="AllocatedUser" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerOpenTickets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Ad_user_ID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accessKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerOpenTicketsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerOpenTicketsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="AboutUs" nillable="true" type="tns:AboutUs" />
       <s:element name="InCompleteDBInfo" nillable="true" type="tns:InCompleteDBInfo" />
@@ -4136,9 +4090,7 @@
       <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
       <s:element name="ArrayOfRequestedModuleInfo" nillable="true" type="tns:ArrayOfRequestedModuleInfo" />
       <s:element name="CustomerPServerInfo" nillable="true" type="tns:CustomerPServerInfo" />
-      <s:element name="ArrayOfSite" nillable="true" type="tns:ArrayOfSite" />
-      <s:element name="ArrayOfSiteZone" nillable="true" type="tns:ArrayOfSiteZone" />
-      <s:element name="ArrayOfSiteProduct" nillable="true" type="tns:ArrayOfSiteProduct" />
+      <s:element name="ArrayOfProductSubscription" nillable="true" type="tns:ArrayOfProductSubscription" />
       <s:element name="ServerAndFtpInfo" nillable="true" type="tns:ServerAndFtpInfo" />
       <s:element name="ServerInfo" nillable="true" type="tns:ServerInfo" />
       <s:element name="decimal" nillable="true" type="s:decimal" />
@@ -4172,18 +4124,6 @@
       </s:complexType>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetNewsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetNews" />
-  </wsdl:message>
-  <wsdl:message name="GetNewsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetNewsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetCustomerOpenTicketsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCustomerOpenTickets" />
-  </wsdl:message>
-  <wsdl:message name="GetCustomerOpenTicketsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCustomerOpenTicketsResponse" />
-  </wsdl:message>
   <wsdl:message name="GetPartnerLeadsSoapIn">
     <wsdl:part name="parameters" element="tns:GetPartnerLeads" />
   </wsdl:message>
@@ -4730,23 +4670,11 @@
   <wsdl:message name="GetSetUpdateTimeSettingsSoapOut">
     <wsdl:part name="parameters" element="tns:GetSetUpdateTimeSettingsResponse" />
   </wsdl:message>
-  <wsdl:message name="GetSiteInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSiteInfo" />
+  <wsdl:message name="GetCustomerSubscriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerSubscription" />
   </wsdl:message>
-  <wsdl:message name="GetSiteInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSiteInfoResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteZoneInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSiteZoneInfo" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteZoneInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSiteZoneInfoResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteProductInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSiteProductInfo" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteProductInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSiteProductInfoResponse" />
+  <wsdl:message name="GetCustomerSubscriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerSubscriptionResponse" />
   </wsdl:message>
   <wsdl:message name="HelloSoapIn">
     <wsdl:part name="parameters" element="tns:Hello" />
@@ -4783,12 +4711,6 @@
   </wsdl:message>
   <wsdl:message name="RegisterInfoFromModuleSoapOut">
     <wsdl:part name="parameters" element="tns:RegisterInfoFromModuleResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetVideosFromDMSSoapIn">
-    <wsdl:part name="parameters" element="tns:GetVideosFromDMS" />
-  </wsdl:message>
-  <wsdl:message name="GetVideosFromDMSSoapOut">
-    <wsdl:part name="parameters" element="tns:GetVideosFromDMSResponse" />
   </wsdl:message>
   <wsdl:message name="RegisterTempInfoSoapIn">
     <wsdl:part name="parameters" element="tns:RegisterTempInfo" />
@@ -5504,18 +5426,17 @@
   <wsdl:message name="GetBIUserCredentialSoapOut">
     <wsdl:part name="parameters" element="tns:GetBIUserCredentialResponse" />
   </wsdl:message>
-  <wsdl:message name="GetNewsHttpGetIn">
-    <wsdl:part name="accessKey" type="s:string" />
+  <wsdl:message name="GetNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNews" />
   </wsdl:message>
-  <wsdl:message name="GetNewsHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
+  <wsdl:message name="GetNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewsResponse" />
   </wsdl:message>
-  <wsdl:message name="GetCustomerOpenTicketsHttpGetIn">
-    <wsdl:part name="Ad_user_ID" type="s:string" />
-    <wsdl:part name="accessKey" type="s:string" />
+  <wsdl:message name="GetCustomerOpenTicketsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerOpenTickets" />
   </wsdl:message>
-  <wsdl:message name="GetCustomerOpenTicketsHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
+  <wsdl:message name="GetCustomerOpenTicketsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerOpenTicketsResponse" />
   </wsdl:message>
   <wsdl:message name="GetPartnerLeadsHttpGetIn">
     <wsdl:part name="Ad_User_ID" type="s:string" />
@@ -6075,10 +5996,12 @@
   </wsdl:message>
   <wsdl:message name="PackageEntryIntoItemMasterTestHttpGetIn">
     <wsdl:part name="pdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="PackageEntryIntoItemMasterTestHttpGetOut" />
   <wsdl:message name="PackageEntryIntoItemMasterHttpGetIn">
     <wsdl:part name="pdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="PackageEntryIntoItemMasterHttpGetOut">
     <wsdl:part name="Body" element="tns:boolean" />
@@ -6086,117 +6009,120 @@
   <wsdl:message name="IsHardwareActivatedHttpGetIn">
     <wsdl:part name="o" type="s:string" />
     <wsdl:part name="s" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="IsHardwareActivatedHttpGetOut">
     <wsdl:part name="Body" element="tns:boolean" />
   </wsdl:message>
   <wsdl:message name="SOTCSettingHttpGetIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="SOTCSettingHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="CreadientialsWorkHttpGetIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="CreadientialsWorkHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="SavePrinterListHttpGetIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="SavePrinterListHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetPrinterListHttpGetIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetPrinterListHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="CheckUpdateHttpGetIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="CheckUpdateHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="MarkReadyHttpGetIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="MarkReadyHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetUserUpdateTimeSettingsDemoHttpGetIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetUserUpdateTimeSettingsDemoHttpGetOut" />
   <wsdl:message name="GetHardwaresHttpGetIn">
     <wsdl:part name="hardwaredata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetHardwaresHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="ActivateUpdateHardwareHttpGetIn">
     <wsdl:part name="hardwaredata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ActivateUpdateHardwareHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetConsolesHttpGetIn">
     <wsdl:part name="printerdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetConsolesHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetModelBrandDriverHttpGetIn">
     <wsdl:part name="printerdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetModelBrandDriverHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetSetPrintersHttpGetIn">
     <wsdl:part name="printerdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetSetPrintersHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetPrintersHttpGetIn">
     <wsdl:part name="printerdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetPrintersHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetSetLocalServersHttpGetIn">
     <wsdl:part name="localserverdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetSetLocalServersHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetSetUpdateTimeSettingsHttpGetIn">
     <wsdl:part name="consoledata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetSetUpdateTimeSettingsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetSiteInfoHttpGetIn">
+  <wsdl:message name="GetCustomerSubscriptionHttpGetIn">
+    <wsdl:part name="customerSearchKey" type="s:string" />
     <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetSiteInfoHttpGetOut">
-    <wsdl:part name="Body" element="tns:ArrayOfSite" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteZoneInfoHttpGetIn">
-    <wsdl:part name="accessKey" type="s:string" />
-    <wsdl:part name="SiteID" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteZoneInfoHttpGetOut">
-    <wsdl:part name="Body" element="tns:ArrayOfSiteZone" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteProductInfoHttpGetIn">
-    <wsdl:part name="accessKey" type="s:string" />
-    <wsdl:part name="SiteID" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteProductInfoHttpGetOut">
-    <wsdl:part name="Body" element="tns:ArrayOfSiteProduct" />
+  <wsdl:message name="GetCustomerSubscriptionHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfProductSubscription" />
   </wsdl:message>
   <wsdl:message name="HelloHttpGetIn">
     <wsdl:part name="abc" type="s:string" />
@@ -6259,16 +6185,6 @@
     <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="IsDomainExistHttpGetOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVideosFromDMSHttpGetIn">
-    <wsdl:part name="AD_Client_ID" type="s:string" />
-    <wsdl:part name="AD_User_ID" type="s:string" />
-    <wsdl:part name="C_BPartner_ID" type="s:string" />
-    <wsdl:part name="C_Lead_ID" type="s:string" />
-    <wsdl:part name="accessKey" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVideosFromDMSHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="RegisterInfoHttpGetIn">
@@ -7196,17 +7112,17 @@
   <wsdl:message name="GetBIUserCredentialHttpGetOut">
     <wsdl:part name="Body" element="tns:CustomerBISetting" />
   </wsdl:message>
-  <wsdl:message name="GetNewsHttpPostIn">
+  <wsdl:message name="GetNewsHttpGetIn">
     <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetNewsHttpPostOut">
+  <wsdl:message name="GetNewsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetCustomerOpenTicketsHttpPostIn">
+  <wsdl:message name="GetCustomerOpenTicketsHttpGetIn">
     <wsdl:part name="Ad_user_ID" type="s:string" />
     <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetCustomerOpenTicketsHttpPostOut">
+  <wsdl:message name="GetCustomerOpenTicketsHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetPartnerLeadsHttpPostIn">
@@ -7767,10 +7683,12 @@
   </wsdl:message>
   <wsdl:message name="PackageEntryIntoItemMasterTestHttpPostIn">
     <wsdl:part name="pdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="PackageEntryIntoItemMasterTestHttpPostOut" />
   <wsdl:message name="PackageEntryIntoItemMasterHttpPostIn">
     <wsdl:part name="pdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="PackageEntryIntoItemMasterHttpPostOut">
     <wsdl:part name="Body" element="tns:boolean" />
@@ -7778,117 +7696,120 @@
   <wsdl:message name="IsHardwareActivatedHttpPostIn">
     <wsdl:part name="o" type="s:string" />
     <wsdl:part name="s" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="IsHardwareActivatedHttpPostOut">
     <wsdl:part name="Body" element="tns:boolean" />
   </wsdl:message>
   <wsdl:message name="SOTCSettingHttpPostIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="SOTCSettingHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="CreadientialsWorkHttpPostIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="CreadientialsWorkHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="SavePrinterListHttpPostIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="SavePrinterListHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetPrinterListHttpPostIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetPrinterListHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="CheckUpdateHttpPostIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="CheckUpdateHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="MarkReadyHttpPostIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="MarkReadyHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetUserUpdateTimeSettingsDemoHttpPostIn">
     <wsdl:part name="sotcdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetUserUpdateTimeSettingsDemoHttpPostOut" />
   <wsdl:message name="GetHardwaresHttpPostIn">
     <wsdl:part name="hardwaredata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetHardwaresHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="ActivateUpdateHardwareHttpPostIn">
     <wsdl:part name="hardwaredata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ActivateUpdateHardwareHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetConsolesHttpPostIn">
     <wsdl:part name="printerdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetConsolesHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetModelBrandDriverHttpPostIn">
     <wsdl:part name="printerdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetModelBrandDriverHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetSetPrintersHttpPostIn">
     <wsdl:part name="printerdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetSetPrintersHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetPrintersHttpPostIn">
     <wsdl:part name="printerdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetPrintersHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetSetLocalServersHttpPostIn">
     <wsdl:part name="localserverdata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetSetLocalServersHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetSetUpdateTimeSettingsHttpPostIn">
     <wsdl:part name="consoledata" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetSetUpdateTimeSettingsHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="GetSiteInfoHttpPostIn">
+  <wsdl:message name="GetCustomerSubscriptionHttpPostIn">
+    <wsdl:part name="customerSearchKey" type="s:string" />
     <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetSiteInfoHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfSite" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteZoneInfoHttpPostIn">
-    <wsdl:part name="accessKey" type="s:string" />
-    <wsdl:part name="SiteID" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteZoneInfoHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfSiteZone" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteProductInfoHttpPostIn">
-    <wsdl:part name="accessKey" type="s:string" />
-    <wsdl:part name="SiteID" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetSiteProductInfoHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfSiteProduct" />
+  <wsdl:message name="GetCustomerSubscriptionHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfProductSubscription" />
   </wsdl:message>
   <wsdl:message name="HelloHttpPostIn">
     <wsdl:part name="abc" type="s:string" />
@@ -7951,16 +7872,6 @@
     <wsdl:part name="accessKey" type="s:string" />
   </wsdl:message>
   <wsdl:message name="IsDomainExistHttpPostOut">
-    <wsdl:part name="Body" element="tns:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVideosFromDMSHttpPostIn">
-    <wsdl:part name="AD_Client_ID" type="s:string" />
-    <wsdl:part name="AD_User_ID" type="s:string" />
-    <wsdl:part name="C_BPartner_ID" type="s:string" />
-    <wsdl:part name="C_Lead_ID" type="s:string" />
-    <wsdl:part name="accessKey" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetVideosFromDMSHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="RegisterInfoHttpPostIn">
@@ -8888,15 +8799,20 @@
   <wsdl:message name="GetBIUserCredentialHttpPostOut">
     <wsdl:part name="Body" element="tns:CustomerBISetting" />
   </wsdl:message>
+  <wsdl:message name="GetNewsHttpPostIn">
+    <wsdl:part name="accessKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerOpenTicketsHttpPostIn">
+    <wsdl:part name="Ad_user_ID" type="s:string" />
+    <wsdl:part name="accessKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerOpenTicketsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
-    <wsdl:operation name="GetNews">
-      <wsdl:input message="tns:GetNewsSoapIn" />
-      <wsdl:output message="tns:GetNewsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCustomerOpenTickets">
-      <wsdl:input message="tns:GetCustomerOpenTicketsSoapIn" />
-      <wsdl:output message="tns:GetCustomerOpenTicketsSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetPartnerLeads">
       <wsdl:input message="tns:GetPartnerLeadsSoapIn" />
       <wsdl:output message="tns:GetPartnerLeadsSoapOut" />
@@ -9261,17 +9177,9 @@
       <wsdl:input message="tns:GetSetUpdateTimeSettingsSoapIn" />
       <wsdl:output message="tns:GetSetUpdateTimeSettingsSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <wsdl:input message="tns:GetSiteInfoSoapIn" />
-      <wsdl:output message="tns:GetSiteInfoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteZoneInfo">
-      <wsdl:input message="tns:GetSiteZoneInfoSoapIn" />
-      <wsdl:output message="tns:GetSiteZoneInfoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteProductInfo">
-      <wsdl:input message="tns:GetSiteProductInfoSoapIn" />
-      <wsdl:output message="tns:GetSiteProductInfoSoapOut" />
+    <wsdl:operation name="GetCustomerSubscription">
+      <wsdl:input message="tns:GetCustomerSubscriptionSoapIn" />
+      <wsdl:output message="tns:GetCustomerSubscriptionSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Hello">
       <wsdl:input message="tns:HelloSoapIn" />
@@ -9296,10 +9204,6 @@
     <wsdl:operation name="RegisterInfoFromModule">
       <wsdl:input message="tns:RegisterInfoFromModuleSoapIn" />
       <wsdl:output message="tns:RegisterInfoFromModuleSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetVideosFromDMS">
-      <wsdl:input message="tns:GetVideosFromDMSSoapIn" />
-      <wsdl:output message="tns:GetVideosFromDMSSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RegisterTempInfo">
       <wsdl:input message="tns:RegisterTempInfoSoapIn" />
@@ -9777,16 +9681,16 @@
       <wsdl:input message="tns:GetBIUserCredentialSoapIn" />
       <wsdl:output message="tns:GetBIUserCredentialSoapOut" />
     </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="ServiceHttpGet">
     <wsdl:operation name="GetNews">
-      <wsdl:input message="tns:GetNewsHttpGetIn" />
-      <wsdl:output message="tns:GetNewsHttpGetOut" />
+      <wsdl:input message="tns:GetNewsSoapIn" />
+      <wsdl:output message="tns:GetNewsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetCustomerOpenTickets">
-      <wsdl:input message="tns:GetCustomerOpenTicketsHttpGetIn" />
-      <wsdl:output message="tns:GetCustomerOpenTicketsHttpGetOut" />
+      <wsdl:input message="tns:GetCustomerOpenTicketsSoapIn" />
+      <wsdl:output message="tns:GetCustomerOpenTicketsSoapOut" />
     </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
     <wsdl:operation name="GetPartnerLeads">
       <wsdl:input message="tns:GetPartnerLeadsHttpGetIn" />
       <wsdl:output message="tns:GetPartnerLeadsHttpGetOut" />
@@ -10115,17 +10019,9 @@
       <wsdl:input message="tns:GetSetUpdateTimeSettingsHttpGetIn" />
       <wsdl:output message="tns:GetSetUpdateTimeSettingsHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <wsdl:input message="tns:GetSiteInfoHttpGetIn" />
-      <wsdl:output message="tns:GetSiteInfoHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteZoneInfo">
-      <wsdl:input message="tns:GetSiteZoneInfoHttpGetIn" />
-      <wsdl:output message="tns:GetSiteZoneInfoHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteProductInfo">
-      <wsdl:input message="tns:GetSiteProductInfoHttpGetIn" />
-      <wsdl:output message="tns:GetSiteProductInfoHttpGetOut" />
+    <wsdl:operation name="GetCustomerSubscription">
+      <wsdl:input message="tns:GetCustomerSubscriptionHttpGetIn" />
+      <wsdl:output message="tns:GetCustomerSubscriptionHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="Hello">
       <wsdl:input message="tns:HelloHttpGetIn" />
@@ -10146,10 +10042,6 @@
     <wsdl:operation name="IsDomainExist">
       <wsdl:input message="tns:IsDomainExistHttpGetIn" />
       <wsdl:output message="tns:IsDomainExistHttpGetOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetVideosFromDMS">
-      <wsdl:input message="tns:GetVideosFromDMSHttpGetIn" />
-      <wsdl:output message="tns:GetVideosFromDMSHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="RegisterInfo">
       <wsdl:input message="tns:RegisterInfoHttpGetIn" />
@@ -10599,16 +10491,16 @@
       <wsdl:input message="tns:GetBIUserCredentialHttpGetIn" />
       <wsdl:output message="tns:GetBIUserCredentialHttpGetOut" />
     </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="ServiceHttpPost">
     <wsdl:operation name="GetNews">
-      <wsdl:input message="tns:GetNewsHttpPostIn" />
-      <wsdl:output message="tns:GetNewsHttpPostOut" />
+      <wsdl:input message="tns:GetNewsHttpGetIn" />
+      <wsdl:output message="tns:GetNewsHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="GetCustomerOpenTickets">
-      <wsdl:input message="tns:GetCustomerOpenTicketsHttpPostIn" />
-      <wsdl:output message="tns:GetCustomerOpenTicketsHttpPostOut" />
+      <wsdl:input message="tns:GetCustomerOpenTicketsHttpGetIn" />
+      <wsdl:output message="tns:GetCustomerOpenTicketsHttpGetOut" />
     </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
     <wsdl:operation name="GetPartnerLeads">
       <wsdl:input message="tns:GetPartnerLeadsHttpPostIn" />
       <wsdl:output message="tns:GetPartnerLeadsHttpPostOut" />
@@ -10937,17 +10829,9 @@
       <wsdl:input message="tns:GetSetUpdateTimeSettingsHttpPostIn" />
       <wsdl:output message="tns:GetSetUpdateTimeSettingsHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <wsdl:input message="tns:GetSiteInfoHttpPostIn" />
-      <wsdl:output message="tns:GetSiteInfoHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteZoneInfo">
-      <wsdl:input message="tns:GetSiteZoneInfoHttpPostIn" />
-      <wsdl:output message="tns:GetSiteZoneInfoHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteProductInfo">
-      <wsdl:input message="tns:GetSiteProductInfoHttpPostIn" />
-      <wsdl:output message="tns:GetSiteProductInfoHttpPostOut" />
+    <wsdl:operation name="GetCustomerSubscription">
+      <wsdl:input message="tns:GetCustomerSubscriptionHttpPostIn" />
+      <wsdl:output message="tns:GetCustomerSubscriptionHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Hello">
       <wsdl:input message="tns:HelloHttpPostIn" />
@@ -10968,10 +10852,6 @@
     <wsdl:operation name="IsDomainExist">
       <wsdl:input message="tns:IsDomainExistHttpPostIn" />
       <wsdl:output message="tns:IsDomainExistHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetVideosFromDMS">
-      <wsdl:input message="tns:GetVideosFromDMSHttpPostIn" />
-      <wsdl:output message="tns:GetVideosFromDMSHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="RegisterInfo">
       <wsdl:input message="tns:RegisterInfoHttpPostIn" />
@@ -11421,27 +11301,17 @@
       <wsdl:input message="tns:GetBIUserCredentialHttpPostIn" />
       <wsdl:output message="tns:GetBIUserCredentialHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <wsdl:input message="tns:GetNewsHttpPostIn" />
+      <wsdl:output message="tns:GetNewsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerOpenTickets">
+      <wsdl:input message="tns:GetCustomerOpenTicketsHttpPostIn" />
+      <wsdl:output message="tns:GetCustomerOpenTicketsHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetNews">
-      <soap:operation soapAction="http://tempuri.org/GetNews" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCustomerOpenTickets">
-      <soap:operation soapAction="http://tempuri.org/GetCustomerOpenTickets" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetPartnerLeads">
       <soap:operation soapAction="http://tempuri.org/GetPartnerLeads" style="document" />
       <wsdl:input>
@@ -12261,26 +12131,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <soap:operation soapAction="http://tempuri.org/GetSiteInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteZoneInfo">
-      <soap:operation soapAction="http://tempuri.org/GetSiteZoneInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteProductInfo">
-      <soap:operation soapAction="http://tempuri.org/GetSiteProductInfo" style="document" />
+    <wsdl:operation name="GetCustomerSubscription">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerSubscription" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -12335,15 +12187,6 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterInfoFromModule">
       <soap:operation soapAction="http://tempuri.org/RegisterInfoFromModule" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVideosFromDMS">
-      <soap:operation soapAction="http://tempuri.org/GetVideosFromDMS" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -13422,27 +13265,27 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetNews">
-      <soap12:operation soapAction="http://tempuri.org/GetNews" style="document" />
+      <soap:operation soapAction="http://tempuri.org/GetNews" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetCustomerOpenTickets">
-      <soap12:operation soapAction="http://tempuri.org/GetCustomerOpenTickets" style="document" />
+      <soap:operation soapAction="http://tempuri.org/GetCustomerOpenTickets" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetPartnerLeads">
       <soap12:operation soapAction="http://tempuri.org/GetPartnerLeads" style="document" />
       <wsdl:input>
@@ -14262,26 +14105,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <soap12:operation soapAction="http://tempuri.org/GetSiteInfo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteZoneInfo">
-      <soap12:operation soapAction="http://tempuri.org/GetSiteZoneInfo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteProductInfo">
-      <soap12:operation soapAction="http://tempuri.org/GetSiteProductInfo" style="document" />
+    <wsdl:operation name="GetCustomerSubscription">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerSubscription" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -14336,15 +14161,6 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterInfoFromModule">
       <soap12:operation soapAction="http://tempuri.org/RegisterInfoFromModule" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVideosFromDMS">
-      <soap12:operation soapAction="http://tempuri.org/GetVideosFromDMS" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -15423,27 +15239,27 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
-    <http:binding verb="GET" />
     <wsdl:operation name="GetNews">
-      <http:operation location="/GetNews" />
+      <soap12:operation soapAction="http://tempuri.org/GetNews" style="document" />
       <wsdl:input>
-        <http:urlEncoded />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <mime:mimeXml part="Body" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetCustomerOpenTickets">
-      <http:operation location="/GetCustomerOpenTickets" />
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerOpenTickets" style="document" />
       <wsdl:input>
-        <http:urlEncoded />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <mime:mimeXml part="Body" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET" />
     <wsdl:operation name="GetPartnerLeads">
       <http:operation location="/GetPartnerLeads" />
       <wsdl:input>
@@ -16178,26 +15994,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <http:operation location="/GetSiteInfo" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteZoneInfo">
-      <http:operation location="/GetSiteZoneInfo" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteProductInfo">
-      <http:operation location="/GetSiteProductInfo" />
+    <wsdl:operation name="GetCustomerSubscription">
+      <http:operation location="/GetCustomerSubscription" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -16243,15 +16041,6 @@
     </wsdl:operation>
     <wsdl:operation name="IsDomainExist">
       <http:operation location="/IsDomainExist" />
-      <wsdl:input>
-        <http:urlEncoded />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVideosFromDMS">
-      <http:operation location="/GetVideosFromDMS" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -17260,6 +17049,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetBIUserCredential">
       <http:operation location="/GetBIUserCredential" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <http:operation location="/GetNews" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerOpenTickets">
+      <http:operation location="/GetCustomerOpenTickets" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -17270,24 +17077,6 @@
   </wsdl:binding>
   <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="GetNews">
-      <http:operation location="/GetNews" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCustomerOpenTickets">
-      <http:operation location="/GetCustomerOpenTickets" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetPartnerLeads">
       <http:operation location="/GetPartnerLeads" />
       <wsdl:input>
@@ -18022,26 +17811,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSiteInfo">
-      <http:operation location="/GetSiteInfo" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteZoneInfo">
-      <http:operation location="/GetSiteZoneInfo" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSiteProductInfo">
-      <http:operation location="/GetSiteProductInfo" />
+    <wsdl:operation name="GetCustomerSubscription">
+      <http:operation location="/GetCustomerSubscription" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -18087,15 +17858,6 @@
     </wsdl:operation>
     <wsdl:operation name="IsDomainExist">
       <http:operation location="/IsDomainExist" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetVideosFromDMS">
-      <http:operation location="/GetVideosFromDMS" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -19111,19 +18873,37 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <http:operation location="/GetNews" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerOpenTickets">
+      <http:operation location="/GetCustomerOpenTickets" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
-      <soap:address location="http://cloudservice.softwareonthecloud.com/service.asmx" />
+      <soap:address location="http://sbservicetemp.viennaadvantage.com/Service.asmx" />
     </wsdl:port>
     <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
-      <soap12:address location="http://cloudservice.softwareonthecloud.com/service.asmx" />
+      <soap12:address location="http://sbservicetemp.viennaadvantage.com/Service.asmx" />
     </wsdl:port>
     <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
-      <http:address location="http://cloudservice.softwareonthecloud.com/service.asmx" />
+      <http:address location="http://sbservicetemp.viennaadvantage.com/Service.asmx" />
     </wsdl:port>
     <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
-      <http:address location="http://cloudservice.softwareonthecloud.com/service.asmx" />
+      <http:address location="http://sbservicetemp.viennaadvantage.com/Service.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
