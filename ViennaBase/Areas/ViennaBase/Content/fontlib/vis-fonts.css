@@ -1586,3 +1586,6 @@
     color: rgb(112, 112, 112);
 }
 
+.vis-copy-folder:before {
+    content: "\e9ea";
+}
