@@ -113,9 +113,9 @@ namespace VAdvantage.Print
             {
                 throw new ArgumentException("Null Graphics2D passed to TextLayout.draw()");
             }
-            PdfSharp.Drawing.XFont xfont = new PdfSharp.Drawing.XFont(GetFont(), new PdfSharp.Drawing.XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode, PdfSharp.Pdf.PdfFontEmbedding.Always));
+            PdfSharp.Drawing.XFont xfont = new PdfSharp.Drawing.XFont(GetFont(), new PdfSharp.Drawing.XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode));
 
-            g2.DrawString(trimText, new PdfSharp.Drawing.XFont(GetFont(), new PdfSharp.Drawing.XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode, PdfSharp.Pdf.PdfFontEmbedding.Always)), new PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(stringColor)), x, y);
+            g2.DrawString(trimText, new PdfSharp.Drawing.XFont(GetFont(), new PdfSharp.Drawing.XPdfFontOptions(PdfSharp.Pdf.PdfFontEncoding.Unicode)), new PdfSharp.Drawing.XSolidBrush(PdfSharp.Drawing.XColor.FromArgb(stringColor.ToArgb())), x, y);
         }
         public Font GetFont()
         {
