@@ -361,6 +361,8 @@ namespace VAdvantage.Model
         public static String ACTION_UserChoice = "C";
         /** Document Action = D */
         public static String ACTION_DocumentAction = "D";
+        /** HTTP Request = E */
+        public static String ACTION_HTTPRequest = "E";
         /** Sub Workflow = F */
         public static String ACTION_SubWorkflow = "F";
         /** Forward Document = G */
@@ -396,7 +398,7 @@ namespace VAdvantage.Model
         @returns true if valid **/
         public bool IsActionValid(String test)
         {
-            return test.Equals("A") || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("F") || test.Equals("G") || test.Equals("H") || test.Equals("I") || test.Equals("L") || test.Equals("M") || test.Equals("P") || test.Equals("R") || test.Equals("S") || test.Equals("T") || test.Equals("U") || test.Equals("V") || test.Equals("W") || test.Equals("X") || test.Equals("Z");
+            return test.Equals("A") || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("E") || test.Equals("F") || test.Equals("G") || test.Equals("H") || test.Equals("I") || test.Equals("L") || test.Equals("M") || test.Equals("P") || test.Equals("R") || test.Equals("S") || test.Equals("T") || test.Equals("U") || test.Equals("V") || test.Equals("W") || test.Equals("X") || test.Equals("Z");
         }
         /** Set Action.
         @param Action Indicates the Action to be performed */
@@ -404,7 +406,7 @@ namespace VAdvantage.Model
         {
             if (Action == null) throw new ArgumentException("Action is mandatory");
             if (!IsActionValid(Action))
-                throw new ArgumentException("Action Invalid value - " + Action + " - Reference_ID=302 - A - B - C - D - F - G - H - I - L - M - P - R - S - T - U - V - W - X - Z");
+                throw new ArgumentException("Action Invalid value - " + Action + " - Reference_ID=302 - A - B - C - D - E - F - G - H - I - L - M - P - R - S - T - U - V - W - X - Z");
             if (Action.Length > 1)
             {
                 log.Warning("Length > 1 - truncated");
@@ -1348,30 +1350,30 @@ namespace VAdvantage.Model
                 Set_Value("ZoomWindow_ID", ZoomWindow_ID);
         }/** Get Zoom Window.
         @return Zoom Window */
-        public int GetZoomWindow_ID() 
-        { 
-            Object ii = Get_Value("ZoomWindow_ID"); 
-            if (ii == null) 
-                return 0; 
-            return Convert.ToInt32(ii); 
+        public int GetZoomWindow_ID()
+        {
+            Object ii = Get_Value("ZoomWindow_ID");
+            if (ii == null)
+                return 0;
+            return Convert.ToInt32(ii);
         }
         /** Set Message/Label.
         @param AD_Message_ID System Message */
         public void SetAD_Message_ID(int AD_Message_ID)
         {
-            if (AD_Message_ID <= 0) 
+            if (AD_Message_ID <= 0)
                 Set_Value("AD_Message_ID", null);
             else
                 Set_Value("AD_Message_ID", AD_Message_ID);
         }
         /** Get Message/Label.
         @return System Message */
-        public int GetAD_Message_ID() 
+        public int GetAD_Message_ID()
         {
             Object ii = Get_Value("AD_Message_ID");
-            if (ii == null) 
+            if (ii == null)
                 return 0;
-            return Convert.ToInt32(ii); 
+            return Convert.ToInt32(ii);
         }
 
         /** Set Survey Response Required.
@@ -1412,6 +1414,44 @@ namespace VAdvantage.Model
                 return "Y".Equals(oo);
             }
             return false;
+        }
+
+        /** Set RequestData.
+        @param RequestData RequestData */
+        public void SetRequestData(String RequestData)
+        {
+            if (RequestData != null && RequestData.Length > 2000)
+            {
+                log.Warning("Length > 2000 - truncated");
+                RequestData = RequestData.Substring(0, 2000);
+            }
+            Set_Value("RequestData", RequestData);
+        }
+
+        /** Get RequestData.
+        @return RequestData */
+        public String GetRequestData()
+        {
+            return (String)Get_Value("RequestData");
+        }
+
+        /** Set SetHttpRequest.
+        @param SetHttpRequest SetHttpRequest */
+        public void SetSetHttpRequest(String SetHttpRequest)
+        {
+            if (SetHttpRequest != null && SetHttpRequest.Length > 1)
+            {
+                log.Warning("Length > 1 - truncated");
+                SetHttpRequest = SetHttpRequest.Substring(0, 1);
+            }
+            Set_Value("SetHttpRequest", SetHttpRequest);
+        }
+
+        /** Get SetHttpRequest.
+        @return SetHttpRequest */
+        public String GetSetHttpRequest()
+        {
+            return (String)Get_Value("SetHttpRequest");
         }
 
     }
