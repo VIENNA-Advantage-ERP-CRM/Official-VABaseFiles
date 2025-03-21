@@ -696,6 +696,7 @@
     <Compile Include="Model\X_M_Warehouse_Acct.cs" />
     <Compile Include="Model\X_M_WorkOrder.cs" />
     <Compile Include="Model\X_M_WorkOrderTransaction.cs" />
+    <Compile Include="Model\X_NodeAPICredential.cs" />
     <Compile Include="Model\X_PA_Achievement.cs" />
     <Compile Include="Model\X_PA_Benchmark.cs" />
     <Compile Include="Model\X_PA_BenchmarkData.cs" />
