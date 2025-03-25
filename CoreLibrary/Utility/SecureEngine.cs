@@ -5,6 +5,7 @@ using System.Text;
 using VAdvantage.Logging;
 using System.Security.Cryptography;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace VAdvantage.Utility
 {
@@ -116,6 +117,39 @@ namespace VAdvantage.Utility
         public static string GetClassName()
         {
             return SecureEngineUtility.SecureEngine.GetClassName();
+        }
+
+        public static string ComputeHash(string value, string salt = null , bool storeSaltWithHash=true)
+        {
+            return CoreLibrary.Utility.HashingUtility.ComputeHash(value,ref salt,storeSaltWithHash);
+        }
+
+        /// <summary>
+        ///  compare entered text with stored hash
+        ///  hash:salt
+        ///  it check for is salt stored with hash if not then look for salt as parameter
+        /// </summary>
+        /// <param name="enteredText">pain text</param>
+        /// <param name="storedHash">stored hash string </param>
+        /// <param name="storedSalt">salt</param>
+        /// <returns></returns>
+        public static bool VerifyHash(string enteredText, string storedHash,string storedSalt)
+        {
+            return CoreLibrary.Utility.HashingUtility.VerifyHash(enteredText,storedHash, storedSalt);
+        }
+
+        /// <summary>
+        /// Get random salt string
+        /// </summary>
+        /// <returns>salted string</returns>
+        public static string GenerateSalt()
+        {
+            return CoreLibrary.Utility.HashingUtility.GenerateSalt();
+        }
+
+        public static bool IsLooksLikeHash(string value)
+        {
+            return CoreLibrary.Utility.HashingUtility.LooksLikeHash(value);
         }
     }
 }
