@@ -18,6 +18,7 @@ using VAdvantage.Utility;
 using VAdvantage.Logging;
 using VAdvantage.Print;
 using BaseLibrary.Engine;
+using System.Reflection;
 
 namespace VAdvantage.Model
 {
@@ -2096,6 +2097,7 @@ namespace VAdvantage.Model
                         && !p_info.IsVirtualColumn(i)	//	no virtual column
                         && !"Password".Equals(strColumnName)
                         && !"CreditCardNumber".Equals(strColumnName)
+                        && !p_info.IsHashed(i)
                 )
                 {
                     Object keyInfo = Get_ID();
@@ -2147,6 +2149,7 @@ namespace VAdvantage.Model
                         && !p_info.IsEncrypted(index)		//	not encrypted
                         && !p_info.IsVirtualColumn(index)	//	no virtual column
                         && !"Password".Equals(columnName)
+                        && !p_info.IsHashed(index)
                         )
                     {
                         MChangeLog cLog = session.ChangeLog(
@@ -2522,6 +2525,7 @@ namespace VAdvantage.Model
                    && !p_info.IsVirtualColumn(i)	//	no virtual column
                    && !"Password".Equals(columnName)
                    && !"CreditCardNumber".Equals(columnName)
+                   && !p_info.IsHashed(i)
                    )
                 {
                     Object oldV = _mOldValues[i];
@@ -3213,6 +3217,8 @@ namespace VAdvantage.Model
                 return null;
             if (index != -1 && p_info.IsEncrypted(index))
                 return SecureEngine.Encrypt(xx);
+            if(index != -1 && p_info.IsHashed(index))
+                return SecureEngine.ComputeHash(xx.ToString(), null);
             return xx;
         }
 
@@ -3222,6 +3228,8 @@ namespace VAdvantage.Model
                 return null;
             if (index != -1 && p_info.IsEncrypted(index))
                 return SecureEngine.Encrypt(xx);
+            if (index != -1 && p_info.IsHashed(index))
+                return SecureEngine.ComputeHash(xx, null);
             return xx;
         }
 
@@ -3230,7 +3238,7 @@ namespace VAdvantage.Model
 	 *	@param index index
 	 *	@param yy data
 	 *	@return yy
-	 */
+	 *	*/
         private Object Decrypt(int index, Object yy)
         {
             if (yy == null)
@@ -3245,8 +3253,7 @@ namespace VAdvantage.Model
             }
             return yy;
         }	//
-
-
+       
         #endregion
 
         #region "DELETE Function"
@@ -3447,6 +3454,7 @@ namespace VAdvantage.Model
                             if (_mIDs.Length == 1 && value != null
                                && !p_info.IsEncrypted(i)        //	not encrypted
                                && !p_info.IsVirtualColumn(i)    //	no virtual column
+                               && !p_info.IsHashed(i)           //	no hashed column
                                && !"Password".Equals(p_info.GetColumnName(i))
                                )
                             {
@@ -4865,6 +4873,7 @@ namespace VAdvantage.Model
                 if (session != null && logThis
                         && !p_info.IsEncrypted(i)		//	not encrypted
                         && !p_info.IsVirtualColumn(i)	//	no virtual column
+                        && !p_info.IsHashed(i)			//	no hashed column
                         && !"Password".Equals(columnName1)
                         && !"CreditCardNumber".Equals(columnName1)
                 )
@@ -4911,6 +4920,7 @@ namespace VAdvantage.Model
                     if (session != null
                             && !p_info.IsEncrypted(index1)		//	not encrypted
                             && !p_info.IsVirtualColumn(index1)	//	no virtual column
+                            && !p_info.IsHashed(index1)			//	no hashed column
                             && !"Password".Equals(columnName2)
                             && !"CreditCardNumber".Equals(columnName2)
                     )
@@ -5132,6 +5142,7 @@ namespace VAdvantage.Model
                 if (session != null && logThis
                         && !p_info.IsEncrypted(i)		//	not encrypted
                         && !p_info.IsVirtualColumn(i)	//	no virtual column
+                        && !p_info.IsHashed(i)			//	no hashed column
                         && !"Password".Equals(columnName)
                         && !"CreditCardNumber".Equals(columnName)
                 )
@@ -5186,6 +5197,7 @@ namespace VAdvantage.Model
                     if (session != null
                             && !p_info.IsEncrypted(index)		//	not encrypted
                             && !p_info.IsVirtualColumn(index)	//	no virtual column
+                            && !p_info.IsHashed(index)			//	no hashed column    
                             && !"Password".Equals(columnName)
                             && !"CreditCardNumber".Equals(columnName)
                     )

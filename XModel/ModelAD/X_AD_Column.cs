@@ -522,6 +522,12 @@ SetVersion (0.0);
         public static String ISENCRYPTED_NotEncrypted = "N";
         /** Encrypted = Y */
         public static String ISENCRYPTED_Encrypted = "Y";
+
+
+        /** Not Encrypted = N */
+        public static String IsHashed_NotHashed = "N";
+        /** Encrypted = Y */
+        public static String IsHashed_Hashed = "Y";
         /** Is test a valid value.
 @param test testvalue
 @returns true if valid **/
@@ -1067,6 +1073,32 @@ SetVersion (0.0);
         }/** Get Obscure.
 @return Type of obscuring the data (limiting the display) */
         public String GetObscureType() { return (String)Get_Value("ObscureType"); }
+
+
+        public bool IsHashedValid(String test)
+        {
+            return test.Equals("N") || test.Equals("Y");
+        }
+        /** Set Encrypted.
+@param IsEncrypted Display or Storage is encrypted */
+        public void SetIsHashed(String IsHashed)
+        {
+            if (IsHashed == null) throw new ArgumentException("IsHashed is mandatory");
+            if (!IsHashedValid(IsHashed))
+                throw new ArgumentException("IsHashed Invalid value - " + IsHashed + " - Reference_ID=354 - N - Y");
+            if (IsHashed.Length > 1)
+            {
+                log.Warning("Length > 1 - truncated");
+                IsHashed = IsHashed.Substring(0, 1);
+            }
+            Set_Value("IsHashed", IsHashed);
+        }
+        /** Get Encrypted.
+@return Display or Storage is encrypted */
+        public String GetIsHashed()
+        {
+            return (String)Get_Value("IsHashed");
+        }
 
     }
 
