@@ -149,7 +149,7 @@ namespace VAdvantage.Utility
 
         public static bool IsLooksLikeHash(string value)
         {
-            return CoreLibrary.Utility.HashingUtility.LooksLikeHash(value);
+            return CoreLibrary.Utility.HashingUtility.IsLooksLikeHash(value);
         }
     }
 }
