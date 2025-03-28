@@ -352,7 +352,7 @@ namespace VAdvantage.Model
         {
             if (index < 0 || index >= m_columns.Length)
                 return false;
-            return m_columns[index].IsEncrypted;
+            return m_columns[index].IsHashed;
         }
 
         public bool hasKeyColumn()
