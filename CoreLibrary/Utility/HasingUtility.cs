@@ -54,7 +54,7 @@ namespace CoreLibrary.Utility
             var hashString = Convert.ToBase64String(hash);
 
             if (storeSaltWithHash)
-                hashString += hashString  + ":" + salt;
+                hashString += ":" + salt;
             if (flag)
             {
                 hashString = "'" + hashString + "'";
