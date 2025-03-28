@@ -41,13 +41,25 @@ namespace CoreLibrary.Utility
         {
             if (salt == null)
                 salt = GenerateSalt();
+
+            bool flag = password.StartsWith("'") && password.EndsWith("'");
+            if (flag)
+            {
+                password = password.Substring(1, password.Length - 2);
+            }
+
             byte[] hash = ComputeHashWithSalt(password, salt);
 
             // Store in Base64 format: hash:salt
-            if(storeSaltWithHash)
-                return Convert.ToBase64String(hash) + ":" + salt;
-            else
-                return Convert.ToBase64String(hash);
+            var hashString = Convert.ToBase64String(hash);
+
+            if (storeSaltWithHash)
+                hashString += hashString  + ":" + salt;
+            if (flag)
+            {
+                hashString = "'" + hashString + "'";
+            }
+            return hashString;
         }
 
         /// <summary>
