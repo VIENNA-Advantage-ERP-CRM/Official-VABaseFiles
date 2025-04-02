@@ -110,9 +110,9 @@ namespace CoreLibrary.Utility
         /// </summary>
         private static byte[] ComputeHashWithSalt(string password, string salt)
         {
-            using (var argon2 = new Argon2id(Encoding.UTF8.GetBytes(password)))
+            using (var argon2 = new Argon2id(Convert.FromBase64String(password)))
             {
-                argon2.Salt = Encoding.UTF8.GetBytes(salt);
+                argon2.Salt = Convert.FromBase64String(salt);
                 argon2.DegreeOfParallelism = Parallelism;
                 argon2.MemorySize = MemorySize;
                 argon2.Iterations = Iterations;
