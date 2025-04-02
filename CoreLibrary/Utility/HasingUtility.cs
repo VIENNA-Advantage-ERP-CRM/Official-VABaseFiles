@@ -27,7 +27,7 @@ namespace CoreLibrary.Utility
             {
                 rng.GetBytes(salt);
             }
-            return Encoding.UTF8.GetString(salt);
+            return System.Convert.ToBase64String(salt);
         }
 
         /// <summary>
