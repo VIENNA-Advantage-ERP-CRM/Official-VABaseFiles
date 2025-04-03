@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 
+
 namespace CoreLibrary.Utility
 {
 
@@ -110,14 +111,16 @@ namespace CoreLibrary.Utility
         /// </summary>
         private static byte[] ComputeHashWithSalt(string password, string salt)
         {
-            using (var argon2 = new Argon2id(Convert.FromBase64String(password)))
+            using (var argon2 = new Argon2id(Encoding.UTF8.GetBytes(password)))
             {
+                
                 argon2.Salt = Convert.FromBase64String(salt);
                 argon2.DegreeOfParallelism = Parallelism;
                 argon2.MemorySize = MemorySize;
                 argon2.Iterations = Iterations;
 
-                return argon2.GetBytes(HashSize);
+                byte[] hash = argon2.GetBytes(HashSize);  // Hash length in bytes
+                return hash;
             }
         }
 
