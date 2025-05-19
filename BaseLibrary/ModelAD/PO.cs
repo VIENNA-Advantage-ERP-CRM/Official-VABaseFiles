@@ -4440,8 +4440,9 @@ namespace VAdvantage.Model
             VLogger.ResetLast();
             if (_objects.Count <= 0)
             {
-                return true;//requested by harwinder g
+                return true;//requested by
             }
+
             // only process changed objects
             PO[] allobjects = (PO[])_objects.ToArray(typeof(PO));// new aList<PO>(_objects.Count);
 
@@ -4477,33 +4478,39 @@ namespace VAdvantage.Model
                     param = po.Is_New() ? po.GetSaveNewQueryInfo() :
                        po.GetSaveUpdateQueryInfo();
 
-                    Ctx p_ctx = new Ctx();
+                    Ctx p_ctx = po.GetCtx();
 
-                    string adLog = p_ctx.GetContext("AD_ChangeLogBatch");
+                    StringBuilder adLog = null;
+                    if (logbatch.ContainsKey(p_ctx.GetAD_Session_ID()))
+                    {
+                        adLog = logbatch[p_ctx.GetAD_Session_ID()];
+                    }
+
                     if (adLog != null && adLog.Length > 6)
                     {
                         string adLogDB = "";
                         if (!DB.IsPostgreSQL())
                         {
-                            adLogDB = adLog + " END; ";
+                            adLogDB = adLog.ToString() + " END; ";
                         }
                         else
                         {
-                            adLogDB = adLog;
+                            adLogDB = adLog.ToString();
                         }
-                        p_ctx.SetContext("AD_ChangeLogBatch", "");
+                        //p_ctx.SetContext("AD_ChangeLogBatch", "");
                         adLogDB = adLogDB.Replace("TO_DATE", "TO_TIMESTAMP");
-                        DB.ExecuteQuery(adLogDB, null, null);
+                        DB.ExecuteQuery(adLogDB, null, trx);
+                        adLog.Clear();
                     }
                 }
-                catch (Exception ex)
-
+                catch 
                 {
+                    VLogger.Get().Info("Error in GetSaveNewQueryInfo or GetSaveUpdateQueryInfo");
                 }
 
                 queries[po] = param;
                 HashSet<PO> pos = null;
-                if (sqls.Count > 0)
+                if (sqls.Count > 0 && sqls.ContainsKey(param.sql))
                 {
                     pos = sqls[param.sql];
                 }
@@ -4514,12 +4521,12 @@ namespace VAdvantage.Model
                 }
                 pos.Add(po);
             }
-            //for (Map.Entry<String, HashSet<PO>> sql : sqls.entrySet()) 
+           
             foreach (var sql in sqls)
             {
                 s_log.Fine("Bulk update " + sql.Value.Count + " records for: " + sql.Key);
                 List<List<Object>> bulkParams = new List<List<Object>>();
-                //for (PO po : sql.getValue())
+              
                 foreach (PO po in sql.Value)
                 {
                     bulkParams.Add(queries[po].parameters);
@@ -4530,7 +4537,10 @@ namespace VAdvantage.Model
                 {
                     no = DB.ExecuteBulkUpdate(trx, sql.Key, bulkParams);
                 }
-                catch { }
+                catch(Exception e)
+                {
+                    s_log.Log(Level.SEVERE, "Error in Bulk Update", e);
+                }
                 if (no != bulkParams.Count)
                 {
                     return false;
