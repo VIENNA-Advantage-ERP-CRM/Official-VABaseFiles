@@ -1052,7 +1052,7 @@ namespace CoreLibrary.DataBase
         /// <returns>number of rows updated or -1 if error</returns>
         public static int ExecuteBulkUpdate(Trx trx1, String sql, List<Object[]> bulkParams, Boolean ignoreError, Boolean bulkSQL)
         {
-            //long time = System.currentTimeMillis();
+           
             Trx trx = trx1;
 
             DateTime time = DateTime.Now.Date;
@@ -1061,23 +1061,22 @@ namespace CoreLibrary.DataBase
                 throw new ArgumentException("Required parameter missing - " + sql);
             }
 
-            //CPreparedStatement pstmt = new CPreparedStatement(ResultSet.TYPE_FORWARD_ONLY,
-            //ResultSet.CONCUR_UPDATABLE, sql, trx);	//	converted in call
-
             int total = 0;
             int count = 0;
             try
             {
-                SqlParameter[] sqlParam = new SqlParameter[bulkParams.Count];
+                SqlParameter[] sqlParam = null;
                 foreach (Object[] param in bulkParams)
                 {
+                    sqlParam = null;
                     count++;
                     // Set Parameter
                     if (param != null)
                     {
+                        sqlParam = new SqlParameter[param.Length];
                         for (int i = 0; i < param.Length; i++)
                         {
-                            //setParam(pstmt, param[i], i + 1);
+                            
                             sqlParam[i] = new SqlParameter("@param" + i, param[i]);
                         }
                     }
@@ -1091,43 +1090,27 @@ namespace CoreLibrary.DataBase
                             ////executeBatch()--This method is used to submit a set of command in sql query 
                             ////to the database, In case all the commands successfully, return you an 
                             ////array update count.
-                            //int[] updateCounts = pstmt.executeBatch();
-                            //foreach (int updateCount in updateCounts)
-                            //{
-                            //    if (updateCount >= 0) total += updateCount;
-                            //    if (updateCount == Statement.SUCCESS_NO_INFO)
-                            //    { total++; }
-                            //}
+                           
                         }
                     }
                     else
                     {
                         // int no = ExecuteQuery(sql, sqlParam, trx, false);
 
-                        //if (DB.isMSSQLServer() && (no == -1))
-                        //{
-                        //    no = 0; //
-                        //}
+                        
                         // total += no;
                     }
-                }
 
-                if (bulkSQL)
-                {
-                    //int[] updateCounts = pstmt.executeBatch();
-                    //foreach (int updateCount in updateCounts)
-                    //{
-                    //    if (updateCount >= 0) total += updateCount;
-                    //    if (updateCount == Statement.SUCCESS_NO_INFO) total++;
-                    //}
+                    int no = ExecuteQuery(sql, sqlParam, trx, false);
+                    total += no;
                 }
-                int no = ExecuteQuery(sql, sqlParam, trx, false);
-                total += no;
+                
                 // No Transaction - Commit
-                if (trx == null)
-                {
-                    trx.Commit(); // Local commit
-                }
+                //if (trx == null)
+                //{
+                //    trx.Commit(); // Local commit
+                //    trx.Close();
+                //}
             }
             catch (Exception e)
             {
