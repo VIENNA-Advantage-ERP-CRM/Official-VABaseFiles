@@ -103,7 +103,8 @@ namespace VAdvantage.Model
                    || AD_Table_ID == X_AD_QueryLog.Table_ID
                    || AD_Table_ID == X_AD_Issue.Table_ID
                    || AD_Column_ID == 6652 // AD_Process.Statistics_Count
-                   || AD_Column_ID == 6653) // AD_Process.Statistics_Seconds
+                   || AD_Column_ID == 6653 // AD_Process.Statistics_Seconds
+                   || AD_Table_ID == 270) // X_Fact_Acct 
                 return true;
 
             // Don't log Log entries

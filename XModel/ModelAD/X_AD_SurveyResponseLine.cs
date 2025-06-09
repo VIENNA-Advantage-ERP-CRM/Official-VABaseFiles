@@ -61,7 +61,7 @@ public void SetAD_SurveyValue_ID (String AD_SurveyValue_ID){if (AD_SurveyValue_I
 @return Answer */
 public String GetAD_SurveyValue_ID() {return (String)Get_Value("AD_SurveyValue_ID");}/** Set Answer.
 @param Answer Answer field is used for Answer of Question */
-public void SetAnswer (String Answer){if (Answer != null && Answer.Length > 250){log.Warning("Length > 250 - truncated");Answer = Answer.Substring(0,250);}Set_Value ("Answer", Answer);}/** Get Answer.
+public void SetAnswer (String Answer){if (Answer != null && Answer.Length > 5000){log.Warning("Length > 5000 - truncated");Answer = Answer.Substring(0,5000);}Set_Value ("Answer", Answer);}/** Get Answer.
 @return Answer field is used for Answer of Question */
 public String GetAnswer() {return (String)Get_Value("Answer");}/** Set Export.
 @param Export_ID Export */
