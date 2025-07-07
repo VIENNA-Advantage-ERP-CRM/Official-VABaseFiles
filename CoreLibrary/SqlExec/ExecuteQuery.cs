@@ -411,6 +411,11 @@ namespace VAdvantage.SqlExec
                 if (arrParam[i].Direction == ParameterDirection.Output)
                 {
                     param[i].Direction = arrParam[i].Direction;
+                    // 07 July 2025, define size of the parameter when defined
+                    if (arrParam[i].Size > 0)
+                    {
+                        param[i].Size = arrParam[i].Size;
+                    }
                 }
             }
             return param;   //return the parameter
