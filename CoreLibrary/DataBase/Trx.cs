@@ -21,6 +21,7 @@ using VAdvantage.Logging;
 using Oracle.ManagedDataAccess.Client;
 using CoreLibrary.DataBase;
 using CoreLibrary.Classes;
+using System.Web.UI.WebControls;
 //using VAdvantage.Install;
 
 namespace VAdvantage.DataBase
@@ -332,6 +333,11 @@ namespace VAdvantage.DataBase
                 if (arrParam[i].Direction == ParameterDirection.Output)
                 {
                     param[i].Direction = arrParam[i].Direction;
+                    // 07 July 2025, define size of the parameter when defined
+                    if (arrParam[i].Size > 0)
+                    {
+                        param[i].Size = arrParam[i].Size;
+                    }
                 }
             }
             return param;   //return the parameter
