@@ -1,5 +1,5 @@
 /*
- * Globalize Culture fa
+ * Globalize Culture fa-IR
  *
  * http://github.com/jquery/globalize
  *
@@ -11,203 +11,461 @@
  * Translation: bugs found in this file need to be fixed in the generator
  */
 
-(function( window, undefined ) {
+(function (window, undefined) {
 
-var Globalize;
+	var Globalize;
 
-if ( typeof require !== "undefined" &&
-	typeof exports !== "undefined" &&
-	typeof module !== "undefined" ) {
-	// Assume CommonJS
-	Globalize = require( "globalize" );
-} else {
-	// Global variable
-	Globalize = window.Globalize;
-}
-
-Globalize.addCultureInfo( "fa", "default", {
-	name: "fa",
-	englishName: "Persian",
-	nativeName: "فارسى",
-	language: "fa",
-	isRTL: true,
-	numberFormat: {
-		pattern: ["n-"],
-		currency: {
-			pattern: ["$n-","$ n"],
-			".": "/",
-			symbol: "ريال"
-		}
-	},
-	calendars: {
-		standard: {
-			name: "Gregorian_TransliteratedFrench",
-			firstDay: 6,
-			days: {
-				names: ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],
-				namesAbbr: ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],
-				namesShort: ["ح","ن","ث","ر","خ","ج","س"]
-			},
-			months: {
-				names: ["جانفييه","فيفرييه","مارس","أفريل","مي","جوان","جوييه","أوت","سبتمبر","اكتوبر","نوفمبر","ديسمبر",""],
-				namesAbbr: ["جانفييه","فيفرييه","مارس","أفريل","مي","جوان","جوييه","أوت","سبتمبر","اكتوبر","نوفمبر","ديسمبر",""]
-			},
-			AM: ["ق.ظ","ق.ظ","ق.ظ"],
-			PM: ["ب.ظ","ب.ظ","ب.ظ"],
-			eras: [{"name":"م","start":null,"offset":0}],
-			patterns: {
-				d: "MM/dd/yyyy",
-				t: "hh:mm tt",
-				T: "hh:mm:ss tt",
-				f: "dddd, MMMM dd, yyyy hh:mm tt",
-				F: "dddd, MMMM dd, yyyy hh:mm:ss tt"
-			}
-		},
-		Gregorian_Localized: {
-			firstDay: 6,
-			days: {
-				names: ["يكشنبه","دوشنبه","سه شنبه","چهارشنبه","پنجشنبه","جمعه","شنبه"],
-				namesAbbr: ["يكشنبه","دوشنبه","سه شنبه","چهارشنبه","پنجشنبه","جمعه","شنبه"],
-				namesShort: ["ی","د","س","چ","پ","ج","ش"]
-			},
-			months: {
-				names: ["ژانويه","فوريه","مارس","آوريل","مى","ژوئن","ژوئيه","اوت","سپتامبر","اُكتبر","نوامبر","دسامبر",""],
-				namesAbbr: ["ژانويه","فوريه","مارس","آوريل","مى","ژوئن","ژوئيه","اوت","سپتامبر","اُكتبر","نوامبر","دسامبر",""]
-			},
-			AM: ["ق.ظ","ق.ظ","ق.ظ"],
-			PM: ["ب.ظ","ب.ظ","ب.ظ"],
-			patterns: {
-				d: "yyyy/MM/dd",
-				D: "yyyy/MM/dd",
-				t: "hh:mm tt",
-				T: "hh:mm:ss tt",
-				f: "yyyy/MM/dd hh:mm tt",
-				F: "yyyy/MM/dd hh:mm:ss tt",
-				M: "dd MMMM"
-			}
-		},
-		Hijri: {
-			name: "Hijri",
-			firstDay: 6,
-			days: {
-				names: ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],
-				namesAbbr: ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],
-				namesShort: ["ح","ن","ث","ر","خ","ج","س"]
-			},
-			months: {
-				names: ["محرم","صفر","ربيع الأول","ربيع الثاني","جمادى الأولى","جمادى الثانية","رجب","شعبان","رمضان","شوال","ذو القعدة","ذو الحجة",""],
-				namesAbbr: ["محرم","صفر","ربيع الأول","ربيع الثاني","جمادى الأولى","جمادى الثانية","رجب","شعبان","رمضان","شوال","ذو القعدة","ذو الحجة",""]
-			},
-			AM: ["ق.ظ","ق.ظ","ق.ظ"],
-			PM: ["ب.ظ","ب.ظ","ب.ظ"],
-			eras: [{"name":"بعد الهجرة","start":null,"offset":0}],
-			twoDigitYearMax: 1451,
-			patterns: {
-				d: "dd/MM/yy",
-				D: "dd/MM/yyyy",
-				t: "hh:mm tt",
-				T: "hh:mm:ss tt",
-				f: "dd/MM/yyyy hh:mm tt",
-				F: "dd/MM/yyyy hh:mm:ss tt",
-				M: "dd MMMM"
-			},
-			convert: {
-                    // Adapted to Script from System.Globalization.HijriCalendar
-                    ticks1970: 62135596800000,
-                    // number of days leading up to each month
-                    monthDays: [0, 30, 59, 89, 118, 148, 177, 207, 236, 266, 295, 325, 355],
-                    minDate: -42521673600000,
-                    maxDate: 253402300799999,
-                    // The number of days to add or subtract from the calendar to accommodate the variances
-                    // in the start and the end of Ramadan and to accommodate the date difference between
-                    // countries/regions. May be dynamically adjusted based on user preference, but should
-                    // remain in the range of -2 to 2, inclusive.
-                    hijriAdjustment: 0,
-                    toGregorian: function(hyear, hmonth, hday) {
-                        var daysSinceJan0101 = this.daysToYear(hyear) + this.monthDays[hmonth] + hday - 1 - this.hijriAdjustment;
-                        // 86400000 = ticks per day
-                        var gdate = new Date(daysSinceJan0101 * 86400000 - this.ticks1970);
-                        // adjust for timezone, because we are interested in the gregorian date for the same timezone
-                        // but ticks in javascript is always from GMT, unlike the server were ticks counts from the base
-                        // date in the current timezone.
-                        gdate.setMinutes(gdate.getMinutes() + gdate.getTimezoneOffset());
-                        return gdate;
-                    },
-                    fromGregorian: function(gdate) {
-                        if ((gdate < this.minDate) || (gdate > this.maxDate)) return null;
-                        var ticks = this.ticks1970 + (gdate-0) - gdate.getTimezoneOffset() * 60000,
-                            daysSinceJan0101 = Math.floor(ticks / 86400000) + 1 + this.hijriAdjustment;
-                        // very particular formula determined by someone smart, adapted from the server-side implementation.
-                        // it approximates the hijri year.
-                        var hday, hmonth, hyear = Math.floor(((daysSinceJan0101 - 227013) * 30) / 10631) + 1,
-                            absDays = this.daysToYear(hyear),
-                            daysInYear = this.isLeapYear(hyear) ? 355 : 354;
-                        // hyear is just approximate, it may need adjustment up or down by 1.
-                        if (daysSinceJan0101 < absDays) {
-                            hyear--;
-                            absDays -= daysInYear;
-                        }
-                        else if (daysSinceJan0101 === absDays) {
-                            hyear--;
-                            absDays = this.daysToYear(hyear);
-                        }
-                        else {
-                            if (daysSinceJan0101 > (absDays + daysInYear)) {
-                                absDays += daysInYear;
-                                hyear++;
-                            }
-                        }
-                        // determine month by looking at how many days into the hyear we are
-                        // monthDays contains the number of days up to each month.
-                        hmonth = 0;
-                        var daysIntoYear = daysSinceJan0101 - absDays;
-                        while (hmonth <= 11 && daysIntoYear > this.monthDays[hmonth]) {
-                            hmonth++;
-                        }
-                        hmonth--;
-                        hday = daysIntoYear - this.monthDays[hmonth];
-                        return [hyear, hmonth, hday];
-                    },
-                    daysToYear: function(year) {
-                        // calculates how many days since Jan 1, 0001
-                        var yearsToYear30 = Math.floor((year - 1) / 30) * 30,
-                            yearsInto30 = year - yearsToYear30 - 1,
-                            days = Math.floor((yearsToYear30 * 10631) / 30) + 227013;
-                        while (yearsInto30 > 0) {
-                            days += (this.isLeapYear(yearsInto30) ? 355 : 354);
-                            yearsInto30--;
-                        }
-                        return days;
-                    },
-                    isLeapYear: function(year) {
-                        return ((((year * 11) + 14) % 30) < 11);
-                    }
-			}
-		},
-		Gregorian_TransliteratedEnglish: {
-			name: "Gregorian_TransliteratedEnglish",
-			firstDay: 6,
-			days: {
-				names: ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],
-				namesAbbr: ["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],
-				namesShort: ["أ","ا","ث","أ","خ","ج","س"]
-			},
-			months: {
-				names: ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر",""],
-				namesAbbr: ["يناير","فبراير","مارس","ابريل","مايو","يونيو","يوليو","اغسطس","سبتمبر","اكتوبر","نوفمبر","ديسمبر",""]
-			},
-			AM: ["ق.ظ","ق.ظ","ق.ظ"],
-			PM: ["ب.ظ","ب.ظ","ب.ظ"],
-			eras: [{"name":"م","start":null,"offset":0}],
-			patterns: {
-				d: "MM/dd/yyyy",
-				t: "hh:mm tt",
-				T: "hh:mm:ss tt",
-				f: "dddd, MMMM dd, yyyy hh:mm tt",
-				F: "dddd, MMMM dd, yyyy hh:mm:ss tt"
-			}
-		}
+	if (typeof require !== "undefined" &&
+		typeof exports !== "undefined" &&
+		typeof module !== "undefined") {
+		// Assume CommonJS
+		Globalize = require("globalize");
+	} else {
+		// Global variable
+		Globalize = window.Globalize;
 	}
-});
 
-}( this ));
+	Globalize.addCultureInfo("fa-IR", "default", {
+		name: "fa-IR",
+		englishName: "Persian",
+		nativeName: "فارسى (ایران)",
+		language: "fa",
+		isRTL: true,
+		numberFormat: {
+			pattern: ["n-"],
+			currency: {
+				pattern: ["$n-", "$ n"],
+				".": "/",
+				symbol: "ريال"
+			}
+		},
+		calendars: {
+			standard: {
+				name: "Gregorian_TransliteratedFrench",
+				firstDay: 6,
+				days: {
+					names: ["يكشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"],
+					namesAbbr: ["يكشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"],
+					namesShort: ["ی", "د", "س", "چ", "پ", "ج", "ش"]
+				},
+				months: {
+					names: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند", ""],
+					namesAbbr: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند", ""]
+				},
+				AM: ["ق.ظ", "ق.ظ", "ق.ظ"],
+				PM: ["ب.ظ", "ب.ظ", "ب.ظ"],
+				eras: [{ "name": "م", "start": null, "offset": 0 }],
+				patterns: {
+					d: "yyyy-MM-dd",
+					t: "hh:mm tt",
+					T: "hh:mm:ss tt",
+					f: "dddd, dd MMMM yyyy, hh:mm tt",
+					F: "yyyy-MM-dd, hh:mm:ss tt"
+				},
+				convert: {
+					jalCal: function (jy, withoutLeap) {
+						var bl = this.breaks.length
+							, gy = jy + 621
+							, leapJ = -14
+							, jp = this.breaks[0]
+							, jm
+							, jump
+							, leap
+							, leapG
+							, march
+							, n
+							, i
+
+						if (jy < jp || jy >= this.breaks[bl - 1])
+							throw new Error('Invalid Jalaali year ' + jy)
+
+						// Find the limiting years for the Jalaali year jy.
+						for (i = 1; i < bl; i += 1) {
+							jm = this.breaks[i]
+							jump = jm - jp
+							if (jy < jm)
+								break
+							leapJ = leapJ + this.div(jump, 33) * 8 + this.div(this.mod(jump, 33), 4)
+							jp = jm
+						}
+						n = jy - jp
+
+						// Find the number of leap years from AD 621 to the beginning
+						// of the current Jalaali year in the Persian calendar.
+						leapJ = leapJ + this.div(n, 33) * 8 + this.div(this.mod(n, 33) + 3, 4)
+						if (this.mod(jump, 33) === 4 && jump - n === 4)
+							leapJ += 1
+
+						// And the same in the Gregorian calendar (until the year gy).
+						leapG = this.div(gy, 4) - this.div((this.div(gy, 100) + 1) * 3, 4) - 150
+
+						// Determine the Gregorian date of Farvardin the 1st.
+						march = 20 + leapJ - leapG
+
+						// return with gy and march when we don't need leap
+						if (withoutLeap) return { gy: gy, march: march };
+
+
+						// Find how many years have passed since the last leap year.
+						if (jump - n < 6)
+							n = n - jump + this.div(jump + 4, 33) * 33
+						leap = this.mod(this.mod(n + 1, 33) - 1, 4)
+						if (leap === -1) {
+							leap = 4
+						}
+
+						return {
+							leap: leap
+							, gy: gy
+							, march: march
+						}
+					},
+					toJalaali: function (gy, gm, gd) {
+						if (Object.prototype.toString.call(gy) === '[object Date]') {
+							gd = gy.getDate();
+							gm = gy.getMonth() + 1;
+							gy = gy.getFullYear();
+						}
+						return this.d2j(this.g2d(gy, gm, gd));
+					},
+					fromGregorian: function (gdate) {
+						if ((gdate < this.minDate) || (gdate > this.maxDate)) return null;
+						//var jdate = this.toJalaali(gdate.getFullYear(), gdate.getMonth() + 1, gdate.getDate());
+						var jdate = this.toJalaali(gdate.getFullYear(), gdate.getMonth(), gdate.getDate());
+						return [jdate.jy, jdate.jm , jdate.jd]; // jdate.jm - 1 because we need 0-11 for months
+					},
+
+					toGregorian: function (jy, jm, jd) {
+						return this.d2g(this.j2d(jy, jm, jd));
+					},
+					isValidJalaaliDate: function (jy, jm, jd) {
+						return jy >= -61 && jy <= 3177 &&
+							jm >= 1 && jm <= 12 &&
+							jd >= 1 && jd <= this.jalaaliMonthLength(jy, jm);
+					},
+					isLeapJalaaliYear: function (jy) {
+						return this.jalCalLeap(jy) === 0;
+					},
+
+					jalaaliMonthLength: function (jy, jm) {
+						if (jm <= 6) return 31;
+						if (jm <= 11) return 30;
+						if (this.isLeapJalaaliYear(jy)) return 30;
+						return 29;
+					},
+
+					jalCalLeap: function (jy) {
+						var bl = this.breaks.length,
+							jp = this.breaks[0],
+							jm,
+							jump,
+							leap,
+							n,
+							i;
+
+						if (jy < jp || jy >= this.breaks[bl - 1])
+							throw new Error('Invalid Jalaali year ' + jy);
+
+						for (i = 1; i < bl; i += 1) {
+							jm = this.breaks[i];
+							jump = jm - jp;
+							if (jy < jm)
+								break;
+							jp = jm;
+						}
+						n = jy - jp;
+
+						if (jump - n < 6)
+							n = n - jump + this.div(jump + 4, 33) * 33;
+						leap = this.mod(this.mod(n + 1, 33) - 1, 4);
+						if (leap === -1) {
+							leap = 4;
+						}
+
+						return leap;
+					},
+
+
+					div: function (a, b) {
+						return ~~(a / b)
+						//return Math.floor(a / b);
+					},
+
+					mod: function (a, b) {
+						return a - ~~(a / b) * b
+						//return a - Math.floor(a / b) * b;
+					},
+					breaks: [ -61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210
+						, 1635, 2060, 2097, 2192, 2262, 2324, 2394, 2456, 3178
+						],
+
+					g2d: function (gy, gm, gd) {
+						var d = this.div((gy + this.div(gm - 8, 6) + 100100) * 1461, 4)
+							+ this.div(153 * this.mod(gm + 9, 12) + 2, 5)
+							+ gd - 34840408;
+						d = d - this.div(this.div(gy + 100100 + this.div(gm - 8, 6), 100) * 3, 4) + 752;
+						return d;
+					},
+					d2g: function (jdn) {
+						var j
+							, i
+							, gd
+							, gm
+							, gy
+						j = 4 * jdn + 139361631
+						j = j + this.div(this.div(4 * jdn + 183187720, 146097) * 3, 4) * 4 - 3908
+						i = this.div(this.mod(j, 1461), 4) * 5 + 308
+						gd = this.div(this.mod(i, 153), 5) + 1
+						gm = this.mod(this.div(i, 153), 12) + 1
+						gy = this.div(j, 1461) - 100100 + this.div(8 - gm, 6)
+						return {
+							gy: gy
+							, gm: gm
+							, gd: gd
+						}
+					},
+					d2j: function (jdn) {
+						var gy = this.d2g(jdn).gy // Calculate Gregorian year (gy).
+							, jy = gy - 621
+							, r = this.jalCal(jy, false)
+							, jdn1f = this.g2d(gy, 3, r.march)
+							, jd
+							, jm
+							, k
+
+						// Find number of days that passed since 1 Farvardin.
+						k = jdn - jdn1f
+						if (k >= 0) {
+							if (k <= 185) {
+								// The first 6 months.
+								jm = 1 + this.div(k, 31)
+								jd = this.mod(k, 31) + 1
+								return {
+									jy: jy
+									, jm: jm
+									, jd: jd
+								}
+							} else {
+								// The remaining months.
+								k -= 186
+							}
+						} else {
+							// Previous Jalaali year.
+							jy -= 1
+							k += 179
+							if (r.leap === 1)
+								k += 1
+						}
+						jm = 7 + this.div(k, 30)
+						jd = this.mod(k, 30) + 1
+						return {
+							jy: jy
+							, jm: jm
+							, jd: jd
+						}
+					},
+
+					j2d: function (jy, jm, jd) {
+						var r = this.jalCal(jy, true)
+						return this.g2d(r.gy, 3, r.march) + (jm - 1) * 31 - this.div(jm, 7) * (jm - 7) + jd - 1
+					},
+
+
+				}
+			},
+			Gregorian_Localized: {
+				firstDay: 6,
+				days: {
+					names: ["يكشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"],
+					namesAbbr: ["يكشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"],
+					namesShort: ["ی", "د", "س", "چ", "پ", "ج", "ش"]
+				},
+				months: {
+					names: ["ژانويه", "فوريه", "مارس", "آوريل", "مى", "ژوئن", "ژوئيه", "اوت", "سپتامبر", "اُكتبر", "نوامبر", "دسامبر", ""],
+					namesAbbr: ["ژانويه", "فوريه", "مارس", "آوريل", "مى", "ژوئن", "ژوئيه", "اوت", "سپتامبر", "اُكتبر", "نوامبر", "دسامبر", ""]
+				},
+				AM: ["ق.ظ", "ق.ظ", "ق.ظ"],
+				PM: ["ب.ظ", "ب.ظ", "ب.ظ"],
+				patterns: {
+					d: "yyyy/MM/dd",
+					D: "yyyy/MM/dd",
+					t: "hh:mm tt",
+					T: "hh:mm:ss tt",
+					f: "yyyy/MM/dd hh:mm tt",
+					F: "yyyy/MM/dd hh:mm:ss tt",
+					M: "dd MMMM"
+				}
+			},
+			Hijri: {
+				name: "Hijri",
+				firstDay: 6,
+				days: {
+					names: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "جمعه", "السبت"],
+					namesAbbr: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "جمعه", "السبت"],
+					namesShort: ["ح", "ن", "ث", "ر", "خ", "ج", "س"]
+				},
+				months: {
+					names: ["محرم", "صفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الثانية", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة", ""],
+					namesAbbr: ["محرم", "صفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الثانية", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة", ""]
+				},
+				AM: ["ق.ظ", "ق.ظ", "ق.ظ"],
+				PM: ["ب.ظ", "ب.ظ", "ب.ظ"],
+				eras: [{ "name": "بعد الهجرة", "start": null, "offset": 0 }],
+				twoDigitYearMax: 1451,
+				patterns: {
+					d: "dd/MM/yy",
+					D: "dd/MM/yyyy",
+					t: "hh:mm tt",
+					T: "hh:mm:ss tt",
+					f: "dd/MM/yyyy hh:mm tt",
+					F: "dd/MM/yyyy hh:mm:ss tt",
+					M: "dd MMMM"
+				},
+				convert: {
+					// Adapted to Script from System.Globalization.HijriCalendar
+					ticks1970: 62135596800000,
+					// number of days leading up to each month
+					monthDays: [0, 30, 59, 89, 118, 148, 177, 207, 236, 266, 295, 325, 355],
+					minDate: -42521673600000,
+					maxDate: 253402300799999,
+					// The number of days to add or subtract from the calendar to accommodate the variances
+					// in the start and the end of Ramadan and to accommodate the date difference between
+					// countries/regions. May be dynamically adjusted based on user preference, but should
+					// remain in the range of -2 to 2, inclusive.
+					hijriAdjustment: 0,
+					toGregorian: function (hyear, hmonth, hday) {
+						var daysSinceJan0101 = this.daysToYear(hyear) + this.monthDays[hmonth] + hday - 1 - this.hijriAdjustment;
+						// 86400000 = ticks per day
+						var gdate = new Date(daysSinceJan0101 * 86400000 - this.ticks1970);
+						// adjust for timezone, because we are interested in the gregorian date for the same timezone
+						// but ticks in javascript is always from GMT, unlike the server were ticks counts from the base
+						// date in the current timezone.
+						gdate.setMinutes(gdate.getMinutes() + gdate.getTimezoneOffset());
+						return gdate;
+					},
+					fromGregorian: function (gdate) {
+						if ((gdate < this.minDate) || (gdate > this.maxDate)) return null;
+						var ticks = this.ticks1970 + (gdate - 0) - gdate.getTimezoneOffset() * 60000,
+							daysSinceJan0101 = Math.floor(ticks / 86400000) + 1 + this.hijriAdjustment;
+						// very particular formula determined by someone smart, adapted from the server-side implementation.
+						// it approximates the hijri year.
+						var hday, hmonth, hyear = Math.floor(((daysSinceJan0101 - 227013) * 30) / 10631) + 1,
+							absDays = this.daysToYear(hyear),
+							daysInYear = this.isLeapYear(hyear) ? 355 : 354;
+						// hyear is just approximate, it may need adjustment up or down by 1.
+						if (daysSinceJan0101 < absDays) {
+							hyear--;
+							absDays -= daysInYear;
+						}
+						else if (daysSinceJan0101 === absDays) {
+							hyear--;
+							absDays = this.daysToYear(hyear);
+						}
+						else {
+							if (daysSinceJan0101 > (absDays + daysInYear)) {
+								absDays += daysInYear;
+								hyear++;
+							}
+						}
+						// determine month by looking at how many days into the hyear we are
+						// monthDays contains the number of days up to each month.
+						hmonth = 0;
+						var daysIntoYear = daysSinceJan0101 - absDays;
+						while (hmonth <= 11 && daysIntoYear > this.monthDays[hmonth]) {
+							hmonth++;
+						}
+						hmonth--;
+						hday = daysIntoYear - this.monthDays[hmonth];
+						return [hyear, hmonth, hday];
+					},
+					daysToYear: function (year) {
+						// calculates how many days since Jan 1, 0001
+						var yearsToYear30 = Math.floor((year - 1) / 30) * 30,
+							yearsInto30 = year - yearsToYear30 - 1,
+							days = Math.floor((yearsToYear30 * 10631) / 30) + 227013;
+						while (yearsInto30 > 0) {
+							days += (this.isLeapYear(yearsInto30) ? 355 : 354);
+							yearsInto30--;
+						}
+						return days;
+					},
+					isLeapYear: function (year) {
+						return ((((year * 11) + 14) % 30) < 11);
+					}
+				}
+			},
+			Gregorian_TransliteratedEnglish: {
+				name: "Gregorian_TransliteratedEnglish",
+				firstDay: 6,
+				days: {
+					names: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "جمعه", "السبت"],
+					namesAbbr: ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "جمعه", "السبت"],
+					namesShort: ["أ", "ا", "ث", "أ", "خ", "ج", "س"]
+				},
+				months: {
+					names: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر", ""],
+					namesAbbr: ["يناير", "فبراير", "مارس", "ابريل", "مايو", "يونيو", "يوليو", "اغسطس", "سبتمبر", "اكتوبر", "نوفمبر", "ديسمبر", ""]
+				},
+				AM: ["ق.ظ", "ق.ظ", "ق.ظ"],
+				PM: ["ب.ظ", "ب.ظ", "ب.ظ"],
+				eras: [{ "name": "م", "start": null, "offset": 0 }],
+				patterns: {
+					d: "MM/dd/yyyy",
+					t: "hh:mm tt",
+					T: "hh:mm:ss tt",
+					f: "dddd, MMMM dd, yyyy hh:mm tt",
+					F: "dddd, MMMM dd, yyyy hh:mm:ss tt"
+				}
+			},
+		},
+		messages: {
+			"Connection": "\u0627\u062a\u0635\u0627\u0644",
+			"Defaults": "\u0645\u0642\u0627\u062f\u064a\u0631 \u067e\u064a\u0634 \u0641\u0631\u0636",
+			"Login": "\u0648\u0631\u0648\u062f \u0628\u0647 \u0633\u064a\u0633\u062a\u0645",
+			"File": "\u0641\u0627\u064a\u0644",
+			"Exit": "\u062e\u0631\u0648\u062c",
+			"Help": "\u0631\u0627\u0647\u0646\u0645\u0627\u0626\u06cc",
+			"About": "\u062f\u0631\u0628\u0627\u0631\u0647",
+			"Host": "\u0633\u064a\u0633\u062a\u0645 \u0645\u064a\u0632\u0628\u0627\u0646",
+			"Database": "\u0628\u0627\u0646\u06a9 \u0627\u0637\u0644\u0627\u0639\u0627\u062a",
+			"User": "\u0645\u0634\u062e\u0635\u0647 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u0646\u062f\u0647",
+			"EnterUser": "\u0645\u0634\u062e\u0635\u0647 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u064a\u062f",
+			"Password": "\u06a9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631",
+			"EnterPassword": "\u06a9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u064a\u062f",
+			"Language": "\u0632\u0628\u0627\u0646",
+			"SelectLanguage": "\u0632\u0628\u0627\u0646 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u064a\u062f",
+			"Role": "\u0646\u0642\u0634",
+			"Client": "\u0645\u0634\u062a\u0631\u06cc",
+			"Organization": "\u0633\u0627\u0632\u0645\u0627\u0646",
+			"Date": "\u062a\u0627\u0631\u064a\u062e",
+			"Warehouse": "\u0627\u0646\u0628\u0627\u0631 \u06a9\u0627\u0644\u0627",
+			"Printer": "\u0686\u0627\u067e\u06af\u0631",
+			"Connected": "\u0645\u062a\u0635\u0644 \u0634\u062f\u0647",
+			"NotConnected": "\u0645\u062a\u0635\u0644 \u0646\u0634\u062f\u0647",
+			"DatabaseNotFound": "\u0628\u0627\u0646\u06a9 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u064a\u062f\u0627 \u0646\u0634\u062f",
+			"UserPwdError": "\u0645\u0634\u062e\u0635\u0647 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u0646\u062f\u0647 \u0648 \u06a9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631 \u0628\u0627 \u0647\u0645 \u062a\u0637\u0627\u0628\u0642 \u0646\u062f\u0627\u0631\u0646\u062f",
+			"RoleNotFound": "\u0646\u0642\u0634\u06cc \u067e\u064a\u062f\u0627 \u0646\u0634\u062f",
+			"Authorized": "\u0645\u062c\u0648\u0632 \u062f\u0627\u0631\u062f",
+			"Ok": "\u062a\u0635\u0648\u064a\u0628",
+			"Cancel": "\u0644\u063a\u0648",
+			"VersionConflict": "\u0646\u0633\u062e\u0647 \u0647\u0627 \u0646\u0627\u0633\u0627\u0632\u06af\u0627\u0631\u0627\u0646\u062f",
+			"VersionInfo": "\u0633\u0631\u0648\u0631 <> \u0645\u0634\u062a\u0631\u06cc",
+			"PleaseUpgrade": "\u0644\u0637\u0641\u0627 \u0628\u0631\u0646\u0627\u0645\u0647 \u0645\u0631\u0628\u0648\u0637 \u0628\u0647 \u062a\u0635\u064a\u062d \u0646\u0633\u062e\u0647 \u0628\u0631\u0646\u0627\u0645\u0647 \u0631\u0627 \u0627\u062c\u0631\u0627 \u06a9\u0646\u064a\u062f",
+
+
+
+			//New Resource
+
+			"Back": "برگشت به عقب",
+			"SelectRole": "انتخاب نقش",
+			"SelectOrg": "انتخاب سازمان",
+			"SelectClient": "انتخاب مشتری",
+			"SelectWarehouse": "انتخاب انبار",
+			"VerifyUserLanguage": "بررسی کاربر و زبان",
+			"LoadingPreference": "در حال بارگذاری اولویت",
+			"Completed": "تکمیل شده",
+			"RememberMe": "ذخیره",
+		}
+	});
+
+}(this));

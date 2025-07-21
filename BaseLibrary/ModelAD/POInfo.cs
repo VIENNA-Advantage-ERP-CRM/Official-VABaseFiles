@@ -107,7 +107,7 @@ namespace VAdvantage.Model
                 + "c.IsKey,c.IsParent, "										//	10..11
                 + "c.AD_Reference_Value_ID, vr.Code, "							//	12..13
                 + "c.FieldLength, c.ValueMin, c.ValueMax, c.IsTranslated, "		//	14..17
-                + "t.AccessLevel, c.ColumnSQL, c.IsEncrypted , c.IsCopy ");				//	18..21
+                + "t.AccessLevel, c.ColumnSQL, c.IsEncrypted , c.IsCopy ,c.IsHashed ");				//	18..21
             sql.Append("FROM AD_Table t"
                 + " INNER JOIN AD_Column c ON (t.AD_Table_ID=c.AD_Table_ID)"
                 + " LEFT OUTER JOIN AD_Val_Rule vr ON (c.AD_Val_Rule_ID=vr.AD_Val_Rule_ID)"
@@ -152,6 +152,7 @@ namespace VAdvantage.Model
                     String ColumnSQL = Util.GetValueOfString(dr[18]);
                     bool IsEncrypted = "Y".Equals(Util.GetValueOfString(dr[19]));
                     bool IsCopy = "Y".Equals(Util.GetValueOfString(dr[20]));
+                    bool IsHashed = "Y".Equals(Util.GetValueOfString(dr[21]));
                     POInfoColumn col = new POInfoColumn(
                         AD_Column_ID, ColumnName, ColumnSQL, AD_Reference_ID,
                         IsMandatory, IsUpdateable,
@@ -159,7 +160,7 @@ namespace VAdvantage.Model
                         IsKey, IsParent,
                         AD_Reference_Value_ID, ValidationCode,
                         FieldLength, ValueMin, ValueMax,
-                        IsTranslated, IsEncrypted, IsCopy);
+                        IsTranslated, IsEncrypted, IsCopy,IsHashed);
                     list.Add(col);
                 }
                 dr.Close();
@@ -345,6 +346,13 @@ namespace VAdvantage.Model
             if (index < 0 || index >= m_columns.Length)
                 return false;
             return m_columns[index].IsEncrypted;
+        }
+
+        public bool IsHashed(int index)
+        {
+            if (index < 0 || index >= m_columns.Length)
+                return false;
+            return m_columns[index].IsHashed;
         }
 
         public bool hasKeyColumn()
@@ -742,8 +750,10 @@ namespace VAdvantage.Model
             /**	Encryoted		*/
             public bool IsEncrypted;
 
-            /** Reference Value	*/
-            public int AD_Reference_Value_ID;
+        public bool IsHashed;
+
+        /** Reference Value	*/
+        public int AD_Reference_Value_ID;
             /** Validation		*/
             public string ValidationCode;
             public Type ColumnClass;
@@ -767,78 +777,79 @@ namespace VAdvantage.Model
             }
 
             public POInfoColumn(int ad_Column_ID, string columnName, string columnSQL, int displayType,
-                                 bool isMandatory, bool isUpdateable, string defaultLogic,
-                                 string columnLabel, string columnDescription,
-                                 bool isKey, bool isParent,
-                                 int ad_Reference_Value_ID, string validationCode,
-                                 int fieldLength, string valueMin, string valueMax,
-                                 bool isTranslated, bool isEncrypted, bool isCopy)
+                             bool isMandatory, bool isUpdateable, string defaultLogic,
+                             string columnLabel, string columnDescription,
+                             bool isKey, bool isParent,
+                             int ad_Reference_Value_ID, string validationCode,
+                             int fieldLength, string valueMin, string valueMax,
+                             bool isTranslated, bool isEncrypted, bool isCopy, bool isHashed)
+        {
+
+            AD_Column_ID = ad_Column_ID;
+            ColumnName = columnName;
+            ColumnSQL = columnSQL;
+            DisplayType = displayType;
+
+            if (columnName.Equals("AD_Language")
+            || columnName.Equals("EntityType")
+            || columnName.Equals("DocBaseType"))
             {
-
-                AD_Column_ID = ad_Column_ID;
-                ColumnName = columnName;
-                ColumnSQL = columnSQL;
-                DisplayType = displayType;
-
-                if (columnName.Equals("AD_Language")
-                || columnName.Equals("EntityType")
-                || columnName.Equals("DocBaseType"))
-                {
-                    DisplayType = VAdvantage.Classes.DisplayType.String;
-                    ColumnClass = typeof(System.String);
-                }
-                else if (columnName.Equals("Posted")
-                || columnName.Equals("Processed")
-                || columnName.Equals("Processing"))
-                {
-                    ColumnClass = typeof(System.Boolean);
-                    //ColumnClass = typeof(System.Boolean);
-                }
-                else if (columnName.Equals("Record_ID"))
-                {
-                    DisplayType = VAdvantage.Classes.DisplayType.ID;
-                    ColumnClass = typeof(System.Int32);
-                }
-                else
-                {
-                    ColumnClass = VAdvantage.Classes.DisplayType.GetClass(displayType, true);
-                }
-                IsMandatory = isMandatory;
-                IsUpdateable = isUpdateable;
-                DefaultLogic = defaultLogic;
-                ColumnLabel = columnLabel;
-                ColumnDescription = columnDescription;
-                IsKey = isKey;
-                IsParent = isParent;
-                //
-                AD_Reference_Value_ID = ad_Reference_Value_ID;
-                ValidationCode = validationCode;
-                FieldLength = fieldLength;
-                ValueMin = valueMin;
-                try
-                {
-                    if (valueMin != null && valueMin.Length > 0)
-                        ValueMin_BD = decimal.Parse(valueMin);
-                }
-                catch
-                {
-                    //log error
-                }
-                ValueMax = valueMax;
-
-                try
-                {
-                    if (valueMax != null && valueMax.Length > 0)
-                        ValueMax_BD = decimal.Parse(ValueMax);
-                }
-                catch (Exception ex)
-                {
-                    VLogger.Get().Log(Level.SEVERE, "ValueMin=" + valueMin, ex);
-                }
-                IsTranslated = isTranslated;
-                IsEncrypted = isEncrypted;
-                IsCopy = isCopy;
+                DisplayType = VAdvantage.Classes.DisplayType.String;
+                ColumnClass = typeof(System.String);
             }
+            else if (columnName.Equals("Posted")
+            || columnName.Equals("Processed")
+            || columnName.Equals("Processing"))
+            {
+                ColumnClass = typeof(System.Boolean);
+                //ColumnClass = typeof(System.Boolean);
+            }
+            else if (columnName.Equals("Record_ID"))
+            {
+                DisplayType = VAdvantage.Classes.DisplayType.ID;
+                ColumnClass = typeof(System.Int32);
+            }
+            else
+            {
+                ColumnClass = VAdvantage.Classes.DisplayType.GetClass(displayType, true);
+            }
+            IsMandatory = isMandatory;
+            IsUpdateable = isUpdateable;
+            DefaultLogic = defaultLogic;
+            ColumnLabel = columnLabel;
+            ColumnDescription = columnDescription;
+            IsKey = isKey;
+            IsParent = isParent;
+            //
+            AD_Reference_Value_ID = ad_Reference_Value_ID;
+            ValidationCode = validationCode;
+            FieldLength = fieldLength;
+            ValueMin = valueMin;
+            try
+            {
+                if (valueMin != null && valueMin.Length > 0)
+                    ValueMin_BD = decimal.Parse(valueMin);
+            }
+            catch
+            {
+                //log error
+            }
+            ValueMax = valueMax;
+
+            try
+            {
+                if (valueMax != null && valueMax.Length > 0)
+                    ValueMax_BD = decimal.Parse(ValueMax);
+            }
+            catch (Exception ex)
+            {
+                VLogger.Get().Log(Level.SEVERE, "ValueMin=" + valueMin, ex);
+            }
+            IsTranslated = isTranslated;
+            IsEncrypted = isEncrypted;
+            IsCopy = isCopy;
+            IsHashed = isHashed;
+        }
 
         public POInfoColumn Clone()
         {
@@ -866,6 +877,7 @@ namespace VAdvantage.Model
             clone.ValueMax_BD = ValueMax_BD;
             clone.IsTranslated = IsTranslated;
             clone.IsEncrypted = IsEncrypted;
+            clone.IsHashed = IsHashed;
             clone.IsCopy = IsCopy;
             return clone;
         }

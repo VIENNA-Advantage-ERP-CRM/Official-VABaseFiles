@@ -18,6 +18,7 @@ using VAdvantage.Utility;
 using VAdvantage.Logging;
 using VAdvantage.Print;
 using BaseLibrary.Engine;
+using System.Reflection;
 
 namespace VAdvantage.Model
 {
@@ -2096,6 +2097,7 @@ namespace VAdvantage.Model
                         && !p_info.IsVirtualColumn(i)	//	no virtual column
                         && !"Password".Equals(strColumnName)
                         && !"CreditCardNumber".Equals(strColumnName)
+                        && !p_info.IsHashed(i)
                 )
                 {
                     Object keyInfo = Get_ID();
@@ -2147,6 +2149,7 @@ namespace VAdvantage.Model
                         && !p_info.IsEncrypted(index)		//	not encrypted
                         && !p_info.IsVirtualColumn(index)	//	no virtual column
                         && !"Password".Equals(columnName)
+                        && !p_info.IsHashed(index)
                         )
                     {
                         MChangeLog cLog = session.ChangeLog(
@@ -2522,6 +2525,7 @@ namespace VAdvantage.Model
                    && !p_info.IsVirtualColumn(i)	//	no virtual column
                    && !"Password".Equals(columnName)
                    && !"CreditCardNumber".Equals(columnName)
+                   && !p_info.IsHashed(i)
                    )
                 {
                     Object oldV = _mOldValues[i];
@@ -3213,6 +3217,8 @@ namespace VAdvantage.Model
                 return null;
             if (index != -1 && p_info.IsEncrypted(index))
                 return SecureEngine.Encrypt(xx);
+            if(index != -1 && p_info.IsHashed(index))
+                return SecureEngine.ComputeHash(xx.ToString(), null);
             return xx;
         }
 
@@ -3222,6 +3228,8 @@ namespace VAdvantage.Model
                 return null;
             if (index != -1 && p_info.IsEncrypted(index))
                 return SecureEngine.Encrypt(xx);
+            if (index != -1 && p_info.IsHashed(index))
+                return SecureEngine.ComputeHash(xx, null);
             return xx;
         }
 
@@ -3230,7 +3238,7 @@ namespace VAdvantage.Model
 	 *	@param index index
 	 *	@param yy data
 	 *	@return yy
-	 */
+	 *	*/
         private Object Decrypt(int index, Object yy)
         {
             if (yy == null)
@@ -3245,8 +3253,7 @@ namespace VAdvantage.Model
             }
             return yy;
         }	//
-
-
+       
         #endregion
 
         #region "DELETE Function"
@@ -3447,6 +3454,7 @@ namespace VAdvantage.Model
                             if (_mIDs.Length == 1 && value != null
                                && !p_info.IsEncrypted(i)        //	not encrypted
                                && !p_info.IsVirtualColumn(i)    //	no virtual column
+                               && !p_info.IsHashed(i)           //	no hashed column
                                && !"Password".Equals(p_info.GetColumnName(i))
                                )
                             {
@@ -4432,8 +4440,9 @@ namespace VAdvantage.Model
             VLogger.ResetLast();
             if (_objects.Count <= 0)
             {
-                return true;//requested by harwinder g
+                return true;//requested by
             }
+
             // only process changed objects
             PO[] allobjects = (PO[])_objects.ToArray(typeof(PO));// new aList<PO>(_objects.Count);
 
@@ -4469,33 +4478,39 @@ namespace VAdvantage.Model
                     param = po.Is_New() ? po.GetSaveNewQueryInfo() :
                        po.GetSaveUpdateQueryInfo();
 
-                    Ctx p_ctx = new Ctx();
+                    Ctx p_ctx = po.GetCtx();
 
-                    string adLog = p_ctx.GetContext("AD_ChangeLogBatch");
+                    StringBuilder adLog = null;
+                    if (logbatch.ContainsKey(p_ctx.GetAD_Session_ID()))
+                    {
+                        adLog = logbatch[p_ctx.GetAD_Session_ID()];
+                    }
+
                     if (adLog != null && adLog.Length > 6)
                     {
                         string adLogDB = "";
                         if (!DB.IsPostgreSQL())
                         {
-                            adLogDB = adLog + " END; ";
+                            adLogDB = adLog.ToString() + " END; ";
                         }
                         else
                         {
-                            adLogDB = adLog;
+                            adLogDB = adLog.ToString();
                         }
-                        p_ctx.SetContext("AD_ChangeLogBatch", "");
+                        //p_ctx.SetContext("AD_ChangeLogBatch", "");
                         adLogDB = adLogDB.Replace("TO_DATE", "TO_TIMESTAMP");
-                        DB.ExecuteQuery(adLogDB, null, null);
+                        DB.ExecuteQuery(adLogDB, null, trx);
+                        adLog.Clear();
                     }
                 }
-                catch (Exception ex)
-
+                catch 
                 {
+                    VLogger.Get().Info("Error in GetSaveNewQueryInfo or GetSaveUpdateQueryInfo");
                 }
 
                 queries[po] = param;
                 HashSet<PO> pos = null;
-                if (sqls.Count > 0)
+                if (sqls.Count > 0 && sqls.ContainsKey(param.sql))
                 {
                     pos = sqls[param.sql];
                 }
@@ -4506,12 +4521,12 @@ namespace VAdvantage.Model
                 }
                 pos.Add(po);
             }
-            //for (Map.Entry<String, HashSet<PO>> sql : sqls.entrySet()) 
+           
             foreach (var sql in sqls)
             {
                 s_log.Fine("Bulk update " + sql.Value.Count + " records for: " + sql.Key);
                 List<List<Object>> bulkParams = new List<List<Object>>();
-                //for (PO po : sql.getValue())
+              
                 foreach (PO po in sql.Value)
                 {
                     bulkParams.Add(queries[po].parameters);
@@ -4522,7 +4537,10 @@ namespace VAdvantage.Model
                 {
                     no = DB.ExecuteBulkUpdate(trx, sql.Key, bulkParams);
                 }
-                catch { }
+                catch(Exception e)
+                {
+                    s_log.Log(Level.SEVERE, "Error in Bulk Update", e);
+                }
                 if (no != bulkParams.Count)
                 {
                     return false;
@@ -4865,6 +4883,7 @@ namespace VAdvantage.Model
                 if (session != null && logThis
                         && !p_info.IsEncrypted(i)		//	not encrypted
                         && !p_info.IsVirtualColumn(i)	//	no virtual column
+                        && !p_info.IsHashed(i)			//	no hashed column
                         && !"Password".Equals(columnName1)
                         && !"CreditCardNumber".Equals(columnName1)
                 )
@@ -4911,6 +4930,7 @@ namespace VAdvantage.Model
                     if (session != null
                             && !p_info.IsEncrypted(index1)		//	not encrypted
                             && !p_info.IsVirtualColumn(index1)	//	no virtual column
+                            && !p_info.IsHashed(index1)			//	no hashed column
                             && !"Password".Equals(columnName2)
                             && !"CreditCardNumber".Equals(columnName2)
                     )
@@ -5132,6 +5152,7 @@ namespace VAdvantage.Model
                 if (session != null && logThis
                         && !p_info.IsEncrypted(i)		//	not encrypted
                         && !p_info.IsVirtualColumn(i)	//	no virtual column
+                        && !p_info.IsHashed(i)			//	no hashed column
                         && !"Password".Equals(columnName)
                         && !"CreditCardNumber".Equals(columnName)
                 )
@@ -5186,6 +5207,7 @@ namespace VAdvantage.Model
                     if (session != null
                             && !p_info.IsEncrypted(index)		//	not encrypted
                             && !p_info.IsVirtualColumn(index)	//	no virtual column
+                            && !p_info.IsHashed(index)			//	no hashed column    
                             && !"Password".Equals(columnName)
                             && !"CreditCardNumber".Equals(columnName)
                     )
