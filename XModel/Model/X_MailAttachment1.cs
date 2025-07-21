@@ -293,17 +293,20 @@ namespace VAdvantage.Model
         }
         /** Set MailUID.
         @param MailUID MailUID */
-        public void SetMailUID(int MailUID)
+        public void SetMailUID(String MailUID)
         {
+            if (MailUID != null && MailUID.Length > 255)
+            {
+                log.Warning("Length > 255 - truncated");
+                MailUID = MailUID.Substring(0, 255);
+            }
             Set_Value("MailUID", MailUID);
         }
         /** Get MailUID.
         @return MailUID */
-        public int GetMailUID()
+        public String GetMailUID()
         {
-            Object ii = Get_Value("MailUID");
-            if (ii == null) return 0;
-            return Convert.ToInt32(ii);
+            return (String)Get_Value("MailUID");
         }
         /** Set MailUserName.
         @param MailUserName MailUserName */
