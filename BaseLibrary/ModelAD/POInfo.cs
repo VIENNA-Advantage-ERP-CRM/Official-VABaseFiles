@@ -409,7 +409,7 @@ namespace VAdvantage.Model
             }
             for (int i = 0; i < m_columns.Length; i++)
             {
-                if (ColumnName.Equals(m_columns[i].ColumnName))
+                if (ColumnName.ToLower().Equals(m_columns[i].ColumnName.ToLower()))
                     return i;
             }
             return -1;

@@ -49,6 +49,7 @@ namespace VAdvantage.Model
         private Object[] _mIDs = new Object[] { I_ZERO };
         private string[] _mKeyColumns;
         private bool _mCreateNew = false;
+        private bool _skipAIAssistantThreadUpdate = false;
 
         /**	Logger	
          * */
@@ -5482,6 +5483,23 @@ namespace VAdvantage.Model
         {
             return winTabID;
         }
+
+        /// <summary>
+        /// property which will define wheter to pass record information to AI Assistant knowledge base
+        /// by default it will passs the info to knowledge base
+        /// </summary>
+        public bool SkipAIAssistantThreadUpdate
+        {
+            get
+            {
+                return _skipAIAssistantThreadUpdate;
+            }
+            set
+            {
+                _skipAIAssistantThreadUpdate = value;
+            }
+        }
+
     }
 
 
