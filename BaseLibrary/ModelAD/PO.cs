@@ -3083,15 +3083,40 @@ namespace VAdvantage.Model
 
             String tableName = p_info.GetTableName();
             String keyColumn = _mKeyColumns[0];
+
+            string stdColumn = keyColumn.ToLower();
+
             StringBuilder sql = new StringBuilder("INSERT INTO ")
                 .Append(tableName).Append("_Trl (AD_Language,")
                 .Append(keyColumn).Append(", ")
                 .Append(iColumns)
-                .Append(" IsTranslated,AD_Client_ID,AD_Org_ID,Created,CreatedBy,Updated,UpdatedBy) ")
+                .Append(" IsTranslated,");
+
+            if (stdColumn != "ad_client_id")
+            {
+                sql.Append("AD_Client_ID,");
+            }
+            if (stdColumn != "ad_org_id")
+            {
+                sql.Append("AD_Org_ID,");
+            }
+            sql.Append("Created,CreatedBy,Updated,UpdatedBy) ")
+
                 .Append("SELECT l.AD_Language,t.")
                 .Append(keyColumn).Append(", ")
                 .Append(sColumns)
-                .Append(" 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.CreatedBy,t.Updated,t.UpdatedBy ")
+                .Append(" 'N',");
+
+            if (stdColumn != "ad_client_id")
+            {
+                sql.Append("t.AD_Client_ID,");
+            }
+            if (stdColumn != "ad_org_id")
+            {
+                sql.Append("t.AD_Org_ID,");
+            }
+
+            sql.Append(" t.Created,t.CreatedBy,t.Updated,t.UpdatedBy ")
                 .Append("FROM AD_Language l, ").Append(tableName).Append(" t ")
                 .Append("WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.")
                 .Append(keyColumn).Append("=").Append(Get_ID())
