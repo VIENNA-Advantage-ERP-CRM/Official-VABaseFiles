@@ -129,6 +129,7 @@
     <Compile Include="ModelAD\PO_LOB.cs" />
     <Compile Include="Process\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\SecureEngine.cs" />
     <Compile Include="WF\DocWorkflowMgr.cs" />
     <Compile Include="Utility\Env.cs" />
     <Compile Include="Utility\ModuleTypeContainer.cs" />

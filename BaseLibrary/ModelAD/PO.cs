@@ -5502,17 +5502,21 @@ namespace VAdvantage.Model
                 try
                 {
                     System.Reflection.Assembly asm = System.Reflection.Assembly.Load("ModelLibrary");
-                    e_alertMgr = (AlertEventMgr)asm.GetType("VAdvantage.Alert.AlertEventManager").GetMethod("Get").Invoke(null, null);
+                    AlertEventMgr asmAlert  = (AlertEventMgr)asm.GetType("VAdvantage.Alert.AlertEventManager");
+                    if (asmAlert != null)
+                    {
+                        e_alertMgr = (AlertEventMgr)asm.GetType("VAdvantage.Alert.AlertEventManager").GetMethod("Get").Invoke(null, null);
+                    }
                 }
                 catch
                 {
+
                 }
             }
             if (e_alertMgr != null)
             {
                 e_alertMgr.Process(this, p_info, eventType);
             }
-
         }
 
         /// <summary>

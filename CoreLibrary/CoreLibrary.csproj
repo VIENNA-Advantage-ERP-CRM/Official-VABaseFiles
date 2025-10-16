@@ -67,9 +67,6 @@
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.23.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.23.6.1\lib\net472\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
-    <Reference Include="SecureEngineUtility">
-      <HintPath>..\ViennaAdvantageWeb\Dll\SecureEngineUtility.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -186,7 +183,6 @@
     <Compile Include="Utility\HasingUtility.cs" />
     <Compile Include="Utility\Null.cs" />
     <Compile Include="Utility\Properties.cs" />
-    <Compile Include="Utility\SecureEngine.cs" />
     <Compile Include="Utility\TimeUtil.cs" />
     <Compile Include="Utility\Umlout.cs" />
     <Compile Include="Utility\Util.cs" />
