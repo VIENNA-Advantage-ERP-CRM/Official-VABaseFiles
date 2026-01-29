@@ -73,7 +73,12 @@ namespace VAdvantage.Utility
         {
             return SecureEngineUtility.SecureEngine.IsEncrypted(value);
         }	//	isEncrypted
-    
+
+        public static bool IsLegecy()
+        {
+            return SecureEngineUtility.SecureEngine.IsLegacy();
+        }
+
 
         /// <summary>
         /// 

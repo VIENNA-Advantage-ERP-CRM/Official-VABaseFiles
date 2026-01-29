@@ -764,7 +764,7 @@ namespace VAdvantage.DataBase
             if (key.Equals(P_WARNING))
                 s_prop.SetProperty(key, value);
             else if (!IsClient())
-                s_prop.SetProperty(key, SecureEngineUtility.Secure.CLEARVALUE_START + value + SecureEngineUtility.Secure.CLEARVALUE_END);
+                s_prop.SetProperty(key, SecureEngineUtility.SecureAes.CLEARVALUE_START + value + SecureEngineUtility.Secure.CLEARVALUE_END);
             else
             {
                 if (value == null)
@@ -846,7 +846,7 @@ namespace VAdvantage.DataBase
             if (key.Equals(P_WARNING))
                 result = defaultValue;
             else if (!IsClient())
-                result = s_prop.GetProperty(key, SecureEngineUtility.Secure.CLEARVALUE_START + defaultValue + SecureEngineUtility.Secure.CLEARVALUE_END);
+                result = s_prop.GetProperty(key, SecureEngineUtility.SecureAes.CLEARVALUE_START + defaultValue + SecureEngineUtility.Secure.CLEARVALUE_END);
             else
                 result = s_prop.GetProperty(key, SecureEngine.Encrypt(defaultValue));
             s_prop.SetProperty(key, result);
