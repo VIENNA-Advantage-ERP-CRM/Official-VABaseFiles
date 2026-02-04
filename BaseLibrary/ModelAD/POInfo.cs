@@ -107,7 +107,10 @@ namespace VAdvantage.Model
                 + "c.IsKey,c.IsParent, "										//	10..11
                 + "c.AD_Reference_Value_ID, vr.Code, "							//	12..13
                 + "c.FieldLength, c.ValueMin, c.ValueMax, c.IsTranslated, "		//	14..17
-                + "t.AccessLevel, c.ColumnSQL, c.IsEncrypted , c.IsCopy ,c.IsHashed ");				//	18..21
+                + "t.AccessLevel, c.ColumnSQL, c.IsEncrypted , c.IsCopy ,c.IsHashed ,"//	18..21
+                + " (SELECT AD_Reference_ID FROM AD_Column WHERE AD_Column_ID ="
+                + " (SELECT Column_Key_ID FROM AD_Ref_Table WHERE AD_Reference_ID = c.AD_Reference_Value_ID)"
+                + ") AS ColDisplayType ");	//	22			
             sql.Append("FROM AD_Table t"
                 + " INNER JOIN AD_Column c ON (t.AD_Table_ID=c.AD_Table_ID)"
                 + " LEFT OUTER JOIN AD_Val_Rule vr ON (c.AD_Val_Rule_ID=vr.AD_Val_Rule_ID)"
@@ -153,6 +156,8 @@ namespace VAdvantage.Model
                     bool IsEncrypted = "Y".Equals(Util.GetValueOfString(dr[19]));
                     bool IsCopy = "Y".Equals(Util.GetValueOfString(dr[20]));
                     bool IsHashed = "Y".Equals(Util.GetValueOfString(dr[21]));
+                    int ColDisplayType = Util.GetValueOfInt(dr[22]);
+
                     POInfoColumn col = new POInfoColumn(
                         AD_Column_ID, ColumnName, ColumnSQL, AD_Reference_ID,
                         IsMandatory, IsUpdateable,
@@ -160,7 +165,7 @@ namespace VAdvantage.Model
                         IsKey, IsParent,
                         AD_Reference_Value_ID, ValidationCode,
                         FieldLength, ValueMin, ValueMax,
-                        IsTranslated, IsEncrypted, IsCopy,IsHashed);
+                        IsTranslated, IsEncrypted, IsCopy, IsHashed, ColDisplayType);
                     list.Add(col);
                 }
                 dr.Close();
@@ -710,79 +715,79 @@ namespace VAdvantage.Model
             return _KeyColumns;
         }
     }
-        /*******************************************************************************/
-        //    POInfoColumn Class
-        /*******************************************************************************/
+    /*******************************************************************************/
+    //    POInfoColumn Class
+    /*******************************************************************************/
 
-        /// <summary>
-        /// PO Info Column Info Value Object
-        /// </summary>
-        public class POInfoColumn
-        {
-            #region "Declaration"
-            /** Column ID		*/
-            public int AD_Column_ID;
-            /** Column Name		*/
-            public string ColumnName;
-            /** Virtual Column 	*/
-            public string ColumnSQL;
-            /** Display Type	*/
-            public int DisplayType;
-            ///**	Data Type		*/
-            //public Class<?>		ColumnClass;
+    /// <summary>
+    /// PO Info Column Info Value Object
+    /// </summary>
+    public class POInfoColumn
+    {
+        #region "Declaration"
+        /** Column ID		*/
+        public int AD_Column_ID;
+        /** Column Name		*/
+        public string ColumnName;
+        /** Virtual Column 	*/
+        public string ColumnSQL;
+        /** Display Type	*/
+        public int DisplayType;
+        ///**	Data Type		*/
+        //public Class<?>		ColumnClass;
 
-            /**	Mandatory		*/
-            public bool IsMandatory;
-            /**	Default Value	*/
-            public string DefaultLogic;
-            /**	Updateable		*/
-            public bool IsUpdateable;
-            /**	Label			*/
-            public string ColumnLabel;
-            /**	Description		*/
-            public string ColumnDescription;
-            /**	PK				*/
-            public bool IsKey;
-            /**	FK to Parent	*/
-            public bool IsParent;
-            /**	Translated		*/
-            public bool IsTranslated;
-            /**	Encryoted		*/
-            public bool IsEncrypted;
+        /**	Mandatory		*/
+        public bool IsMandatory;
+        /**	Default Value	*/
+        public string DefaultLogic;
+        /**	Updateable		*/
+        public bool IsUpdateable;
+        /**	Label			*/
+        public string ColumnLabel;
+        /**	Description		*/
+        public string ColumnDescription;
+        /**	PK				*/
+        public bool IsKey;
+        /**	FK to Parent	*/
+        public bool IsParent;
+        /**	Translated		*/
+        public bool IsTranslated;
+        /**	Encryoted		*/
+        public bool IsEncrypted;
 
         public bool IsHashed;
 
         /** Reference Value	*/
         public int AD_Reference_Value_ID;
-            /** Validation		*/
-            public string ValidationCode;
-            public Type ColumnClass;
-            /** Field Length	*/
-            public int FieldLength;
-            /**	Min Value		*/
-            public string ValueMin;
-            /**	Max Value		*/
-            public string ValueMax;
-            /**	Min Value		*/
-            public decimal ValueMin_BD;
-            /**	Max Value		*/
-            public decimal ValueMax_BD;
-            // Is Copy Value
-            public bool IsCopy;
+        /** Validation		*/
+        public string ValidationCode;
+        public Type ColumnClass;
+        /** Field Length	*/
+        public int FieldLength;
+        /**	Min Value		*/
+        public string ValueMin;
+        /**	Max Value		*/
+        public string ValueMax;
+        /**	Min Value		*/
+        public decimal ValueMin_BD;
+        /**	Max Value		*/
+        public decimal ValueMax_BD;
+        // Is Copy Value
+        public bool IsCopy;
 
-            #endregion
+        #endregion
 
-            public POInfoColumn()
-            {
-            }
+        public POInfoColumn()
+        {
+        }
 
-            public POInfoColumn(int ad_Column_ID, string columnName, string columnSQL, int displayType,
-                             bool isMandatory, bool isUpdateable, string defaultLogic,
-                             string columnLabel, string columnDescription,
-                             bool isKey, bool isParent,
-                             int ad_Reference_Value_ID, string validationCode,
-                             int fieldLength, string valueMin, string valueMax,
-                             bool isTranslated, bool isEncrypted, bool isCopy, bool isHashed)
+        public POInfoColumn(int ad_Column_ID, string columnName, string columnSQL, int displayType,
+                         bool isMandatory, bool isUpdateable, string defaultLogic,
+                         string columnLabel, string columnDescription,
+                         bool isKey, bool isParent,
+                         int ad_Reference_Value_ID, string validationCode,
+                         int fieldLength, string valueMin, string valueMax,
+                         bool isTranslated, bool isEncrypted, bool isCopy, bool isHashed, int colDisplayType)
         {
 
             AD_Column_ID = ad_Column_ID;
@@ -790,9 +795,12 @@ namespace VAdvantage.Model
             ColumnSQL = columnSQL;
             DisplayType = displayType;
 
+
+
             if (columnName.Equals("AD_Language")
             || columnName.Equals("EntityType")
-            || columnName.Equals("DocBaseType"))
+            || columnName.Equals("DocBaseType")
+            || (ad_Reference_Value_ID > 0 && VAdvantage.Classes.DisplayType.IsText(colDisplayType)))
             {
                 DisplayType = VAdvantage.Classes.DisplayType.String;
                 ColumnClass = typeof(System.String);
@@ -882,5 +890,5 @@ namespace VAdvantage.Model
             return clone;
         }
     }
-    }
-    
+}
+
