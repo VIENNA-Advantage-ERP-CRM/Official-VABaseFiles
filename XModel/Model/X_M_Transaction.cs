@@ -333,7 +333,7 @@ namespace VAdvantage.Model
         @returns true if valid **/
         public bool IsMovementTypeValid(String test)
         {
-            return test.Equals("C+") || test.Equals("C-") || test.Equals("I+") || test.Equals("I-") || test.Equals("M+") || test.Equals("M-") || test.Equals("P+") || test.Equals("P-") || test.Equals("V+") || test.Equals("V-") || test.Equals("W+") || test.Equals("W-");
+            return test.Equals("J+") || test.Equals("J-") || test.Equals("C+") || test.Equals("C-") || test.Equals("I+") || test.Equals("I-") || test.Equals("M+") || test.Equals("M-") || test.Equals("P+") || test.Equals("P-") || test.Equals("V+") || test.Equals("V-") || test.Equals("W+") || test.Equals("W-");
         }
         /** Set Movement Type.
         @param MovementType Method of moving the inventory */
@@ -341,7 +341,7 @@ namespace VAdvantage.Model
         {
             if (MovementType == null) throw new ArgumentException("MovementType is mandatory");
             if (!IsMovementTypeValid(MovementType))
-                throw new ArgumentException("MovementType Invalid value - " + MovementType + " - Reference_ID=189 - C+ - C- - I+ - I- - M+ - M- - P+ - P- - V+ - V- - W+ - W-");
+                throw new ArgumentException("MovementType Invalid value - " + MovementType + " - Reference_ID=189 - C+ - C- - I+ - I- - M+ - M- - P+ - P- - V+ - V- - W+ - W- - J- - J+");
             if (MovementType.Length > 2)
             {
                 log.Warning("Length > 2 - truncated");
