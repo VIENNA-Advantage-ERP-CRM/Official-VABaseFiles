@@ -371,6 +371,8 @@ namespace VAdvantage.Model
         public static String ACTION_MoveDocument = "H";
         /** Access Document = I */
         public static String ACTION_AccessDocument = "I";
+        /** Correspondence Action = K */
+        public static String ACTION_CorrespondenceAction = "K";
         /** EMail+FaxEMail = L */
         public static String ACTION_EMailPlusFaxEMail = "L";
         /** EMail = M */
@@ -398,7 +400,7 @@ namespace VAdvantage.Model
         @returns true if valid **/
         public bool IsActionValid(String test)
         {
-            return test.Equals("A") || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("E") || test.Equals("F") || test.Equals("G") || test.Equals("H") || test.Equals("I") || test.Equals("L") || test.Equals("M") || test.Equals("P") || test.Equals("R") || test.Equals("S") || test.Equals("T") || test.Equals("U") || test.Equals("V") || test.Equals("W") || test.Equals("X") || test.Equals("Z");
+            return test.Equals("A") || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("E") || test.Equals("F") || test.Equals("G") || test.Equals("H") || test.Equals("I") || test.Equals("K") || test.Equals("L") || test.Equals("M") || test.Equals("P") || test.Equals("R") || test.Equals("S") || test.Equals("T") || test.Equals("U") || test.Equals("V") || test.Equals("W") || test.Equals("X") || test.Equals("Z");
         }
         /** Set Action.
         @param Action Indicates the Action to be performed */
@@ -406,7 +408,7 @@ namespace VAdvantage.Model
         {
             if (Action == null) throw new ArgumentException("Action is mandatory");
             if (!IsActionValid(Action))
-                throw new ArgumentException("Action Invalid value - " + Action + " - Reference_ID=302 - A - B - C - D - E - F - G - H - I - L - M - P - R - S - T - U - V - W - X - Z");
+                throw new ArgumentException("Action Invalid value - " + Action + " - Reference_ID=302 - A - B - C - D - E - F - G - H - I - K - L - M - P - R - S - T - U - V - W - X - Z");
             if (Action.Length > 1)
             {
                 log.Warning("Length > 1 - truncated");
@@ -1454,6 +1456,25 @@ namespace VAdvantage.Model
             return (String)Get_Value("SetHttpRequest");
         }
 
+        /** Set VA137_CorrespActionSet_ID.
+        @param VA137_CorrespActionSet_ID VA137_CorrespActionSet_ID */
+        public void SetVA137_CorrespActionSet_ID(int VA137_CorrespActionSet_ID)
+        {
+            if (VA137_CorrespActionSet_ID <= 0)
+                Set_Value("VA137_CorrespActionSet_ID", null);
+            else
+                Set_Value("VA137_CorrespActionSet_ID", VA137_CorrespActionSet_ID);
+        }
+
+        /** Get VA137_CorrespActionSet_ID.
+        @return VA137_CorrespActionSet_ID */
+        public int GetVA137_CorrespActionSet_ID()
+        {
+            Object ii = Get_Value("VA137_CorrespActionSet_ID");
+            if (ii == null)
+                return 0;
+            return Convert.ToInt32(ii);
+        }
     }
 
 }
