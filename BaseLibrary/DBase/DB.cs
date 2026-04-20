@@ -223,6 +223,8 @@ namespace VIS.DBase
             return VAdvantage.DataBase.DB.GetDatabase().ExecuteDatasetPaging(VAdvantage.DataBase.DB.ConvertSqlQuery(sql), page, pageSize, increment);
         }
 
+       
+
         /// <summary>
         /// Executes the query and fills the dataset
         /// </summary>

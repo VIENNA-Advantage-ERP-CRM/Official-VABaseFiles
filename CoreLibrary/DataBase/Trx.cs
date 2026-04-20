@@ -1006,6 +1006,11 @@ namespace VAdvantage.DataBase
             return SqlExec.Oracle.OracleHelper.ExecuteDataset((OracleConnection)connection, CommandType.Text, commandText, (OracleTransaction)_trx, commandParameters);
         }
 
+        private DataSet ExecuteDS(IDbConnection connection, CommandType commandType, string commandText, int pageSize, int pageNumber, params OracleParameter[] commandParameters)
+        {
+            return SqlExec.Oracle.OracleHelper.ExecuteDataset ((OracleConnection)connection, CommandType.Text, commandText, pageSize, pageNumber, (OracleTransaction)_trx, commandParameters);
+        }
+
         /// <summary>
         /// Executes the SQL Query
         /// </summary>
@@ -1112,6 +1117,41 @@ namespace VAdvantage.DataBase
                 {
                     OracleParameter[] oracleParam = SqlExec.ExecuteQuery.GetOracleParameter(arrparam);
                     return ExecuteDS(_conn, CommandType.Text, sql, oracleParam);   //finally execute the query
+                }
+                else if (DatabaseType.IsPostgre)
+                {
+                    NpgsqlParameter[] postgreParam = SqlExec.ExecuteQuery.GetPostgreParameter(arrparam);
+                    return ExecuteDS(_conn, CommandType.Text, sql, postgreParam);   //finally execute the query
+                }
+                else if (DatabaseType.IsMSSql)
+                {
+                    return ExecuteDS(_conn, CommandType.Text, sql, arrparam);   //finally execute the query
+                }
+                else if (DatabaseType.IsMySql)
+                {
+                    MySqlParameter[] mysqlParam = SqlExec.ExecuteQuery.GetMySqlParameter(arrparam);
+                    return ExecuteDS(_conn, CommandType.Text, sql, mysqlParam);   //finally execute the query
+                }
+            }
+            return null;
+        }
+
+        public DataSet ExecuteDataset(string sql, SqlParameter[] arrparam, Trx trx,int page,int pageSize)
+        {
+            if (trx == null)
+                return SqlExec.ExecuteQuery.ExecuteDataset(sql, arrparam);
+
+
+            sql = DB.ConvertSqlQuery(sql);
+            if (!IsActive())
+                Start();
+
+            if (trx != null)
+            {
+                if (DatabaseType.IsOracle)
+                {
+                    OracleParameter[] oracleParam = SqlExec.ExecuteQuery.GetOracleParameter(arrparam);
+                    return ExecuteDS(_conn, CommandType.Text, sql, pageSize,page, oracleParam);   //finally execute the query
                 }
                 else if (DatabaseType.IsPostgre)
                 {
