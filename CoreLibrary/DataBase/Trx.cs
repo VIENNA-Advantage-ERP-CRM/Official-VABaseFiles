@@ -1136,7 +1136,7 @@ namespace VAdvantage.DataBase
             return null;
         }
 
-        public DataSet ExecuteDataset(string sql, SqlParameter[] arrparam, Trx trx,int page,int pageSize)
+        public DataSet ExecuteDataset(string sql, SqlParameter[] arrparam, Trx trx,int pageSize,int page)
         {
             if (trx == null)
                 return SqlExec.ExecuteQuery.ExecuteDataset(sql, arrparam);
