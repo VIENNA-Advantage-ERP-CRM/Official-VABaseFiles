@@ -222,8 +222,14 @@ namespace VIS.DBase
         {
             return VAdvantage.DataBase.DB.GetDatabase().ExecuteDatasetPaging(VAdvantage.DataBase.DB.ConvertSqlQuery(sql), page, pageSize, increment);
         }
+        public static DataSet ExecuteDatasetPaging(string sql,SqlParams[] param,Trx trx, int page, int pageSize)
+        {
+            SqlParameter[] sqlParams = GetSqlParameter(param);
+            return CoreLibrary.DataBase.DB.ExecuteDataset(sql, sqlParams, trx, pageSize, page);
 
-       
+            //return VAdvantage.DataBase.DB.GetDatabase().ExecuteDatasetPaging(VAdvantage.DataBase.DB.ConvertSqlQuery(sql), sqlParams, trx, page, pageSize);
+        }
+
 
         /// <summary>
         /// Executes the query and fills the dataset
