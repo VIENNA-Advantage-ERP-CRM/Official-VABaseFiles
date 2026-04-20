@@ -1,5 +1,7 @@
 ﻿using CoreLibrary.DataBase;
 using Npgsql;
+using Oracle.ManagedDataAccess.Client;
+
 /********************************************************
  * Module/Class Name  : Postgre Database Classes
  * Purpose            : Convert the oracle sql query to postgrey queries 
@@ -469,6 +471,20 @@ namespace VAdvantage.DataBase
                 connection.Close();
             }
             return ds;
+        }
+
+
+        public System.Data.DataSet ExecuteDatasetPaging(string sql, SqlParameter[] param, Trx trx, int pageNumber, int pageSize)
+        {
+            if (trx != null)
+            {
+                return trx.ExecuteDataset(sql, param, trx, pageNumber, pageSize);
+            }
+            else
+            {
+                NpgsqlParameter[] oparam = VAdvantage.SqlExec.ExecuteQuery.GetPostgreParameter(param);
+                return VAdvantage.SqlExec.PostgreSql.PostgreHelper.ExecuteDataset(connectionString, CommandType.Text, ConvertStatement(sql), pageSize, pageNumber, oparam);
+            }
         }
 
         /// <summary>

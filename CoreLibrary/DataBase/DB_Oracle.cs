@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using CoreLibrary.DataBase;
+using Npgsql;
 //ing System.Data.OracleClient;
 using Oracle.ManagedDataAccess.Client;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using System.Data.SqlClient;
-using System.Data.Common;
-using CoreLibrary.DataBase;
+using VAdvantage.SqlExec.Oracle;
 
 namespace VAdvantage.DataBase
 {
@@ -255,6 +257,22 @@ namespace VAdvantage.DataBase
                 connection.Close();
             }
             return ds;
+        }
+
+        public System.Data.DataSet ExecuteDatasetPaging(string sql, SqlParameter[] param, Trx trx, int pageNumber, int pageSize)
+        {
+            if (trx != null)
+            {
+                return trx.ExecuteDataset(sql, param, trx, pageNumber,pageSize);
+            }
+            else
+            {
+
+              
+                OracleParameter[] oparam = VAdvantage.SqlExec.ExecuteQuery.GetOracleParameter(param);
+                return VAdvantage.SqlExec.Oracle.OracleHelper.ExecuteDataset(connectionString, CommandType.Text,  ConvertStatement(sql), pageSize, pageNumber, oparam);
+
+            }
         }
 
         /// <summary>
