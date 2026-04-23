@@ -1597,3 +1597,7 @@
 .vis-atk:before {
     content: "\ea8b";
 }
+
+.vis-risk:before {
+    content: "\ea8c";
+}
