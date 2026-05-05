@@ -50,6 +50,13 @@ namespace VAdvantage.Classes
         /**	Color			*/
         //private color m_color;
 
+        /** Seq In Side Menu */
+        private int _seqInSideMenu;
+
+        /** Show In Side Menu */
+        private string _showInSideMenu;
+
+
         public const string ACTION_WORKBENCH = "B";
         /** WorkFlow = F */
         public const string ACTION_WORKFLOW = "F";
@@ -84,6 +91,8 @@ namespace VAdvantage.Classes
         public const int TYPE_USERCHOICE = 7;
         /**	Action - 8			*/
         public const int TYPE_DOCACTION = 8;
+
+
 
         /**************************************************************************/
 
@@ -233,7 +242,7 @@ namespace VAdvantage.Classes
                 node.Nodes.Clear();
                 this.Nodes.AddRange(myTreeNodeArray);
             }
-            catch 
+            catch
             {
 
             }
@@ -631,6 +640,31 @@ namespace VAdvantage.Classes
         {
             return new PreorderEnumerator(this);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int SeqInSideMenu
+        {
+            get { return _seqInSideMenu; }
+            set { _seqInSideMenu = value; }
+        }
+
+        /// <summary>
+        ///(Y/N)
+        /// </summary>
+        public string ShowInSideMenu
+        {
+            get { return _showInSideMenu; }
+            set
+            {
+                if (value != "Y" && value != "N")
+                    throw new Exception("ShowInSideMenu must be 'Y' or 'N'");
+                _showInSideMenu = value;
+            }
+        }
+
+
     }
 
     public class PreorderEnumerator : System.Collections.Generic.IEnumerator<object>
@@ -706,6 +740,9 @@ namespace VAdvantage.Classes
         {
 
         }
+
+
+
 
         //public TreeNode NextElement()
         //{
