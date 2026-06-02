@@ -886,6 +886,19 @@ namespace VAdvantage.DataBase
 
             return source;
         }
+
+        /// <summary>
+        /// Retrieves the GUID of a record from the specified table by its integer ID.
+        /// Delegates to <see cref="CoreLibrary.DataBase.DB.GetRecordGUID"/> which handles
+        /// database-specific GUID column expressions (Oracle, PostgreSQL, others).
+        /// </summary>
+        /// <param name="TableName">Name of the table. Must contain only letters, digits, or underscores.</param>
+        /// <param name="Record_ID">Primary key ID of the record to look up.</param>
+        /// <returns>GUID string of the record, or null if not found or an error occurs.</returns>
+        public static string GetRecordGUID(string TableName, int Record_ID)
+        {
+            return CoreLibrary.DataBase.DB.GetRecordGUID(TableName, Record_ID);
+        }
     }
 #pragma warning restore 612, 618
 }
