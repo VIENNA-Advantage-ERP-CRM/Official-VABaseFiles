@@ -1,27 +1,31 @@
 ﻿
 
-/*Scroll bar - thin, invisible at rest, revealed when the user shows intent to scroll*/
+/*Scroll bar - thin, invisible at rest, revealed on hover or while scrolling.
+
+  The standard properties (scrollbar-width / scrollbar-color) AND the
+  ::-webkit-scrollbar pseudo-elements are declared together on purpose:
+  Chromium 121+ and Firefox honour the standard properties and ignore the
+  pseudo-elements, older Chromium and Safari do the opposite. Declaring only one
+  of the two leaves the other engine on the default always-on bar.
+
+  html and body are held out of the :hover reveal - they are hovered whenever
+  the cursor is anywhere in the window, so an unqualified :hover pins the page
+  bar permanently visible. The page bar is driven from custom.js instead
+  (.vis-scrolling while it scrolls, .vis-sb-hover near its gutter).
+
+  --v-c-primary is injected by the theme at runtime; the fallback keeps rgba()
+  valid on any element the theme has not reached, which would otherwise make the
+  thumb transparent for good.*/
 :root {
-    --v-sb-size: 10px; /*fixed track width - w2ui caches this measurement, so never animate it*/
-    --v-sb-idle: 0; /*thumb alpha at rest*/
-    --v-sb-live: .45; /*thumb alpha while hovering or scrolling*/
+    --v-sb-size: 8px; /*fixed track width - w2ui caches this measurement, so never animate it*/
 }
 
-/*Firefox and other engines without the webkit scrollbar pseudo-elements.
-  Guarded: Chromium ignores every ::-webkit-scrollbar rule on an element that
-  also sets scrollbar-width or scrollbar-color, so it must not match there.*/
-@supports (scrollbar-color: auto) and (not selector(::-webkit-scrollbar)) {
-    * {
-        scrollbar-width: thin;
-        scrollbar-color: rgba(var(--v-c-primary), var(--v-sb-idle)) transparent;
-    }
-
-        *:hover, .vis-scrolling {
-            scrollbar-color: rgba(var(--v-c-primary), var(--v-sb-live)) transparent;
-        }
+/*at rest*/
+* {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
 }
 
-/*Chromium and WebKit*/
 ::-webkit-scrollbar {
     width: var(--v-sb-size);
     height: var(--v-sb-size);
@@ -32,33 +36,53 @@
     background: transparent;
 }
 
+/*defining a custom scrollbar brings the stepper buttons back on Windows*/
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(var(--v-c-primary), var(--v-sb-idle));
+    background: transparent;
     border: 2px solid transparent; /*pill inset - keeps the track width constant*/
     background-clip: padding-box;
-    border-radius: 10px;
+    border-radius: 999px;
     min-height: 32px;
+    min-width: 32px;
     outline: none;
-    transition: background-color .18s ease;
+    transition: background-color 120ms ease;
 }
 
-/*reveal on pointer over the scroller, keyboard focus inside it, or active scrolling*/
-:hover::-webkit-scrollbar-thumb,
-:focus-within::-webkit-scrollbar-thumb,
-.vis-scrolling::-webkit-scrollbar-thumb {
-    background-color: rgba(var(--v-c-primary), var(--v-sb-live));
+/*revealed*/
+:not(html):not(body):hover,
+.vis-scrolling,
+.vis-sb-hover {
+    scrollbar-color: rgba(var(--v-c-primary, 120,120,120), .45) transparent;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(var(--v-c-primary), .75);
+:not(html):not(body):hover::-webkit-scrollbar-thumb,
+.vis-scrolling::-webkit-scrollbar-thumb,
+.vis-sb-hover::-webkit-scrollbar-thumb {
+    background: rgba(var(--v-c-primary, 120,120,120), .45);
+    background-clip: padding-box;
 }
 
-::-webkit-scrollbar-thumb:active {
-    background-color: rgba(var(--v-c-primary), 1);
+/*pointing straight at the thumb - kept above the reveal rules on specificity*/
+:hover::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--v-c-primary, 120,120,120), .75);
+    background-clip: padding-box;
 }
 
-::-webkit-scrollbar-thumb:window-inactive {
-    background-color: rgba(var(--v-c-primary), var(--v-sb-idle));
+:hover::-webkit-scrollbar-thumb:active {
+    background: rgba(var(--v-c-primary, 120,120,120), 1);
+    background-clip: padding-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::-webkit-scrollbar-thumb {
+        transition: none;
+    }
 }
 
 /*opt-in: reserve the gutter so content does not shift when the scrollbar appears*/
