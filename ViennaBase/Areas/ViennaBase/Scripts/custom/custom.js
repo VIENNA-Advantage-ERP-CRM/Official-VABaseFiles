@@ -2239,3 +2239,15 @@ $.fn.w2overlay = function (html, options) {
 //        }
 //    }
 //}
+
+/* Scroll bar - keep it visible while the user is actually scrolling.
+   Hover and focus-within are handled in custom.css; this covers wheel, keyboard
+   and touchpad scrolling when the pointer is not over the scrolling element.
+   Capture phase is required because scroll events do not bubble. */
+document.addEventListener('scroll', function (e) {
+    var el = (e.target === document || e.target === window) ? document.documentElement : e.target;
+    if (!el || !el.classList) return;
+    if (!el.classList.contains('vis-scrolling')) el.classList.add('vis-scrolling');
+    clearTimeout(el._visSbTimer);
+    el._visSbTimer = setTimeout(function () { el.classList.remove('vis-scrolling'); }, 900);
+}, true);
