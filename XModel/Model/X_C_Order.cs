@@ -1331,64 +1331,79 @@ namespace VAdvantage.Model
             return Convert.ToInt32(ii);
         }
 
+        /** PaymentMethod AD_Reference_ID=195 */
+        public static int PAYMENTMETHOD_AD_Reference_ID = 195;/** Cash = B */
+        public static String PAYMENTMETHOD_Cash = "B";/** Cash+Card = C */
+        public static String PAYMENTMETHOD_CashPlusCard = "C";/** Direct Debit = D */
+        public static String PAYMENTMETHOD_DirectDebit = "D";/** Bank Transfer = E */
+        public static String PAYMENTMETHOD_BankTransfer = "E";/** Credit Card = K */
+        public static String PAYMENTMETHOD_CreditCard = "K";/** Letter of Credit = L */
+        public static String PAYMENTMETHOD_LetterOfCredit = "L";/** Third Party Payment = O */
+        public static String PAYMENTMETHOD_ThirdPartyPayment = "O";/** Customer Choice = P */
+        public static String PAYMENTMETHOD_CustomerChoice = "P";/** Check = S */
+        public static String PAYMENTMETHOD_Check = "S";/** Direct Deposit = T */
+        public static String PAYMENTMETHOD_DirectDeposit = "T";/** Wire Transfer = W */
+        public static String PAYMENTMETHOD_WireTransfer = "W";/** Is test a valid value.
+@param test testvalue
+@returns true if valid **/
+        public bool IsPaymentMethodValid(String test) { return test == null || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("E") || test.Equals("K") || test.Equals("L") || test.Equals("O") || test.Equals("P") || test.Equals("S") || test.Equals("T") || test.Equals("W"); }/** Set Payment Method.
+@param PaymentMethod Indicates the method of Invoice Payment */
+        public void SetPaymentMethod(String PaymentMethod)
+        {
+            if (!IsPaymentMethodValid(PaymentMethod))
+                throw new ArgumentException("PaymentMethod Invalid value - " + PaymentMethod + " - Reference_ID=195 - B - C - D - E - K - L - O - P - S - T - W"); if (PaymentMethod != null && PaymentMethod.Length > 1) { log.Warning("Length > 1 - truncated"); PaymentMethod = PaymentMethod.Substring(0, 1); }
+            Set_Value("PaymentMethod", PaymentMethod);
+        }/** Get Payment Method.
+@return Indicates the method of Invoice Payment */
+        public String GetPaymentMethod() { return (String)Get_Value("PaymentMethod"); }
         /** PaymentRule AD_Reference_ID=195 */
         public static int PAYMENTRULE_AD_Reference_ID = 195;/** Cash = B */
         public static String PAYMENTRULE_Cash = "B";/** Cash+Card = C */
         public static String PAYMENTRULE_CashPlusCard = "C";/** Direct Debit = D */
-        public static String PAYMENTRULE_DirectDebit = "D";/** Credit Card = K */
+        public static String PAYMENTRULE_DirectDebit = "D";/** Bank Transfer = E */
+        public static String PAYMENTRULE_BankTransfer = "E";/** Credit Card = K */
         public static String PAYMENTRULE_CreditCard = "K";/** Letter of Credit = L */
-        public static String PAYMENTRULE_LetterOfCredit = "L";/** On Credit = P */
-        public static String PAYMENTRULE_OnCredit = "P";/** Check = S */
+        public static String PAYMENTRULE_LetterOfCredit = "L";/** Third Party Payment = O */
+        public static String PAYMENTRULE_ThirdPartyPayment = "O";/** Customer Choice = P */
+        public static String PAYMENTRULE_CustomerChoice = "P";/** Check = S */
         public static String PAYMENTRULE_Check = "S";/** Direct Deposit = T */
         public static String PAYMENTRULE_DirectDeposit = "T";/** Wire Transfer = W */
-        public static String PAYMENTRULE_WireTransfer = "W";/** Is test a valid value.*/
-
-        public static String PAYMENTRULE_ThirdPartyPayment = "O"; // Third Party Payment = O
-
-        /**@param test testvalue
+        public static String PAYMENTRULE_WireTransfer = "W";/** Is test a valid value.
+@param test testvalue
 @returns true if valid **/
-        public bool IsPaymentRuleValid(String test)
-        {
-            return test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("K") || test.Equals("L") || test.Equals("P")
-                || test.Equals("S") || test.Equals("T") || test.Equals("W") || test.Equals("O");
-        }/** Set Payment Method.
+        public bool IsPaymentRuleValid(String test) { return test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("E") || test.Equals("K") || test.Equals("L") || test.Equals("O") || test.Equals("P") || test.Equals("S") || test.Equals("T") || test.Equals("W"); }/** Set Payment Method.
 @param PaymentRule How you pay the invoice */
         public void SetPaymentRule(String PaymentRule)
         {
             if (PaymentRule == null) throw new ArgumentException("PaymentRule is mandatory"); if (!IsPaymentRuleValid(PaymentRule))
-                throw new ArgumentException("PaymentRule Invalid value - " + PaymentRule + " - Reference_ID=195 - B - C - D - K - L - P - S - T - W- O"); if (PaymentRule.Length > 1) { log.Warning("Length > 1 - truncated"); PaymentRule = PaymentRule.Substring(0, 1); }
+                throw new ArgumentException("PaymentRule Invalid value - " + PaymentRule + " - Reference_ID=195 - B - C - D - E - K - L - O - P - S - T - W"); if (PaymentRule.Length > 1) { log.Warning("Length > 1 - truncated"); PaymentRule = PaymentRule.Substring(0, 1); }
             Set_Value("PaymentRule", PaymentRule);
         }/** Get Payment Method.
 @return How you pay the invoice */
         public String GetPaymentRule() { return (String)Get_Value("PaymentRule"); }
-
         /** PaymentRulePO AD_Reference_ID=195 */
         public static int PAYMENTRULEPO_AD_Reference_ID = 195;/** Cash = B */
         public static String PAYMENTRULEPO_Cash = "B";/** Cash+Card = C */
         public static String PAYMENTRULEPO_CashPlusCard = "C";/** Direct Debit = D */
-        public static String PAYMENTRULEPO_DirectDebit = "D";/** Credit Card = K */
+        public static String PAYMENTRULEPO_DirectDebit = "D";/** Bank Transfer = E */
+        public static String PAYMENTRULEPO_BankTransfer = "E";/** Credit Card = K */
         public static String PAYMENTRULEPO_CreditCard = "K";/** Letter of Credit = L */
-        public static String PAYMENTRULEPO_LetterOfCredit = "L";/** On Credit = P */
-        public static String PAYMENTRULEPO_OnCredit = "P";/** Check = S */
+        public static String PAYMENTRULEPO_LetterOfCredit = "L";/** Third Party Payment = O */
+        public static String PAYMENTRULEPO_ThirdPartyPayment = "O";/** Customer Choice = P */
+        public static String PAYMENTRULEPO_CustomerChoice = "P";/** Check = S */
         public static String PAYMENTRULEPO_Check = "S";/** Direct Deposit = T */
         public static String PAYMENTRULEPO_DirectDeposit = "T";/** Wire Transfer = W */
-        public static String PAYMENTRULEPO_WireTransfer = "W";/** Is test a valid value. */
-        public static String PAYMENTRULEPO_ThirdPartyPayment = "O"; // Third Party Payment = O
-
-        /** @param test testvalue
+        public static String PAYMENTRULEPO_WireTransfer = "W";/** Is test a valid value.
+@param test testvalue
 @returns true if valid **/
-        public bool IsPaymentRulePOValid(String test)
-        {
-            return test == null || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("K")
-|| test.Equals("L") || test.Equals("P") || test.Equals("S") || test.Equals("T") || test.Equals("W") || test.Equals("O");
-        }/** Set Payment Rule.
+        public bool IsPaymentRulePOValid(String test) { return test == null || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("E") || test.Equals("K") || test.Equals("L") || test.Equals("O") || test.Equals("P") || test.Equals("S") || test.Equals("T") || test.Equals("W"); }/** Set Payment Rule.
 @param PaymentRulePO Purchase payment option */
         public void SetPaymentRulePO(String PaymentRulePO)
         {
             if (!IsPaymentRulePOValid(PaymentRulePO))
-                throw new ArgumentException("PaymentRulePO Invalid value - " + PaymentRulePO + " - Reference_ID=195 - B - C - D - K - L - P - S - T - W - O"); if (PaymentRulePO != null && PaymentRulePO.Length > 1) { log.Warning("Length > 1 - truncated"); PaymentRulePO = PaymentRulePO.Substring(0, 1); }
+                throw new ArgumentException("PaymentRulePO Invalid value - " + PaymentRulePO + " - Reference_ID=195 - B - C - D - E - K - L - O - P - S - T - W"); if (PaymentRulePO != null && PaymentRulePO.Length > 1) { log.Warning("Length > 1 - truncated"); PaymentRulePO = PaymentRulePO.Substring(0, 1); }
             Set_Value("PaymentRulePO", PaymentRulePO);
-        }/** Get Payment Rule .
+        }/** Get Payment Rule.
 @return Purchase payment option */
         public String GetPaymentRulePO() { return (String)Get_Value("PaymentRulePO"); }
 
@@ -2949,7 +2964,7 @@ namespace VAdvantage.Model
         public void SetIsBudgetBreachApproved(Boolean IsBudgetBreachApproved) { Set_Value("IsBudgetBreachApproved", IsBudgetBreachApproved); }/** Get Budget Breach Approved.
         @return This checkbox indicates Budget Breach is approved */
         public Boolean IsBudgetBreachApproved() { Object oo = Get_Value("IsBudgetBreachApproved"); if (oo != null) { if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo); return "Y".Equals(oo); } return false; }
-      
+
         /** Set Additional Annual Charge.
 @param VA077_AdditionalAnnualCharge Additional Annual Charge */
         public void SetVA077_AdditionalAnnualCharge(Decimal? VA077_AdditionalAnnualCharge) { Set_Value("VA077_AdditionalAnnualCharge", (Decimal?)VA077_AdditionalAnnualCharge); }/** Get Additional Annual Charge.
