@@ -1330,32 +1330,7 @@ namespace VAdvantage.Model
             if (ii == null) return 0;
             return Convert.ToInt32(ii);
         }
-
-        /** PaymentMethod AD_Reference_ID=195 */
-        public static int PAYMENTMETHOD_AD_Reference_ID = 195;/** Cash = B */
-        public static String PAYMENTMETHOD_Cash = "B";/** Cash+Card = C */
-        public static String PAYMENTMETHOD_CashPlusCard = "C";/** Direct Debit = D */
-        public static String PAYMENTMETHOD_DirectDebit = "D";/** Bank Transfer = E */
-        public static String PAYMENTMETHOD_BankTransfer = "E";/** Credit Card = K */
-        public static String PAYMENTMETHOD_CreditCard = "K";/** Letter of Credit = L */
-        public static String PAYMENTMETHOD_LetterOfCredit = "L";/** Third Party Payment = O */
-        public static String PAYMENTMETHOD_ThirdPartyPayment = "O";/** Customer Choice = P */
-        public static String PAYMENTMETHOD_CustomerChoice = "P";/** Check = S */
-        public static String PAYMENTMETHOD_Check = "S";/** Direct Deposit = T */
-        public static String PAYMENTMETHOD_DirectDeposit = "T";/** Wire Transfer = W */
-        public static String PAYMENTMETHOD_WireTransfer = "W";/** Is test a valid value.
-@param test testvalue
-@returns true if valid **/
-        public bool IsPaymentMethodValid(String test) { return test == null || test.Equals("B") || test.Equals("C") || test.Equals("D") || test.Equals("E") || test.Equals("K") || test.Equals("L") || test.Equals("O") || test.Equals("P") || test.Equals("S") || test.Equals("T") || test.Equals("W"); }/** Set Payment Method.
-@param PaymentMethod Indicates the method of Invoice Payment */
-        public void SetPaymentMethod(String PaymentMethod)
-        {
-            if (!IsPaymentMethodValid(PaymentMethod))
-                throw new ArgumentException("PaymentMethod Invalid value - " + PaymentMethod + " - Reference_ID=195 - B - C - D - E - K - L - O - P - S - T - W"); if (PaymentMethod != null && PaymentMethod.Length > 1) { log.Warning("Length > 1 - truncated"); PaymentMethod = PaymentMethod.Substring(0, 1); }
-            Set_Value("PaymentMethod", PaymentMethod);
-        }/** Get Payment Method.
-@return Indicates the method of Invoice Payment */
-        public String GetPaymentMethod() { return (String)Get_Value("PaymentMethod"); }
+       
         /** PaymentRule AD_Reference_ID=195 */
         public static int PAYMENTRULE_AD_Reference_ID = 195;/** Cash = B */
         public static String PAYMENTRULE_Cash = "B";/** Cash+Card = C */
