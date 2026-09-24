@@ -196,7 +196,8 @@ namespace VAdvantage.Classes
         public static bool IsLookup(int displayType)
         {
             if (displayType == List || displayType == Table
-                || displayType == TableDir || displayType == Search || displayType == MultiKey || displayType == ProductContainer)
+                || displayType == TableDir || displayType == Search || displayType == MultiKey || displayType == ProductContainer 
+                || displayType == PAttribute || displayType == GAttribute)
                 return true;
             return false;
         }	//	isLookup

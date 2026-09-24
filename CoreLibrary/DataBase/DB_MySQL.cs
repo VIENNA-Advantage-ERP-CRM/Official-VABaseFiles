@@ -97,5 +97,10 @@ namespace VAdvantage.DataBase
         {
             throw new NotImplementedException();
         }
+
+        public DataSet ExecuteDatasetPaging(string sql, SqlParameter[] param, Trx trx, int page, int pageSize)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

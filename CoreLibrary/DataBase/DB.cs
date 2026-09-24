@@ -134,7 +134,7 @@ namespace CoreLibrary.DataBase
 
 
 
- 
+
 
         /// <summary>
         /// Execute SQL Query
@@ -430,18 +430,11 @@ namespace CoreLibrary.DataBase
             //Trx trx = trxName == null ? null : Trx.Get(trxName, true);
             if (trx != null)
             {
-                return trx.ExecuteDataset(sql, param, trx);
+                return trx.ExecuteDataset(sql, param, trx, pageSize, pageNumber);
             }
             else
             {
-
-                if (DB.IsPostgreSQL())
-                {
-                    NpgsqlParameter[] pparam = VAdvantage.SqlExec.ExecuteQuery.GetPostgreParameter(param);
-                    return VAdvantage.SqlExec.PostgreSql.PostgreHelper.ExecuteDataset(GetConnectionString(), CommandType.Text, ConvertSqlQuery(sql), pageSize, pageNumber, pparam);
-                }
-                OracleParameter[] oparam = VAdvantage.SqlExec.ExecuteQuery.GetOracleParameter(param);
-                return VAdvantage.SqlExec.Oracle.OracleHelper.ExecuteDataset(GetConnectionString(), CommandType.Text, ConvertSqlQuery(sql), pageSize, pageNumber, oparam);
+                return VAdvantage.SqlExec.ExecuteQuery.ExecuteDataset(sql, param, pageSize, pageNumber);
 
             }
         }
@@ -1052,7 +1045,7 @@ namespace CoreLibrary.DataBase
         /// <returns>number of rows updated or -1 if error</returns>
         public static int ExecuteBulkUpdate(Trx trx1, String sql, List<Object[]> bulkParams, Boolean ignoreError, Boolean bulkSQL)
         {
-           
+
             Trx trx = trx1;
 
             DateTime time = DateTime.Now.Date;
@@ -1076,7 +1069,7 @@ namespace CoreLibrary.DataBase
                         sqlParam = new SqlParameter[param.Length];
                         for (int i = 0; i < param.Length; i++)
                         {
-                            
+
                             sqlParam[i] = new SqlParameter("@param" + i, param[i]);
                         }
                     }
@@ -1090,21 +1083,21 @@ namespace CoreLibrary.DataBase
                             ////executeBatch()--This method is used to submit a set of command in sql query 
                             ////to the database, In case all the commands successfully, return you an 
                             ////array update count.
-                           
+
                         }
                     }
                     else
                     {
                         // int no = ExecuteQuery(sql, sqlParam, trx, false);
 
-                        
+
                         // total += no;
                     }
 
                     int no = ExecuteQuery(sql, sqlParam, trx, false);
                     total += no;
                 }
-                
+
                 // No Transaction - Commit
                 //if (trx == null)
                 //{
@@ -1234,7 +1227,7 @@ namespace CoreLibrary.DataBase
         {
             if (s_image48x15 == null)
             {
-                s_image48x15 =CoreLibrary.Properties.Resource.vienna;
+                s_image48x15 = CoreLibrary.Properties.Resource.vienna;
             }
 
             return s_image48x15;
@@ -1244,7 +1237,7 @@ namespace CoreLibrary.DataBase
 
 
 
-      
+
 
 
 
@@ -1359,6 +1352,43 @@ namespace CoreLibrary.DataBase
             if (s_cc != null)
                 return s_cc.GetDatabase().ConvertStatement(sql);
             return sql;
+        }
+
+        /// <summary>
+        /// Retrieves the GUID of a record from the specified table by its integer ID.
+        /// The GUID column expression is adapted per database type:
+        /// Oracle uses RAWTOHEX(), PostgreSQL uses ::text cast, others use the column as-is.
+        /// </summary>
+        /// <param name="tableName">Name of the table. Must contain only letters, digits, or underscores.
+        /// Validated against a whitelist pattern to prevent SQL injection since identifiers cannot be parameterized.</param>
+        /// <param name="recordID">Primary key ID of the record to look up.</param>
+        /// <returns>GUID string of the record, or null if not found or an error occurs.</returns>
+        public static string GetRecordGUID(string tableName, int recordID)
+        {
+            if (string.IsNullOrEmpty(tableName) || !System.Text.RegularExpressions.Regex.IsMatch(tableName, @"^[A-Za-z_][A-Za-z0-9_]*$"))
+            {
+                log.Log(Level.SEVERE, "GetRecordGUID => invalid tableName: " + tableName);
+                return null;
+            }
+
+            string guid = null;
+            try
+            {
+                string guidColumn;
+                if (DatabaseType.IsOracle)
+                    guidColumn = $"RAWTOHEX({tableName}_GUID)";
+                else if (DatabaseType.IsPostgre)
+                    guidColumn = $"{tableName}_GUID::text";
+                else
+                    guidColumn = $"{tableName}_GUID";
+
+                guid = Util.GetValueOfString(DB.ExecuteScalar($"SELECT {guidColumn} FROM {tableName} WHERE {tableName}_ID={recordID}"));
+            }
+            catch (Exception ex)
+            {
+                log.Log(Level.SEVERE, "GetRecordGUID =>" + ex.Message);
+            }
+            return guid;
         }
     }
 

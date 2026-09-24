@@ -83,6 +83,35 @@ namespace VAdvantage.SqlExec
             NpgsqlParameter[] param_final = GetPostgreParameter(arrParam);
             return PostgreSql.PostgreHelper.ExecuteDataset(DB.GetConnectionString(), CommandType.Text, DB.ConvertSqlQuery(sql), param_final);
         }
+
+        public static DataSet ExecuteDataset(string sql, SqlParameter[] arrParam,int pageSize,int pageNumber)
+        {
+            if (DatabaseType.IsPostgre)
+            {
+                NpgsqlParameter[] param = GetPostgreParameter(arrParam);
+                return PostgreSql.PostgreHelper.ExecuteDataset(DB.GetConnectionString(), CommandType.Text, DB.ConvertSqlQuery(sql), pageSize, pageNumber, param);
+            }
+            else if (DatabaseType.IsMSSql)
+            {/*TODO*/
+                return MSSql.SqlHelper.ExecuteDataset(DB.GetConnectionString(), CommandType.Text, DB.ConvertSqlQuery(sql), arrParam);
+            }
+            else if (DatabaseType.IsMySql)
+            {/*TODO*/
+                MySqlParameter[] param = GetMySqlParameter(arrParam);
+                return MySql.MySqlHelper.ExecuteDataset(DB.GetConnectionString(), CommandType.Text, DB.ConvertSqlQuery(sql),  param);
+            }
+            else if (DatabaseType.IsOracle)
+            {
+                OracleParameter[] param = GetOracleParameter(arrParam);
+                return Oracle.OracleHelper.ExecuteDataset(DB.GetConnectionString(), CommandType.Text, DB.ConvertSqlQuery(sql), pageSize, pageNumber, param);
+            }
+
+            NpgsqlParameter[] param_final = GetPostgreParameter(arrParam);
+            return PostgreSql.PostgreHelper.ExecuteDataset(DB.GetConnectionString(), CommandType.Text, DB.ConvertSqlQuery(sql), pageSize, pageNumber,  param_final);
+        }
+
+
+
         #endregion
 
         #region Execute Scalar
