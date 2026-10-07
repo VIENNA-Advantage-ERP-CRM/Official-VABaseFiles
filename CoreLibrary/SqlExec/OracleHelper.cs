@@ -51,6 +51,26 @@ namespace VAdvantage.SqlExec.Oracle
         }
 
         /// <summary>
+        /// Returns the parameters with the paging bounds (:va_page_hi, :va_page_lo) appended, in that order.
+        /// </summary>
+        /// <param name="commandParameters">caller's parameters, may be null</param>
+        /// <param name="pageNumber">1-based page number</param>
+        /// <param name="pageSize">rows per page</param>
+        /// <returns>new parameter array</returns>
+        internal static OracleParameter[] AppendPageBounds(OracleParameter[] commandParameters, int pageNumber, int pageSize)
+        {
+            int count = commandParameters == null ? 0 : commandParameters.Length;
+            OracleParameter[] result = new OracleParameter[count + 2];
+            if (count > 0)
+            {
+                Array.Copy(commandParameters, result, count);
+            }
+            result[count] = new OracleParameter("va_page_hi", OracleDbType.Int32) { Value = pageNumber * pageSize };
+            result[count + 1] = new OracleParameter("va_page_lo", OracleDbType.Int32) { Value = ((pageNumber - 1) * pageSize) + 1 };
+            return result;
+        }
+
+        /// <summary>
         /// This method assigns an array of values to an array of OracleParameters.
         /// </summary>
         /// <param name="commandParameters">array of OracleParameters to be assigned values</param>
@@ -547,8 +567,11 @@ namespace VAdvantage.SqlExec.Oracle
 
 
 
-            commandText = "select * FROM (SELECT t.*, rownum AS row_num FROM (" + commandText + ") t ) WHERE row_num BETWEEN (((" + pageNumber + " - 1) * " + pageSize + ") + 1) AND ((" + pageNumber + " * " + pageSize + "))";
-
+            // Inner ROWNUM <= hi lets Oracle stop early (top-N sort) instead of building and sorting the whole result;
+            // page bounds are bind variables so every page reuses the same statement.
+            // Parameters bind by position, so the bounds are appended after the caller's parameters (hi first, as in the SQL).
+            commandText = "SELECT * FROM (SELECT t.*, ROWNUM AS row_num FROM (" + commandText + ") t WHERE ROWNUM <= :va_page_hi) WHERE row_num >= :va_page_lo";
+            commandParameters = AppendPageBounds(commandParameters, pageNumber, pageSize);
 
 
             //create a command and prepare it for execution
