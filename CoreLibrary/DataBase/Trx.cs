@@ -735,11 +735,15 @@ namespace VAdvantage.DataBase
       //  [MethodImpl(MethodImplOptions.Synchronized)]
         public void Close()
         {
-            // The name cache is shared and filled under _trxLock (Get), so it is emptied under that lock too
-            lock (_trxLock)
+            // The name cache is shared and filled under _trxLock (Get), so it is emptied under that lock too.
+            // It exists only once the obsolete Get(name, createNew) was used (which cached this Trx before it could be
+            // closed); until then there is nothing to remove, so skip the lock (reading the reference is atomic).
+            if (_cache != null)
             {
-                if (_cache != null)
+                lock (_trxLock)
+                {
                     _cache.Remove(GetTrxName());
+                }
             }
             lock (_trxCloseLock)
             {
