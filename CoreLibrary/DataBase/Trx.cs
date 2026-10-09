@@ -33,7 +33,8 @@ namespace VAdvantage.DataBase
         IDbConnection _conn = null;
 
         private static readonly object _trxLock = new object();
-        private static readonly object _trxCloseLock = new object();
+        // Per transaction: closing one connection must not wait for every other user's close (was static)
+        private readonly object _trxCloseLock = new object();
 
         /** Logger					*/
         private VLogger log = null;
@@ -734,10 +735,14 @@ namespace VAdvantage.DataBase
       //  [MethodImpl(MethodImplOptions.Synchronized)]
         public void Close()
         {
-            lock (_trxCloseLock)
+            // The name cache is shared and filled under _trxLock (Get), so it is emptied under that lock too
+            lock (_trxLock)
             {
                 if (_cache != null)
                     _cache.Remove(GetTrxName());
+            }
+            lock (_trxCloseLock)
+            {
 
                 try
                 {
