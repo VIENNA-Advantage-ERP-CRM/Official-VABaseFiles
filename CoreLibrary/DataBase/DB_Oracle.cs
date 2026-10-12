@@ -211,11 +211,13 @@ namespace VAdvantage.DataBase
                 //sql = @"select * from (" + sql + ") t where r between  (((" + page + @" - 1) * " + pageSize + @") + 1) AND ((" + page + @" * " + pageSize + @") + 1 )";
 
 
-                sql = "select * FROM (SELECT t.*, rownum AS row_num FROM (" + sql + ") t ) WHERE row_num BETWEEN (((" + page + " - 1) * " + pageSize + ") + 1) AND ((" + page + " * " + pageSize + "))";
+                // Inner ROWNUM <= hi lets Oracle stop early (top-N sort); bounds are binds so the statement is reused across pages
+                sql = "SELECT * FROM (SELECT t.*, ROWNUM AS row_num FROM (" + sql + ") t WHERE ROWNUM <= :va_page_hi) WHERE row_num >= :va_page_lo";
 
                 connection.Open();
                 OracleDataAdapter adapter = new OracleDataAdapter();
                 adapter.SelectCommand = new OracleCommand(sql);
+                adapter.SelectCommand.Parameters.AddRange(OracleHelper.AppendPageBounds(null, page, pageSize));
                 adapter.SelectCommand.Connection = (OracleConnection)connection;
                 ds = new DataSet();
 

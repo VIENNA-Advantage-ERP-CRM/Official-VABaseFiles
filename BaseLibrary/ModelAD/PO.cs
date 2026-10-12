@@ -1996,7 +1996,8 @@ namespace VAdvantage.Model
 
 
         private Dictionary<String, String> m_custom = null;
-        private static Dictionary<int, StringBuilder> logbatch = new Dictionary<int, StringBuilder>();
+        // Shared by every user's saves (keyed by session): concurrent, a plain Dictionary written by two saves at once can corrupt
+        private static System.Collections.Concurrent.ConcurrentDictionary<int, StringBuilder> logbatch = new System.Collections.Concurrent.ConcurrentDictionary<int, StringBuilder>();
 
         private const string TYPE_DATE_TIME = "System.DateTime";
         private const string TYPE_INT32 = "System.Int32";
@@ -2186,14 +2187,9 @@ namespace VAdvantage.Model
             {
                 StringBuilder adLog = null;
                 //string adLog = p_ctx.GetContext("AD_ChangeLogBatch");
-                if (session != null && logbatch.ContainsKey(session.GetAD_Session_ID()))
+                if (session != null)
                 {
-                    adLog = logbatch[session.GetAD_Session_ID()];
-                }
-                else if (session != null)
-                {
-                    adLog = new StringBuilder();
-                    logbatch[session.GetAD_Session_ID()] = adLog;
+                    adLog = logbatch.GetOrAdd(session.GetAD_Session_ID(), id => new StringBuilder());
                 }
 
 
@@ -2612,9 +2608,9 @@ namespace VAdvantage.Model
                 {
                     //string adLog = p_ctx.GetContext("AD_ChangeLogBatch");
                     StringBuilder adLog = null;
-                    if (session != null && logbatch.ContainsKey(session.GetAD_Session_ID()))
+                    if (session != null)
                     {
-                        adLog = logbatch[session.GetAD_Session_ID()];
+                        logbatch.TryGetValue(session.GetAD_Session_ID(), out adLog);
                     }
 
                     if (adLog != null && adLog.Length > 6)
@@ -3521,9 +3517,9 @@ namespace VAdvantage.Model
 
                     // string adLog = p_ctx.GetContext("AD_ChangeLogBatch");
                     StringBuilder adLog = null;
-                    if (session != null && logbatch.ContainsKey(session.GetAD_Session_ID()))
+                    if (session != null)
                     {
-                        adLog = logbatch[session.GetAD_Session_ID()];
+                        logbatch.TryGetValue(session.GetAD_Session_ID(), out adLog);
                     }
                     if (adLog != null && adLog.Length > 6)
                     {
@@ -4529,10 +4525,7 @@ namespace VAdvantage.Model
                     Ctx p_ctx = po.GetCtx();
 
                     StringBuilder adLog = null;
-                    if (logbatch.ContainsKey(p_ctx.GetAD_Session_ID()))
-                    {
-                        adLog = logbatch[p_ctx.GetAD_Session_ID()];
-                    }
+                    logbatch.TryGetValue(p_ctx.GetAD_Session_ID(), out adLog);
 
                     if (adLog != null && adLog.Length > 6)
                     {

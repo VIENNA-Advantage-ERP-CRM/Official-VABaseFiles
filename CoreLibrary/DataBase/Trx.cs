@@ -33,7 +33,8 @@ namespace VAdvantage.DataBase
         IDbConnection _conn = null;
 
         private static readonly object _trxLock = new object();
-        private static readonly object _trxCloseLock = new object();
+        // Per transaction: closing one connection must not wait for every other user's close (was static)
+        private readonly object _trxCloseLock = new object();
 
         /** Logger					*/
         private VLogger log = null;
@@ -61,7 +62,8 @@ namespace VAdvantage.DataBase
                 Start();
             //using (OracleConnection cn = new OracleConnection(connection))
             //{
-            Logging.VLogger.Get().Info("Trx non-query " + GetTrxName() + " " + System.Threading.Thread.CurrentThread.ManagedThreadId);
+            // FINE, not INFO: written for every statement in a transaction at the default log level
+            Logging.VLogger.Get().Fine("Trx non-query " + GetTrxName() + " " + System.Threading.Thread.CurrentThread.ManagedThreadId);
             int retval = 0;
             if (DatabaseType.IsOracle)
             {
@@ -119,7 +121,7 @@ namespace VAdvantage.DataBase
             if (!IsActive())
                 Start();
 
-            Logging.VLogger.Get().Info("Trx Dataset " + GetTrxName() + " " + System.Threading.Thread.CurrentThread.ManagedThreadId);
+            Logging.VLogger.Get().Fine("Trx Dataset " + GetTrxName() + " " + System.Threading.Thread.CurrentThread.ManagedThreadId);
             DataSet ds = new DataSet();
             if (DatabaseType.IsOracle)
             {
@@ -661,7 +663,7 @@ namespace VAdvantage.DataBase
                 if (_conn != null && _trx != null && _trx.Connection != null)
                 {
                     _trx.Rollback();
-                    log.Info("**R** " + _trxName);
+                    log.Fine("**R** " + _trxName);
                     _active = false;
 
                     if (_trxUniqueName != null)
@@ -690,7 +692,7 @@ namespace VAdvantage.DataBase
                 if (_conn != null && _trx != null && _trx.Connection != null)
                 {
                     _trx.Commit();
-                    log.Info("**C** " + _trxName);
+                    log.Fine("**C** " + _trxName);
                     _active = false;
 
                     if (_trxUniqueName != null)
@@ -733,10 +735,18 @@ namespace VAdvantage.DataBase
       //  [MethodImpl(MethodImplOptions.Synchronized)]
         public void Close()
         {
+            // The name cache is shared and filled under _trxLock (Get), so it is emptied under that lock too.
+            // It exists only once the obsolete Get(name, createNew) was used (which cached this Trx before it could be
+            // closed); until then there is nothing to remove, so skip the lock (reading the reference is atomic).
+            if (_cache != null)
+            {
+                lock (_trxLock)
+                {
+                    _cache.Remove(GetTrxName());
+                }
+            }
             lock (_trxCloseLock)
             {
-                if (_cache != null)
-                    _cache.Remove(GetTrxName());
 
                 try
                 {
@@ -782,7 +792,7 @@ namespace VAdvantage.DataBase
                         _conn.Open();
                     }
                     _trx = _conn.BeginTransaction(IsolationLevel.ReadCommitted);
-                    log.Info("**** " + GetTrxName());
+                    log.Fine("**** " + GetTrxName());
                 }
             }
             catch (Exception e)

@@ -111,7 +111,9 @@ namespace VAdvantage.Logging
             this._message = msg;
 
             //****************Trace the class name and method**************//
-            StackTrace st = new StackTrace(true);
+            // File/line info means reading symbol files and is the expensive part of every log record; the log
+            // only shows class and method, so file info is captured for warnings and errors only
+            StackTrace st = new StackTrace(level != null && level.IntValue() >= Level.WARNING.IntValue());
             StackFrame[] sf = st.GetFrames();
             // First, search back to a method in the Logger class.
             int i = 0;

@@ -393,8 +393,10 @@ namespace VAdvantage.Classes
         private static CacheMgt _cache = null;
         //	List of Instances
         private List<ICacheInterface> instances = new List<ICacheInterface>();
-        // List of Table Names
-        private List<String> tableNames = new List<String>();
+        // Names of the registered CCache instances (exact-name gate of Reset(tableName))
+        private HashSet<String> tableNames = new HashSet<String>();
+        // The registered CCache instances, kept apart so a table reset does not test every instance's type
+        private List<ICacheInterface> namedCaches = new List<ICacheInterface>();
         //private int cacheResetCount = 0;
         // Logger
         //private static CLogger log = CLogger.getCLogger(CacheMgt.class);
@@ -429,6 +431,7 @@ namespace VAdvantage.Classes
                     String tableName = instance.GetName();
                     //String tableName = ((CCache)instance).GetName();
                     tableNames.Add(tableName);
+                    namedCaches.Add(instance);
                 }
                 instances.Add(instance);
                 return true;
@@ -445,14 +448,22 @@ namespace VAdvantage.Classes
             if (instance == null)
                 return false;
             bool found = false;
-            //	Could be included multiple times
-            for (int i = instances.Count - 1; i >= 0; i--)
+            lock (_lock)
             {
-                ICacheInterface stored = (ICacheInterface)instances[i];
-                if (instance.Equals(stored))
+                //	Could be included multiple times
+                for (int i = instances.Count - 1; i >= 0; i--)
                 {
-                    instances.RemoveAt(i);
-                    found = true;
+                    ICacheInterface stored = (ICacheInterface)instances[i];
+                    if (instance.Equals(stored))
+                    {
+                        instances.RemoveAt(i);
+                        found = true;
+                    }
+                }
+                for (int i = namedCaches.Count - 1; i >= 0; i--)
+                {
+                    if (instance.Equals(namedCaches[i]))
+                        namedCaches.RemoveAt(i);
                 }
             }
             return found;
@@ -466,9 +477,12 @@ namespace VAdvantage.Classes
         {
             int counter = 0;
             int total = 0;
-            for (int i = 0; i < instances.Count; i++)
+            ICacheInterface[] all;
+            lock (_lock)
+                all = instances.ToArray();
+            for (int i = 0; i < all.Length; i++)
             {
-                ICacheInterface stored = (ICacheInterface)instances[i];
+                ICacheInterface stored = all[i];
                 if (stored != null && stored.Size() > 0)
                 {
                     log.Fine(stored.ToString());
@@ -502,20 +516,24 @@ namespace VAdvantage.Classes
                 return Reset();
             //	if (tableName.endsWith("Set"))
             //		tableName = tableName.substring(0, tableName.length()-3);
-            if (!tableNames.Contains(tableName))
-                return 0;
+            // Called on every save: snapshot under the lock (Register may run at the same time), then reset outside it
+            ICacheInterface[] caches;
+            lock (_lock)
+            {
+                if (!tableNames.Contains(tableName))
+                    return 0;
+                caches = namedCaches.ToArray();
+            }
             //
             int counter = 0;
             int total = 0;
-            for (int i = 0; i < instances.Count; i++)
+            for (int i = 0; i < caches.Length; i++)
             {
-                ICacheInterface stored = (ICacheInterface)instances[i];
-                //if (stored != null && stored.GetType().ToString() == "VAdvantage.Classes.CCache")
-                if (stored != null && stored.GetType().ToString().Contains("VAdvantage.Classes.CCache"))
+                ICacheInterface stored = caches[i];
+                if (stored != null)
                 {
-                    //CCache cc = (CCache)stored;
-                    //if (cc.GetName().StartsWith(tableName))
-                    if (stored.GetName().StartsWith(tableName))		//	reset lines/dependent too
+                    String name = stored.GetName();
+                    if (name != null && name.StartsWith(tableName, StringComparison.Ordinal))		//	reset lines/dependent too
                     {
                         //	if (Record_ID == 0)
                         {
