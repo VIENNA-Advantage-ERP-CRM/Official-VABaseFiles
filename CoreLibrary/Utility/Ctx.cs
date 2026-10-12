@@ -81,7 +81,7 @@ namespace VAdvantage.Utility
                }
                String key = pair.Substring(0, index);
                String value = pair.Substring(index + 1);
-               m_map[key] = value;
+               lock (m_map) m_map[key] = value;
            }
            log.Info(ToString());
           // //Common.//ErrorLog.FillErrorLog("ctx.Load()", "", ToString(),VAdvantage.Framework.Message.MessageType.INFORMATION);
@@ -128,9 +128,9 @@ namespace VAdvantage.Utility
             //log.Finer(context + "=" + value);
             //
             if (value == null || value.Equals(""))
-                return m_map[context] = null;
+                lock (m_map) return m_map[context] = null;
             else
-                return m_map[context] = value;
+                lock (m_map) return m_map[context] = value;
         }
 
         /// <summary>
@@ -172,9 +172,9 @@ namespace VAdvantage.Utility
             //
             if (value == null || value.Equals(""))
                 //	m_map.remove(WindowNo+"|"+context);
-                m_map[windowNo + "|" + context]= null;
+                lock (m_map) m_map[windowNo + "|" + context]= null;
             else
-                m_map[windowNo + "|" + context] =  value;
+                lock (m_map) m_map[windowNo + "|" + context] =  value;
         }	//	setC
 
         /// <summary>
@@ -251,10 +251,10 @@ namespace VAdvantage.Utility
             log.Finest("C(" + windowNo + "," + tabNo + "): " + context + "=" + value);
             //
             if (value == null || value.Equals(""))
-                m_map[windowNo + "|" + tabNo + "|" + context] =  null;
+                lock (m_map) m_map[windowNo + "|" + tabNo + "|" + context] =  null;
             //	m_map.remove(WindowNo+"|"+TabNo+"|"+context);
             else
-                m_map[windowNo + "|" + tabNo + "|" + context] =  value;
+                lock (m_map) m_map[windowNo + "|" + tabNo + "|" + context] =  value;
         }	
       
         /// <summary>
@@ -262,7 +262,7 @@ namespace VAdvantage.Utility
         /// <param name="autoCommit"></param>
         public void SetAutoCommit(bool autoCommit)
         {
-            m_map["AutoCommit"] = autoCommit ? "Y" : "N";
+            lock (m_map) m_map["AutoCommit"] = autoCommit ? "Y" : "N";
         }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace VAdvantage.Utility
        /// <param name="autoNew"></param>
         public void SetAutoNew(bool autoNew)
         {
-            m_map["AutoNew"] =  autoNew ? "Y" : "N";
+            lock (m_map) m_map["AutoNew"] =  autoNew ? "Y" : "N";
         }
 
         public void SetShowClientOrg(string hide)
@@ -323,7 +323,7 @@ namespace VAdvantage.Utility
        /// <param name="isSOTrx"></param>
         public void SetIsSOTrx(bool isSOTrx)
         {
-            m_map["IsSOTrx"] =  isSOTrx ? "Y" : "N";
+            lock (m_map) m_map["IsSOTrx"] =  isSOTrx ? "Y" : "N";
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace VAdvantage.Utility
             if (context == null)
                 throw new ArgumentException("Require Context");
             string value;
-            m_map.TryGetValue(context , out value);
+            lock (m_map) m_map.TryGetValue(context , out value);
             //m_map[context];
             if (value == null)
             {
@@ -432,11 +432,13 @@ namespace VAdvantage.Utility
             //if (windowNo == 0)
             //    key = context;
             string  value;
-            m_map.TryGetValue(key,out value);
+            bool found;
+            lock (m_map)
+                found = m_map.TryGetValue(key,out value);
 
             //don't use value == null 'cuz there may be a null value for this key
             //if (value == null)
-            if (!m_map.ContainsKey(key))
+            if (!found)
             {
                 //	Explicit Base Values
                 if (context.StartsWith("#") || context.StartsWith("$"))
@@ -475,7 +477,7 @@ namespace VAdvantage.Utility
             if (context == null)
                 throw new ArgumentException("Require Context");
             string value;
-            m_map.TryGetValue(windowNo + "|" + tabNo + "|" + context,out value);
+            lock (m_map) m_map.TryGetValue(windowNo + "|" + tabNo + "|" + context,out value);
             if (tabNo == EnvConstants.TAB_INFO)
                 return value != null ? value : "";
             if (value == null)
@@ -847,8 +849,11 @@ namespace VAdvantage.Utility
 	 /// <summary>
         public virtual String[] GetEntireContext()
         {
-            IEnumerator<string> en = m_map.Keys.GetEnumerator();
-            List<String> sList = new  List<String>(m_map.Count);
+            List<string> keys;
+            lock (m_map)
+                keys = new List<string>(m_map.Keys);
+            IEnumerator<string> en = keys.GetEnumerator();
+            List<String> sList = new  List<String>(keys.Count);
             while (en.MoveNext())
             {
                 string key = en.Current;
@@ -869,7 +874,7 @@ namespace VAdvantage.Utility
         public string Get(string key)
         { 
             string value;
-             m_map.TryGetValue(key, out value);
+             lock (m_map) m_map.TryGetValue(key, out value);
              return value;
         }
 
@@ -921,7 +926,10 @@ namespace VAdvantage.Utility
             String infoPart = EnvConstants.WINDOW_INFO + "|";
             int keyPartIndex = keyPart.Length;
 
-            IEnumerator<KeyValuePair<string,string>> en = m_map.GetEnumerator();
+            List<KeyValuePair<string, string>> entries;
+            lock (m_map)
+                entries = new List<KeyValuePair<string, string>>(m_map);
+            IEnumerator<KeyValuePair<string,string>> en = entries.GetEnumerator();
             while (en.MoveNext())
             {
                 string key = en.Current.Key;// entry (Map.Entry)it.next();
@@ -964,7 +972,7 @@ namespace VAdvantage.Utility
         }
         public void SetIsUseBetaFunctions(bool IsUseBetaFunctions)
         {
-            m_map["#IsUseBetaFunctions"] = IsUseBetaFunctions ? "Y" : "N";
+            lock (m_map) m_map["#IsUseBetaFunctions"] = IsUseBetaFunctions ? "Y" : "N";
         }
 
         /// <summary>
@@ -974,13 +982,17 @@ namespace VAdvantage.Utility
         public virtual void RemoveWindow(int windowNo)
         {
 
-            string[] keys = null; ;
-            m_map.Keys.CopyTo(keys, 0);
-            for (int i = 0; i < keys.Length; i++)
+            String prefix = windowNo + "|";
+            lock (m_map)
             {
-                String key = keys[i];
-                if (key.StartsWith(windowNo + "|"))
-                    m_map.Remove(key);
+                string[] keys = new string[m_map.Count];
+                m_map.Keys.CopyTo(keys, 0);
+                for (int i = 0; i < keys.Length; i++)
+                {
+                    String key = keys[i];
+                    if (key.StartsWith(prefix))
+                        m_map.Remove(key);
+                }
             }
         }
 
@@ -1016,9 +1028,9 @@ namespace VAdvantage.Utility
         /// <param name="attributeValue"></param>
         public void DeletePreference(String attribute, String attributeValue)
         {
-            IEnumerator<KeyValuePair<string, string>> en = m_map.GetEnumerator();
-
-            List<string> lst = m_map.Values.ToList();
+            List<string> lst;
+            lock (m_map)
+                lst = m_map.Values.ToList();
 
             foreach (String key in lst)
             {
@@ -1033,7 +1045,7 @@ namespace VAdvantage.Utility
                 {
                     String value = GetContext(key);
                     if (value.Equals(attributeValue))
-                        m_map.Remove(key);
+                        lock (m_map) m_map.Remove(key);
                     //en = m_map.GetEnumerator();
                 }
             }
@@ -1057,7 +1069,7 @@ namespace VAdvantage.Utility
         /// </summary>
         public new  virtual void Clear()
         {
-            m_map.Clear();
+            lock (m_map) m_map.Clear();
         }	//	clear
 
         /// <summary>
@@ -1067,7 +1079,7 @@ namespace VAdvantage.Utility
         /// <returns></returns>
         public new virtual bool ContainsKey(string key)
         {
-            return m_map.ContainsKey(key);
+            lock (m_map) return m_map.ContainsKey(key);
         }
 
         /// <summary>
@@ -1077,7 +1089,7 @@ namespace VAdvantage.Utility
         /// <returns></returns>
         public new virtual bool ContainsValue(string value)
         {
-            return m_map.ContainsValue(value);
+            lock (m_map) return m_map.ContainsValue(value);
         }
 
         /// <summary>
@@ -1086,7 +1098,8 @@ namespace VAdvantage.Utility
         /// <returns></returns>
         public ICollection EntrySet()
         {
-            return m_map.Keys;
+            lock (m_map)
+                return new List<string>(m_map.Keys);
         }
 
         /// <summary>
@@ -1132,7 +1145,7 @@ namespace VAdvantage.Utility
         /// <returns></returns>
         public new bool Remove(string key)
         {
-            return  m_map.Remove(key);
+            lock (m_map) return  m_map.Remove(key);
         }
 
         /// <summary>
@@ -1141,7 +1154,8 @@ namespace VAdvantage.Utility
        /// <returns></returns>
         public new virtual ICollection<string> Values()
         {
-            return m_map.Values;
+            lock (m_map)
+                return new List<string>(m_map.Values);
         }	//	
 
         /// <summary>
@@ -1150,7 +1164,10 @@ namespace VAdvantage.Utility
         /// <returns></returns>
         public virtual IDictionary<string, string> GetMap()
         {
-            return m_map;
+            // A copy: callers copy or serialize it, and enumerating the live map while another request
+            // (callouts run with a read-only session) writes to it can corrupt the Dictionary
+            lock (m_map)
+                return new Dictionary<string, string>(m_map);
         }
      
         /// <summary>
@@ -1198,7 +1215,7 @@ namespace VAdvantage.Utility
         /// <param name="showAdvanced"></param>
         public void SetShowAdvanced(bool showAdvanced)
         {
-            m_map["#ShowAdvanced"] = showAdvanced ? "Y" : "N";
+            lock (m_map) m_map["#ShowAdvanced"] = showAdvanced ? "Y" : "N";
         }
 
         /// <summary>

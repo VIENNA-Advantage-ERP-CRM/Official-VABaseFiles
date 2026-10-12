@@ -878,7 +878,7 @@ namespace VAdvantage.Classes
                 */
                 if (index != -1)
                 {
-                    m_map[key] = map[key];
+                    lock (m_map) m_map[key] = map[key];
                     map.Remove(key);
                     en = map.GetEnumerator();
                 }
