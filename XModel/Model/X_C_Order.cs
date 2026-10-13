@@ -1340,7 +1340,7 @@ namespace VAdvantage.Model
         public static String PAYMENTRULE_CreditCard = "K";/** Letter of Credit = L */
         public static String PAYMENTRULE_LetterOfCredit = "L";/** Third Party Payment = O */
         public static String PAYMENTRULE_ThirdPartyPayment = "O";/** Customer Choice = P */
-        public static String PAYMENTRULE_CustomerChoice = "P";/** Check = S */
+        public static String PAYMENTRULE_OnCredit = "P";/** Check = S */
         public static String PAYMENTRULE_Check = "S";/** Direct Deposit = T */
         public static String PAYMENTRULE_DirectDeposit = "T";/** Wire Transfer = W */
         public static String PAYMENTRULE_WireTransfer = "W";/** Is test a valid value.
