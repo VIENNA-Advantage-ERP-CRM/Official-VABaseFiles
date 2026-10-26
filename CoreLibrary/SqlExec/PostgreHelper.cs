@@ -579,7 +579,10 @@ namespace VAdvantage.SqlExec.PostgreSql
 
 
 
-            commandText = "select * FROM (SELECT t.*, row_number() OVER () as rnum FROM (" + commandText + ") t )t1 WHERE rnum BETWEEN (((" + pageNumber + " - 1) * " + pageSize + ") + 1) AND ((" + pageNumber + " * " + pageSize + "))";
+            // LIMIT/OFFSET lets PostgreSQL stop at the page end (top-N sort) instead of numbering the whole result
+            // with row_number() and filtering it; the bounds are integers. Page < 1 stays empty, as before.
+            commandText = "SELECT * FROM (" + commandText + ") t LIMIT " + (pageNumber < 1 ? 0 : pageSize)
+                + " OFFSET " + (pageNumber < 1 ? 0 : (pageNumber - 1) * pageSize);
 
 
 
