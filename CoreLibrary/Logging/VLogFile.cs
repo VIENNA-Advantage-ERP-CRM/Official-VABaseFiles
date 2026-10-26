@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Collections.Concurrent;
+using System.Threading;
 
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
@@ -54,7 +56,7 @@ namespace VAdvantage.Logging
         {
             lock (_lock)
             {
-                Close();//close existing
+                CloseFile();//close existing
 
                 _doneHeader = false;
 
@@ -216,52 +218,21 @@ namespace VAdvantage.Logging
         /** Record Counter			*/
         private int m_records = 0;
 
+        /** Formatted lines waiting for the writer thread; bounded, so under a flood lines are dropped and counted */
+        private readonly BlockingCollection<string> _queue = new BlockingCollection<string>(new ConcurrentQueue<string>(), 50000);
+        /** Writer thread, started by the first Publish */
+        private volatile Thread _writerThread = null;
+        /** Lines dropped because the queue was full */
+        private int _dropped = 0;
+
         /// <summary>
-        /// Publishes the file
+        /// Publishes the record: it is formatted on the caller's thread and written by a background thread,
+        /// so requests no longer wait for the disk, or for each other on the file lock.
         /// </summary>
         /// <param name="record">stores the values to be printed</param>
-        /// 
-       // [MethodImpl(MethodImplOptions.Synchronized)]
         public override void Publish(LogRecord record)
         {
-            //lock (_lock)
-            //{
-            //if (DateTime.Now.Hour != Convert.ToDateTime(_lastFileDate).Hour) //Set Now Date
-            //{
-            //    Initialize(_viennaHome, true, true);
-            //}
-
-            //if (DateTime.Now > Convert.ToDateTime(_lastFileDate).AddHours(1)) //Set Now Date
-            //{
-            //    Initialize(_viennaHome, true, true);
-            //}
-
-            if (DateTime.Now > Convert.ToDateTime(_lastFileDate).AddHours(1)) //Set Now Date
-            {
-                // Initialize(_viennaHome, true, true);
-                //}
-
-                lock (_lock)
-                {
-                    if (DateTime.Now > Convert.ToDateTime(_lastFileDate).AddHours(1))
-                    {
-                        Initialize(_viennaHome, true, true);
-                        if (!_doneHeader)
-                        {
-                            if (_writer != null)
-                            {
-                                _writer.WriteLine(GetFormatter().GetHead());
-                                //AllocConsole();
-                                //Console.WriteLine(GetFormatter().GetHead()); // outputs to console window
-                                _doneHeader = true;
-                            }
-                        }
-                    }
-                }
-            }
-
-
-            if (!IsLoggable(record) || _writer == null)
+            if (!IsLoggable(record))
                 return;
 
             //	Format
@@ -275,54 +246,120 @@ namespace VAdvantage.Logging
                 return;
             }
 
+            StartWriter();
             try
             {
-                //if (!_doneHeader)
-                //{
-                //    _writer.WriteLine(GetFormatter().GetHead());
-                //    //AllocConsole();
-                //    //Console.WriteLine(GetFormatter().GetHead()); // outputs to console window
-                //    _doneHeader = true;
-                //}
-                //_writer.WriteLine(msg);
-                WriteLine(msg);
-                //AllocConsole();
-                //Console.WriteLine(msg); // outputs to console window
-                m_records++;
-
-                //if (string.IsNullOrEmpty(record.message))
-                //    record.message = "Executed";
-                if (record.GetLevel() == Level.SEVERE
-                    || record.GetLevel() == Level.WARNING
-                    || m_records % 10 == 0) //	flush every 10 records
-                    Flush();
-                //print into file
-                //_writer.WriteLine(this.Format(record));
-                //_writer.Flush();   //finally flush the print
+                if (!_queue.TryAdd(msg))
+                    Interlocked.Increment(ref _dropped);
             }
-            catch
+            catch (InvalidOperationException)
             {
-
-                Close();
-                _lastFileDate = null; //try next time when publish is called 
-                                      //try again to initlize file 
-            }
-            //}
-        }
-
-
-        private void WriteLine(string msg)
-        {
-            lock (_lock)
-            {
-                _writer.WriteLine(msg);
+                // closed
             }
         }
 
         /// <summary>
-        /// Close the writer object
+        /// Start the writer thread once
+        /// </summary>
+        private void StartWriter()
+        {
+            if (_writerThread != null)
+                return;
+            lock (_lock)
+            {
+                if (_writerThread != null || _queue.IsAddingCompleted)
+                    return;
+                Thread t = new Thread(WriteLoop);
+                t.IsBackground = true;
+                t.Name = "VLogFile writer";
+                t.Start();
+                _writerThread = t;
+                // write what is still queued when the application stops
+                AppDomain.CurrentDomain.DomainUnload += (s, e) => Close();
+            }
+        }
+
+        /// <summary>
+        /// Writer thread: writes the queued lines, flushes once the queue is empty (once per burst
+        /// instead of every 10 lines and on every warning)
+        /// </summary>
+        private void WriteLoop()
+        {
+            try
+            {
+                foreach (string msg in _queue.GetConsumingEnumerable())
+                {
+                    lock (_lock)
+                    {
+                        WriteQueued(msg);
+                        if (_queue.Count == 0)
+                            FlushWriter();
+                    }
+                }
+            }
+            catch
+            {
+                // the log must never take the process down
+            }
+        }
+
+        /// <summary>
+        /// Write one line, starting a new file every hour. Caller holds _lock.
+        /// </summary>
+        private void WriteQueued(string msg)
+        {
+            try
+            {
+                if (DateTime.Now > Convert.ToDateTime(_lastFileDate).AddHours(1)) //Set Now Date
+                {
+                    Initialize(_viennaHome, true, true);
+                    if (!_doneHeader && _writer != null)
+                    {
+                        _writer.WriteLine(GetFormatter().GetHead());
+                        _doneHeader = true;
+                    }
+                }
+
+                if (_writer == null)
+                    return;
+
+                int dropped = Interlocked.Exchange(ref _dropped, 0);
+                if (dropped > 0)
+                    _writer.WriteLine("===== " + dropped + " log lines dropped: log queue full =====");
+                _writer.WriteLine(msg);
+                m_records++;
+            }
+            catch
+            {
+                CloseFile();
+                _lastFileDate = null; //try next time when publish is called 
+                                      //try again to initlize file 
+            }
+        }
+
+        /// <summary>
+        /// Write the queued lines, stop the writer thread and close the file
         /// </summary>
         public override void Close()
+        {
+            lock (_lock)
+            {
+                if (!_queue.IsAddingCompleted)
+                    _queue.CompleteAdding();
+            }
+            Thread t = _writerThread;
+            if (t != null && t != Thread.CurrentThread)
+                t.Join(5000);
+            lock (_lock)
+            {
+                CloseFile();
+            }
+        }
+
+        /// <summary>
+        /// Close the writer object (also on the hourly file change). Caller holds _lock.
+        /// </summary>
+        private void CloseFile()
         {
             if (_writer == null)
                 return;
@@ -330,15 +367,15 @@ namespace VAdvantage.Logging
             try
             {
                 if (!_doneHeader)
-                    WriteLine(GetFormatter().GetHead());
+                    _writer.WriteLine(GetFormatter().GetHead());
 
-                WriteLine(GetFormatter().GetTail());
+                _writer.WriteLine(GetFormatter().GetTail());
             }
             catch
             {
             }
 
-            Flush();
+            FlushWriter();
 
             try
             {
@@ -361,6 +398,14 @@ namespace VAdvantage.Logging
         /// Flush the buffered output
         /// </summary>
         public override void Flush()
+        {
+            lock (_lock)
+            {
+                FlushWriter();
+            }
+        }
+
+        private void FlushWriter()
         {
             try
             {
