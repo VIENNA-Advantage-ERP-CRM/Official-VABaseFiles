@@ -733,6 +733,81 @@ namespace VAdvantage.Model
             return;
         }
 
+        /// <summary>
+        /// Lists the checks registered for a table and company, without changing anything (spec 1, part 4): the
+        /// entries of the lists that FireModelChange, BindModelAction and FireDocValidate read for a record of that
+        /// table and company, in the order they run, the save checks first. The table name is matched as these lists
+        /// hold it, the name the record's own information gives (PO.Get_TableName()).
+        /// </summary>
+        /// <param name="tableName">table name</param>
+        /// <param name="AD_Client_ID">company (client) id</param>
+        /// <returns>a new list, which the caller may change without changing the engine; empty when none is registered</returns>
+        public List<RegisteredModelCheck> GetRegisteredChecks(String tableName, int AD_Client_ID)
+        {
+            List<RegisteredModelCheck> checks = new List<RegisteredModelCheck>();
+            if (tableName == null)
+                return checks;
+            String propertyName = tableName + AD_Client_ID;
+            AddRegisteredChecks(checks, RegisteredModelCheckKind.ModelChange, _modelChangeListeners, propertyName);
+            AddRegisteredChecks(checks, RegisteredModelCheckKind.ModelAction, _modelActionListeners, propertyName);
+            AddRegisteredChecks(checks, RegisteredModelCheckKind.DocValidate, _docValidateListeners, propertyName);
+            return checks;
+        }
+
+        /// <summary>
+        /// Adds a description of each validator one list holds for a table and company, in the list's order.
+        /// </summary>
+        private static void AddRegisteredChecks(List<RegisteredModelCheck> checks, RegisteredModelCheckKind kind,
+            Dictionary<String, List<ModelValidator>> listeners, String propertyName)
+        {
+            List<ModelValidator> list = null;
+            if (!listeners.TryGetValue(propertyName, out list))
+                return;
+            foreach (ModelValidator validator in list.ToArray())
+                checks.Add(new RegisteredModelCheck(kind, validator));
+        }
+
+    }
+
+    /// <summary>
+    /// The list of the model validation engine that holds a registered check.
+    /// </summary>
+    public enum RegisteredModelCheckKind
+    {
+        // Model change listeners: called on save and delete (FireModelChange)
+        ModelChange,
+        // Model action listeners: bind their actions to the record (BindModelAction)
+        ModelAction,
+        // Document validation listeners: called on document actions (FireDocValidate)
+        DocValidate
+    }
+
+    /// <summary>
+    /// One check registered with the model validation engine for a table and company, as
+    /// ModelValidationEngine.GetRegisteredChecks lists it: a description only, which holds no reference to the validator.
+    /// </summary>
+    public class RegisteredModelCheck
+    {
+        /// <summary>
+        /// Describes a validator that one of the engine's lists holds.
+        /// </summary>
+        /// <param name="kind">the list that holds it</param>
+        /// <param name="validator">the registered validator</param>
+        public RegisteredModelCheck(RegisteredModelCheckKind kind, ModelValidator validator)
+        {
+            Kind = kind;
+            ValidatorClass = validator.GetType().FullName;
+            AD_Client_ID = validator.GetAD_Client_ID();
+        }
+
+        /// <summary>The list that holds the check.</summary>
+        public RegisteredModelCheckKind Kind { get; private set; }
+
+        /// <summary>The full class name of the validator.</summary>
+        public String ValidatorClass { get; private set; }
+
+        /// <summary>The company the validator monitors (its GetAD_Client_ID()); the engine calls it only for records of that company.</summary>
+        public int AD_Client_ID { get; private set; }
     }
 }
 

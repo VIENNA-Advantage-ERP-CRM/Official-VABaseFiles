@@ -771,6 +771,24 @@ namespace VAdvantage.Model
             }
             return false;
         }
+        /** Set AI User.
+        @param IsAIUser The user is an AI user (not a person): Onfinity's workflow never records it as the approver of a document */
+        public void SetIsAIUser(Boolean IsAIUser)
+        {
+            Set_Value("IsAIUser", IsAIUser);
+        }
+        /** Get AI User.
+        @return The user is an AI user (not a person): Onfinity's workflow never records it as the approver of a document */
+        public Boolean IsAIUser()
+        {
+            Object oo = Get_Value("IsAIUser");
+            if (oo != null)
+            {
+                if (oo.GetType() == typeof(bool)) return Convert.ToBoolean(oo);
+                return "Y".Equals(oo);
+            }
+            return false;
+        }
         /** Set Login User.
         @param IsLoginUser Identifies whether user is a login user */
         public void SetIsLoginUser(Boolean IsLoginUser)
